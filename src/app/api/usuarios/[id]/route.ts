@@ -1,37 +1,47 @@
 /**
  * API de Usuário Individual
  *
- * Endpoints para operações em um usuário específico.
+ * GET - Busca usuário por ID
+ * PUT - Atualiza usuário
+ * DELETE - Remove usuário (soft delete)
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { getLocalDb } from '@/lib/db/local';
+import { createClient } from '@supabase/supabase-js';
 import { createHash } from 'crypto';
 
+function getSupabase() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error('Supabase não configurado');
+  }
+
+  return createClient(supabaseUrl, supabaseKey);
+}
+
 function hashPassword(password: string): string {
-  return createHash('sha256').update(password).digest('hex');
+  return createHash('sha256').update(password + 'vendas-pdv-salt-2024').digest('hex');
 }
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
-    const db = getLocalDb();
+    const supabase = getSupabase();
 
-    const user = db.prepare(`
-      SELECT id, email, name, role, status, avatar_url, phone, last_login_at, created_at, updated_at
-      FROM users
-      WHERE id = ? AND deleted_at IS NULL
-    `).get(id);
+    const { data: user, error } = await supabase
+      .from('users')
+      .select('id, email, name, role, status, avatar_url, phone, last_login_at, created_at, updated_at')
+      .eq('id', params.id)
+      .is('deleted_at', null)
+      .single();
 
-    if (!user) {
+    if (error || !user) {
       return NextResponse.json(
-        {
-          success: false,
-          error: 'Usuário não encontrado',
-        },
+        { success: false, error: 'Usuário não encontrado' },
         { status: 404 }
       );
     }
@@ -43,10 +53,7 @@ export async function GET(
   } catch (error) {
     console.error('Erro ao buscar usuário:', error);
     return NextResponse.json(
-      {
-        success: false,
-        error: 'Erro ao buscar usuário',
-      },
+      { success: false, error: 'Erro interno do servidor' },
       { status: 500 }
     );
   }
@@ -54,103 +61,67 @@ export async function GET(
 
 export async function PUT(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
+    const supabase = getSupabase();
     const body = await request.json();
 
-    const db = getLocalDb();
+    const { name, email, password, role, status, phone, avatar_url } = body;
 
-    // Check if user exists
-    const existing = db.prepare('SELECT id, version FROM users WHERE id = ? AND deleted_at IS NULL').get(id) as { id: string; version: number } | undefined;
+    // Verifica se email está em uso por outro usuário
+    if (email) {
+      const { data: existingUser } = await supabase
+        .from('users')
+        .select('id')
+        .eq('email', email.toLowerCase())
+        .neq('id', params.id)
+        .is('deleted_at', null)
+        .single();
 
-    if (!existing) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Usuário não encontrado',
-        },
-        { status: 404 }
-      );
-    }
-
-    // Check if email is being changed and if it's already in use
-    if (body.email) {
-      const emailExists = db.prepare(
-        'SELECT id FROM users WHERE email = ? AND id != ? AND deleted_at IS NULL'
-      ).get(body.email, id);
-
-      if (emailExists) {
+      if (existingUser) {
         return NextResponse.json(
-          {
-            success: false,
-            error: 'E-mail já está em uso por outro usuário',
-          },
+          { success: false, error: 'E-mail já está em uso por outro usuário' },
           { status: 400 }
         );
       }
     }
 
-    const now = new Date().toISOString();
-    const updates: string[] = [];
-    const values: (string | number | null)[] = [];
+    const updates: Record<string, unknown> = {
+      updated_at: new Date().toISOString(),
+    };
 
-    if (body.name !== undefined) {
-      updates.push('name = ?');
-      values.push(body.name);
-    }
-    if (body.email !== undefined) {
-      updates.push('email = ?');
-      values.push(body.email);
-    }
-    if (body.role !== undefined) {
-      updates.push('role = ?');
-      values.push(body.role);
-    }
-    if (body.status !== undefined) {
-      updates.push('status = ?');
-      values.push(body.status);
-    }
-    if (body.phone !== undefined) {
-      updates.push('phone = ?');
-      values.push(body.phone || null);
-    }
-    if (body.avatar_url !== undefined) {
-      updates.push('avatar_url = ?');
-      values.push(body.avatar_url || null);
-    }
-    if (body.password) {
-      updates.push('password_hash = ?');
-      values.push(hashPassword(body.password));
-    }
+    if (name !== undefined) updates.name = name;
+    if (email !== undefined) updates.email = email.toLowerCase();
+    if (role !== undefined) updates.role = role;
+    if (status !== undefined) updates.status = status;
+    if (phone !== undefined) updates.phone = phone || null;
+    if (avatar_url !== undefined) updates.avatar_url = avatar_url || null;
+    if (password) updates.password_hash = hashPassword(password);
 
-    updates.push('updated_at = ?');
-    values.push(now);
-    updates.push('version = version + 1');
+    const { data, error } = await supabase
+      .from('users')
+      .update(updates)
+      .eq('id', params.id)
+      .select('id, email, name, role, status, avatar_url, phone, created_at, updated_at')
+      .single();
 
-    values.push(id);
-
-    db.prepare(`
-      UPDATE users SET ${updates.join(', ')} WHERE id = ?
-    `).run(...values);
-
-    const user = db.prepare(`
-      SELECT id, email, name, role, status, avatar_url, phone, created_at, updated_at
-      FROM users WHERE id = ?
-    `).get(id);
+    if (error) {
+      console.error('Erro ao atualizar usuário:', error);
+      return NextResponse.json(
+        { success: false, error: 'Erro ao atualizar usuário' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
-      data: user,
+      data,
     });
   } catch (error) {
     console.error('Erro ao atualizar usuário:', error);
     return NextResponse.json(
-      {
-        success: false,
-        error: 'Erro ao atualizar usuário',
-      },
+      { success: false, error: 'Erro interno do servidor' },
       { status: 500 }
     );
   }
@@ -158,30 +129,27 @@ export async function PUT(
 
 export async function DELETE(
   request: NextRequest,
-  { params }: { params: Promise<{ id: string }> }
+  { params }: { params: { id: string } }
 ) {
   try {
-    const { id } = await params;
-    const db = getLocalDb();
-
-    // Check if user exists
-    const existing = db.prepare('SELECT id FROM users WHERE id = ? AND deleted_at IS NULL').get(id);
-
-    if (!existing) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Usuário não encontrado',
-        },
-        { status: 404 }
-      );
-    }
+    const supabase = getSupabase();
 
     // Soft delete
-    const now = new Date().toISOString();
-    db.prepare(`
-      UPDATE users SET deleted_at = ?, updated_at = ?, version = version + 1 WHERE id = ?
-    `).run(now, now, id);
+    const { error } = await supabase
+      .from('users')
+      .update({
+        deleted_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      })
+      .eq('id', params.id);
+
+    if (error) {
+      console.error('Erro ao excluir usuário:', error);
+      return NextResponse.json(
+        { success: false, error: 'Erro ao excluir usuário' },
+        { status: 500 }
+      );
+    }
 
     return NextResponse.json({
       success: true,
@@ -190,10 +158,7 @@ export async function DELETE(
   } catch (error) {
     console.error('Erro ao excluir usuário:', error);
     return NextResponse.json(
-      {
-        success: false,
-        error: 'Erro ao excluir usuário',
-      },
+      { success: false, error: 'Erro interno do servidor' },
       { status: 500 }
     );
   }

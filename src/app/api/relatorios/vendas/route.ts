@@ -5,10 +5,22 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import { salesService } from '@/lib/services/sales-service';
+import { createClient } from '@supabase/supabase-js';
+
+function getSupabase() {
+  const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+  if (!supabaseUrl || !supabaseKey) {
+    throw new Error('Supabase não configurado');
+  }
+
+  return createClient(supabaseUrl, supabaseKey);
+}
 
 export async function GET(request: NextRequest) {
   try {
+    const supabase = getSupabase();
     const { searchParams } = new URL(request.url);
     const startDate = searchParams.get('start');
     const endDate = searchParams.get('end');
@@ -20,23 +32,26 @@ export async function GET(request: NextRequest) {
       : new Date(end.getTime() - 30 * 24 * 60 * 60 * 1000);
 
     // Get sales for the period
-    const { data: sales } = await salesService.list({
-      startDate: start.toISOString(),
-      endDate: end.toISOString(),
-      limit: 10000,
-    });
+    const { data: sales } = await supabase
+      .from('sales')
+      .select('*, customer:customers(id, name), sale_items(*)')
+      .gte('created_at', start.toISOString())
+      .lte('created_at', end.toISOString())
+      .order('created_at', { ascending: false });
+
+    const allSales = sales || [];
 
     // Calculate summary
-    const completedSales = sales.filter(s => s.status === 'completed');
-    const cancelledSales = sales.filter(s => s.status === 'cancelled');
+    const completedSales = allSales.filter(s => s.status === 'completed');
+    const cancelledSales = allSales.filter(s => s.status === 'cancelled');
 
-    const totalRevenue = completedSales.reduce((sum, s) => sum + s.total, 0);
+    const totalRevenue = completedSales.reduce((sum, s) => sum + (s.total || 0), 0);
     const avgTicket = completedSales.length > 0
       ? Math.round(totalRevenue / completedSales.length)
       : 0;
 
     const summary = {
-      totalSales: sales.length,
+      totalSales: allSales.length,
       totalRevenue,
       avgTicket,
       completedSales: completedSales.length,
@@ -51,7 +66,7 @@ export async function GET(request: NextRequest) {
       const existing = dailySalesMap.get(date) || { sales: 0, revenue: 0 };
       dailySalesMap.set(date, {
         sales: existing.sales + 1,
-        revenue: existing.revenue + sale.total,
+        revenue: existing.revenue + (sale.total || 0),
       });
     });
 
@@ -67,7 +82,7 @@ export async function GET(request: NextRequest) {
         const existing = paymentMethodMap.get(sale.payment_method) || { count: 0, total: 0 };
         paymentMethodMap.set(sale.payment_method, {
           count: existing.count + 1,
-          total: existing.total + sale.total,
+          total: existing.total + (sale.total || 0),
         });
       }
     });
@@ -80,18 +95,18 @@ export async function GET(request: NextRequest) {
     const productSalesMap = new Map<string, { id: string; name: string; quantity: number; revenue: number }>();
 
     for (const sale of completedSales) {
-      if (sale.items) {
-        for (const item of sale.items) {
+      if (sale.sale_items) {
+        for (const item of sale.sale_items) {
           const existing = productSalesMap.get(item.product_id) || {
             id: item.product_id,
-            name: item.product_name,
+            name: item.product_name || 'Produto',
             quantity: 0,
             revenue: 0,
           };
           productSalesMap.set(item.product_id, {
             ...existing,
-            quantity: existing.quantity + item.quantity,
-            revenue: existing.revenue + item.total,
+            quantity: existing.quantity + (item.quantity || 0),
+            revenue: existing.revenue + (item.total || 0),
           });
         }
       }
@@ -108,14 +123,14 @@ export async function GET(request: NextRequest) {
       if (sale.customer_id && sale.customer) {
         const existing = customerSalesMap.get(sale.customer_id) || {
           id: sale.customer_id,
-          name: sale.customer.name,
+          name: sale.customer.name || 'Cliente',
           purchases: 0,
           totalSpent: 0,
         };
         customerSalesMap.set(sale.customer_id, {
           ...existing,
           purchases: existing.purchases + 1,
-          totalSpent: existing.totalSpent + sale.total,
+          totalSpent: existing.totalSpent + (sale.total || 0),
         });
       }
     });
