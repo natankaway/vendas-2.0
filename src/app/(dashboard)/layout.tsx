@@ -105,11 +105,8 @@ export default function DashboardLayout({
   };
 
   const handleSync = async () => {
-    try {
-      await fetch('/api/sync', { method: 'POST' });
-    } catch (error) {
-      console.error('Erro ao sincronizar:', error);
-    }
+    // Sincronização desabilitada - usando Supabase diretamente
+    console.log('Sincronização manual não necessária com Supabase');
   };
 
   // Filtra links baseado em permissões

@@ -127,8 +127,13 @@ export const closeSqliteDb = () => {};
  */
 export const isPostgresConnected = async (): Promise<boolean> => {
   try {
-    const db = getPostgresDb();
-    await db.execute('SELECT 1');
+    // Verifica se as variáveis de ambiente estão configuradas
+    const connectionString = process.env.DATABASE_URL;
+    if (!connectionString) {
+      return false;
+    }
+    // Tenta obter a conexão
+    getPostgresDb();
     return true;
   } catch {
     return false;

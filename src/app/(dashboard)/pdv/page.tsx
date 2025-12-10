@@ -285,8 +285,10 @@ export default function PDVPage() {
 
       return response.json();
     },
-    onSuccess: (data) => {
-      setLastSale(data);
+    onSuccess: (response) => {
+      // A API retorna {success: true, data: {...}}
+      const saleData = response.data;
+      setLastSale(saleData);
       setShowPaymentDialog(false);
       setShowReceiptDialog(true);
       clearCart();
@@ -294,7 +296,7 @@ export default function PDVPage() {
 
       toast({
         title: 'Venda realizada!',
-        description: `Recibo: ${data.receipt_number}`,
+        description: `Recibo: ${saleData.receipt_number}`,
       });
     },
     onError: (error: Error) => {

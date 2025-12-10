@@ -284,6 +284,7 @@ export async function POST(request: NextRequest) {
         receipt_number: receiptNumber,
         total,
         items: saleItems,
+        created_at: now,
       },
     });
   } catch (error) {
