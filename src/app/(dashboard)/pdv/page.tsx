@@ -203,6 +203,8 @@ export default function PDVPage() {
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
   const [showReceiptDialog, setShowReceiptDialog] = useState(false);
+  const [showCustomerDialog, setShowCustomerDialog] = useState(false);
+  const [customerSearch, setCustomerSearch] = useState('');
   const [lastSale, setLastSale] = useState<any>(null);
   const [cashReceived, setCashReceived] = useState('');
 
@@ -250,6 +252,21 @@ export default function PDVPage() {
       return response.json();
     },
     staleTime: 1000 * 60 * 5, // 5 minutos
+  });
+
+  // Busca clientes
+  const { data: customersData, isLoading: loadingCustomers } = useQuery({
+    queryKey: ['customers', 'pdv', customerSearch],
+    queryFn: async () => {
+      const params = new URLSearchParams();
+      if (customerSearch) params.set('search', customerSearch);
+      params.set('limit', '20');
+      const response = await fetch(`/api/clientes?${params}`);
+      if (!response.ok) throw new Error('Erro ao buscar clientes');
+      return response.json();
+    },
+    enabled: showCustomerDialog,
+    staleTime: 1000 * 30, // 30 segundos
   });
 
   // Mutation para criar venda
@@ -537,9 +554,7 @@ export default function PDVPage() {
                 <Button
                   variant="outline"
                   className="w-full"
-                  onClick={() => {
-                    /* TODO: Abrir seleção de cliente */
-                  }}
+                  onClick={() => setShowCustomerDialog(true)}
                 >
                   <User className="h-4 w-4 mr-2" />
                   Selecionar Cliente
@@ -750,6 +765,70 @@ export default function PDVPage() {
               onClick={() => setShowReceiptDialog(false)}
             >
               Nova Venda
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
+      {/* Dialog de Seleção de Cliente */}
+      <Dialog open={showCustomerDialog} onOpenChange={setShowCustomerDialog}>
+        <DialogContent className="max-w-md">
+          <DialogHeader>
+            <DialogTitle>Selecionar Cliente</DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            <Input
+              placeholder="Buscar por nome, telefone ou documento..."
+              leftIcon={<Search className="h-4 w-4" />}
+              value={customerSearch}
+              onChange={(e) => setCustomerSearch(e.target.value)}
+            />
+
+            <div className="max-h-64 overflow-y-auto space-y-2">
+              {loadingCustomers ? (
+                <div className="flex items-center justify-center py-8">
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary" />
+                </div>
+              ) : customersData?.data?.length === 0 ? (
+                <div className="text-center py-8 text-muted-foreground">
+                  <User className="h-8 w-8 mx-auto mb-2" />
+                  <p>Nenhum cliente encontrado</p>
+                </div>
+              ) : (
+                customersData?.data?.map((c: Customer) => (
+                  <button
+                    key={c.id}
+                    className="w-full p-3 text-left rounded-lg border hover:bg-muted transition-colors"
+                    onClick={() => {
+                      setCustomer(c);
+                      setShowCustomerDialog(false);
+                      setCustomerSearch('');
+                      toast({
+                        title: 'Cliente selecionado',
+                        description: c.name,
+                      });
+                    }}
+                  >
+                    <p className="font-medium">{c.name}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {c.phone || c.email || c.document || 'Sem contato'}
+                    </p>
+                  </button>
+                ))
+              )}
+            </div>
+          </div>
+
+          <DialogFooter>
+            <Button
+              variant="outline"
+              onClick={() => {
+                setShowCustomerDialog(false);
+                setCustomerSearch('');
+              }}
+            >
+              Cancelar
             </Button>
           </DialogFooter>
         </DialogContent>
