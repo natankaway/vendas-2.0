@@ -27,11 +27,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Cria cliente Supabase com service role para acessar o banco
-    const supabase = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
+    // Cria cliente Supabase para acessar o banco
+    const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const supabaseKey = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+    if (!supabaseUrl || !supabaseKey) {
+      console.error('Variáveis de ambiente não configuradas:', {
+        url: !!supabaseUrl,
+        key: !!supabaseKey
+      });
+      return NextResponse.json(
+        { success: false, error: 'Servidor não configurado corretamente' },
+        { status: 500 }
+      );
+    }
+
+    const supabase = createClient(supabaseUrl, supabaseKey);
 
     // Busca usuário no banco
     const { data: users, error } = await supabase
