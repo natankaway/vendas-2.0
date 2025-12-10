@@ -5,7 +5,7 @@
  * Usa singleton pattern para evitar múltiplas instâncias.
  */
 
-import { createBrowserClient } from '@supabase/ssr';
+import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 import type { Database } from './database.types';
 
 /**
@@ -26,12 +26,13 @@ export const createClient = () => {
     );
   }
 
-  return createBrowserClient<Database>(supabaseUrl, supabaseAnonKey, {
+  return createSupabaseClient<Database>(supabaseUrl, supabaseAnonKey, {
     auth: {
       persistSession: true,
       autoRefreshToken: true,
       detectSessionInUrl: true,
       flowType: 'pkce',
+      storage: typeof window !== 'undefined' ? window.localStorage : undefined,
     },
     global: {
       headers: {
@@ -47,6 +48,11 @@ export const createClient = () => {
 let browserClient: ReturnType<typeof createClient> | null = null;
 
 export const getSupabaseClient = () => {
+  if (typeof window === 'undefined') {
+    // No servidor, sempre criar nova instância
+    return createClient();
+  }
+
   if (!browserClient) {
     browserClient = createClient();
   }
