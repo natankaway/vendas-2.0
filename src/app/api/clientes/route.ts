@@ -51,15 +51,13 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Retorna no formato esperado pelo frontend
     return NextResponse.json({
-      success: true,
-      customers: customers || [],
-      pagination: {
-        page,
-        limit,
-        total: count || 0,
-        totalPages: Math.ceil((count || 0) / limit),
-      },
+      data: customers || [],
+      total: count || 0,
+      page,
+      limit,
+      totalPages: Math.ceil((count || 0) / limit),
     });
   } catch (error) {
     console.error('Erro na API de clientes:', error);
