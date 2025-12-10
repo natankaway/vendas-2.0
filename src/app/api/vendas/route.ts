@@ -193,6 +193,7 @@ export async function POST(request: NextRequest) {
     const receiptNumber = generateReceiptNumber();
 
     // Cria a venda
+    const now = new Date().toISOString();
     const { error: saleError } = await supabase
       .from('sales')
       .insert({
@@ -204,13 +205,13 @@ export async function POST(request: NextRequest) {
         subtotal,
         discount_amount: discount || 0,
         discount_percent: 0,
-        tax: 0,
+        tax_amount: 0,
         total,
         payment_method,
-        payment_status: 'paid',
         notes: notes || null,
-        created_at: new Date().toISOString(),
-        updated_at: new Date().toISOString(),
+        completed_at: now,
+        created_at: now,
+        updated_at: now,
       });
 
     if (saleError) {
