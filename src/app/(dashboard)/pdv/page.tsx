@@ -3,10 +3,7 @@
  *
  * Esta é a interface principal de vendas do sistema.
  * Funciona 100% offline e sincroniza quando há conexão.
- *
- * Layout:
- * - Esquerda: Grid de produtos e busca
- * - Direita: Carrinho e finalização
+ * Layout totalmente responsivo para desktop, tablet e mobile.
  */
 
 'use client';
@@ -25,11 +22,10 @@ import {
   X,
   Check,
   Printer,
-  RotateCcw,
+  ShoppingBag,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import {
   Dialog,
   DialogContent,
@@ -66,7 +62,7 @@ function ProductCard({
       onClick={() => !isOutOfStock && onAdd(product)}
       disabled={isOutOfStock}
       className={cn(
-        'pdv-product-card',
+        'flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl border-2 border-transparent hover:border-blue-200 hover:shadow-md transition-all',
         isOutOfStock && 'opacity-50 cursor-not-allowed'
       )}
     >
@@ -74,26 +70,26 @@ function ProductCard({
         <img
           src={product.image_url}
           alt={product.name}
-          className="w-16 h-16 object-cover rounded-lg mb-2"
+          className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg mb-2"
         />
       ) : (
-        <div className="w-16 h-16 bg-muted rounded-lg mb-2 flex items-center justify-center text-2xl">
+        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg mb-2 flex items-center justify-center text-xl sm:text-2xl font-bold text-blue-600">
           {product.name.charAt(0).toUpperCase()}
         </div>
       )}
 
-      <span className="text-sm font-medium text-center truncate w-full">
+      <span className="text-xs sm:text-sm font-medium text-center truncate w-full text-gray-700">
         {product.name}
       </span>
-      <span className="text-lg font-bold text-primary">
+      <span className="text-sm sm:text-lg font-bold text-blue-600">
         {formatCurrency(product.price)}
       </span>
 
       {isLowStock && !isOutOfStock && (
-        <span className="text-xs text-warning">Estoque baixo</span>
+        <span className="text-[10px] sm:text-xs text-orange-500 font-medium">Estoque baixo</span>
       )}
       {isOutOfStock && (
-        <span className="text-xs text-destructive">Sem estoque</span>
+        <span className="text-[10px] sm:text-xs text-red-500 font-medium">Sem estoque</span>
       )}
     </button>
   );
@@ -106,21 +102,21 @@ function CartItemRow({
   item,
   onUpdateQuantity,
   onRemove,
+  compact = false,
 }: {
   item: any;
   onUpdateQuantity: (id: string, qty: number) => void;
   onRemove: (id: string) => void;
+  compact?: boolean;
 }) {
   const [inputValue, setInputValue] = useState(String(item.quantity));
 
-  // Atualiza o input quando a quantidade muda externamente
   useEffect(() => {
     setInputValue(String(item.quantity));
   }, [item.quantity]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    // Permite apenas números
     if (value === '' || /^\d+$/.test(value)) {
       setInputValue(value);
     }
@@ -141,11 +137,33 @@ function CartItemRow({
     }
   };
 
+  if (compact) {
+    return (
+      <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
+        <div className="flex-1 min-w-0">
+          <p className="text-sm font-medium truncate">{item.product.name}</p>
+          <p className="text-xs text-gray-500">
+            {formatCurrency(item.unitPrice)} x {item.quantity}
+          </p>
+        </div>
+        <span className="font-bold text-sm text-blue-600">{formatCurrency(item.total)}</span>
+        <Button
+          variant="ghost"
+          size="icon"
+          className="h-7 w-7 text-red-500"
+          onClick={() => onRemove(item.id)}
+        >
+          <X className="h-4 w-4" />
+        </Button>
+      </div>
+    );
+  }
+
   return (
-    <div className="pdv-cart-item">
+    <div className="flex items-center gap-2 p-3 border-b last:border-0">
       <div className="flex-1 min-w-0">
-        <p className="font-medium truncate">{item.product.name}</p>
-        <p className="text-sm text-muted-foreground">
+        <p className="font-medium truncate text-sm sm:text-base">{item.product.name}</p>
+        <p className="text-xs sm:text-sm text-gray-500">
           {formatCurrency(item.unitPrice)} x {item.quantity}
         </p>
       </div>
@@ -153,7 +171,8 @@ function CartItemRow({
       <div className="flex items-center gap-1">
         <Button
           variant="outline"
-          size="icon-sm"
+          size="icon"
+          className="h-7 w-7 sm:h-8 sm:w-8"
           onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
         >
           <Minus className="h-3 w-3" />
@@ -165,25 +184,26 @@ function CartItemRow({
           onChange={handleInputChange}
           onBlur={handleInputBlur}
           onKeyDown={handleKeyDown}
-          className="w-12 h-8 text-center font-medium border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          className="w-10 sm:w-12 h-7 sm:h-8 text-center text-sm font-medium border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <Button
           variant="outline"
-          size="icon-sm"
+          size="icon"
+          className="h-7 w-7 sm:h-8 sm:w-8"
           onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
         >
           <Plus className="h-3 w-3" />
         </Button>
       </div>
 
-      <div className="flex items-center gap-2 ml-2">
-        <span className="font-bold tabular-nums w-24 text-right">
+      <div className="flex items-center gap-1 sm:gap-2 ml-1 sm:ml-2">
+        <span className="font-bold text-sm sm:text-base tabular-nums text-right min-w-[70px] sm:min-w-[90px]">
           {formatCurrency(item.total)}
         </span>
         <Button
           variant="ghost"
-          size="icon-sm"
-          className="text-destructive"
+          size="icon"
+          className="h-7 w-7 sm:h-8 sm:w-8 text-red-500"
           onClick={() => onRemove(item.id)}
         >
           <Trash2 className="h-4 w-4" />
@@ -213,16 +233,14 @@ function PaymentMethodButton({
     <button
       onClick={() => onClick(method)}
       className={cn(
-        'flex flex-col items-center justify-center p-4 rounded-lg border-2 transition-all',
+        'flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl border-2 transition-all',
         selected
-          ? 'border-primary bg-primary/10'
-          : 'border-muted hover:border-primary/50'
+          ? 'border-blue-500 bg-blue-50 text-blue-600'
+          : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
       )}
     >
-      <Icon className={cn('h-6 w-6 mb-1', selected && 'text-primary')} />
-      <span className={cn('text-sm', selected && 'font-medium text-primary')}>
-        {label}
-      </span>
+      <Icon className={cn('h-5 w-5 sm:h-6 sm:w-6 mb-1', selected && 'text-blue-600')} />
+      <span className={cn('text-xs sm:text-sm', selected && 'font-medium')}>{label}</span>
     </button>
   );
 }
@@ -242,6 +260,7 @@ export default function PDVPage() {
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
   const [showReceiptDialog, setShowReceiptDialog] = useState(false);
   const [showCustomerDialog, setShowCustomerDialog] = useState(false);
+  const [showCartDrawer, setShowCartDrawer] = useState(false);
   const [customerSearch, setCustomerSearch] = useState('');
   const [lastSale, setLastSale] = useState<any>(null);
   const [cashReceived, setCashReceived] = useState('');
@@ -260,9 +279,7 @@ export default function PDVPage() {
     updateItemQuantity,
     setCustomer,
     setPaymentMethod,
-    setPaymentDetails,
     clearCart,
-    getCartData,
   } = useCartStore();
 
   // Busca produtos da API
@@ -278,7 +295,7 @@ export default function PDVPage() {
       if (!response.ok) throw new Error('Erro ao buscar produtos');
       return response.json();
     },
-    staleTime: 1000 * 60, // 1 minuto
+    staleTime: 1000 * 60,
   });
 
   // Busca categorias
@@ -289,7 +306,7 @@ export default function PDVPage() {
       if (!response.ok) throw new Error('Erro ao buscar categorias');
       return response.json();
     },
-    staleTime: 1000 * 60 * 5, // 5 minutos
+    staleTime: 1000 * 60 * 5,
   });
 
   // Busca clientes
@@ -304,7 +321,7 @@ export default function PDVPage() {
       return response.json();
     },
     enabled: showCustomerDialog,
-    staleTime: 1000 * 30, // 30 segundos
+    staleTime: 1000 * 30,
   });
 
   // Mutation para criar venda
@@ -319,7 +336,6 @@ export default function PDVPage() {
       const result = await response.json();
 
       if (!response.ok) {
-        // Monta mensagem de erro com detalhes se disponível
         let errorMessage = result.error || 'Erro ao criar venda';
         if (result.details && Array.isArray(result.details)) {
           errorMessage = result.details.join('\n');
@@ -330,13 +346,12 @@ export default function PDVPage() {
       return result;
     },
     onSuccess: (response) => {
-      // A API retorna {success: true, data: {...}}
       const saleData = response.data;
       setLastSale(saleData);
       setShowPaymentDialog(false);
+      setShowCartDrawer(false);
       setShowReceiptDialog(true);
       clearCart();
-      // Invalida cache de produtos e vendas para atualizar automaticamente
       queryClient.invalidateQueries({ queryKey: ['products'] });
       queryClient.invalidateQueries({ queryKey: ['sales'] });
 
@@ -406,7 +421,6 @@ export default function PDVPage() {
       return;
     }
 
-    // Prepara dados do pagamento
     let paymentDetails: any = {};
 
     if (paymentMethod === 'cash') {
@@ -425,7 +439,6 @@ export default function PDVPage() {
       };
     }
 
-    // Monta dados da venda
     const saleData = {
       customer_id: customer?.id,
       user_id: user?.id,
@@ -446,9 +459,11 @@ export default function PDVPage() {
     createSaleMutation.mutate(saleData);
   };
 
-  // Foco automático no campo de busca
+  // Foco automático no campo de busca (apenas desktop)
   useEffect(() => {
-    searchInputRef.current?.focus();
+    if (window.innerWidth >= 1024) {
+      searchInputRef.current?.focus();
+    }
   }, []);
 
   // Listener para leitor de código de barras
@@ -457,7 +472,6 @@ export default function PDVPage() {
     let barcodeTimeout: NodeJS.Timeout;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      // Ignora se estiver digitando em um input
       if (
         document.activeElement?.tagName === 'INPUT' &&
         document.activeElement !== searchInputRef.current
@@ -465,7 +479,6 @@ export default function PDVPage() {
         return;
       }
 
-      // Limpa buffer após 50ms sem input (fim do código de barras)
       clearTimeout(barcodeTimeout);
       barcodeTimeout = setTimeout(() => {
         if (barcodeBuffer.length >= 8) {
@@ -474,14 +487,12 @@ export default function PDVPage() {
         barcodeBuffer = '';
       }, 50);
 
-      // Enter = fim do código de barras
       if (e.key === 'Enter' && barcodeBuffer.length >= 8) {
         handleBarcodeSearch(barcodeBuffer);
         barcodeBuffer = '';
         return;
       }
 
-      // Apenas números e letras
       if (/^[a-zA-Z0-9]$/.test(e.key)) {
         barcodeBuffer += e.key;
       }
@@ -498,189 +509,157 @@ export default function PDVPage() {
   const categories = categoriesData?.data || [];
 
   return (
-    <div className="pdv-container -m-4 lg:-m-6">
-      <div className="flex flex-1 overflow-hidden">
-        {/* Área de Produtos */}
-        <div className="flex-1 flex flex-col overflow-hidden">
-          {/* Barra de Busca */}
-          <div className="p-4 bg-card border-b">
-            <div className="flex gap-4">
-              <div className="flex-1">
-                <Input
-                  ref={searchInputRef}
-                  placeholder="Buscar produto por nome, código ou código de barras..."
-                  leftIcon={<Search className="h-4 w-4" />}
-                  onChange={(e) => handleSearch(e.target.value)}
-                />
-              </div>
+    <div className="h-[calc(100vh-8rem)] sm:h-[calc(100vh-7rem)] -m-4 lg:-m-6 flex flex-col lg:flex-row overflow-hidden">
+      {/* Área de Produtos */}
+      <div className="flex-1 flex flex-col overflow-hidden bg-gray-50">
+        {/* Barra de Busca */}
+        <div className="p-3 sm:p-4 bg-white border-b shadow-sm">
+          <div className="flex gap-2 sm:gap-4">
+            <div className="flex-1">
+              <Input
+                ref={searchInputRef}
+                placeholder="Buscar produto..."
+                leftIcon={<Search className="h-4 w-4" />}
+                onChange={(e) => handleSearch(e.target.value)}
+                className="text-base"
+              />
             </div>
+          </div>
 
-            {/* Categorias */}
-            {categories.length > 0 && (
-              <div className="flex gap-2 mt-3 overflow-x-auto pb-2 scrollbar-thin">
+          {/* Categorias */}
+          {categories.length > 0 && (
+            <div className="flex gap-2 mt-3 overflow-x-auto pb-1 scrollbar-thin">
+              <Button
+                variant={selectedCategory === null ? 'default' : 'outline'}
+                size="sm"
+                onClick={() => setSelectedCategory(null)}
+                className="flex-shrink-0"
+              >
+                Todos
+              </Button>
+              {categories.map((cat: any) => (
                 <Button
-                  variant={selectedCategory === null ? 'default' : 'outline'}
+                  key={cat.id}
+                  variant={selectedCategory === cat.id ? 'default' : 'outline'}
                   size="sm"
-                  onClick={() => setSelectedCategory(null)}
+                  onClick={() => setSelectedCategory(cat.id)}
+                  className="flex-shrink-0"
                 >
-                  Todos
+                  {cat.name}
                 </Button>
-                {categories.map((cat: any) => (
-                  <Button
-                    key={cat.id}
-                    variant={selectedCategory === cat.id ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setSelectedCategory(cat.id)}
-                  >
-                    {cat.name}
-                  </Button>
-                ))}
-              </div>
-            )}
-          </div>
-
-          {/* Grid de Produtos */}
-          <div className="flex-1 overflow-y-auto p-4">
-            {loadingProducts ? (
-              <div className="flex items-center justify-center h-full">
-                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary" />
-              </div>
-            ) : products.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-full text-muted-foreground">
-                <Search className="h-12 w-12 mb-4" />
-                <p>Nenhum produto encontrado</p>
-              </div>
-            ) : (
-              <div className="pdv-products-grid">
-                {products.map((product: Product) => (
-                  <ProductCard
-                    key={product.id}
-                    product={product}
-                    onAdd={addItem}
-                  />
-                ))}
-              </div>
-            )}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        {/* Carrinho */}
-        <div className="w-96 pdv-cart flex flex-col">
-          {/* Header do Carrinho */}
-          <div className="p-4 border-b">
-            <div className="flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Carrinho</h2>
-              {itemCount > 0 && (
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="text-destructive"
-                  onClick={clearCart}
-                >
-                  <Trash2 className="h-4 w-4 mr-1" />
-                  Limpar
-                </Button>
-              )}
+        {/* Grid de Produtos */}
+        <div className="flex-1 overflow-y-auto p-3 sm:p-4">
+          {loadingProducts ? (
+            <div className="flex items-center justify-center h-full">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
             </div>
-
-            {/* Cliente */}
-            <div className="mt-3">
-              {customer ? (
-                <div className="flex items-center justify-between p-2 bg-muted rounded-md">
-                  <div className="flex items-center">
-                    <User className="h-4 w-4 mr-2" />
-                    <span className="text-sm font-medium">{customer.name}</span>
-                  </div>
-                  <Button
-                    variant="ghost"
-                    size="icon-sm"
-                    onClick={() => setCustomer(null)}
-                  >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-              ) : (
-                <Button
-                  variant="outline"
-                  className="w-full"
-                  onClick={() => setShowCustomerDialog(true)}
-                >
-                  <User className="h-4 w-4 mr-2" />
-                  Selecionar Cliente
-                </Button>
-              )}
+          ) : products.length === 0 ? (
+            <div className="flex flex-col items-center justify-center h-full text-gray-400">
+              <Search className="h-12 w-12 mb-4" />
+              <p>Nenhum produto encontrado</p>
             </div>
-          </div>
-
-          {/* Itens do Carrinho */}
-          <div className="flex-1 overflow-y-auto">
-            {items.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-full text-muted-foreground p-4">
-                <ShoppingCart className="h-12 w-12 mb-4" />
-                <p>Carrinho vazio</p>
-                <p className="text-sm">Adicione produtos para começar</p>
-              </div>
-            ) : (
-              items.map((item) => (
-                <CartItemRow
-                  key={item.id}
-                  item={item}
-                  onUpdateQuantity={updateItemQuantity}
-                  onRemove={removeItem}
+          ) : (
+            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2 sm:gap-3">
+              {products.map((product: Product) => (
+                <ProductCard
+                  key={product.id}
+                  product={product}
+                  onAdd={addItem}
                 />
-              ))
-            )}
-          </div>
-
-          {/* Totais */}
-          <div className="p-4 border-t bg-muted/50">
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm">
-                <span>Subtotal ({itemCount} itens)</span>
-                <span>{formatCurrency(subtotal)}</span>
-              </div>
-              {discountTotal > 0 && (
-                <div className="flex justify-between text-sm text-success">
-                  <span>Desconto</span>
-                  <span>-{formatCurrency(discountTotal)}</span>
-                </div>
-              )}
-              <div className="flex justify-between text-xl font-bold pt-2 border-t">
-                <span>Total</span>
-                <span className="text-primary">{formatCurrency(total)}</span>
-              </div>
+              ))}
             </div>
+          )}
+        </div>
 
-            <Button
-              className="w-full mt-4"
-              size="lg"
-              disabled={items.length === 0}
-              onClick={() => setShowPaymentDialog(true)}
-            >
-              Finalizar Venda
-            </Button>
-          </div>
+        {/* Botão flutuante do carrinho - Mobile */}
+        <div className="lg:hidden fixed bottom-4 right-4 z-30">
+          <button
+            onClick={() => setShowCartDrawer(true)}
+            className="relative flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all"
+          >
+            <ShoppingBag className="h-5 w-5" />
+            <span className="font-bold">{formatCurrency(total)}</span>
+            {itemCount > 0 && (
+              <span className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
+                {itemCount}
+              </span>
+            )}
+          </button>
         </div>
       </div>
 
+      {/* Carrinho - Desktop */}
+      <div className="hidden lg:flex w-80 xl:w-96 flex-col bg-white border-l shadow-lg">
+        <CartContent
+          items={items}
+          customer={customer}
+          subtotal={subtotal}
+          discountTotal={discountTotal}
+          total={total}
+          itemCount={itemCount}
+          onUpdateQuantity={updateItemQuantity}
+          onRemove={removeItem}
+          onClearCart={clearCart}
+          onSelectCustomer={() => setShowCustomerDialog(true)}
+          onRemoveCustomer={() => setCustomer(null)}
+          onCheckout={() => setShowPaymentDialog(true)}
+        />
+      </div>
+
+      {/* Carrinho Drawer - Mobile */}
+      {showCartDrawer && (
+        <div className="lg:hidden fixed inset-0 z-50">
+          <div
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setShowCartDrawer(false)}
+          />
+          <div className="absolute inset-y-0 right-0 w-full sm:w-96 bg-white shadow-xl flex flex-col">
+            <div className="flex items-center justify-between p-4 border-b">
+              <h2 className="text-lg font-semibold">Carrinho</h2>
+              <Button variant="ghost" size="icon" onClick={() => setShowCartDrawer(false)}>
+                <X className="h-5 w-5" />
+              </Button>
+            </div>
+            <CartContent
+              items={items}
+              customer={customer}
+              subtotal={subtotal}
+              discountTotal={discountTotal}
+              total={total}
+              itemCount={itemCount}
+              onUpdateQuantity={updateItemQuantity}
+              onRemove={removeItem}
+              onClearCart={clearCart}
+              onSelectCustomer={() => setShowCustomerDialog(true)}
+              onRemoveCustomer={() => setCustomer(null)}
+              onCheckout={() => {
+                setShowCartDrawer(false);
+                setShowPaymentDialog(true);
+              }}
+            />
+          </div>
+        </div>
+      )}
+
       {/* Dialog de Pagamento */}
       <Dialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md mx-4">
           <DialogHeader>
             <DialogTitle>Forma de Pagamento</DialogTitle>
           </DialogHeader>
 
           <div className="space-y-4">
-            {/* Total */}
-            <div className="text-center p-4 bg-muted rounded-lg">
-              <p className="text-sm text-muted-foreground">Total a pagar</p>
-              <p className="text-3xl font-bold text-primary">
-                {formatCurrency(total)}
-              </p>
+            <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
+              <p className="text-sm text-gray-500">Total a pagar</p>
+              <p className="text-3xl font-bold text-blue-600">{formatCurrency(total)}</p>
             </div>
 
-            {/* Formas de Pagamento */}
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2 sm:gap-3">
               <PaymentMethodButton
                 method="cash"
                 label="Dinheiro"
@@ -711,7 +690,6 @@ export default function PDVPage() {
               />
             </div>
 
-            {/* Campo de valor recebido (dinheiro) */}
             {paymentMethod === 'cash' && (
               <div className="space-y-2">
                 <Label>Valor Recebido</Label>
@@ -723,14 +701,11 @@ export default function PDVPage() {
                   className="text-right text-lg"
                 />
                 {cashReceived && (
-                  <div className="flex justify-between text-sm">
-                    <span>Troco:</span>
-                    <span className="font-bold">
+                  <div className="flex justify-between text-sm p-2 bg-green-50 rounded-lg">
+                    <span className="text-green-700">Troco:</span>
+                    <span className="font-bold text-green-700">
                       {formatCurrency(
-                        Math.max(
-                          0,
-                          parseFloat(cashReceived.replace(',', '.')) * 100 - total
-                        )
+                        Math.max(0, parseFloat(cashReceived.replace(',', '.')) * 100 - total)
                       )}
                     </span>
                   </div>
@@ -739,16 +714,20 @@ export default function PDVPage() {
             )}
           </div>
 
-          <DialogFooter>
-            <Button variant="outline" onClick={() => setShowPaymentDialog(false)}>
+          <DialogFooter className="flex-col sm:flex-row gap-2">
+            <Button variant="outline" onClick={() => setShowPaymentDialog(false)} className="w-full sm:w-auto">
               Cancelar
             </Button>
             <Button
               onClick={handleFinalizeSale}
-              loading={createSaleMutation.isPending}
-              disabled={!paymentMethod}
+              disabled={!paymentMethod || createSaleMutation.isPending}
+              className="w-full sm:w-auto"
             >
-              <Check className="h-4 w-4 mr-2" />
+              {createSaleMutation.isPending ? (
+                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
+              ) : (
+                <Check className="h-4 w-4 mr-2" />
+              )}
               Confirmar
             </Button>
           </DialogFooter>
@@ -757,62 +736,50 @@ export default function PDVPage() {
 
       {/* Dialog do Recibo */}
       <Dialog open={showReceiptDialog} onOpenChange={setShowReceiptDialog}>
-        <DialogContent className="max-w-sm">
+        <DialogContent className="max-w-sm mx-4">
           <DialogHeader>
-            <DialogTitle>Venda Realizada!</DialogTitle>
+            <DialogTitle className="text-center text-green-600">Venda Realizada!</DialogTitle>
           </DialogHeader>
 
           {lastSale && (
-            <div className="receipt">
-              <div className="receipt-header">
+            <div className="bg-white border rounded-lg p-4 font-mono text-sm">
+              <div className="text-center border-b pb-3 mb-3">
                 <h3 className="font-bold text-lg">VENDAS PDV</h3>
-                <p className="text-xs">CUPOM NÃO FISCAL</p>
+                <p className="text-[10px] text-gray-500">CUPOM NÃO FISCAL</p>
                 <p className="text-xs mt-2">
                   {new Date(lastSale.created_at).toLocaleString('pt-BR')}
                 </p>
-                <p className="text-xs">Recibo: {lastSale.receipt_number}</p>
+                <p className="text-xs font-medium">Recibo: {lastSale.receipt_number}</p>
               </div>
 
-              <div className="space-y-1">
+              <div className="space-y-1 border-b pb-3 mb-3">
                 {lastSale.items?.map((item: any) => (
-                  <div key={item.id} className="receipt-item">
-                    <span className="truncate">
+                  <div key={item.id} className="flex justify-between text-xs">
+                    <span className="truncate flex-1 mr-2">
                       {item.quantity}x {item.product_name}
                     </span>
-                    <span className="tabular-nums">
-                      {formatCurrency(item.total)}
-                    </span>
+                    <span className="tabular-nums">{formatCurrency(item.total)}</span>
                   </div>
                 ))}
               </div>
 
-              <div className="receipt-total">
+              <div className="flex justify-between font-bold text-base">
                 <span>TOTAL</span>
                 <span>{formatCurrency(lastSale.total)}</span>
               </div>
 
-              <div className="receipt-footer">
+              <div className="text-center text-xs text-gray-500 mt-3 pt-3 border-t">
                 <p>Obrigado pela preferência!</p>
               </div>
             </div>
           )}
 
           <DialogFooter className="flex-col gap-2">
-            <Button
-              className="w-full"
-              onClick={() => {
-                // TODO: Implementar impressão
-                window.print();
-              }}
-            >
+            <Button className="w-full" onClick={() => window.print()}>
               <Printer className="h-4 w-4 mr-2" />
               Imprimir
             </Button>
-            <Button
-              variant="outline"
-              className="w-full"
-              onClick={() => setShowReceiptDialog(false)}
-            >
+            <Button variant="outline" className="w-full" onClick={() => setShowReceiptDialog(false)}>
               Nova Venda
             </Button>
           </DialogFooter>
@@ -821,7 +788,7 @@ export default function PDVPage() {
 
       {/* Dialog de Seleção de Cliente */}
       <Dialog open={showCustomerDialog} onOpenChange={setShowCustomerDialog}>
-        <DialogContent className="max-w-md">
+        <DialogContent className="max-w-md mx-4">
           <DialogHeader>
             <DialogTitle>Selecionar Cliente</DialogTitle>
           </DialogHeader>
@@ -837,10 +804,10 @@ export default function PDVPage() {
             <div className="max-h-64 overflow-y-auto space-y-2">
               {loadingCustomers ? (
                 <div className="flex items-center justify-center py-8">
-                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-primary" />
+                  <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
                 </div>
               ) : customersData?.data?.length === 0 ? (
-                <div className="text-center py-8 text-muted-foreground">
+                <div className="text-center py-8 text-gray-400">
                   <User className="h-8 w-8 mx-auto mb-2" />
                   <p>Nenhum cliente encontrado</p>
                 </div>
@@ -848,19 +815,16 @@ export default function PDVPage() {
                 customersData?.data?.map((c: Customer) => (
                   <button
                     key={c.id}
-                    className="w-full p-3 text-left rounded-lg border hover:bg-muted transition-colors"
+                    className="w-full p-3 text-left rounded-lg border hover:bg-gray-50 transition-colors"
                     onClick={() => {
                       setCustomer(c);
                       setShowCustomerDialog(false);
                       setCustomerSearch('');
-                      toast({
-                        title: 'Cliente selecionado',
-                        description: c.name,
-                      });
+                      toast({ title: 'Cliente selecionado', description: c.name });
                     }}
                   >
                     <p className="font-medium">{c.name}</p>
-                    <p className="text-sm text-muted-foreground">
+                    <p className="text-sm text-gray-500">
                       {c.phone || c.email || c.document || 'Sem contato'}
                     </p>
                   </button>
@@ -886,24 +850,120 @@ export default function PDVPage() {
   );
 }
 
-// Ícone do ShoppingCart para uso no componente
-function ShoppingCart({ className }: { className?: string }) {
+// =============================================================================
+// COMPONENTE DO CONTEÚDO DO CARRINHO
+// =============================================================================
+
+function CartContent({
+  items,
+  customer,
+  subtotal,
+  discountTotal,
+  total,
+  itemCount,
+  onUpdateQuantity,
+  onRemove,
+  onClearCart,
+  onSelectCustomer,
+  onRemoveCustomer,
+  onCheckout,
+}: {
+  items: any[];
+  customer: Customer | null;
+  subtotal: number;
+  discountTotal: number;
+  total: number;
+  itemCount: number;
+  onUpdateQuantity: (id: string, qty: number) => void;
+  onRemove: (id: string) => void;
+  onClearCart: () => void;
+  onSelectCustomer: () => void;
+  onRemoveCustomer: () => void;
+  onCheckout: () => void;
+}) {
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-    >
-      <circle cx="8" cy="21" r="1" />
-      <circle cx="19" cy="21" r="1" />
-      <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-    </svg>
+    <>
+      {/* Header do Carrinho */}
+      <div className="p-4 border-b">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-semibold">Carrinho</h2>
+          {itemCount > 0 && (
+            <Button variant="ghost" size="sm" className="text-red-500" onClick={onClearCart}>
+              <Trash2 className="h-4 w-4 mr-1" />
+              Limpar
+            </Button>
+          )}
+        </div>
+
+        {/* Cliente */}
+        <div className="mt-3">
+          {customer ? (
+            <div className="flex items-center justify-between p-2 bg-blue-50 rounded-lg">
+              <div className="flex items-center">
+                <User className="h-4 w-4 mr-2 text-blue-600" />
+                <span className="text-sm font-medium text-blue-700">{customer.name}</span>
+              </div>
+              <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onRemoveCustomer}>
+                <X className="h-4 w-4" />
+              </Button>
+            </div>
+          ) : (
+            <Button variant="outline" className="w-full" onClick={onSelectCustomer}>
+              <User className="h-4 w-4 mr-2" />
+              Selecionar Cliente
+            </Button>
+          )}
+        </div>
+      </div>
+
+      {/* Itens do Carrinho */}
+      <div className="flex-1 overflow-y-auto">
+        {items.length === 0 ? (
+          <div className="flex flex-col items-center justify-center h-full text-gray-400 p-4">
+            <ShoppingBag className="h-12 w-12 mb-4" />
+            <p>Carrinho vazio</p>
+            <p className="text-sm">Adicione produtos para começar</p>
+          </div>
+        ) : (
+          items.map((item) => (
+            <CartItemRow
+              key={item.id}
+              item={item}
+              onUpdateQuantity={onUpdateQuantity}
+              onRemove={onRemove}
+            />
+          ))
+        )}
+      </div>
+
+      {/* Totais */}
+      <div className="p-4 border-t bg-gray-50">
+        <div className="space-y-2">
+          <div className="flex justify-between text-sm">
+            <span className="text-gray-600">Subtotal ({itemCount} itens)</span>
+            <span>{formatCurrency(subtotal)}</span>
+          </div>
+          {discountTotal > 0 && (
+            <div className="flex justify-between text-sm text-green-600">
+              <span>Desconto</span>
+              <span>-{formatCurrency(discountTotal)}</span>
+            </div>
+          )}
+          <div className="flex justify-between text-xl font-bold pt-2 border-t">
+            <span>Total</span>
+            <span className="text-blue-600">{formatCurrency(total)}</span>
+          </div>
+        </div>
+
+        <Button
+          className="w-full mt-4 h-12 text-base"
+          size="lg"
+          disabled={items.length === 0}
+          onClick={onCheckout}
+        >
+          Finalizar Venda
+        </Button>
+      </div>
+    </>
   );
 }
