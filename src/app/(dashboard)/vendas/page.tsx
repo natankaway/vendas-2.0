@@ -136,6 +136,8 @@ export default function VendasPage() {
       const res = await fetch(`/api/vendas?${params}`);
       return res.json();
     },
+    staleTime: 0, // Sempre buscar dados frescos
+    refetchOnWindowFocus: true, // Atualiza ao focar na janela
   });
 
   const sales: Sale[] = salesData?.data || [];
@@ -416,14 +418,12 @@ export default function VendasPage() {
                         {formatDateTime(sale.created_at)}
                       </td>
                       <td className="px-4 py-3">
-                        {sale.customer_name ? (
-                          <div className="flex items-center gap-2">
-                            <User className="w-4 h-4 text-gray-400" />
-                            <span className="text-gray-900">{sale.customer_name}</span>
-                          </div>
-                        ) : (
-                          <span className="text-gray-400">-</span>
-                        )}
+                        <div className="flex items-center gap-2">
+                          <User className="w-4 h-4 text-gray-400" />
+                          <span className={sale.customer_name ? "text-gray-900" : "text-gray-500 italic"}>
+                            {sale.customer_name || 'Balcão'}
+                          </span>
+                        </div>
                       </td>
                       <td className="px-4 py-3 text-sm text-gray-600">
                         {getPaymentMethodLabel(sale.payment_method)}
@@ -517,9 +517,7 @@ export default function VendasPage() {
               <div className="space-y-1 text-xs">
                 <p><strong>Recibo:</strong> {selectedSale.receipt_number}</p>
                 <p><strong>Data:</strong> {formatDateTime(selectedSale.created_at)}</p>
-                {selectedSale.customer_name && (
-                  <p><strong>Cliente:</strong> {selectedSale.customer_name}</p>
-                )}
+                <p><strong>Cliente:</strong> {selectedSale.customer_name || 'Balcão'}</p>
                 <p><strong>Pagamento:</strong> {getPaymentMethodLabel(selectedSale.payment_method)}</p>
               </div>
 

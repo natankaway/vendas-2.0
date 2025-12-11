@@ -336,7 +336,9 @@ export default function PDVPage() {
       setShowPaymentDialog(false);
       setShowReceiptDialog(true);
       clearCart();
+      // Invalida cache de produtos e vendas para atualizar automaticamente
       queryClient.invalidateQueries({ queryKey: ['products'] });
+      queryClient.invalidateQueries({ queryKey: ['sales'] });
 
       toast({
         title: 'Venda realizada!',
