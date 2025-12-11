@@ -25,23 +25,54 @@ export async function GET(request: NextRequest) {
     const startDate = searchParams.get('start');
     const endDate = searchParams.get('end');
 
-    // Default to last 30 days if no dates provided
-    const end = endDate ? new Date(endDate) : new Date();
-    const start = startDate
-      ? new Date(startDate)
-      : new Date(end.getTime() - 30 * 24 * 60 * 60 * 1000);
+    // Helper para criar data no fuso local corretamente
+    const parseLocalDate = (dateStr: string, endOfDay = false) => {
+      const [year, month, day] = dateStr.split('-').map(Number);
+      if (endOfDay) {
+        return new Date(year, month - 1, day, 23, 59, 59, 999);
+      }
+      return new Date(year, month - 1, day, 0, 0, 0, 0);
+    };
 
-    // Ajusta para início do dia (00:00:00) e fim do dia (23:59:59)
-    start.setHours(0, 0, 0, 0);
-    end.setHours(23, 59, 59, 999);
+    // Default to last 30 days if no dates provided
+    const now = new Date();
+    let start: Date;
+    let end: Date;
+
+    if (endDate) {
+      end = parseLocalDate(endDate, true);
+    } else {
+      end = new Date(now);
+      end.setHours(23, 59, 59, 999);
+    }
+
+    if (startDate) {
+      start = parseLocalDate(startDate, false);
+    } else {
+      start = new Date(end.getTime() - 30 * 24 * 60 * 60 * 1000);
+      start.setHours(0, 0, 0, 0);
+    }
+
+    console.log('Relatórios - Período:', {
+      startDate,
+      endDate,
+      startISO: start.toISOString(),
+      endISO: end.toISOString(),
+    });
 
     // Get sales for the period
-    const { data: sales } = await supabase
+    const { data: sales, error: salesError } = await supabase
       .from('sales')
       .select('*, customer:customers(id, name), sale_items(*)')
       .gte('created_at', start.toISOString())
       .lte('created_at', end.toISOString())
       .order('created_at', { ascending: false });
+
+    if (salesError) {
+      console.error('Erro ao buscar vendas:', salesError);
+    }
+
+    console.log('Vendas encontradas:', sales?.length || 0);
 
     const allSales = sales || [];
 
