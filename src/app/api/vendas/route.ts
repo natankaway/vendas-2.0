@@ -215,21 +215,31 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Verifica estoque disponível para todos os itens
+    // Verifica estoque disponível e busca dados dos produtos
     const stockErrors = [];
+    const productsData: Record<string, { name: string; sku: string; stock_quantity: number }> = {};
+
     for (const item of items) {
       const { data: product } = await supabase
         .from('products')
-        .select('id, name, stock_quantity')
+        .select('id, name, sku, stock_quantity')
         .eq('id', item.product_id)
         .single();
 
       if (!product) {
         stockErrors.push(`Produto não encontrado: ${item.product_name}`);
-      } else if (product.stock_quantity < item.quantity) {
-        stockErrors.push(
-          `${product.name}: estoque insuficiente (disponível: ${product.stock_quantity}, solicitado: ${item.quantity})`
-        );
+      } else {
+        productsData[item.product_id] = {
+          name: product.name,
+          sku: product.sku || 'SEM-SKU',
+          stock_quantity: product.stock_quantity,
+        };
+
+        if (product.stock_quantity < item.quantity) {
+          stockErrors.push(
+            `${product.name}: estoque insuficiente (disponível: ${product.stock_quantity}, solicitado: ${item.quantity})`
+          );
+        }
       }
     }
 
@@ -250,16 +260,21 @@ export async function POST(request: NextRequest) {
 
     for (const item of items) {
       const itemTotal = item.quantity * item.unit_price;
-      const itemDiscount = item.discount || 0;
+      const itemDiscount = item.discount_amount || item.discount || 0;
       subtotal += itemTotal - itemDiscount;
+
+      const productInfo = productsData[item.product_id];
 
       saleItems.push({
         id: uuidv4(),
         product_id: item.product_id,
-        product_name: item.product_name,
+        product_name: item.product_name || productInfo?.name || 'Produto',
+        product_sku: productInfo?.sku || 'SEM-SKU',
         quantity: item.quantity,
         unit_price: item.unit_price,
-        discount: itemDiscount,
+        discount_amount: itemDiscount,
+        discount_percent: item.discount_percent || 0,
+        tax_amount: item.tax_amount || 0,
         total: itemTotal - itemDiscount,
       });
     }
