@@ -1,7 +1,7 @@
 /**
  * Página de Relatórios
  *
- * Dashboard com relatórios de vendas, produtos e clientes.
+ * Dashboard completo com relatórios de vendas, produtos e clientes.
  */
 
 'use client';
@@ -18,9 +18,16 @@ import {
   Users,
   Calendar,
   Download,
-  Filter,
   ArrowUpRight,
   ArrowDownRight,
+  Clock,
+  CreditCard,
+  Banknote,
+  Smartphone,
+  Receipt,
+  Target,
+  Percent,
+  Store,
 } from 'lucide-react';
 
 interface SalesSummary {
@@ -29,6 +36,8 @@ interface SalesSummary {
   avgTicket: number;
   completedSales: number;
   cancelledSales: number;
+  balcaoSales: number;
+  balcaoRevenue: number;
 }
 
 interface TopProduct {
@@ -57,6 +66,19 @@ interface PaymentMethodStats {
   total: number;
 }
 
+interface HourlyData {
+  hour: number;
+  sales: number;
+  revenue: number;
+}
+
+interface Comparison {
+  previousRevenue: number;
+  previousCount: number;
+  revenueChange: number;
+  countChange: number;
+}
+
 type DateRange = 'today' | 'week' | 'month' | 'year' | 'custom';
 
 const paymentMethodLabels: Record<string, string> = {
@@ -69,8 +91,27 @@ const paymentMethodLabels: Record<string, string> = {
   other: 'Outro',
 };
 
+const paymentMethodIcons: Record<string, React.ReactNode> = {
+  cash: <Banknote className="w-4 h-4" />,
+  credit_card: <CreditCard className="w-4 h-4" />,
+  debit_card: <CreditCard className="w-4 h-4" />,
+  pix: <Smartphone className="w-4 h-4" />,
+  bank_transfer: <Receipt className="w-4 h-4" />,
+  store_credit: <Store className="w-4 h-4" />,
+  other: <DollarSign className="w-4 h-4" />,
+};
+
+const paymentMethodColors: Record<string, string> = {
+  cash: 'bg-green-500',
+  credit_card: 'bg-blue-500',
+  debit_card: 'bg-purple-500',
+  pix: 'bg-teal-500',
+  bank_transfer: 'bg-orange-500',
+  store_credit: 'bg-pink-500',
+  other: 'bg-gray-500',
+};
+
 export default function RelatoriosPage() {
-  // State
   const [dateRange, setDateRange] = useState<DateRange>('month');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
@@ -83,7 +124,8 @@ export default function RelatoriosPage() {
 
     switch (dateRange) {
       case 'today':
-        start = new Date(now.setHours(0, 0, 0, 0));
+        start = new Date(now);
+        start.setHours(0, 0, 0, 0);
         break;
       case 'week':
         start = new Date(now);
@@ -127,6 +169,7 @@ export default function RelatoriosPage() {
       const res = await fetch(`/api/relatorios/vendas?${params}`);
       return res.json();
     },
+    staleTime: 30000,
   });
 
   // Fetch products stats
@@ -136,6 +179,7 @@ export default function RelatoriosPage() {
       const res = await fetch('/api/produtos?limit=1000');
       return res.json();
     },
+    staleTime: 60000,
   });
 
   // Fetch customers stats
@@ -145,6 +189,7 @@ export default function RelatoriosPage() {
       const res = await fetch('/api/clientes?limit=1000');
       return res.json();
     },
+    staleTime: 60000,
   });
 
   // Process data
@@ -154,12 +199,21 @@ export default function RelatoriosPage() {
     avgTicket: 0,
     completedSales: 0,
     cancelledSales: 0,
+    balcaoSales: 0,
+    balcaoRevenue: 0,
   };
 
   const topProducts: TopProduct[] = reportData?.topProducts || [];
   const topCustomers: TopCustomer[] = reportData?.topCustomers || [];
   const dailySales: DailySales[] = reportData?.dailySales || [];
   const paymentStats: PaymentMethodStats[] = reportData?.paymentMethods || [];
+  const hourlyDistribution: HourlyData[] = reportData?.hourlyDistribution || [];
+  const comparison: Comparison = reportData?.comparison || {
+    previousRevenue: 0,
+    previousCount: 0,
+    revenueChange: 0,
+    countChange: 0,
+  };
 
   // Calculate additional stats
   const productStats = useMemo(() => {
@@ -181,7 +235,7 @@ export default function RelatoriosPage() {
     const customers = customersData?.data || [];
     const total = customers.length;
     const withPurchases = customers.filter((c: { total_purchases: number }) => c.total_purchases > 0).length;
-    const totalCredit = customers.reduce((sum: number, c: { credit_limit: number }) => sum + c.credit_limit, 0);
+    const totalCredit = customers.reduce((sum: number, c: { credit_limit: number }) => sum + (c.credit_limit || 0), 0);
 
     return { total, withPurchases, totalCredit };
   }, [customersData]);
@@ -195,361 +249,499 @@ export default function RelatoriosPage() {
   };
 
   const formatDate = (dateStr: string) => {
-    return new Date(dateStr).toLocaleDateString('pt-BR');
+    return new Date(dateStr + 'T12:00:00').toLocaleDateString('pt-BR');
   };
 
   const formatNumber = (num: number) => {
     return new Intl.NumberFormat('pt-BR').format(num);
   };
 
-  // Calculate max for chart
+  // Calculate max for charts
   const maxRevenue = Math.max(...dailySales.map(d => d.revenue), 1);
+  const maxHourlySales = Math.max(...hourlyDistribution.map(h => h.sales), 1);
+
+  // Get date range label
+  const getDateRangeLabel = () => {
+    switch (dateRange) {
+      case 'today': return 'Hoje';
+      case 'week': return 'Últimos 7 dias';
+      case 'month': return 'Últimos 30 dias';
+      case 'year': return 'Último ano';
+      case 'custom': return 'Personalizado';
+      default: return '';
+    }
+  };
 
   return (
-    <div className="p-6 max-w-7xl mx-auto">
-      {/* Header */}
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">Relatórios</h1>
-          <p className="text-gray-600">Análise de vendas e desempenho</p>
-        </div>
-
-        {/* Date Range Filter */}
-        <div className="flex items-center gap-4">
-          <select
-            value={dateRange}
-            onChange={(e) => setDateRange(e.target.value as DateRange)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="today">Hoje</option>
-            <option value="week">Últimos 7 dias</option>
-            <option value="month">Últimos 30 dias</option>
-            <option value="year">Último ano</option>
-            <option value="custom">Personalizado</option>
-          </select>
-
-          {dateRange === 'custom' && (
-            <div className="flex items-center gap-2">
-              <input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-              <span className="text-gray-500">até</span>
-              <input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              />
-            </div>
-          )}
-
-          <button
-            className="flex items-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-          >
-            <Download className="w-5 h-5" />
-            Exportar
-          </button>
-        </div>
-      </div>
-
-      {/* Main Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total de Vendas</p>
-              <p className="text-2xl font-bold text-gray-900">{formatNumber(summary.totalSales)}</p>
-            </div>
-            <div className="p-3 bg-blue-100 rounded-lg">
-              <ShoppingCart className="w-6 h-6 text-blue-600" />
-            </div>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6">
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+          <div>
+            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+              Relatórios
+            </h1>
+            <p className="text-gray-500 mt-1">Análise completa de vendas e desempenho</p>
           </div>
-          <div className="mt-2 flex items-center text-sm">
-            <span className="text-green-600 flex items-center">
-              <ArrowUpRight className="w-4 h-4" />
-              {summary.completedSales} concluídas
-            </span>
-          </div>
-        </div>
 
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Receita Total</p>
-              <p className="text-2xl font-bold text-green-600">{formatCurrency(summary.totalRevenue)}</p>
-            </div>
-            <div className="p-3 bg-green-100 rounded-lg">
-              <DollarSign className="w-6 h-6 text-green-600" />
-            </div>
-          </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            Período: {formatDate(dateParams.start)} - {formatDate(dateParams.end)}
-          </div>
-        </div>
-
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Ticket Médio</p>
-              <p className="text-2xl font-bold text-purple-600">{formatCurrency(summary.avgTicket)}</p>
-            </div>
-            <div className="p-3 bg-purple-100 rounded-lg">
-              <TrendingUp className="w-6 h-6 text-purple-600" />
-            </div>
-          </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            Por venda concluída
-          </div>
-        </div>
-
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Cancelamentos</p>
-              <p className="text-2xl font-bold text-red-600">{formatNumber(summary.cancelledSales)}</p>
-            </div>
-            <div className="p-3 bg-red-100 rounded-lg">
-              <TrendingDown className="w-6 h-6 text-red-600" />
-            </div>
-          </div>
-          <div className="mt-2 flex items-center text-sm text-gray-500">
-            {summary.totalSales > 0
-              ? `${((summary.cancelledSales / summary.totalSales) * 100).toFixed(1)}% das vendas`
-              : '0% das vendas'}
-          </div>
-        </div>
-      </div>
-
-      {/* Charts Row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        {/* Daily Sales Chart */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Vendas por Dia</h3>
-          {isLoading ? (
-            <div className="h-64 flex items-center justify-center text-gray-500">
-              Carregando...
-            </div>
-          ) : dailySales.length === 0 ? (
-            <div className="h-64 flex items-center justify-center text-gray-500">
-              Sem dados para o período selecionado
-            </div>
-          ) : (
-            <div className="h-64 flex items-end gap-1">
-              {dailySales.slice(-30).map((day, index) => (
-                <div
-                  key={day.date}
-                  className="flex-1 flex flex-col items-center group"
+          {/* Date Range Filter */}
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="flex bg-white rounded-xl shadow-sm border border-gray-100 p-1">
+              {(['today', 'week', 'month', 'year'] as DateRange[]).map((range) => (
+                <button
+                  key={range}
+                  onClick={() => setDateRange(range)}
+                  className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
+                    dateRange === range
+                      ? 'bg-blue-600 text-white shadow-md'
+                      : 'text-gray-600 hover:bg-gray-50'
+                  }`}
                 >
-                  <div className="relative w-full">
-                    <div
-                      className="w-full bg-blue-500 rounded-t hover:bg-blue-600 transition-colors cursor-pointer"
-                      style={{ height: `${(day.revenue / maxRevenue) * 200}px`, minHeight: '4px' }}
-                    />
-                    <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-900 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-10">
-                      {formatDate(day.date)}<br />
-                      {formatCurrency(day.revenue)}<br />
-                      {day.sales} vendas
-                    </div>
-                  </div>
-                  {index % 5 === 0 && (
-                    <span className="text-xs text-gray-500 mt-1 rotate-45 origin-left">
-                      {new Date(day.date).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })}
+                  {range === 'today' && 'Hoje'}
+                  {range === 'week' && '7 dias'}
+                  {range === 'month' && '30 dias'}
+                  {range === 'year' && 'Ano'}
+                </button>
+              ))}
+            </div>
+
+            <button
+              onClick={() => setDateRange('custom')}
+              className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all ${
+                dateRange === 'custom'
+                  ? 'bg-blue-600 text-white border-blue-600'
+                  : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300'
+              }`}
+            >
+              <Calendar className="w-4 h-4" />
+              Período
+            </button>
+
+            {dateRange === 'custom' && (
+              <div className="flex items-center gap-2 bg-white rounded-xl border border-gray-200 p-2">
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="px-3 py-1.5 text-sm border-0 focus:ring-0"
+                />
+                <span className="text-gray-400">→</span>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="px-3 py-1.5 text-sm border-0 focus:ring-0"
+                />
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Main Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
+          {/* Total de Vendas */}
+          <div className="bg-white rounded-2xl shadow-lg shadow-blue-100/50 p-6 border border-blue-50 hover:shadow-xl transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-500">Total de Vendas</p>
+                <p className="text-3xl font-bold text-gray-900 mt-2">{formatNumber(summary.completedSales)}</p>
+                <div className="flex items-center gap-2 mt-3">
+                  {comparison.countChange >= 0 ? (
+                    <span className="flex items-center text-sm font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                      <ArrowUpRight className="w-3.5 h-3.5 mr-0.5" />
+                      {comparison.countChange.toFixed(1)}%
+                    </span>
+                  ) : (
+                    <span className="flex items-center text-sm font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
+                      <ArrowDownRight className="w-3.5 h-3.5 mr-0.5" />
+                      {Math.abs(comparison.countChange).toFixed(1)}%
                     </span>
                   )}
+                  <span className="text-xs text-gray-400">vs período anterior</span>
                 </div>
-              ))}
+              </div>
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg shadow-blue-200">
+                <ShoppingCart className="w-6 h-6 text-white" />
+              </div>
             </div>
-          )}
+          </div>
+
+          {/* Receita Total */}
+          <div className="bg-white rounded-2xl shadow-lg shadow-green-100/50 p-6 border border-green-50 hover:shadow-xl transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-500">Receita Total</p>
+                <p className="text-3xl font-bold text-green-600 mt-2">{formatCurrency(summary.totalRevenue)}</p>
+                <div className="flex items-center gap-2 mt-3">
+                  {comparison.revenueChange >= 0 ? (
+                    <span className="flex items-center text-sm font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                      <ArrowUpRight className="w-3.5 h-3.5 mr-0.5" />
+                      {comparison.revenueChange.toFixed(1)}%
+                    </span>
+                  ) : (
+                    <span className="flex items-center text-sm font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
+                      <ArrowDownRight className="w-3.5 h-3.5 mr-0.5" />
+                      {Math.abs(comparison.revenueChange).toFixed(1)}%
+                    </span>
+                  )}
+                  <span className="text-xs text-gray-400">vs período anterior</span>
+                </div>
+              </div>
+              <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg shadow-green-200">
+                <DollarSign className="w-6 h-6 text-white" />
+              </div>
+            </div>
+          </div>
+
+          {/* Ticket Médio */}
+          <div className="bg-white rounded-2xl shadow-lg shadow-purple-100/50 p-6 border border-purple-50 hover:shadow-xl transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-500">Ticket Médio</p>
+                <p className="text-3xl font-bold text-purple-600 mt-2">{formatCurrency(summary.avgTicket)}</p>
+                <div className="mt-3">
+                  <span className="text-xs text-gray-400">Por venda concluída</span>
+                </div>
+              </div>
+              <div className="p-3 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl shadow-lg shadow-purple-200">
+                <Target className="w-6 h-6 text-white" />
+              </div>
+            </div>
+          </div>
+
+          {/* Vendas Balcão */}
+          <div className="bg-white rounded-2xl shadow-lg shadow-orange-100/50 p-6 border border-orange-50 hover:shadow-xl transition-shadow">
+            <div className="flex items-start justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-500">Vendas Balcão</p>
+                <p className="text-3xl font-bold text-orange-600 mt-2">{formatNumber(summary.balcaoSales)}</p>
+                <div className="mt-3">
+                  <span className="text-xs text-gray-400">{formatCurrency(summary.balcaoRevenue)} em receita</span>
+                </div>
+              </div>
+              <div className="p-3 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl shadow-lg shadow-orange-200">
+                <Store className="w-6 h-6 text-white" />
+              </div>
+            </div>
+          </div>
         </div>
 
-        {/* Payment Methods */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Formas de Pagamento</h3>
-          {paymentStats.length === 0 ? (
-            <div className="h-64 flex items-center justify-center text-gray-500">
-              Sem dados para o período selecionado
+        {/* Charts Row */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          {/* Daily Sales Chart - takes 2 cols */}
+          <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-lg font-semibold text-gray-900">Vendas por Dia</h3>
+                <p className="text-sm text-gray-500 mt-0.5">{getDateRangeLabel()}</p>
+              </div>
+              <div className="flex items-center gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                  <div className="w-3 h-3 rounded-full bg-blue-500"></div>
+                  <span className="text-gray-600">Receita</span>
+                </div>
+              </div>
             </div>
-          ) : (
-            <div className="space-y-4">
-              {paymentStats.map((stat) => {
-                const percentage = summary.totalRevenue > 0
-                  ? (stat.total / summary.totalRevenue) * 100
-                  : 0;
-
-                return (
-                  <div key={stat.method}>
-                    <div className="flex items-center justify-between mb-1">
-                      <span className="text-sm font-medium text-gray-700">
-                        {paymentMethodLabels[stat.method] || stat.method}
-                      </span>
-                      <span className="text-sm text-gray-500">
-                        {stat.count} vendas - {formatCurrency(stat.total)}
-                      </span>
-                    </div>
-                    <div className="w-full bg-gray-200 rounded-full h-3">
+            {isLoading ? (
+              <div className="h-64 flex items-center justify-center text-gray-500">
+                <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
+              </div>
+            ) : dailySales.length === 0 ? (
+              <div className="h-64 flex flex-col items-center justify-center text-gray-400">
+                <BarChart3 className="w-12 h-12 mb-2 opacity-50" />
+                <p>Sem dados para o período selecionado</p>
+              </div>
+            ) : (
+              <div className="h-64 flex items-end gap-1 px-2">
+                {dailySales.slice(-30).map((day, index) => (
+                  <div
+                    key={day.date}
+                    className="flex-1 flex flex-col items-center group cursor-pointer"
+                  >
+                    <div className="relative w-full">
                       <div
-                        className="bg-blue-500 h-3 rounded-full transition-all duration-300"
-                        style={{ width: `${percentage}%` }}
+                        className="w-full bg-gradient-to-t from-blue-600 to-blue-400 rounded-t-lg hover:from-blue-700 hover:to-blue-500 transition-all duration-200 shadow-sm"
+                        style={{ height: `${Math.max((day.revenue / maxRevenue) * 200, 4)}px` }}
                       />
+                      <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block bg-gray-900 text-white text-xs rounded-lg py-2 px-3 whitespace-nowrap z-10 shadow-xl">
+                        <p className="font-semibold">{formatDate(day.date)}</p>
+                        <p className="text-green-400">{formatCurrency(day.revenue)}</p>
+                        <p className="text-gray-400">{day.sales} vendas</p>
+                      </div>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">{percentage.toFixed(1)}% do total</p>
+                    {index % Math.ceil(dailySales.length / 8) === 0 && (
+                      <span className="text-[10px] text-gray-400 mt-2 font-medium">
+                        {new Date(day.date + 'T12:00:00').toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' })}
+                      </span>
+                    )}
                   </div>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Top Products and Customers */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-        {/* Top Products */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Produtos Mais Vendidos</h3>
-          {topProducts.length === 0 ? (
-            <div className="py-8 text-center text-gray-500">
-              Sem dados para o período selecionado
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {topProducts.slice(0, 10).map((product, index) => (
-                <div
-                  key={product.id}
-                  className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg"
-                >
-                  <span className="w-8 h-8 flex items-center justify-center bg-blue-100 text-blue-600 font-bold rounded-full">
-                    {index + 1}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-gray-900 truncate">{product.name}</p>
-                    <p className="text-sm text-gray-500">{product.quantity} unidades</p>
-                  </div>
-                  <span className="font-bold text-green-600">{formatCurrency(product.revenue)}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-
-        {/* Top Customers */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Melhores Clientes</h3>
-          {topCustomers.length === 0 ? (
-            <div className="py-8 text-center text-gray-500">
-              Sem dados para o período selecionado
-            </div>
-          ) : (
-            <div className="space-y-3">
-              {topCustomers.slice(0, 10).map((customer, index) => (
-                <div
-                  key={customer.id}
-                  className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg"
-                >
-                  <span className="w-8 h-8 flex items-center justify-center bg-purple-100 text-purple-600 font-bold rounded-full">
-                    {index + 1}
-                  </span>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-medium text-gray-900 truncate">{customer.name}</p>
-                    <p className="text-sm text-gray-500">{customer.purchases} compras</p>
-                  </div>
-                  <span className="font-bold text-green-600">{formatCurrency(customer.totalSpent)}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-
-      {/* Additional Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {/* Products Overview */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center gap-2 mb-4">
-            <Package className="w-5 h-5 text-blue-600" />
-            <h3 className="text-lg font-semibold text-gray-900">Estoque</h3>
+                ))}
+              </div>
+            )}
           </div>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Total de Produtos</span>
-              <span className="font-bold">{formatNumber(productStats.total)}</span>
+
+          {/* Hourly Distribution */}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Clock className="w-5 h-5 text-blue-600" />
+              <h3 className="text-lg font-semibold text-gray-900">Horários de Pico</h3>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Estoque Baixo</span>
-              <span className="font-bold text-yellow-600">{formatNumber(productStats.lowStock)}</span>
+            {hourlyDistribution.every(h => h.sales === 0) ? (
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+                <Clock className="w-10 h-10 mb-2 opacity-50" />
+                <p className="text-sm">Sem dados de horário</p>
+              </div>
+            ) : (
+              <div className="space-y-2">
+                {hourlyDistribution
+                  .filter(h => h.sales > 0)
+                  .sort((a, b) => b.sales - a.sales)
+                  .slice(0, 6)
+                  .map((hour) => (
+                    <div key={hour.hour} className="flex items-center gap-3">
+                      <span className="w-12 text-sm font-medium text-gray-600">
+                        {String(hour.hour).padStart(2, '0')}:00
+                      </span>
+                      <div className="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+                        <div
+                          className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-end pr-2"
+                          style={{ width: `${(hour.sales / maxHourlySales) * 100}%` }}
+                        >
+                          <span className="text-xs text-white font-medium">{hour.sales}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Payment Methods & Top Items */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+          {/* Payment Methods */}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <CreditCard className="w-5 h-5 text-purple-600" />
+              <h3 className="text-lg font-semibold text-gray-900">Formas de Pagamento</h3>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Sem Estoque</span>
-              <span className="font-bold text-red-600">{formatNumber(productStats.outOfStock)}</span>
+            {paymentStats.length === 0 ? (
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+                <CreditCard className="w-10 h-10 mb-2 opacity-50" />
+                <p className="text-sm">Sem dados de pagamento</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {paymentStats.map((stat) => {
+                  const percentage = summary.totalRevenue > 0
+                    ? (stat.total / summary.totalRevenue) * 100
+                    : 0;
+
+                  return (
+                    <div key={stat.method} className="group">
+                      <div className="flex items-center justify-between mb-2">
+                        <div className="flex items-center gap-2">
+                          <div className={`p-1.5 rounded-lg ${paymentMethodColors[stat.method]} bg-opacity-20`}>
+                            {paymentMethodIcons[stat.method]}
+                          </div>
+                          <span className="text-sm font-medium text-gray-700">
+                            {paymentMethodLabels[stat.method] || stat.method}
+                          </span>
+                        </div>
+                        <span className="text-sm font-bold text-gray-900">
+                          {formatCurrency(stat.total)}
+                        </span>
+                      </div>
+                      <div className="relative w-full bg-gray-100 rounded-full h-2">
+                        <div
+                          className={`h-2 rounded-full transition-all duration-500 ${paymentMethodColors[stat.method]}`}
+                          style={{ width: `${percentage}%` }}
+                        />
+                      </div>
+                      <div className="flex justify-between mt-1">
+                        <span className="text-xs text-gray-400">{stat.count} vendas</span>
+                        <span className="text-xs text-gray-500 font-medium">{percentage.toFixed(1)}%</span>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+
+          {/* Top Products */}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Package className="w-5 h-5 text-blue-600" />
+              <h3 className="text-lg font-semibold text-gray-900">Produtos Mais Vendidos</h3>
             </div>
-            <div className="pt-3 border-t">
+            {topProducts.length === 0 ? (
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+                <Package className="w-10 h-10 mb-2 opacity-50" />
+                <p className="text-sm">Sem dados de produtos</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {topProducts.slice(0, 5).map((product, index) => (
+                  <div
+                    key={product.id}
+                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors"
+                  >
+                    <span className={`w-7 h-7 flex items-center justify-center text-sm font-bold rounded-lg ${
+                      index === 0 ? 'bg-yellow-100 text-yellow-700' :
+                      index === 1 ? 'bg-gray-100 text-gray-600' :
+                      index === 2 ? 'bg-orange-100 text-orange-700' :
+                      'bg-blue-50 text-blue-600'
+                    }`}>
+                      {index + 1}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-gray-900 text-sm truncate">{product.name}</p>
+                      <p className="text-xs text-gray-400">{product.quantity} un.</p>
+                    </div>
+                    <span className="font-bold text-green-600 text-sm">{formatCurrency(product.revenue)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Top Customers */}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center gap-2 mb-6">
+              <Users className="w-5 h-5 text-purple-600" />
+              <h3 className="text-lg font-semibold text-gray-900">Melhores Clientes</h3>
+            </div>
+            {topCustomers.length === 0 ? (
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+                <Users className="w-10 h-10 mb-2 opacity-50" />
+                <p className="text-sm">Sem dados de clientes</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {topCustomers.slice(0, 5).map((customer, index) => (
+                  <div
+                    key={customer.id}
+                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors"
+                  >
+                    <div className={`w-8 h-8 flex items-center justify-center text-sm font-bold rounded-full ${
+                      index === 0 ? 'bg-gradient-to-br from-yellow-400 to-orange-500 text-white' :
+                      index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-400 text-white' :
+                      index === 2 ? 'bg-gradient-to-br from-orange-300 to-orange-400 text-white' :
+                      'bg-purple-100 text-purple-600'
+                    }`}>
+                      {customer.name.charAt(0).toUpperCase()}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium text-gray-900 text-sm truncate">{customer.name}</p>
+                      <p className="text-xs text-gray-400">{customer.purchases} compras</p>
+                    </div>
+                    <span className="font-bold text-green-600 text-sm">{formatCurrency(customer.totalSpent)}</span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Bottom Stats */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* Stock Overview */}
+          <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl shadow-lg p-6 text-white">
+            <div className="flex items-center gap-2 mb-4">
+              <Package className="w-5 h-5" />
+              <h3 className="text-lg font-semibold">Visão do Estoque</h3>
+            </div>
+            <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Valor em Estoque</span>
-                <span className="font-bold text-green-600">{formatCurrency(productStats.totalValue)}</span>
+                <span className="text-blue-100">Total de Produtos</span>
+                <span className="text-2xl font-bold">{formatNumber(productStats.total)}</span>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white/10 rounded-xl p-3">
+                  <p className="text-blue-100 text-xs">Estoque Baixo</p>
+                  <p className="text-xl font-bold text-yellow-300">{formatNumber(productStats.lowStock)}</p>
+                </div>
+                <div className="bg-white/10 rounded-xl p-3">
+                  <p className="text-blue-100 text-xs">Sem Estoque</p>
+                  <p className="text-xl font-bold text-red-300">{formatNumber(productStats.outOfStock)}</p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-white/20">
+                <p className="text-blue-100 text-xs">Valor em Estoque</p>
+                <p className="text-2xl font-bold">{formatCurrency(productStats.totalValue)}</p>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Customers Overview */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center gap-2 mb-4">
-            <Users className="w-5 h-5 text-purple-600" />
-            <h3 className="text-lg font-semibold text-gray-900">Clientes</h3>
-          </div>
-          <div className="space-y-4">
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Total de Clientes</span>
-              <span className="font-bold">{formatNumber(customerStats.total)}</span>
+          {/* Customers Overview */}
+          <div className="bg-gradient-to-br from-purple-600 to-violet-700 rounded-2xl shadow-lg p-6 text-white">
+            <div className="flex items-center gap-2 mb-4">
+              <Users className="w-5 h-5" />
+              <h3 className="text-lg font-semibold">Visão de Clientes</h3>
             </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Com Compras</span>
-              <span className="font-bold text-green-600">{formatNumber(customerStats.withPurchases)}</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-gray-600">Taxa de Conversão</span>
-              <span className="font-bold">
-                {customerStats.total > 0
-                  ? `${((customerStats.withPurchases / customerStats.total) * 100).toFixed(1)}%`
-                  : '0%'}
-              </span>
-            </div>
-            <div className="pt-3 border-t">
+            <div className="space-y-4">
               <div className="flex justify-between items-center">
-                <span className="text-gray-600">Crédito Total</span>
-                <span className="font-bold text-blue-600">{formatCurrency(customerStats.totalCredit)}</span>
+                <span className="text-purple-100">Total de Clientes</span>
+                <span className="text-2xl font-bold">{formatNumber(customerStats.total)}</span>
+              </div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-white/10 rounded-xl p-3">
+                  <p className="text-purple-100 text-xs">Com Compras</p>
+                  <p className="text-xl font-bold text-green-300">{formatNumber(customerStats.withPurchases)}</p>
+                </div>
+                <div className="bg-white/10 rounded-xl p-3">
+                  <p className="text-purple-100 text-xs">Taxa Conversão</p>
+                  <p className="text-xl font-bold">
+                    {customerStats.total > 0
+                      ? `${((customerStats.withPurchases / customerStats.total) * 100).toFixed(0)}%`
+                      : '0%'}
+                  </p>
+                </div>
+              </div>
+              <div className="pt-3 border-t border-white/20">
+                <p className="text-purple-100 text-xs">Crédito Total</p>
+                <p className="text-2xl font-bold">{formatCurrency(customerStats.totalCredit)}</p>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Quick Actions */}
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center gap-2 mb-4">
-            <BarChart3 className="w-5 h-5 text-green-600" />
-            <h3 className="text-lg font-semibold text-gray-900">Ações Rápidas</h3>
-          </div>
-          <div className="space-y-3">
-            <a
-              href="/pdv"
-              className="block w-full p-3 text-center bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Abrir PDV
-            </a>
-            <a
-              href="/produtos"
-              className="block w-full p-3 text-center bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              Gerenciar Produtos
-            </a>
-            <a
-              href="/clientes"
-              className="block w-full p-3 text-center bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
-            >
-              Gerenciar Clientes
-            </a>
+          {/* Quick Actions */}
+          <div className="bg-white rounded-2xl shadow-lg p-6">
+            <div className="flex items-center gap-2 mb-4">
+              <BarChart3 className="w-5 h-5 text-green-600" />
+              <h3 className="text-lg font-semibold text-gray-900">Ações Rápidas</h3>
+            </div>
+            <div className="space-y-3">
+              <a
+                href="/pdv"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg shadow-blue-200 font-medium"
+              >
+                <ShoppingCart className="w-5 h-5" />
+                Abrir PDV
+              </a>
+              <a
+                href="/vendas"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-200 font-medium"
+              >
+                <Receipt className="w-5 h-5" />
+                Ver Vendas
+              </a>
+              <a
+                href="/produtos"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium"
+              >
+                <Package className="w-5 h-5" />
+                Gerenciar Produtos
+              </a>
+              <a
+                href="/clientes"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium"
+              >
+                <Users className="w-5 h-5" />
+                Gerenciar Clientes
+              </a>
+            </div>
           </div>
         </div>
       </div>

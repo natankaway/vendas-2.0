@@ -31,6 +31,10 @@ export async function GET(request: NextRequest) {
       ? new Date(startDate)
       : new Date(end.getTime() - 30 * 24 * 60 * 60 * 1000);
 
+    // Ajusta para início do dia (00:00:00) e fim do dia (23:59:59)
+    start.setHours(0, 0, 0, 0);
+    end.setHours(23, 59, 59, 999);
+
     // Get sales for the period
     const { data: sales } = await supabase
       .from('sales')
@@ -139,13 +143,62 @@ export async function GET(request: NextRequest) {
       .sort((a, b) => b.totalSpent - a.totalSpent)
       .slice(0, 10);
 
+    // Distribuição por hora do dia
+    const hourlyDistribution = Array(24).fill(0).map((_, hour) => ({
+      hour,
+      sales: 0,
+      revenue: 0,
+    }));
+
+    completedSales.forEach(sale => {
+      const hour = new Date(sale.created_at).getHours();
+      hourlyDistribution[hour].sales += 1;
+      hourlyDistribution[hour].revenue += sale.total || 0;
+    });
+
+    // Vendas do período anterior para comparação
+    const periodLength = end.getTime() - start.getTime();
+    const previousStart = new Date(start.getTime() - periodLength);
+    const previousEnd = new Date(start.getTime() - 1);
+
+    const { data: previousSales } = await supabase
+      .from('sales')
+      .select('total, status')
+      .gte('created_at', previousStart.toISOString())
+      .lte('created_at', previousEnd.toISOString());
+
+    const previousCompletedSales = (previousSales || []).filter(s => s.status === 'completed');
+    const previousRevenue = previousCompletedSales.reduce((sum, s) => sum + (s.total || 0), 0);
+    const previousCount = previousCompletedSales.length;
+
+    const comparison = {
+      previousRevenue,
+      previousCount,
+      revenueChange: previousRevenue > 0
+        ? ((summary.totalRevenue - previousRevenue) / previousRevenue) * 100
+        : summary.totalRevenue > 0 ? 100 : 0,
+      countChange: previousCount > 0
+        ? ((summary.completedSales - previousCount) / previousCount) * 100
+        : summary.completedSales > 0 ? 100 : 0,
+    };
+
+    // Vendas sem cliente (balcão)
+    const balcaoSales = completedSales.filter(s => !s.customer_id).length;
+    const balcaoRevenue = completedSales.filter(s => !s.customer_id).reduce((sum, s) => sum + (s.total || 0), 0);
+
     return NextResponse.json({
       success: true,
-      summary,
+      summary: {
+        ...summary,
+        balcaoSales,
+        balcaoRevenue,
+      },
       dailySales,
       paymentMethods,
       topProducts,
       topCustomers,
+      hourlyDistribution,
+      comparison,
     });
   } catch (error) {
     console.error('Erro ao gerar relatório:', error);
