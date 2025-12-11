@@ -62,6 +62,7 @@ interface AuthState {
 const ROLE_PERMISSIONS: Record<string, string[]> = {
   admin: [
     'pdv',
+    'sales',
     'products',
     'customers',
     'users',
@@ -73,13 +74,14 @@ const ROLE_PERMISSIONS: Record<string, string[]> = {
   ],
   manager: [
     'pdv',
+    'sales',
     'products',
     'customers',
     'reports',
     'stock',
     'categories',
   ],
-  cashier: ['pdv', 'customers'],
+  cashier: ['pdv', 'sales', 'customers'],
 };
 
 export const useAuthStore = create<AuthState>()(

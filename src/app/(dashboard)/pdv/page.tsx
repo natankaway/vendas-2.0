@@ -111,6 +111,36 @@ function CartItemRow({
   onUpdateQuantity: (id: string, qty: number) => void;
   onRemove: (id: string) => void;
 }) {
+  const [inputValue, setInputValue] = useState(String(item.quantity));
+
+  // Atualiza o input quando a quantidade muda externamente
+  useEffect(() => {
+    setInputValue(String(item.quantity));
+  }, [item.quantity]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // Permite apenas números
+    if (value === '' || /^\d+$/.test(value)) {
+      setInputValue(value);
+    }
+  };
+
+  const handleInputBlur = () => {
+    const qty = parseInt(inputValue) || 1;
+    if (qty !== item.quantity) {
+      onUpdateQuantity(item.id, Math.max(1, qty));
+    } else {
+      setInputValue(String(item.quantity));
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.currentTarget.blur();
+    }
+  };
+
   return (
     <div className="pdv-cart-item">
       <div className="flex-1 min-w-0">
@@ -120,7 +150,7 @@ function CartItemRow({
         </p>
       </div>
 
-      <div className="flex items-center gap-2">
+      <div className="flex items-center gap-1">
         <Button
           variant="outline"
           size="icon-sm"
@@ -128,7 +158,15 @@ function CartItemRow({
         >
           <Minus className="h-3 w-3" />
         </Button>
-        <span className="w-8 text-center font-medium">{item.quantity}</span>
+        <input
+          type="text"
+          inputMode="numeric"
+          value={inputValue}
+          onChange={handleInputChange}
+          onBlur={handleInputBlur}
+          onKeyDown={handleKeyDown}
+          className="w-12 h-8 text-center font-medium border rounded-md focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+        />
         <Button
           variant="outline"
           size="icon-sm"

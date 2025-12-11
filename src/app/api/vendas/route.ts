@@ -89,22 +89,34 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // Parâmetros adicionais
+    const search = searchParams.get('search') || '';
+    const paymentMethod = searchParams.get('paymentMethod') || '';
+
     // Listagem com paginação
     let query = supabase
       .from('sales')
-      .select('*, customer:customers(id, name)', { count: 'exact' })
+      .select('*, customer:customers(id, name), user:users(id, name), items:sale_items(*)', { count: 'exact' })
       .order('created_at', { ascending: false });
 
     if (status) {
       query = query.eq('status', status);
     }
 
+    if (paymentMethod) {
+      query = query.eq('payment_method', paymentMethod);
+    }
+
     if (startDate) {
-      query = query.gte('created_at', startDate);
+      query = query.gte('created_at', `${startDate}T00:00:00`);
     }
 
     if (endDate) {
-      query = query.lte('created_at', endDate);
+      query = query.lte('created_at', `${endDate}T23:59:59`);
+    }
+
+    if (search) {
+      query = query.or(`receipt_number.ilike.%${search}%`);
     }
 
     const { data: sales, error, count } = await query
@@ -118,8 +130,15 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Formata os dados para incluir nomes
+    const formattedSales = (sales || []).map(sale => ({
+      ...sale,
+      customer_name: sale.customer?.name || null,
+      user_name: sale.user?.name || null,
+    }));
+
     return NextResponse.json({
-      data: sales || [],
+      data: formattedSales,
       total: count || 0,
       page,
       limit,

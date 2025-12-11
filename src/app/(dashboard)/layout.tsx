@@ -24,6 +24,7 @@ import {
   RefreshCw,
   User,
   ChevronDown,
+  Receipt,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuthStore } from '@/lib/stores/auth-store';
@@ -40,6 +41,12 @@ const navLinks = [
     label: 'PDV',
     icon: ShoppingCart,
     permissions: ['pdv'],
+  },
+  {
+    href: '/vendas',
+    label: 'Vendas',
+    icon: Receipt,
+    permissions: ['sales'],
   },
   {
     href: '/produtos',
