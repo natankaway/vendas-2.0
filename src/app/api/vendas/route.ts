@@ -91,7 +91,19 @@ export async function GET(request: NextRequest) {
 
     // Parâmetros adicionais
     const search = searchParams.get('search') || '';
+    const searchType = searchParams.get('searchType') || 'receipt';
     const paymentMethod = searchParams.get('paymentMethod') || '';
+
+    // Se buscar por cliente, primeiro encontra os IDs dos clientes
+    let customerIds: string[] = [];
+    if (search && searchType === 'customer') {
+      const { data: customers } = await supabase
+        .from('customers')
+        .select('id')
+        .ilike('name', `%${search}%`);
+
+      customerIds = customers?.map(c => c.id) || [];
+    }
 
     // Listagem com paginação
     let query = supabase
@@ -115,8 +127,24 @@ export async function GET(request: NextRequest) {
       query = query.lte('created_at', `${endDate}T23:59:59`);
     }
 
+    // Aplica filtro de busca baseado no tipo
     if (search) {
-      query = query.or(`receipt_number.ilike.%${search}%`);
+      if (searchType === 'customer') {
+        if (customerIds.length > 0) {
+          query = query.in('customer_id', customerIds);
+        } else {
+          // Nenhum cliente encontrado, retorna vazio
+          return NextResponse.json({
+            data: [],
+            total: 0,
+            page,
+            limit,
+          });
+        }
+      } else {
+        // Busca por número do recibo
+        query = query.ilike('receipt_number', `%${search}%`);
+      }
     }
 
     const { data: sales, error, count } = await query
@@ -183,6 +211,35 @@ export async function POST(request: NextRequest) {
     if (!payment_method) {
       return NextResponse.json(
         { success: false, error: 'Forma de pagamento é obrigatória' },
+        { status: 400 }
+      );
+    }
+
+    // Verifica estoque disponível para todos os itens
+    const stockErrors = [];
+    for (const item of items) {
+      const { data: product } = await supabase
+        .from('products')
+        .select('id, name, stock_quantity')
+        .eq('id', item.product_id)
+        .single();
+
+      if (!product) {
+        stockErrors.push(`Produto não encontrado: ${item.product_name}`);
+      } else if (product.stock_quantity < item.quantity) {
+        stockErrors.push(
+          `${product.name}: estoque insuficiente (disponível: ${product.stock_quantity}, solicitado: ${item.quantity})`
+        );
+      }
+    }
+
+    if (stockErrors.length > 0) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: 'Estoque insuficiente',
+          details: stockErrors
+        },
         { status: 400 }
       );
     }

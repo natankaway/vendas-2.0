@@ -102,6 +102,7 @@ const getStatusLabel = (status: string) => {
 export default function VendasPage() {
   // State
   const [search, setSearch] = useState('');
+  const [searchType, setSearchType] = useState<'receipt' | 'customer'>('receipt');
   const [page, setPage] = useState(1);
   const [selectedSale, setSelectedSale] = useState<Sale | null>(null);
   const [showReceiptModal, setShowReceiptModal] = useState(false);
@@ -117,13 +118,16 @@ export default function VendasPage() {
 
   // Fetch sales
   const { data: salesData, isLoading } = useQuery({
-    queryKey: ['sales', search, page, filters],
+    queryKey: ['sales', search, searchType, page, filters],
     queryFn: async () => {
       const params = new URLSearchParams({
         page: String(page),
         limit: String(perPage),
       });
-      if (search) params.append('search', search);
+      if (search) {
+        params.append('search', search);
+        params.append('searchType', searchType);
+      }
       if (filters.startDate) params.append('startDate', filters.startDate);
       if (filters.endDate) params.append('endDate', filters.endDate);
       if (filters.status) params.append('status', filters.status);
@@ -271,15 +275,25 @@ export default function VendasPage() {
       {/* Search and Filters */}
       <div className="bg-white rounded-lg shadow p-4 mb-6">
         <div className="flex flex-col md:flex-row gap-4">
-          <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
-            <input
-              type="text"
-              placeholder="Buscar por número do recibo, cliente..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
+          <div className="flex-1 flex gap-2">
+            <select
+              value={searchType}
+              onChange={(e) => setSearchType(e.target.value as 'receipt' | 'customer')}
+              className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+            >
+              <option value="receipt">Nº Recibo</option>
+              <option value="customer">Cliente</option>
+            </select>
+            <div className="flex-1 relative">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+              <input
+                type="text"
+                placeholder={searchType === 'receipt' ? 'Buscar por número do recibo...' : 'Buscar por nome do cliente...'}
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              />
+            </div>
           </div>
           <button
             onClick={() => setShowFilters(!showFilters)}

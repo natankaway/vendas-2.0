@@ -316,12 +316,18 @@ export default function PDVPage() {
         body: JSON.stringify(saleData),
       });
 
+      const result = await response.json();
+
       if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Erro ao criar venda');
+        // Monta mensagem de erro com detalhes se disponível
+        let errorMessage = result.error || 'Erro ao criar venda';
+        if (result.details && Array.isArray(result.details)) {
+          errorMessage = result.details.join('\n');
+        }
+        throw new Error(errorMessage);
       }
 
-      return response.json();
+      return result;
     },
     onSuccess: (response) => {
       // A API retorna {success: true, data: {...}}
