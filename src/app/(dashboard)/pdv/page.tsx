@@ -557,15 +557,9 @@ export default function PDVPage() {
 
       {/* Carrinho Drawer - Mobile */}
       {showCartDrawer && (
-        <div className="lg:hidden fixed inset-0 z-50">
+        <div className="lg:hidden fixed inset-0 z-[100]">
           <div className="absolute inset-0 bg-black/50" onClick={() => setShowCartDrawer(false)} />
           <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl flex flex-col">
-            <div className="flex items-center justify-between p-3 border-b flex-shrink-0">
-              <h2 className="text-lg font-semibold">Carrinho</h2>
-              <button onClick={() => setShowCartDrawer(false)} className="p-2 hover:bg-gray-100 rounded-full">
-                <X className="h-5 w-5" />
-              </button>
-            </div>
             <CartContent
               items={items}
               customer={customer}
@@ -582,6 +576,8 @@ export default function PDVPage() {
                 setShowCartDrawer(false);
                 setShowPaymentDialog(true);
               }}
+              onClose={() => setShowCartDrawer(false)}
+              showCloseButton
             />
           </div>
         </div>
@@ -788,6 +784,8 @@ function CartContent({
   onSelectCustomer,
   onRemoveCustomer,
   onCheckout,
+  onClose,
+  showCloseButton = false,
 }: {
   items: any[];
   customer: Customer | null;
@@ -801,19 +799,32 @@ function CartContent({
   onSelectCustomer: () => void;
   onRemoveCustomer: () => void;
   onCheckout: () => void;
+  onClose?: () => void;
+  showCloseButton?: boolean;
 }) {
   return (
     <>
       {/* Header do Carrinho */}
       <div className="p-3 border-b flex-shrink-0">
         <div className="flex items-center justify-between">
-          <h2 className="font-semibold">Carrinho</h2>
-          {itemCount > 0 && (
-            <button className="text-xs text-red-500 hover:text-red-600 flex items-center gap-1" onClick={onClearCart}>
-              <Trash2 className="h-3 w-3" />
-              Limpar
-            </button>
-          )}
+          <h2 className="font-semibold text-lg">Carrinho</h2>
+          <div className="flex items-center gap-2">
+            {itemCount > 0 && (
+              <button className="text-xs text-red-500 hover:text-red-600 flex items-center gap-1" onClick={onClearCart}>
+                <Trash2 className="h-3 w-3" />
+                Limpar
+              </button>
+            )}
+            {showCloseButton && onClose && (
+              <button
+                onClick={onClose}
+                className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                aria-label="Fechar carrinho"
+              >
+                <X className="h-5 w-5 text-gray-700" />
+              </button>
+            )}
+          </div>
         </div>
 
         {/* Cliente */}
