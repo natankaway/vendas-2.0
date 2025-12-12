@@ -10,6 +10,7 @@
 import { useState, useEffect } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ShoppingCart,
   Package,
@@ -30,7 +31,10 @@ import {
   PanelLeftClose,
   PanelLeft,
   FolderTree,
+  Moon,
+  Sun,
 } from 'lucide-react';
+import { useTheme } from '@/lib/contexts/theme-context';
 import { Button } from '@/components/ui/button';
 import { useAuthStore } from '@/lib/stores/auth-store';
 import { useConnectionStore } from '@/lib/stores/connection-store';
@@ -105,6 +109,7 @@ export default function DashboardLayout({
     isSyncing,
     lastSyncAt,
   } = useConnectionStore();
+  const { theme, toggleTheme } = useTheme();
 
   // Estado do sidebar - carrega do localStorage
   const [sidebarOpen, setSidebarOpen] = useState(false); // Mobile
@@ -161,7 +166,7 @@ export default function DashboardLayout({
 
   if (!user) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
       </div>
     );
@@ -171,22 +176,22 @@ export default function DashboardLayout({
   const mainPadding = sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-64';
 
   return (
-    <div className="min-h-screen flex bg-gray-50">
+    <div className="min-h-screen flex bg-gray-50 dark:bg-gray-900">
       {/* Sidebar - Desktop */}
       <aside
         className={cn(
-          'hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 bg-white border-r shadow-sm transition-all duration-300 z-30',
+          'hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 bg-white dark:bg-gray-800 border-r dark:border-gray-700 shadow-sm transition-all duration-300 z-30',
           sidebarWidth
         )}
       >
         {/* Logo */}
-        <div className="flex items-center justify-between h-16 px-4 border-b">
+        <div className="flex items-center justify-between h-16 px-4 border-b dark:border-gray-700">
           <div className="flex items-center min-w-0">
-            <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center shadow-lg shadow-blue-200">
-              <ShoppingCart className="h-5 w-5 text-white" />
+            <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden">
+              <Image src="/logo-icon.svg" alt="KAWAY POS" width={40} height={40} className="w-10 h-10" />
             </div>
             {!sidebarCollapsed && (
-              <span className="ml-3 text-lg font-bold text-gray-800 truncate">Vendas PDV</span>
+              <span className="ml-3 text-lg font-bold text-gray-800 dark:text-white truncate">KAWAY POS</span>
             )}
           </div>
         </div>
@@ -194,13 +199,13 @@ export default function DashboardLayout({
         {/* Toggle Button */}
         <button
           onClick={toggleSidebar}
-          className="absolute -right-3 top-20 w-6 h-6 bg-white border rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 transition-colors z-50"
+          className="absolute -right-3 top-20 w-6 h-6 bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors z-50"
           title={sidebarCollapsed ? 'Expandir menu' : 'Recolher menu'}
         >
           {sidebarCollapsed ? (
-            <ChevronRight className="h-4 w-4 text-gray-600" />
+            <ChevronRight className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           ) : (
-            <ChevronLeft className="h-4 w-4 text-gray-600" />
+            <ChevronLeft className="h-4 w-4 text-gray-600 dark:text-gray-300" />
           )}
         </button>
 
@@ -218,12 +223,12 @@ export default function DashboardLayout({
                 className={cn(
                   'flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium transition-all duration-200',
                   isActive
-                    ? 'bg-blue-50 text-blue-600 shadow-sm'
-                    : 'text-gray-600 hover:bg-gray-100 hover:text-gray-900',
+                    ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 shadow-sm'
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-white',
                   sidebarCollapsed && 'justify-center px-2'
                 )}
               >
-                <Icon className={cn('h-5 w-5 flex-shrink-0', isActive && 'text-blue-600')} />
+                <Icon className={cn('h-5 w-5 flex-shrink-0', isActive && 'text-blue-600 dark:text-blue-400')} />
                 {!sidebarCollapsed && <span className="truncate">{link.label}</span>}
               </Link>
             );
@@ -231,14 +236,14 @@ export default function DashboardLayout({
         </nav>
 
         {/* Sync Status */}
-        <div className={cn('p-4 border-t', sidebarCollapsed && 'px-2')}>
+        <div className={cn('p-4 border-t dark:border-gray-700', sidebarCollapsed && 'px-2')}>
           <div className={cn('flex items-center mb-3', sidebarCollapsed ? 'justify-center' : 'justify-between')}>
             <div
               className={cn(
                 'flex items-center gap-2 px-2 py-1 rounded-full text-xs font-medium',
                 connectionStatus === 'online'
-                  ? 'bg-green-50 text-green-600'
-                  : 'bg-orange-50 text-orange-600'
+                  ? 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                  : 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
               )}
             >
               {connectionStatus === 'online' ? (
@@ -255,7 +260,7 @@ export default function DashboardLayout({
             </div>
 
             {!sidebarCollapsed && pendingSyncCount > 0 && (
-              <span className="text-xs text-orange-500 font-medium">
+              <span className="text-xs text-orange-500 dark:text-orange-400 font-medium">
                 {pendingSyncCount} pendente(s)
               </span>
             )}
@@ -264,7 +269,7 @@ export default function DashboardLayout({
           <Button
             variant="outline"
             size="sm"
-            className={cn('w-full', sidebarCollapsed && 'px-2')}
+            className={cn('w-full dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700', sidebarCollapsed && 'px-2')}
             onClick={handleSync}
             disabled={connectionStatus === 'offline' || isSyncing}
             title={sidebarCollapsed ? 'Sincronizar' : undefined}
@@ -274,7 +279,7 @@ export default function DashboardLayout({
           </Button>
 
           {!sidebarCollapsed && lastSyncAt && (
-            <p className="text-xs text-gray-400 mt-2 text-center">
+            <p className="text-xs text-gray-400 dark:text-gray-500 mt-2 text-center">
               Última sync: {formatRelativeTime(lastSyncAt)}
             </p>
           )}
@@ -288,21 +293,21 @@ export default function DashboardLayout({
             className="fixed inset-0 bg-black/50 backdrop-blur-sm"
             onClick={() => setSidebarOpen(false)}
           />
-          <aside className="fixed inset-y-0 left-0 w-72 bg-white shadow-xl">
-            <div className="flex items-center justify-between h-16 px-4 border-b">
+          <aside className="fixed inset-y-0 left-0 w-72 bg-white dark:bg-gray-800 shadow-xl">
+            <div className="flex items-center justify-between h-16 px-4 border-b dark:border-gray-700">
               <div className="flex items-center">
-                <div className="w-10 h-10 bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl flex items-center justify-center">
-                  <ShoppingCart className="h-5 w-5 text-white" />
+                <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden">
+                  <Image src="/logo-icon.svg" alt="KAWAY POS" width={40} height={40} className="w-10 h-10" />
                 </div>
-                <span className="ml-3 text-lg font-bold text-gray-800">Vendas PDV</span>
+                <span className="ml-3 text-lg font-bold text-gray-800 dark:text-white">KAWAY POS</span>
               </div>
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setSidebarOpen(false)}
-                className="hover:bg-gray-100"
+                className="hover:bg-gray-100 dark:hover:bg-gray-700"
               >
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 dark:text-gray-300" />
               </Button>
             </div>
 
@@ -318,8 +323,8 @@ export default function DashboardLayout({
                     className={cn(
                       'flex items-center gap-3 px-3 py-3 rounded-xl font-medium transition-all',
                       isActive
-                        ? 'bg-blue-50 text-blue-600'
-                        : 'text-gray-600 hover:bg-gray-100'
+                        ? 'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+                        : 'text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'
                     )}
                     onClick={() => setSidebarOpen(false)}
                   >
@@ -331,14 +336,14 @@ export default function DashboardLayout({
             </nav>
 
             {/* Sync Status Mobile */}
-            <div className="p-4 border-t">
+            <div className="p-4 border-t dark:border-gray-700">
               <div className="flex items-center justify-between mb-3">
                 <div
                   className={cn(
                     'flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium',
                     connectionStatus === 'online'
-                      ? 'bg-green-50 text-green-600'
-                      : 'bg-orange-50 text-orange-600'
+                      ? 'bg-green-50 dark:bg-green-900/30 text-green-600 dark:text-green-400'
+                      : 'bg-orange-50 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400'
                   )}
                 >
                   {connectionStatus === 'online' ? (
@@ -354,7 +359,7 @@ export default function DashboardLayout({
                   )}
                 </div>
                 {pendingSyncCount > 0 && (
-                  <span className="text-sm text-orange-500 font-medium">
+                  <span className="text-sm text-orange-500 dark:text-orange-400 font-medium">
                     {pendingSyncCount} pendente(s)
                   </span>
                 )}
@@ -363,7 +368,7 @@ export default function DashboardLayout({
               <Button
                 variant="outline"
                 size="sm"
-                className="w-full"
+                className="w-full dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
                 onClick={handleSync}
                 disabled={connectionStatus === 'offline' || isSyncing}
               >
@@ -378,13 +383,13 @@ export default function DashboardLayout({
       {/* Main Content */}
       <div className={cn('flex-1 flex flex-col min-h-screen transition-all duration-300', mainPadding)}>
         {/* Header */}
-        <header className="sticky top-0 z-40 h-16 bg-white border-b shadow-sm flex items-center justify-between px-4 lg:px-6">
+        <header className="sticky top-0 z-40 h-16 bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm flex items-center justify-between px-4 lg:px-6">
           <div className="flex items-center gap-3">
             {/* Mobile Menu Button */}
             <Button
               variant="ghost"
               size="icon"
-              className="lg:hidden"
+              className="lg:hidden dark:text-gray-300 dark:hover:bg-gray-700"
               onClick={() => setSidebarOpen(true)}
             >
               <Menu className="h-5 w-5" />
@@ -394,7 +399,7 @@ export default function DashboardLayout({
             <Button
               variant="ghost"
               size="icon"
-              className="hidden lg:flex"
+              className="hidden lg:flex dark:text-gray-300 dark:hover:bg-gray-700"
               onClick={toggleSidebar}
               title={sidebarCollapsed ? 'Expandir menu' : 'Recolher menu'}
             >
@@ -406,26 +411,41 @@ export default function DashboardLayout({
             </Button>
 
             <div className="hidden sm:block">
-              <h1 className="text-lg font-semibold text-gray-800">
+              <h1 className="text-lg font-semibold text-gray-800 dark:text-white">
                 {visibleLinks.find((l) => pathname.startsWith(l.href))?.label || 'Dashboard'}
               </h1>
             </div>
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Dark Mode Toggle */}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              className="dark:text-gray-300 dark:hover:bg-gray-700"
+              title={theme === 'light' ? 'Ativar modo escuro' : 'Ativar modo claro'}
+            >
+              {theme === 'light' ? (
+                <Moon className="h-5 w-5" />
+              ) : (
+                <Sun className="h-5 w-5" />
+              )}
+            </Button>
+
             {/* Connection Status - Mobile */}
             <div className="lg:hidden">
               {connectionStatus === 'offline' ? (
-                <div className="p-2 rounded-full bg-orange-50">
-                  <WifiOff className="h-4 w-4 text-orange-500" />
+                <div className="p-2 rounded-full bg-orange-50 dark:bg-orange-900/30">
+                  <WifiOff className="h-4 w-4 text-orange-500 dark:text-orange-400" />
                 </div>
               ) : pendingSyncCount > 0 ? (
-                <div className="p-2 rounded-full bg-blue-50">
-                  <RefreshCw className="h-4 w-4 text-blue-500 animate-pulse" />
+                <div className="p-2 rounded-full bg-blue-50 dark:bg-blue-900/30">
+                  <RefreshCw className="h-4 w-4 text-blue-500 dark:text-blue-400 animate-pulse" />
                 </div>
               ) : (
-                <div className="p-2 rounded-full bg-green-50">
-                  <Wifi className="h-4 w-4 text-green-500" />
+                <div className="p-2 rounded-full bg-green-50 dark:bg-green-900/30">
+                  <Wifi className="h-4 w-4 text-green-500 dark:text-green-400" />
                 </div>
               )}
             </div>
@@ -434,7 +454,7 @@ export default function DashboardLayout({
             <div className="relative">
               <Button
                 variant="ghost"
-                className="flex items-center gap-2 hover:bg-gray-100 rounded-xl px-2 sm:px-3"
+                className="flex items-center gap-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-xl px-2 sm:px-3"
                 onClick={() => setUserMenuOpen(!userMenuOpen)}
               >
                 <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center shadow">
@@ -442,7 +462,7 @@ export default function DashboardLayout({
                     {user.name.charAt(0).toUpperCase()}
                   </span>
                 </div>
-                <span className="hidden md:inline font-medium text-gray-700">{user.name}</span>
+                <span className="hidden md:inline font-medium text-gray-700 dark:text-gray-200">{user.name}</span>
                 <ChevronDown className="h-4 w-4 text-gray-400 hidden sm:block" />
               </Button>
 
@@ -452,18 +472,18 @@ export default function DashboardLayout({
                     className="fixed inset-0 z-40"
                     onClick={() => setUserMenuOpen(false)}
                   />
-                  <div className="absolute right-0 mt-2 w-56 bg-white border rounded-xl shadow-lg z-50 overflow-hidden">
-                    <div className="p-4 bg-gradient-to-br from-blue-50 to-purple-50 border-b">
-                      <p className="font-semibold text-gray-800">{user.name}</p>
-                      <p className="text-sm text-gray-500 truncate">{user.email}</p>
-                      <span className="inline-block mt-2 text-xs font-medium text-blue-600 bg-blue-100 px-2 py-0.5 rounded-full capitalize">
+                  <div className="absolute right-0 mt-2 w-56 bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-xl shadow-lg z-50 overflow-hidden">
+                    <div className="p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 border-b dark:border-gray-700">
+                      <p className="font-semibold text-gray-800 dark:text-white">{user.name}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 truncate">{user.email}</p>
+                      <span className="inline-block mt-2 text-xs font-medium text-blue-600 dark:text-blue-400 bg-blue-100 dark:bg-blue-900/50 px-2 py-0.5 rounded-full capitalize">
                         {user.role}
                       </span>
                     </div>
                     <div className="p-2">
                       <Button
                         variant="ghost"
-                        className="w-full justify-start text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg"
+                        className="w-full justify-start text-red-600 dark:text-red-400 hover:text-red-700 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-lg"
                         onClick={handleLogout}
                       >
                         <LogOut className="h-4 w-4 mr-2" />

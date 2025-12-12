@@ -1,7 +1,7 @@
 {
-  "name": "Vendas PDV",
-  "short_name": "PDV",
-  "description": "Sistema de Ponto de Venda com suporte offline",
+  "name": "KAWAY POS",
+  "short_name": "KAWAY",
+  "description": "Sistema de Ponto de Venda com suporte offline - Pagamento Rápido",
   "start_url": "/pdv",
   "display": "standalone",
   "background_color": "#ffffff",
