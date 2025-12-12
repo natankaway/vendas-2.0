@@ -555,37 +555,112 @@ export default function PDVPage() {
         />
       </div>
 
-      {/* Carrinho Drawer - Mobile */}
+      {/* Carrinho Modal - Mobile (Full Screen) */}
       {showCartDrawer && (
-        <div className="lg:hidden fixed inset-0 z-[100]">
-          <div className="absolute inset-0 bg-black/50" onClick={() => setShowCartDrawer(false)} />
-          <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl flex flex-col">
-            <CartContent
-              items={items}
-              customer={customer}
-              subtotal={subtotal}
-              discountTotal={discountTotal}
-              total={total}
-              itemCount={itemCount}
-              onUpdateQuantity={updateItemQuantity}
-              onRemove={removeItem}
-              onClearCart={clearCart}
-              onSelectCustomer={() => setShowCustomerDialog(true)}
-              onRemoveCustomer={() => setCustomer(null)}
-              onCheckout={() => {
+        <div className="lg:hidden fixed inset-0 bg-white flex flex-col" style={{ zIndex: 9999 }}>
+          {/* Header fixo do modal */}
+          <div className="flex items-center justify-between p-4 border-b bg-white flex-shrink-0">
+            <h2 className="text-xl font-bold">Carrinho</h2>
+            <div className="flex items-center gap-3">
+              {itemCount > 0 && (
+                <button
+                  className="text-sm text-red-500 hover:text-red-600 flex items-center gap-1"
+                  onClick={clearCart}
+                >
+                  <Trash2 className="h-4 w-4" />
+                  Limpar
+                </button>
+              )}
+              <button
+                onClick={() => setShowCartDrawer(false)}
+                className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full"
+              >
+                <X className="h-6 w-6" />
+              </button>
+            </div>
+          </div>
+
+          {/* Cliente */}
+          <div className="p-4 border-b flex-shrink-0">
+            {customer ? (
+              <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+                <div className="flex items-center min-w-0">
+                  <User className="h-5 w-5 mr-2 text-blue-600 flex-shrink-0" />
+                  <span className="font-medium text-blue-700 truncate">{customer.name}</span>
+                </div>
+                <button className="p-1.5 hover:bg-blue-100 rounded" onClick={() => setCustomer(null)}>
+                  <X className="h-5 w-5 text-blue-600" />
+                </button>
+              </div>
+            ) : (
+              <button
+                className="w-full py-3 text-gray-600 border-2 border-dashed rounded-lg hover:bg-gray-50 flex items-center justify-center gap-2"
+                onClick={() => setShowCustomerDialog(true)}
+              >
+                <User className="h-5 w-5" />
+                Selecionar Cliente
+              </button>
+            )}
+          </div>
+
+          {/* Lista de itens */}
+          <div className="flex-1 overflow-y-auto">
+            {items.length === 0 ? (
+              <div className="flex flex-col items-center justify-center h-full text-gray-400 p-4">
+                <ShoppingBag className="h-16 w-16 mb-4" />
+                <p className="text-lg">Carrinho vazio</p>
+                <p className="text-sm mt-1">Adicione produtos para começar</p>
+              </div>
+            ) : (
+              <div className="divide-y">
+                {items.map((item) => (
+                  <CartItemRow
+                    key={item.id}
+                    item={item}
+                    onUpdateQuantity={updateItemQuantity}
+                    onRemove={removeItem}
+                  />
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Totais e botão finalizar */}
+          <div className="p-4 border-t bg-gray-50 flex-shrink-0">
+            <div className="space-y-2 mb-4">
+              <div className="flex justify-between text-gray-600">
+                <span>Subtotal ({itemCount} itens)</span>
+                <span>{formatCurrency(subtotal)}</span>
+              </div>
+              {discountTotal > 0 && (
+                <div className="flex justify-between text-green-600">
+                  <span>Desconto</span>
+                  <span>-{formatCurrency(discountTotal)}</span>
+                </div>
+              )}
+              <div className="flex justify-between text-xl font-bold pt-2 border-t">
+                <span>Total</span>
+                <span className="text-blue-600">{formatCurrency(total)}</span>
+              </div>
+            </div>
+
+            <button
+              className="w-full py-4 bg-blue-600 text-white text-lg font-semibold rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={items.length === 0}
+              onClick={() => {
                 setShowCartDrawer(false);
                 setShowPaymentDialog(true);
               }}
-              onClose={() => setShowCartDrawer(false)}
-              showCloseButton
-            />
+            >
+              Finalizar Venda
+            </button>
           </div>
         </div>
       )}
 
       {/* Dialog de Pagamento */}
       {showPaymentDialog && (
-        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center" style={{ zIndex: 10000 }}>
           <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
             <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold">Forma de Pagamento</h2>
@@ -653,7 +728,7 @@ export default function PDVPage() {
 
       {/* Dialog do Recibo */}
       {showReceiptDialog && lastSale && (
-        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center" style={{ zIndex: 10000 }}>
           <div className="bg-white w-full max-w-sm sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
             <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold text-green-600">Venda Realizada!</h2>
@@ -708,7 +783,7 @@ export default function PDVPage() {
 
       {/* Dialog de Seleção de Cliente */}
       {showCustomerDialog && (
-        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center" style={{ zIndex: 10000 }}>
           <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
             <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold">Selecionar Cliente</h2>
