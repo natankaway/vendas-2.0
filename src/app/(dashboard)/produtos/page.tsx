@@ -2,11 +2,12 @@
  * Página de Gestão de Produtos
  *
  * CRUD completo de produtos com categorias e controle de estoque.
+ * Layout responsivo: cards em mobile, tabela em desktop.
  */
 
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useMemo } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Plus,
@@ -18,8 +19,8 @@ import {
   X,
   ChevronLeft,
   ChevronRight,
-  Filter,
   BarChart3,
+  Filter,
 } from 'lucide-react';
 
 // Tipos
@@ -92,11 +93,11 @@ const UNITS = ['UN', 'KG', 'G', 'L', 'ML', 'M', 'CM', 'CX', 'PCT', 'DZ'];
 export default function ProdutosPage() {
   const queryClient = useQueryClient();
 
-  // State
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
   const [stockFilter, setStockFilter] = useState<'all' | 'low' | 'out'>('all');
   const [activeFilter, setActiveFilter] = useState<'all' | 'active' | 'inactive'>('all');
+  const [showFilters, setShowFilters] = useState(false);
   const [page, setPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
@@ -105,23 +106,17 @@ export default function ProdutosPage() {
 
   const perPage = 20;
 
-  // Fetch products
   const { data: productsData, isLoading: loadingProducts } = useQuery({
     queryKey: ['products', search, categoryFilter, page],
     queryFn: async () => {
-      const params = new URLSearchParams({
-        page: String(page),
-        limit: String(perPage),
-      });
+      const params = new URLSearchParams({ page: String(page), limit: String(perPage) });
       if (search) params.append('search', search);
       if (categoryFilter) params.append('category', categoryFilter);
-
       const res = await fetch(`/api/produtos?${params}`);
       return res.json();
     },
   });
 
-  // Fetch categories
   const { data: categoriesData } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
@@ -135,36 +130,29 @@ export default function ProdutosPage() {
   const totalProducts = productsData?.total || 0;
   const totalPages = Math.ceil(totalProducts / perPage);
 
-  // Filter products locally
   const filteredProducts = useMemo(() => {
     let result = [...products];
-
     if (stockFilter === 'low') {
       result = result.filter(p => p.stock_quantity <= p.min_stock_quantity && p.stock_quantity > 0);
     } else if (stockFilter === 'out') {
       result = result.filter(p => p.stock_quantity <= 0);
     }
-
     if (activeFilter === 'active') {
       result = result.filter(p => p.is_active);
     } else if (activeFilter === 'inactive') {
       result = result.filter(p => !p.is_active);
     }
-
     return result;
   }, [products, stockFilter, activeFilter]);
 
-  // Stats
   const stats = useMemo(() => {
     const allProducts = products;
     const lowStock = allProducts.filter(p => p.stock_quantity <= p.min_stock_quantity && p.stock_quantity > 0).length;
     const outOfStock = allProducts.filter(p => p.stock_quantity <= 0).length;
     const totalValue = allProducts.reduce((sum, p) => sum + (p.price * p.stock_quantity), 0);
-
     return { total: allProducts.length, lowStock, outOfStock, totalValue };
   }, [products]);
 
-  // Create/Update mutation
   const saveMutation = useMutation({
     mutationFn: async (data: ProductFormData) => {
       const payload = {
@@ -184,21 +172,13 @@ export default function ProdutosPage() {
         allow_decimal_quantity: data.allow_decimal_quantity,
         tax_rate: parseFloat(data.tax_rate || '0'),
       };
-
       const url = editingProduct ? `/api/produtos/${editingProduct.id}` : '/api/produtos';
       const method = editingProduct ? 'PUT' : 'POST';
-
-      const res = await fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-
+      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
       if (!res.ok) {
         const error = await res.json();
         throw new Error(error.error || 'Erro ao salvar produto');
       }
-
       return res.json();
     },
     onSuccess: () => {
@@ -207,7 +187,6 @@ export default function ProdutosPage() {
     },
   });
 
-  // Delete mutation
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
       const res = await fetch(`/api/produtos/${id}`, { method: 'DELETE' });
@@ -219,7 +198,6 @@ export default function ProdutosPage() {
     },
   });
 
-  // Handlers
   const openModal = (product?: Product) => {
     if (product) {
       setEditingProduct(product);
@@ -257,20 +235,16 @@ export default function ProdutosPage() {
 
   const validateForm = (): boolean => {
     const errors: Record<string, string> = {};
-
     if (!formData.name.trim()) errors.name = 'Nome é obrigatório';
     if (!formData.sku.trim()) errors.sku = 'SKU é obrigatório';
     if (!formData.price || parseFloat(formData.price) <= 0) errors.price = 'Preço deve ser maior que zero';
-
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (validateForm()) {
-      saveMutation.mutate(formData);
-    }
+    if (validateForm()) saveMutation.mutate(formData);
   };
 
   const handleDelete = (product: Product) => {
@@ -280,215 +254,201 @@ export default function ProdutosPage() {
   };
 
   const formatCurrency = (cents: number) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL',
-    }).format(cents / 100);
+    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(cents / 100);
   };
 
   const getCategoryName = (categoryId: string | null) => {
     if (!categoryId) return '-';
-    const category = categories.find(c => c.id === categoryId);
-    return category?.name || '-';
+    return categories.find(c => c.id === categoryId)?.name || '-';
   };
 
+  const hasActiveFilters = categoryFilter || stockFilter !== 'all' || activeFilter !== 'all';
+
   return (
-    <div className="p-6 max-w-7xl mx-auto">
+    <div className="max-w-7xl mx-auto">
       {/* Header */}
-      <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Produtos</h1>
-          <p className="text-gray-600">Gerencie seu catálogo de produtos</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Produtos</h1>
+          <p className="text-sm text-gray-500">Gerencie seu catálogo</p>
         </div>
         <button
           onClick={() => openModal()}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+          className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium"
         >
           <Plus className="w-5 h-5" />
           Novo Produto
         </button>
       </div>
 
-      {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Package className="w-6 h-6 text-blue-600" />
+      {/* Stats Cards - Scrollable em mobile */}
+      <div className="flex gap-3 overflow-x-auto pb-2 mb-4 sm:mb-6 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-4">
+        <div className="flex-shrink-0 w-36 sm:w-auto bg-white rounded-xl shadow-sm p-3 sm:p-4 border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-2 bg-blue-50 rounded-lg">
+              <Package className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Total de Produtos</p>
-              <p className="text-xl font-bold">{stats.total}</p>
+              <p className="text-xs text-gray-500">Total</p>
+              <p className="text-lg font-bold">{stats.total}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-yellow-100 rounded-lg">
-              <AlertTriangle className="w-6 h-6 text-yellow-600" />
+        <div className="flex-shrink-0 w-36 sm:w-auto bg-white rounded-xl shadow-sm p-3 sm:p-4 border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-2 bg-yellow-50 rounded-lg">
+              <AlertTriangle className="w-5 h-5 text-yellow-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Estoque Baixo</p>
-              <p className="text-xl font-bold text-yellow-600">{stats.lowStock}</p>
+              <p className="text-xs text-gray-500">Estoque Baixo</p>
+              <p className="text-lg font-bold text-yellow-600">{stats.lowStock}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-red-100 rounded-lg">
-              <AlertTriangle className="w-6 h-6 text-red-600" />
+        <div className="flex-shrink-0 w-36 sm:w-auto bg-white rounded-xl shadow-sm p-3 sm:p-4 border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-2 bg-red-50 rounded-lg">
+              <AlertTriangle className="w-5 h-5 text-red-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Sem Estoque</p>
-              <p className="text-xl font-bold text-red-600">{stats.outOfStock}</p>
+              <p className="text-xs text-gray-500">Sem Estoque</p>
+              <p className="text-lg font-bold text-red-600">{stats.outOfStock}</p>
             </div>
           </div>
         </div>
-        <div className="bg-white rounded-lg shadow p-4">
-          <div className="flex items-center gap-3">
-            <div className="p-2 bg-green-100 rounded-lg">
-              <BarChart3 className="w-6 h-6 text-green-600" />
+        <div className="flex-shrink-0 w-40 sm:w-auto bg-white rounded-xl shadow-sm p-3 sm:p-4 border border-gray-100">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <div className="p-2 bg-green-50 rounded-lg">
+              <BarChart3 className="w-5 h-5 text-green-600" />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Valor em Estoque</p>
-              <p className="text-xl font-bold text-green-600">{formatCurrency(stats.totalValue)}</p>
+              <p className="text-xs text-gray-500">Valor Estoque</p>
+              <p className="text-lg font-bold text-green-600">{formatCurrency(stats.totalValue)}</p>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Filters */}
-      <div className="bg-white rounded-lg shadow p-4 mb-6">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-          {/* Search */}
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
+      {/* Search and Filters */}
+      <div className="bg-white rounded-xl shadow-sm p-3 sm:p-4 mb-4 sm:mb-6 border border-gray-100">
+        <div className="flex gap-2">
+          <div className="flex-1 relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
             <input
               type="text"
-              placeholder="Buscar por nome, SKU ou código de barras..."
+              placeholder="Buscar produto..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
-
-          {/* Category filter */}
-          <select
-            value={categoryFilter}
-            onChange={(e) => setCategoryFilter(e.target.value)}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border text-sm ${
+              hasActiveFilters ? 'bg-blue-50 border-blue-200 text-blue-700' : 'border-gray-200 text-gray-600'
+            }`}
           >
-            <option value="">Todas as categorias</option>
-            {categories.map((cat) => (
-              <option key={cat.id} value={cat.id}>{cat.name}</option>
-            ))}
-          </select>
-
-          {/* Stock filter */}
-          <select
-            value={stockFilter}
-            onChange={(e) => setStockFilter(e.target.value as 'all' | 'low' | 'out')}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="all">Todo estoque</option>
-            <option value="low">Estoque baixo</option>
-            <option value="out">Sem estoque</option>
-          </select>
-
-          {/* Active filter */}
-          <select
-            value={activeFilter}
-            onChange={(e) => setActiveFilter(e.target.value as 'all' | 'active' | 'inactive')}
-            className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="all">Todos os status</option>
-            <option value="active">Ativos</option>
-            <option value="inactive">Inativos</option>
-          </select>
+            <Filter className="w-4 h-4" />
+            <span className="hidden sm:inline">Filtros</span>
+          </button>
         </div>
+
+        {showFilters && (
+          <div className="mt-4 pt-4 border-t grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <select
+              value={categoryFilter}
+              onChange={(e) => setCategoryFilter(e.target.value)}
+              className="px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="">Todas categorias</option>
+              {categories.map((cat) => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
+            </select>
+            <select
+              value={stockFilter}
+              onChange={(e) => setStockFilter(e.target.value as 'all' | 'low' | 'out')}
+              className="px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="all">Todo estoque</option>
+              <option value="low">Estoque baixo</option>
+              <option value="out">Sem estoque</option>
+            </select>
+            <select
+              value={activeFilter}
+              onChange={(e) => setActiveFilter(e.target.value as 'all' | 'active' | 'inactive')}
+              className="px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+            >
+              <option value="all">Todos status</option>
+              <option value="active">Ativos</option>
+              <option value="inactive">Inativos</option>
+            </select>
+          </div>
+        )}
       </div>
 
-      {/* Products Table */}
-      <div className="bg-white rounded-lg shadow overflow-hidden">
-        <div className="overflow-x-auto">
+      {/* Products List */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+        {/* Desktop Table */}
+        <div className="hidden md:block overflow-x-auto">
           <table className="w-full">
             <thead className="bg-gray-50">
               <tr>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Produto</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">SKU</th>
-                <th className="px-4 py-3 text-left text-sm font-medium text-gray-600">Categoria</th>
-                <th className="px-4 py-3 text-right text-sm font-medium text-gray-600">Preço</th>
-                <th className="px-4 py-3 text-right text-sm font-medium text-gray-600">Estoque</th>
-                <th className="px-4 py-3 text-center text-sm font-medium text-gray-600">Status</th>
-                <th className="px-4 py-3 text-center text-sm font-medium text-gray-600">Ações</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Produto</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">SKU</th>
+                <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Categoria</th>
+                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Preço</th>
+                <th className="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase">Estoque</th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Status</th>
+                <th className="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase">Ações</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-200">
+            <tbody className="divide-y divide-gray-100">
               {loadingProducts ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
-                    Carregando produtos...
+                  <td colSpan={7} className="px-4 py-12 text-center">
+                    <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mx-auto"></div>
                   </td>
                 </tr>
               ) : filteredProducts.length === 0 ? (
                 <tr>
-                  <td colSpan={7} className="px-4 py-8 text-center text-gray-500">
-                    Nenhum produto encontrado
+                  <td colSpan={7} className="px-4 py-12 text-center text-gray-400">
+                    <Package className="w-10 h-10 mx-auto mb-2 opacity-50" />
+                    <p>Nenhum produto encontrado</p>
                   </td>
                 </tr>
               ) : (
                 filteredProducts.map((product) => (
                   <tr key={product.id} className="hover:bg-gray-50">
                     <td className="px-4 py-3">
-                      <div>
-                        <p className="font-medium text-gray-900">{product.name}</p>
-                        {product.barcode && (
-                          <p className="text-sm text-gray-500">{product.barcode}</p>
-                        )}
-                      </div>
+                      <p className="font-medium text-gray-900 text-sm">{product.name}</p>
+                      {product.barcode && <p className="text-xs text-gray-400">{product.barcode}</p>}
                     </td>
-                    <td className="px-4 py-3 text-gray-600">{product.sku}</td>
-                    <td className="px-4 py-3 text-gray-600">{getCategoryName(product.category_id)}</td>
-                    <td className="px-4 py-3 text-right font-medium">{formatCurrency(product.price)}</td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{product.sku}</td>
+                    <td className="px-4 py-3 text-sm text-gray-600">{getCategoryName(product.category_id)}</td>
+                    <td className="px-4 py-3 text-right font-medium text-sm">{formatCurrency(product.price)}</td>
                     <td className="px-4 py-3 text-right">
-                      <span
-                        className={`font-medium ${
-                          product.stock_quantity <= 0
-                            ? 'text-red-600'
-                            : product.stock_quantity <= product.min_stock_quantity
-                            ? 'text-yellow-600'
-                            : 'text-gray-900'
-                        }`}
-                      >
+                      <span className={`text-sm font-medium ${
+                        product.stock_quantity <= 0 ? 'text-red-600' :
+                        product.stock_quantity <= product.min_stock_quantity ? 'text-yellow-600' : 'text-gray-900'
+                      }`}>
                         {product.stock_quantity} {product.unit}
                       </span>
                     </td>
                     <td className="px-4 py-3 text-center">
-                      <span
-                        className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
-                          product.is_active
-                            ? 'bg-green-100 text-green-700'
-                            : 'bg-gray-100 text-gray-700'
-                        }`}
-                      >
+                      <span className={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                        product.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+                      }`}>
                         {product.is_active ? 'Ativo' : 'Inativo'}
                       </span>
                     </td>
                     <td className="px-4 py-3">
-                      <div className="flex items-center justify-center gap-2">
-                        <button
-                          onClick={() => openModal(product)}
-                          className="p-1 text-blue-600 hover:bg-blue-50 rounded"
-                          title="Editar"
-                        >
-                          <Edit className="w-5 h-5" />
+                      <div className="flex items-center justify-center gap-1">
+                        <button onClick={() => openModal(product)} className="p-2 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg" title="Editar">
+                          <Edit className="w-4 h-4" />
                         </button>
-                        <button
-                          onClick={() => handleDelete(product)}
-                          className="p-1 text-red-600 hover:bg-red-50 rounded"
-                          title="Excluir"
-                        >
-                          <Trash2 className="w-5 h-5" />
+                        <button onClick={() => handleDelete(product)} className="p-2 text-gray-500 hover:text-red-600 hover:bg-red-50 rounded-lg" title="Excluir">
+                          <Trash2 className="w-4 h-4" />
                         </button>
                       </div>
                     </td>
@@ -499,121 +459,145 @@ export default function ProdutosPage() {
           </table>
         </div>
 
+        {/* Mobile Cards */}
+        <div className="md:hidden divide-y divide-gray-100">
+          {loadingProducts ? (
+            <div className="p-8 text-center">
+              <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600 mx-auto"></div>
+            </div>
+          ) : filteredProducts.length === 0 ? (
+            <div className="p-8 text-center text-gray-400">
+              <Package className="w-10 h-10 mx-auto mb-2 opacity-50" />
+              <p>Nenhum produto encontrado</p>
+            </div>
+          ) : (
+            filteredProducts.map((product) => (
+              <div key={product.id} className="p-4">
+                <div className="flex items-start justify-between mb-2">
+                  <div className="flex-1 min-w-0">
+                    <p className="font-medium text-gray-900 truncate">{product.name}</p>
+                    <p className="text-xs text-gray-500">SKU: {product.sku}</p>
+                  </div>
+                  <span className={`flex-shrink-0 ml-2 px-2 py-0.5 text-xs font-medium rounded-full ${
+                    product.is_active ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-600'
+                  }`}>
+                    {product.is_active ? 'Ativo' : 'Inativo'}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between mb-2">
+                  <p className="text-lg font-bold text-blue-600">{formatCurrency(product.price)}</p>
+                  <span className={`text-sm font-medium ${
+                    product.stock_quantity <= 0 ? 'text-red-600' :
+                    product.stock_quantity <= product.min_stock_quantity ? 'text-yellow-600' : 'text-gray-600'
+                  }`}>
+                    {product.stock_quantity} {product.unit}
+                  </span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs text-gray-500">{getCategoryName(product.category_id)}</span>
+                  <div className="flex gap-1">
+                    <button onClick={() => openModal(product)} className="p-2 text-blue-600 hover:bg-blue-50 rounded-lg">
+                      <Edit className="w-4 h-4" />
+                    </button>
+                    <button onClick={() => handleDelete(product)} className="p-2 text-red-600 hover:bg-red-50 rounded-lg">
+                      <Trash2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            ))
+          )}
+        </div>
+
         {/* Pagination */}
         {totalPages > 1 && (
-          <div className="flex items-center justify-between px-4 py-3 border-t">
-            <p className="text-sm text-gray-600">
-              Mostrando {((page - 1) * perPage) + 1} a {Math.min(page * perPage, totalProducts)} de {totalProducts} produtos
+          <div className="flex items-center justify-between px-4 py-3 border-t bg-gray-50">
+            <p className="text-xs sm:text-sm text-gray-500">
+              {((page - 1) * perPage) + 1}-{Math.min(page * perPage, totalProducts)} de {totalProducts}
             </p>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setPage(p => Math.max(1, p - 1))}
-                disabled={page === 1}
-                className="p-2 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronLeft className="w-5 h-5" />
+            <div className="flex items-center gap-1">
+              <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1} className="p-2 text-gray-600 hover:bg-gray-200 rounded-lg disabled:opacity-30">
+                <ChevronLeft className="w-4 h-4" />
               </button>
-              <span className="text-sm text-gray-600">
-                Página {page} de {totalPages}
-              </span>
-              <button
-                onClick={() => setPage(p => Math.min(totalPages, p + 1))}
-                disabled={page === totalPages}
-                className="p-2 text-gray-600 hover:bg-gray-100 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                <ChevronRight className="w-5 h-5" />
+              <span className="text-sm text-gray-600 px-2">{page}/{totalPages}</span>
+              <button onClick={() => setPage(p => Math.min(totalPages, p + 1))} disabled={page === totalPages} className="p-2 text-gray-600 hover:bg-gray-200 rounded-lg disabled:opacity-30">
+                <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           </div>
         )}
       </div>
 
+      {/* Mobile FAB */}
+      <button
+        onClick={() => openModal()}
+        className="sm:hidden fixed bottom-20 right-4 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg flex items-center justify-center z-30 hover:bg-blue-700 active:bg-blue-800"
+      >
+        <Plus className="w-6 h-6" />
+      </button>
+
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between p-4 border-b">
-              <h2 className="text-lg font-semibold">
-                {editingProduct ? 'Editar Produto' : 'Novo Produto'}
-              </h2>
-              <button onClick={closeModal} className="p-1 hover:bg-gray-100 rounded">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+          <div className="bg-white w-full sm:max-w-2xl sm:rounded-2xl sm:m-4 max-h-[95vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+              <h2 className="text-lg font-semibold">{editingProduct ? 'Editar Produto' : 'Novo Produto'}</h2>
+              <button onClick={closeModal} className="p-2 hover:bg-gray-100 rounded-full">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="p-4 space-y-4">
-              {/* Nome */}
+            <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-4 space-y-4">
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Nome *
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Nome *</label>
                 <input
                   type="text"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                    formErrors.name ? 'border-red-500' : 'border-gray-300'
-                  }`}
+                  className={`w-full px-3 py-2 text-base border rounded-lg focus:ring-2 focus:ring-blue-500 ${formErrors.name ? 'border-red-500' : 'border-gray-200'}`}
                 />
-                {formErrors.name && (
-                  <p className="text-red-500 text-sm mt-1">{formErrors.name}</p>
-                )}
+                {formErrors.name && <p className="text-red-500 text-xs mt-1">{formErrors.name}</p>}
               </div>
 
-              {/* Descrição */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Descrição
-                </label>
+                <label className="block text-sm font-medium text-gray-700 mb-1">Descrição</label>
                 <textarea
                   value={formData.description}
                   onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                   rows={2}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                  className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                 />
               </div>
 
-              {/* SKU e Código de Barras */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    SKU *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">SKU *</label>
                   <input
                     type="text"
                     value={formData.sku}
                     onChange={(e) => setFormData({ ...formData, sku: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                      formErrors.sku ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    className={`w-full px-3 py-2 text-base border rounded-lg focus:ring-2 focus:ring-blue-500 ${formErrors.sku ? 'border-red-500' : 'border-gray-200'}`}
                   />
-                  {formErrors.sku && (
-                    <p className="text-red-500 text-sm mt-1">{formErrors.sku}</p>
-                  )}
+                  {formErrors.sku && <p className="text-red-500 text-xs mt-1">{formErrors.sku}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Código de Barras
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Código de Barras</label>
                   <input
                     type="text"
                     value={formData.barcode}
                     onChange={(e) => setFormData({ ...formData, barcode: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
-              {/* Categoria e Unidade */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Categoria
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Categoria</label>
                   <select
                     value={formData.category_id}
                     onChange={(e) => setFormData({ ...formData, category_id: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="">Sem categoria</option>
                     {categories.map((cat) => (
@@ -622,13 +606,11 @@ export default function ProdutosPage() {
                   </select>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Unidade
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Unidade</label>
                   <select
                     value={formData.unit}
                     onChange={(e) => setFormData({ ...formData, unit: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   >
                     {UNITS.map((unit) => (
                       <option key={unit} value={unit}>{unit}</option>
@@ -637,156 +619,125 @@ export default function ProdutosPage() {
                 </div>
               </div>
 
-              {/* Preços */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Preço de Venda *
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Preço Venda *</label>
                   <input
                     type="number"
                     step="0.01"
                     min="0"
+                    inputMode="decimal"
                     value={formData.price}
                     onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                    className={`w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent ${
-                      formErrors.price ? 'border-red-500' : 'border-gray-300'
-                    }`}
+                    className={`w-full px-3 py-2 text-base border rounded-lg focus:ring-2 focus:ring-blue-500 ${formErrors.price ? 'border-red-500' : 'border-gray-200'}`}
                   />
-                  {formErrors.price && (
-                    <p className="text-red-500 text-sm mt-1">{formErrors.price}</p>
-                  )}
+                  {formErrors.price && <p className="text-red-500 text-xs mt-1">{formErrors.price}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Preço de Custo
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Preço Custo</label>
                   <input
                     type="number"
                     step="0.01"
                     min="0"
+                    inputMode="decimal"
                     value={formData.cost_price}
                     onChange={(e) => setFormData({ ...formData, cost_price: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
               </div>
 
-              {/* Estoque */}
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-3 gap-3">
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Estoque Atual
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Estoque</label>
                   <input
                     type="number"
                     step={formData.allow_decimal_quantity ? '0.001' : '1'}
                     min="0"
+                    inputMode="numeric"
                     value={formData.stock_quantity}
                     onChange={(e) => setFormData({ ...formData, stock_quantity: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Estoque Mínimo
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Mínimo</label>
                   <input
                     type="number"
                     step={formData.allow_decimal_quantity ? '0.001' : '1'}
                     min="0"
+                    inputMode="numeric"
                     value={formData.min_stock_quantity}
                     onChange={(e) => setFormData({ ...formData, min_stock_quantity: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Estoque Máximo
-                  </label>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">Máximo</label>
                   <input
                     type="number"
                     step={formData.allow_decimal_quantity ? '0.001' : '1'}
                     min="0"
+                    inputMode="numeric"
                     value={formData.max_stock_quantity}
                     onChange={(e) => setFormData({ ...formData, max_stock_quantity: e.target.value })}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    className="w-full px-3 py-2 text-base border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="Sem limite"
                   />
                 </div>
               </div>
 
-              {/* Taxa de Imposto */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
-                  Taxa de Imposto (%)
-                </label>
-                <input
-                  type="number"
-                  step="0.01"
-                  min="0"
-                  max="100"
-                  value={formData.tax_rate}
-                  onChange={(e) => setFormData({ ...formData, tax_rate: e.target.value })}
-                  className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                />
-              </div>
-
-              {/* Checkboxes */}
-              <div className="space-y-3">
-                <label className="flex items-center gap-2">
+              <div className="space-y-3 pt-2">
+                <label className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     checked={formData.is_active}
                     onChange={(e) => setFormData({ ...formData, is_active: e.target.checked })}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Produto ativo</span>
                 </label>
-                <label className="flex items-center gap-2">
+                <label className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     checked={formData.is_weighable}
                     onChange={(e) => setFormData({ ...formData, is_weighable: e.target.checked })}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
-                  <span className="text-sm text-gray-700">Produto pesável (usa balança)</span>
+                  <span className="text-sm text-gray-700">Produto pesável</span>
                 </label>
-                <label className="flex items-center gap-2">
+                <label className="flex items-center gap-3">
                   <input
                     type="checkbox"
                     checked={formData.allow_decimal_quantity}
                     onChange={(e) => setFormData({ ...formData, allow_decimal_quantity: e.target.checked })}
-                    className="w-4 h-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                    className="w-5 h-5 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Permitir quantidade decimal</span>
                 </label>
               </div>
-
-              {/* Actions */}
-              <div className="flex justify-end gap-3 pt-4 border-t">
-                <button
-                  type="button"
-                  onClick={closeModal}
-                  className="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors"
-                >
-                  Cancelar
-                </button>
-                <button
-                  type="submit"
-                  disabled={saveMutation.isPending}
-                  className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
-                >
-                  {saveMutation.isPending ? 'Salvando...' : 'Salvar'}
-                </button>
-              </div>
-
-              {saveMutation.isError && (
-                <p className="text-red-500 text-sm text-center">
-                  {saveMutation.error?.message || 'Erro ao salvar produto'}
-                </p>
-              )}
             </form>
+
+            <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
+              <button
+                type="button"
+                onClick={closeModal}
+                className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium hover:bg-gray-300 transition-colors"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleSubmit}
+                disabled={saveMutation.isPending}
+                className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition-colors disabled:opacity-50"
+              >
+                {saveMutation.isPending ? 'Salvando...' : 'Salvar'}
+              </button>
+            </div>
+
+            {saveMutation.isError && (
+              <p className="px-4 pb-4 text-red-500 text-sm text-center">{saveMutation.error?.message}</p>
+            )}
           </div>
         </div>
       )}
