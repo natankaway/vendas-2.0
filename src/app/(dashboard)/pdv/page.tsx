@@ -557,7 +557,7 @@ export default function PDVPage() {
 
       {/* Carrinho Modal - Mobile (Full Screen) */}
       {showCartDrawer && (
-        <div className="lg:hidden fixed inset-0 bg-white flex flex-col" style={{ zIndex: 9999 }}>
+        <div className="lg:hidden fixed inset-0 top-14 bg-white flex flex-col" style={{ zIndex: 9999 }}>
           {/* Header fixo do modal */}
           <div className="flex items-center justify-between p-4 border-b bg-white flex-shrink-0">
             <h2 className="text-xl font-bold">Carrinho</h2>
