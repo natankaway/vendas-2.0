@@ -542,8 +542,8 @@ export default function ProdutosPage() {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
-          <div className="bg-white w-full max-w-lg sm:rounded-2xl sm:m-4 max-h-[95vh] overflow-hidden flex flex-col rounded-t-2xl">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4">
+          <div className="bg-white w-full max-w-lg sm:rounded-2xl h-[90vh] sm:h-auto sm:max-h-[85vh] overflow-hidden flex flex-col rounded-t-2xl">
             <div className="flex items-center justify-between p-3 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold">{editingProduct ? 'Editar Produto' : 'Novo Produto'}</h2>
               <button onClick={closeModal} className="p-2 hover:bg-gray-100 rounded-full">
@@ -551,7 +551,7 @@ export default function ProdutosPage() {
               </button>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-3 space-y-3">
+            <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-3 pb-4 space-y-3">
               <div>
                 <label className="block text-xs font-medium text-gray-700 mb-1">Nome *</label>
                 <input

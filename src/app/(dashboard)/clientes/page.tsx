@@ -419,14 +419,14 @@ export default function ClientesPage() {
 
       {/* Create/Edit Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
-          <div className="bg-white w-full max-w-lg sm:rounded-2xl sm:m-4 max-h-[95vh] overflow-hidden flex flex-col rounded-t-2xl">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4">
+          <div className="bg-white w-full max-w-lg sm:rounded-2xl h-[90vh] sm:h-auto sm:max-h-[85vh] overflow-hidden flex flex-col rounded-t-2xl">
             <div className="flex items-center justify-between p-3 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold">{editingCustomer ? 'Editar Cliente' : 'Novo Cliente'}</h2>
               <button onClick={closeModal} className="p-2 hover:bg-gray-100 rounded-full"><X className="w-5 h-5" /></button>
             </div>
 
-            <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-3 space-y-3">
+            <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-3 pb-4 space-y-3">
               <div>
                 <label className="block text-xs font-medium text-gray-700 mb-1">Nome *</label>
                 <input type="text" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -506,8 +506,8 @@ export default function ClientesPage() {
 
       {/* Detail Modal */}
       {isDetailOpen && selectedCustomer && (
-        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
-          <div className="bg-white w-full max-w-sm sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4">
+          <div className="bg-white w-full max-w-sm sm:rounded-2xl h-[85vh] sm:h-auto sm:max-h-[85vh] overflow-hidden flex flex-col rounded-t-2xl">
             <div className="flex items-center justify-between p-3 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold">Detalhes</h2>
               <button onClick={closeDetail} className="p-2 hover:bg-gray-100 rounded-full"><X className="w-5 h-5" /></button>
