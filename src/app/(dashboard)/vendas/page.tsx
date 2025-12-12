@@ -2,13 +2,14 @@
  * Página de Histórico de Vendas
  *
  * Lista todas as vendas com filtros e opção de reimprimir recibo.
+ * Inclui funcionalidade de receber pagamento para vendas pendentes.
  * Layout responsivo: cards em mobile, tabela em desktop.
  */
 
 'use client';
 
 import { useState, useMemo } from 'react';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Search,
   Receipt,
@@ -22,7 +23,13 @@ import {
   User,
   Filter,
   Package,
+  CreditCard,
+  Banknote,
+  Smartphone,
+  Clock,
+  Check,
 } from 'lucide-react';
+import { toast } from '@/components/ui/use-toast';
 
 // Tipos
 interface SaleItem {
@@ -78,6 +85,7 @@ const getPaymentMethodLabel = (method: string) => {
     credit_card: 'Crédito',
     debit_card: 'Débito',
     pix: 'PIX',
+    pay_later: 'Receber Depois',
   };
   return methods[method] || method;
 };
@@ -92,11 +100,14 @@ const getStatusLabel = (status: string) => {
 };
 
 export default function VendasPage() {
+  const queryClient = useQueryClient();
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState<'receipt' | 'customer'>('receipt');
   const [page, setPage] = useState(1);
   const [selectedSale, setSelectedSale] = useState<Sale | null>(null);
   const [showReceiptModal, setShowReceiptModal] = useState(false);
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<string | null>(null);
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
     startDate: '',
@@ -130,20 +141,55 @@ export default function VendasPage() {
     refetchOnWindowFocus: true,
   });
 
+  // Mutation para registrar pagamento
+  const receivePaymentMutation = useMutation({
+    mutationFn: async ({ saleId, paymentMethod }: { saleId: string; paymentMethod: string }) => {
+      const res = await fetch(`/api/vendas/${saleId}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ payment_method: paymentMethod }),
+      });
+      const result = await res.json();
+      if (!res.ok) {
+        throw new Error(result.error || 'Erro ao registrar pagamento');
+      }
+      return result;
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['sales'] });
+      setShowPaymentModal(false);
+      setSelectedSale(null);
+      setSelectedPaymentMethod(null);
+      toast({
+        title: 'Pagamento registrado',
+        description: 'O pagamento foi registrado com sucesso.',
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: 'Erro',
+        description: error.message,
+        variant: 'destructive',
+      });
+    },
+  });
+
   const sales: Sale[] = salesData?.data || [];
   const totalSales = salesData?.total || 0;
   const totalPages = Math.ceil(totalSales / perPage);
 
   const stats = useMemo(() => {
     const completed = sales.filter(s => s.status === 'completed');
+    const pending = sales.filter(s => s.status === 'pending');
     const totalValue = completed.reduce((sum, s) => sum + s.total, 0);
-    const totalItems = completed.reduce((sum, s) => sum + (s.items?.length || 0), 0);
+    const pendingValue = pending.reduce((sum, s) => sum + s.total, 0);
 
     return {
       count: sales.length,
       completed: completed.length,
+      pending: pending.length,
       totalValue,
-      totalItems,
+      pendingValue,
     };
   }, [sales]);
 
@@ -155,6 +201,26 @@ export default function VendasPage() {
   const closeReceipt = () => {
     setShowReceiptModal(false);
     setSelectedSale(null);
+  };
+
+  const openPaymentModal = (sale: Sale) => {
+    setSelectedSale(sale);
+    setSelectedPaymentMethod(null);
+    setShowPaymentModal(true);
+  };
+
+  const closePaymentModal = () => {
+    setShowPaymentModal(false);
+    setSelectedSale(null);
+    setSelectedPaymentMethod(null);
+  };
+
+  const handleReceivePayment = () => {
+    if (!selectedSale || !selectedPaymentMethod) return;
+    receivePaymentMutation.mutate({
+      saleId: selectedSale.id,
+      paymentMethod: selectedPaymentMethod,
+    });
   };
 
   const handlePrint = () => {
@@ -218,30 +284,30 @@ export default function VendasPage() {
               <DollarSign className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] sm:text-xs text-gray-500">Valor</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">Recebido</p>
               <p className="text-sm sm:text-lg font-bold text-green-600 truncate">{formatCurrency(stats.totalValue)}</p>
             </div>
           </div>
         </div>
         <div className="bg-white rounded-xl shadow-sm p-3 border border-gray-100">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 sm:p-2 bg-purple-50 rounded-lg">
-              <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600" />
+            <div className="p-1.5 sm:p-2 bg-yellow-50 rounded-lg">
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-600" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] sm:text-xs text-gray-500">Concluídas</p>
-              <p className="text-base sm:text-lg font-bold">{stats.completed}</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">Pendentes</p>
+              <p className="text-base sm:text-lg font-bold text-yellow-600">{stats.pending}</p>
             </div>
           </div>
         </div>
         <div className="bg-white rounded-xl shadow-sm p-3 border border-gray-100">
           <div className="flex items-center gap-2">
             <div className="p-1.5 sm:p-2 bg-orange-50 rounded-lg">
-              <Package className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
+              <Banknote className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
             </div>
             <div className="min-w-0">
-              <p className="text-[10px] sm:text-xs text-gray-500">Itens</p>
-              <p className="text-base sm:text-lg font-bold">{stats.totalItems}</p>
+              <p className="text-[10px] sm:text-xs text-gray-500">A receber</p>
+              <p className="text-sm sm:text-lg font-bold text-orange-600 truncate">{formatCurrency(stats.pendingValue)}</p>
             </div>
           </div>
         </div>
@@ -331,6 +397,7 @@ export default function VendasPage() {
                 <option value="credit_card">Crédito</option>
                 <option value="debit_card">Débito</option>
                 <option value="pix">PIX</option>
+                <option value="pay_later">Receber Depois</option>
               </select>
             </div>
             {hasActiveFilters && (
@@ -378,6 +445,7 @@ export default function VendasPage() {
               ) : (
                 sales.map((sale) => {
                   const statusInfo = getStatusLabel(sale.status);
+                  const isPending = sale.status === 'pending';
                   return (
                     <tr key={sale.id} className="hover:bg-gray-50">
                       <td className="px-3 py-3">
@@ -402,6 +470,15 @@ export default function VendasPage() {
                       </td>
                       <td className="px-3 py-3">
                         <div className="flex items-center justify-center gap-1">
+                          {isPending && (
+                            <button
+                              onClick={() => openPaymentModal(sale)}
+                              className="p-1.5 text-white bg-green-600 hover:bg-green-700 rounded-lg"
+                              title="Receber Pagamento"
+                            >
+                              <DollarSign className="w-4 h-4" />
+                            </button>
+                          )}
                           <button onClick={() => openReceipt(sale)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg" title="Ver">
                             <Eye className="w-4 h-4" />
                           </button>
@@ -432,10 +509,11 @@ export default function VendasPage() {
           ) : (
             sales.map((sale) => {
               const statusInfo = getStatusLabel(sale.status);
+              const isPending = sale.status === 'pending';
               return (
-                <div key={sale.id} className="p-3 hover:bg-gray-50 active:bg-gray-100" onClick={() => openReceipt(sale)}>
+                <div key={sale.id} className="p-3 hover:bg-gray-50">
                   <div className="flex items-start justify-between gap-2 mb-1.5">
-                    <div className="min-w-0">
+                    <div className="min-w-0" onClick={() => openReceipt(sale)}>
                       <p className="font-mono text-sm font-bold text-gray-900">{sale.receipt_number}</p>
                       <p className="text-[10px] text-gray-500">{formatDateTime(sale.created_at)}</p>
                     </div>
@@ -444,7 +522,7 @@ export default function VendasPage() {
                     </span>
                   </div>
                   <div className="flex items-center justify-between gap-2">
-                    <div className="flex items-center gap-1 min-w-0">
+                    <div className="flex items-center gap-1 min-w-0" onClick={() => openReceipt(sale)}>
                       <User className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
                       <span className={`text-xs truncate ${sale.customer_name ? 'text-gray-700' : 'text-gray-400 italic'}`}>
                         {sale.customer_name || 'Balcão'}
@@ -452,9 +530,21 @@ export default function VendasPage() {
                     </div>
                     <p className="text-base font-bold text-green-600 flex-shrink-0">{formatCurrency(sale.total)}</p>
                   </div>
-                  <div className="flex items-center justify-between mt-1.5 text-[10px] text-gray-500">
-                    <span>{getPaymentMethodLabel(sale.payment_method)}</span>
-                    <span>{sale.items?.length || 0} {(sale.items?.length || 0) === 1 ? 'item' : 'itens'}</span>
+                  <div className="flex items-center justify-between mt-1.5">
+                    <div className="text-[10px] text-gray-500" onClick={() => openReceipt(sale)}>
+                      <span>{getPaymentMethodLabel(sale.payment_method)}</span>
+                      <span className="mx-1">•</span>
+                      <span>{sale.items?.length || 0} {(sale.items?.length || 0) === 1 ? 'item' : 'itens'}</span>
+                    </div>
+                    {isPending && (
+                      <button
+                        onClick={() => openPaymentModal(sale)}
+                        className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg"
+                      >
+                        <DollarSign className="w-3 h-3" />
+                        Receber
+                      </button>
+                    )}
                   </div>
                 </div>
               );
@@ -513,6 +603,7 @@ export default function VendasPage() {
                 <p><strong>Data:</strong> {formatDateTime(selectedSale.created_at)}</p>
                 <p><strong>Cliente:</strong> {selectedSale.customer_name || 'Balcão'}</p>
                 <p><strong>Pagamento:</strong> {getPaymentMethodLabel(selectedSale.payment_method)}</p>
+                <p><strong>Status:</strong> {getStatusLabel(selectedSale.status).label}</p>
               </div>
 
               <div className="border-t border-dashed border-gray-300 my-3" />
@@ -554,12 +645,124 @@ export default function VendasPage() {
             </div>
 
             <div className="flex gap-2 p-3 border-t bg-gray-50 flex-shrink-0">
+              {selectedSale.status === 'pending' && (
+                <button
+                  onClick={() => {
+                    closeReceipt();
+                    openPaymentModal(selectedSale);
+                  }}
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-green-600 text-white rounded-xl font-medium"
+                >
+                  <DollarSign className="w-4 h-4" />
+                  Receber
+                </button>
+              )}
               <button onClick={handlePrint} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-blue-600 text-white rounded-xl font-medium">
                 <Printer className="w-4 h-4" />
                 Imprimir
               </button>
               <button onClick={closeReceipt} className="flex-1 py-2.5 bg-gray-200 text-gray-700 rounded-xl font-medium">
                 Fechar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Payment Modal */}
+      {showPaymentModal && selectedSale && (
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+          <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+              <h2 className="text-lg font-semibold">Receber Pagamento</h2>
+              <button onClick={closePaymentModal} className="p-2 hover:bg-gray-100 rounded-full">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              {/* Info da Venda */}
+              <div className="p-3 bg-gray-50 rounded-lg">
+                <p className="text-sm text-gray-600">Recibo: <strong>{selectedSale.receipt_number}</strong></p>
+                <p className="text-sm text-gray-600">Cliente: <strong>{selectedSale.customer_name || 'Balcão'}</strong></p>
+              </div>
+
+              {/* Valor Total */}
+              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
+                <p className="text-sm text-gray-500">Valor a receber</p>
+                <p className="text-3xl font-bold text-blue-600">{formatCurrency(selectedSale.total)}</p>
+              </div>
+
+              {/* Formas de Pagamento */}
+              <div>
+                <p className="text-sm font-medium text-gray-700 mb-2">Forma de pagamento recebido:</p>
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => setSelectedPaymentMethod('cash')}
+                    className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all ${
+                      selectedPaymentMethod === 'cash'
+                        ? 'border-blue-500 bg-blue-50 text-blue-600'
+                        : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <Banknote className="h-5 w-5 mb-1" />
+                    <span className="text-xs">Dinheiro</span>
+                  </button>
+                  <button
+                    onClick={() => setSelectedPaymentMethod('credit_card')}
+                    className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all ${
+                      selectedPaymentMethod === 'credit_card'
+                        ? 'border-blue-500 bg-blue-50 text-blue-600'
+                        : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <CreditCard className="h-5 w-5 mb-1" />
+                    <span className="text-xs">Crédito</span>
+                  </button>
+                  <button
+                    onClick={() => setSelectedPaymentMethod('debit_card')}
+                    className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all ${
+                      selectedPaymentMethod === 'debit_card'
+                        ? 'border-blue-500 bg-blue-50 text-blue-600'
+                        : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <CreditCard className="h-5 w-5 mb-1" />
+                    <span className="text-xs">Débito</span>
+                  </button>
+                  <button
+                    onClick={() => setSelectedPaymentMethod('pix')}
+                    className={`flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all ${
+                      selectedPaymentMethod === 'pix'
+                        ? 'border-blue-500 bg-blue-50 text-blue-600'
+                        : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+                    }`}
+                  >
+                    <Smartphone className="h-5 w-5 mb-1" />
+                    <span className="text-xs">PIX</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
+              <button
+                onClick={closePaymentModal}
+                className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleReceivePayment}
+                disabled={!selectedPaymentMethod || receivePaymentMutation.isPending}
+                className="flex-1 py-3 bg-green-600 text-white rounded-xl font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {receivePaymentMutation.isPending ? (
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                ) : (
+                  <Check className="h-4 w-4" />
+                )}
+                Confirmar
               </button>
             </div>
           </div>

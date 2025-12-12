@@ -22,6 +22,7 @@ import {
   Check,
   Printer,
   ShoppingBag,
+  Clock,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -447,8 +448,11 @@ export default function PDVPage() {
   const products = productsData?.data || [];
   const categories = categoriesData?.data || [];
 
+  // Calcula o padding left baseado no estado do sidebar (se colapsado = 80px, se expandido = 256px)
+  // Por enquanto usa 64 que é o tamanho do sidebar colapsado como padrão seguro
+
   return (
-    <div className="fixed inset-0 top-14 lg:top-0 lg:left-64 flex flex-col lg:flex-row overflow-hidden bg-gray-100">
+    <div className="fixed inset-0 top-14 lg:top-16 lg:left-20 xl:left-64 flex flex-col lg:flex-row overflow-hidden bg-gray-100">
       {/* Área de Produtos */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Barra de Busca */}
@@ -680,7 +684,17 @@ export default function PDVPage() {
                 <PaymentMethodButton method="credit_card" label="Crédito" icon={CreditCard} selected={paymentMethod === 'credit_card'} onClick={setPaymentMethod} />
                 <PaymentMethodButton method="debit_card" label="Débito" icon={CreditCard} selected={paymentMethod === 'debit_card'} onClick={setPaymentMethod} />
                 <PaymentMethodButton method="pix" label="PIX" icon={Smartphone} selected={paymentMethod === 'pix'} onClick={setPaymentMethod} />
+                <PaymentMethodButton method="pay_later" label="Receber Depois" icon={Clock} selected={paymentMethod === 'pay_later'} onClick={setPaymentMethod} />
               </div>
+
+              {paymentMethod === 'pay_later' && (
+                <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+                  <p className="text-sm text-yellow-800">
+                    <strong>Atenção:</strong> A venda ficará com status "Pendente" até o pagamento ser recebido.
+                    Você poderá registrar o pagamento na tela de Vendas.
+                  </p>
+                </div>
+              )}
 
               {paymentMethod === 'cash' && (
                 <div className="space-y-2">

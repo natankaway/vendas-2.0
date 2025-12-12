@@ -63,6 +63,7 @@ export type PaymentMethod =
   | 'pix'
   | 'bank_transfer'
   | 'store_credit'
+  | 'pay_later'
   | 'other';
 
 interface CartState {

@@ -284,6 +284,8 @@ export async function POST(request: NextRequest) {
     const receiptNumber = generateReceiptNumber();
 
     // Cria a venda
+    // Se for "Receber Depois", status é pending, senão é completed
+    const isPending = payment_method === 'pay_later';
     const now = new Date().toISOString();
     const { error: saleError } = await supabase
       .from('sales')
@@ -292,7 +294,7 @@ export async function POST(request: NextRequest) {
         receipt_number: receiptNumber,
         customer_id: customer_id || null,
         user_id,
-        status: 'completed',
+        status: isPending ? 'pending' : 'completed',
         subtotal,
         discount_amount: discount || 0,
         discount_percent: 0,
@@ -300,7 +302,7 @@ export async function POST(request: NextRequest) {
         total,
         payment_method,
         notes: notes || null,
-        completed_at: now,
+        completed_at: isPending ? null : now,
         created_at: now,
         updated_at: now,
       });

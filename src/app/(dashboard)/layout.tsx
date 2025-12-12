@@ -29,6 +29,7 @@ import {
   Receipt,
   PanelLeftClose,
   PanelLeft,
+  FolderTree,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuthStore } from '@/lib/stores/auth-store';
@@ -56,6 +57,12 @@ const navLinks = [
     href: '/produtos',
     label: 'Produtos',
     icon: Package,
+    permissions: ['products'],
+  },
+  {
+    href: '/categorias',
+    label: 'Categorias',
+    icon: FolderTree,
     permissions: ['products'],
   },
   {
