@@ -2,7 +2,6 @@
  * Página do PDV (Ponto de Venda)
  *
  * Esta é a interface principal de vendas do sistema.
- * Funciona 100% offline e sincroniza quando há conexão.
  * Layout totalmente responsivo para desktop, tablet e mobile.
  */
 
@@ -44,9 +43,6 @@ import type { Product, Customer } from '@/lib/types';
 // COMPONENTES AUXILIARES
 // =============================================================================
 
-/**
- * Card de produto no grid
- */
 function ProductCard({
   product,
   onAdd,
@@ -62,7 +58,7 @@ function ProductCard({
       onClick={() => !isOutOfStock && onAdd(product)}
       disabled={isOutOfStock}
       className={cn(
-        'flex flex-col items-center p-3 sm:p-4 bg-white rounded-xl border-2 border-transparent hover:border-blue-200 hover:shadow-md transition-all',
+        'flex flex-col items-center p-2 sm:p-3 bg-white rounded-lg border border-gray-100 hover:border-blue-200 hover:shadow-sm transition-all',
         isOutOfStock && 'opacity-50 cursor-not-allowed'
       )}
     >
@@ -70,44 +66,39 @@ function ProductCard({
         <img
           src={product.image_url}
           alt={product.name}
-          className="w-12 h-12 sm:w-16 sm:h-16 object-cover rounded-lg mb-2"
+          className="w-10 h-10 sm:w-14 sm:h-14 object-cover rounded-lg mb-1"
         />
       ) : (
-        <div className="w-12 h-12 sm:w-16 sm:h-16 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg mb-2 flex items-center justify-center text-xl sm:text-2xl font-bold text-blue-600">
+        <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-br from-blue-100 to-purple-100 rounded-lg mb-1 flex items-center justify-center text-base sm:text-xl font-bold text-blue-600">
           {product.name.charAt(0).toUpperCase()}
         </div>
       )}
 
-      <span className="text-xs sm:text-sm font-medium text-center truncate w-full text-gray-700">
+      <span className="text-[10px] sm:text-xs font-medium text-center line-clamp-2 w-full text-gray-700 leading-tight">
         {product.name}
       </span>
-      <span className="text-sm sm:text-lg font-bold text-blue-600">
+      <span className="text-xs sm:text-sm font-bold text-blue-600 mt-0.5">
         {formatCurrency(product.price)}
       </span>
 
       {isLowStock && !isOutOfStock && (
-        <span className="text-[10px] sm:text-xs text-orange-500 font-medium">Estoque baixo</span>
+        <span className="text-[8px] sm:text-[10px] text-orange-500 font-medium">Baixo</span>
       )}
       {isOutOfStock && (
-        <span className="text-[10px] sm:text-xs text-red-500 font-medium">Sem estoque</span>
+        <span className="text-[8px] sm:text-[10px] text-red-500 font-medium">Esgotado</span>
       )}
     </button>
   );
 }
 
-/**
- * Item no carrinho
- */
 function CartItemRow({
   item,
   onUpdateQuantity,
   onRemove,
-  compact = false,
 }: {
   item: any;
   onUpdateQuantity: (id: string, qty: number) => void;
   onRemove: (id: string) => void;
-  compact?: boolean;
 }) {
   const [inputValue, setInputValue] = useState(String(item.quantity));
 
@@ -131,91 +122,53 @@ function CartItemRow({
     }
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === 'Enter') {
-      e.currentTarget.blur();
-    }
-  };
-
-  if (compact) {
-    return (
-      <div className="flex items-center gap-2 p-2 bg-gray-50 rounded-lg">
-        <div className="flex-1 min-w-0">
-          <p className="text-sm font-medium truncate">{item.product.name}</p>
-          <p className="text-xs text-gray-500">
-            {formatCurrency(item.unitPrice)} x {item.quantity}
-          </p>
-        </div>
-        <span className="font-bold text-sm text-blue-600">{formatCurrency(item.total)}</span>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-7 w-7 text-red-500"
-          onClick={() => onRemove(item.id)}
-        >
-          <X className="h-4 w-4" />
-        </Button>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex items-center gap-2 p-3 border-b last:border-0">
+    <div className="flex items-center gap-2 p-2 sm:p-3 border-b last:border-0">
       <div className="flex-1 min-w-0">
-        <p className="font-medium truncate text-sm sm:text-base">{item.product.name}</p>
-        <p className="text-xs sm:text-sm text-gray-500">
+        <p className="font-medium truncate text-sm">{item.product.name}</p>
+        <p className="text-xs text-gray-500">
           {formatCurrency(item.unitPrice)} x {item.quantity}
         </p>
       </div>
 
-      <div className="flex items-center gap-1">
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-7 w-7 sm:h-8 sm:w-8"
+      <div className="flex items-center gap-1 flex-shrink-0">
+        <button
+          className="w-7 h-7 flex items-center justify-center border rounded-md hover:bg-gray-50"
           onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
         >
           <Minus className="h-3 w-3" />
-        </Button>
+        </button>
         <input
           type="text"
           inputMode="numeric"
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
-          onKeyDown={handleKeyDown}
-          className="w-10 sm:w-12 h-7 sm:h-8 text-center text-sm font-medium border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-8 h-7 text-center text-sm font-medium border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
         />
-        <Button
-          variant="outline"
-          size="icon"
-          className="h-7 w-7 sm:h-8 sm:w-8"
+        <button
+          className="w-7 h-7 flex items-center justify-center border rounded-md hover:bg-gray-50"
           onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
         >
           <Plus className="h-3 w-3" />
-        </Button>
+        </button>
       </div>
 
-      <div className="flex items-center gap-1 sm:gap-2 ml-1 sm:ml-2">
-        <span className="font-bold text-sm sm:text-base tabular-nums text-right min-w-[70px] sm:min-w-[90px]">
+      <div className="flex items-center gap-1 flex-shrink-0">
+        <span className="font-bold text-sm tabular-nums w-16 text-right">
           {formatCurrency(item.total)}
         </span>
-        <Button
-          variant="ghost"
-          size="icon"
-          className="h-7 w-7 sm:h-8 sm:w-8 text-red-500"
+        <button
+          className="w-7 h-7 flex items-center justify-center text-red-500 hover:bg-red-50 rounded-md"
           onClick={() => onRemove(item.id)}
         >
           <Trash2 className="h-4 w-4" />
-        </Button>
+        </button>
       </div>
     </div>
   );
 }
 
-/**
- * Botão de forma de pagamento
- */
 function PaymentMethodButton({
   method,
   label,
@@ -233,14 +186,14 @@ function PaymentMethodButton({
     <button
       onClick={() => onClick(method)}
       className={cn(
-        'flex flex-col items-center justify-center p-3 sm:p-4 rounded-xl border-2 transition-all',
+        'flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all',
         selected
           ? 'border-blue-500 bg-blue-50 text-blue-600'
           : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
       )}
     >
-      <Icon className={cn('h-5 w-5 sm:h-6 sm:w-6 mb-1', selected && 'text-blue-600')} />
-      <span className={cn('text-xs sm:text-sm', selected && 'font-medium')}>{label}</span>
+      <Icon className={cn('h-5 w-5 mb-1', selected && 'text-blue-600')} />
+      <span className={cn('text-xs', selected && 'font-medium')}>{label}</span>
     </button>
   );
 }
@@ -254,7 +207,6 @@ export default function PDVPage() {
   const { user } = useAuthStore();
   const searchInputRef = useRef<HTMLInputElement>(null);
 
-  // Estado local
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [showPaymentDialog, setShowPaymentDialog] = useState(false);
@@ -265,7 +217,6 @@ export default function PDVPage() {
   const [lastSale, setLastSale] = useState<any>(null);
   const [cashReceived, setCashReceived] = useState('');
 
-  // Store do carrinho
   const {
     items,
     customer,
@@ -282,7 +233,6 @@ export default function PDVPage() {
     clearCart,
   } = useCartStore();
 
-  // Busca produtos da API
   const { data: productsData, isLoading: loadingProducts } = useQuery({
     queryKey: ['products', 'pdv', searchQuery, selectedCategory],
     queryFn: async () => {
@@ -298,7 +248,6 @@ export default function PDVPage() {
     staleTime: 1000 * 60,
   });
 
-  // Busca categorias
   const { data: categoriesData } = useQuery({
     queryKey: ['categories'],
     queryFn: async () => {
@@ -309,7 +258,6 @@ export default function PDVPage() {
     staleTime: 1000 * 60 * 5,
   });
 
-  // Busca clientes
   const { data: customersData, isLoading: loadingCustomers } = useQuery({
     queryKey: ['customers', 'pdv', customerSearch],
     queryFn: async () => {
@@ -324,7 +272,6 @@ export default function PDVPage() {
     staleTime: 1000 * 30,
   });
 
-  // Mutation para criar venda
   const createSaleMutation = useMutation({
     mutationFn: async (saleData: any) => {
       const response = await fetch('/api/vendas', {
@@ -369,7 +316,6 @@ export default function PDVPage() {
     },
   });
 
-  // Handler de busca com debounce
   const handleSearch = useCallback(
     debounce((value: string) => {
       setSearchQuery(value);
@@ -377,7 +323,6 @@ export default function PDVPage() {
     []
   );
 
-  // Handler para adicionar produto por código de barras
   const handleBarcodeSearch = useCallback(
     async (code: string) => {
       const product = productsData?.data?.find(
@@ -386,10 +331,7 @@ export default function PDVPage() {
 
       if (product) {
         addItem(product, 1);
-        toast({
-          title: 'Produto adicionado',
-          description: product.name,
-        });
+        toast({ title: 'Produto adicionado', description: product.name });
       } else {
         toast({
           title: 'Produto não encontrado',
@@ -401,7 +343,6 @@ export default function PDVPage() {
     [productsData, addItem]
   );
 
-  // Handler para finalizar venda
   const handleFinalizeSale = () => {
     if (items.length === 0) {
       toast({
@@ -459,14 +400,12 @@ export default function PDVPage() {
     createSaleMutation.mutate(saleData);
   };
 
-  // Foco automático no campo de busca (apenas desktop)
   useEffect(() => {
     if (window.innerWidth >= 1024) {
       searchInputRef.current?.focus();
     }
   }, []);
 
-  // Listener para leitor de código de barras
   useEffect(() => {
     let barcodeBuffer = '';
     let barcodeTimeout: NodeJS.Timeout;
@@ -509,51 +448,56 @@ export default function PDVPage() {
   const categories = categoriesData?.data || [];
 
   return (
-    <div className="h-[calc(100vh-8rem)] sm:h-[calc(100vh-7rem)] -m-4 lg:-m-6 flex flex-col lg:flex-row overflow-hidden">
+    <div className="fixed inset-0 top-14 lg:top-0 lg:left-64 flex flex-col lg:flex-row overflow-hidden bg-gray-100">
       {/* Área de Produtos */}
-      <div className="flex-1 flex flex-col overflow-hidden bg-gray-50">
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Barra de Busca */}
-        <div className="p-3 sm:p-4 bg-white border-b shadow-sm">
-          <div className="flex gap-2 sm:gap-4">
-            <div className="flex-1">
-              <Input
-                ref={searchInputRef}
-                placeholder="Buscar produto..."
-                leftIcon={<Search className="h-4 w-4" />}
-                onChange={(e) => handleSearch(e.target.value)}
-                className="text-base"
-              />
-            </div>
+        <div className="p-2 sm:p-3 bg-white border-b shadow-sm flex-shrink-0">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+            <input
+              ref={searchInputRef}
+              type="text"
+              placeholder="Buscar produto..."
+              onChange={(e) => handleSearch(e.target.value)}
+              className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
           </div>
 
           {/* Categorias */}
           {categories.length > 0 && (
-            <div className="flex gap-2 mt-3 overflow-x-auto pb-1 scrollbar-thin">
-              <Button
-                variant={selectedCategory === null ? 'default' : 'outline'}
-                size="sm"
+            <div className="flex gap-2 mt-2 overflow-x-auto pb-1 -mx-2 px-2">
+              <button
                 onClick={() => setSelectedCategory(null)}
-                className="flex-shrink-0"
+                className={cn(
+                  'px-3 py-1.5 text-xs font-medium rounded-full whitespace-nowrap transition-colors',
+                  selectedCategory === null
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                )}
               >
                 Todos
-              </Button>
+              </button>
               {categories.map((cat: any) => (
-                <Button
+                <button
                   key={cat.id}
-                  variant={selectedCategory === cat.id ? 'default' : 'outline'}
-                  size="sm"
                   onClick={() => setSelectedCategory(cat.id)}
-                  className="flex-shrink-0"
+                  className={cn(
+                    'px-3 py-1.5 text-xs font-medium rounded-full whitespace-nowrap transition-colors',
+                    selectedCategory === cat.id
+                      ? 'bg-blue-600 text-white'
+                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                  )}
                 >
                   {cat.name}
-                </Button>
+                </button>
               ))}
             </div>
           )}
         </div>
 
         {/* Grid de Produtos */}
-        <div className="flex-1 overflow-y-auto p-3 sm:p-4">
+        <div className="flex-1 overflow-y-auto p-2 sm:p-3">
           {loadingProducts ? (
             <div className="flex items-center justify-center h-full">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
@@ -564,7 +508,7 @@ export default function PDVPage() {
               <p>Nenhum produto encontrado</p>
             </div>
           ) : (
-            <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2 sm:gap-3">
+            <div className="grid grid-cols-3 xs:grid-cols-4 sm:grid-cols-5 md:grid-cols-6 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-2">
               {products.map((product: Product) => (
                 <ProductCard
                   key={product.id}
@@ -583,7 +527,7 @@ export default function PDVPage() {
             className="relative flex items-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 transition-all"
           >
             <ShoppingBag className="h-5 w-5" />
-            <span className="font-bold">{formatCurrency(total)}</span>
+            <span className="font-bold text-sm">{formatCurrency(total)}</span>
             {itemCount > 0 && (
               <span className="absolute -top-2 -right-2 w-6 h-6 bg-red-500 text-white text-xs font-bold rounded-full flex items-center justify-center">
                 {itemCount}
@@ -594,7 +538,7 @@ export default function PDVPage() {
       </div>
 
       {/* Carrinho - Desktop */}
-      <div className="hidden lg:flex w-80 xl:w-96 flex-col bg-white border-l shadow-lg">
+      <div className="hidden lg:flex w-80 flex-col bg-white border-l shadow-lg flex-shrink-0">
         <CartContent
           items={items}
           customer={customer}
@@ -614,16 +558,13 @@ export default function PDVPage() {
       {/* Carrinho Drawer - Mobile */}
       {showCartDrawer && (
         <div className="lg:hidden fixed inset-0 z-50">
-          <div
-            className="absolute inset-0 bg-black/50"
-            onClick={() => setShowCartDrawer(false)}
-          />
-          <div className="absolute inset-y-0 right-0 w-full sm:w-96 bg-white shadow-xl flex flex-col">
-            <div className="flex items-center justify-between p-4 border-b">
+          <div className="absolute inset-0 bg-black/50" onClick={() => setShowCartDrawer(false)} />
+          <div className="absolute inset-y-0 right-0 w-full max-w-sm bg-white shadow-xl flex flex-col">
+            <div className="flex items-center justify-between p-3 border-b flex-shrink-0">
               <h2 className="text-lg font-semibold">Carrinho</h2>
-              <Button variant="ghost" size="icon" onClick={() => setShowCartDrawer(false)}>
+              <button onClick={() => setShowCartDrawer(false)} className="p-2 hover:bg-gray-100 rounded-full">
                 <X className="h-5 w-5" />
-              </Button>
+              </button>
             </div>
             <CartContent
               items={items}
@@ -647,161 +588,153 @@ export default function PDVPage() {
       )}
 
       {/* Dialog de Pagamento */}
-      <Dialog open={showPaymentDialog} onOpenChange={setShowPaymentDialog}>
-        <DialogContent className="max-w-md mx-4">
-          <DialogHeader>
-            <DialogTitle>Forma de Pagamento</DialogTitle>
-          </DialogHeader>
-
-          <div className="space-y-4">
-            <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
-              <p className="text-sm text-gray-500">Total a pagar</p>
-              <p className="text-3xl font-bold text-blue-600">{formatCurrency(total)}</p>
+      {showPaymentDialog && (
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+          <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+              <h2 className="text-lg font-semibold">Forma de Pagamento</h2>
+              <button onClick={() => setShowPaymentDialog(false)} className="p-2 hover:bg-gray-100 rounded-full">
+                <X className="h-5 w-5" />
+              </button>
             </div>
 
-            <div className="grid grid-cols-2 gap-2 sm:gap-3">
-              <PaymentMethodButton
-                method="cash"
-                label="Dinheiro"
-                icon={Banknote}
-                selected={paymentMethod === 'cash'}
-                onClick={setPaymentMethod}
-              />
-              <PaymentMethodButton
-                method="credit_card"
-                label="Crédito"
-                icon={CreditCard}
-                selected={paymentMethod === 'credit_card'}
-                onClick={setPaymentMethod}
-              />
-              <PaymentMethodButton
-                method="debit_card"
-                label="Débito"
-                icon={CreditCard}
-                selected={paymentMethod === 'debit_card'}
-                onClick={setPaymentMethod}
-              />
-              <PaymentMethodButton
-                method="pix"
-                label="PIX"
-                icon={Smartphone}
-                selected={paymentMethod === 'pix'}
-                onClick={setPaymentMethod}
-              />
-            </div>
-
-            {paymentMethod === 'cash' && (
-              <div className="space-y-2">
-                <Label>Valor Recebido</Label>
-                <Input
-                  type="text"
-                  placeholder="0,00"
-                  value={cashReceived}
-                  onChange={(e) => setCashReceived(e.target.value)}
-                  className="text-right text-lg"
-                />
-                {cashReceived && (
-                  <div className="flex justify-between text-sm p-2 bg-green-50 rounded-lg">
-                    <span className="text-green-700">Troco:</span>
-                    <span className="font-bold text-green-700">
-                      {formatCurrency(
-                        Math.max(0, parseFloat(cashReceived.replace(',', '.')) * 100 - total)
-                      )}
-                    </span>
-                  </div>
-                )}
+            <div className="flex-1 overflow-y-auto p-4 space-y-4">
+              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
+                <p className="text-sm text-gray-500">Total a pagar</p>
+                <p className="text-3xl font-bold text-blue-600">{formatCurrency(total)}</p>
               </div>
-            )}
-          </div>
 
-          <DialogFooter className="flex-col sm:flex-row gap-2">
-            <Button variant="outline" onClick={() => setShowPaymentDialog(false)} className="w-full sm:w-auto">
-              Cancelar
-            </Button>
-            <Button
-              onClick={handleFinalizeSale}
-              disabled={!paymentMethod || createSaleMutation.isPending}
-              className="w-full sm:w-auto"
-            >
-              {createSaleMutation.isPending ? (
-                <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2" />
-              ) : (
-                <Check className="h-4 w-4 mr-2" />
+              <div className="grid grid-cols-2 gap-2">
+                <PaymentMethodButton method="cash" label="Dinheiro" icon={Banknote} selected={paymentMethod === 'cash'} onClick={setPaymentMethod} />
+                <PaymentMethodButton method="credit_card" label="Crédito" icon={CreditCard} selected={paymentMethod === 'credit_card'} onClick={setPaymentMethod} />
+                <PaymentMethodButton method="debit_card" label="Débito" icon={CreditCard} selected={paymentMethod === 'debit_card'} onClick={setPaymentMethod} />
+                <PaymentMethodButton method="pix" label="PIX" icon={Smartphone} selected={paymentMethod === 'pix'} onClick={setPaymentMethod} />
+              </div>
+
+              {paymentMethod === 'cash' && (
+                <div className="space-y-2">
+                  <label className="block text-sm font-medium text-gray-700">Valor Recebido</label>
+                  <input
+                    type="text"
+                    inputMode="decimal"
+                    placeholder="0,00"
+                    value={cashReceived}
+                    onChange={(e) => setCashReceived(e.target.value)}
+                    className="w-full px-3 py-2 text-right text-lg border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  />
+                  {cashReceived && (
+                    <div className="flex justify-between text-sm p-2 bg-green-50 rounded-lg">
+                      <span className="text-green-700">Troco:</span>
+                      <span className="font-bold text-green-700">
+                        {formatCurrency(Math.max(0, parseFloat(cashReceived.replace(',', '.')) * 100 - total))}
+                      </span>
+                    </div>
+                  )}
+                </div>
               )}
-              Confirmar
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+            </div>
+
+            <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
+              <button onClick={() => setShowPaymentDialog(false)} className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium">
+                Cancelar
+              </button>
+              <button
+                onClick={handleFinalizeSale}
+                disabled={!paymentMethod || createSaleMutation.isPending}
+                className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-medium disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {createSaleMutation.isPending ? (
+                  <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white" />
+                ) : (
+                  <Check className="h-4 w-4" />
+                )}
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Dialog do Recibo */}
-      <Dialog open={showReceiptDialog} onOpenChange={setShowReceiptDialog}>
-        <DialogContent className="max-w-sm mx-4">
-          <DialogHeader>
-            <DialogTitle className="text-center text-green-600">Venda Realizada!</DialogTitle>
-          </DialogHeader>
+      {showReceiptDialog && lastSale && (
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+          <div className="bg-white w-full max-w-sm sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+              <h2 className="text-lg font-semibold text-green-600">Venda Realizada!</h2>
+              <button onClick={() => setShowReceiptDialog(false)} className="p-2 hover:bg-gray-100 rounded-full">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
 
-          {lastSale && (
-            <div className="bg-white border rounded-lg p-4 font-mono text-sm">
-              <div className="text-center border-b pb-3 mb-3">
+            <div className="flex-1 overflow-y-auto p-4 font-mono text-sm">
+              <div className="text-center mb-4">
                 <h3 className="font-bold text-lg">VENDAS PDV</h3>
-                <p className="text-[10px] text-gray-500">CUPOM NÃO FISCAL</p>
-                <p className="text-xs mt-2">
-                  {new Date(lastSale.created_at).toLocaleString('pt-BR')}
-                </p>
+                <p className="text-[10px] text-gray-400">CUPOM NÃO FISCAL</p>
+                <p className="text-xs mt-2">{new Date(lastSale.created_at).toLocaleString('pt-BR')}</p>
                 <p className="text-xs font-medium">Recibo: {lastSale.receipt_number}</p>
               </div>
 
-              <div className="space-y-1 border-b pb-3 mb-3">
+              <div className="border-t border-dashed border-gray-300 my-4" />
+
+              <div className="space-y-1">
                 {lastSale.items?.map((item: any) => (
                   <div key={item.id} className="flex justify-between text-xs">
-                    <span className="truncate flex-1 mr-2">
-                      {item.quantity}x {item.product_name}
-                    </span>
+                    <span className="truncate flex-1 mr-2">{item.quantity}x {item.product_name}</span>
                     <span className="tabular-nums">{formatCurrency(item.total)}</span>
                   </div>
                 ))}
               </div>
+
+              <div className="border-t border-dashed border-gray-300 my-4" />
 
               <div className="flex justify-between font-bold text-base">
                 <span>TOTAL</span>
                 <span>{formatCurrency(lastSale.total)}</span>
               </div>
 
-              <div className="text-center text-xs text-gray-500 mt-3 pt-3 border-t">
+              <div className="text-center text-xs text-gray-400 mt-4 pt-4 border-t border-dashed">
                 <p>Obrigado pela preferência!</p>
               </div>
             </div>
-          )}
 
-          <DialogFooter className="flex-col gap-2">
-            <Button className="w-full" onClick={() => window.print()}>
-              <Printer className="h-4 w-4 mr-2" />
-              Imprimir
-            </Button>
-            <Button variant="outline" className="w-full" onClick={() => setShowReceiptDialog(false)}>
-              Nova Venda
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+            <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
+              <button className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-medium flex items-center justify-center gap-2" onClick={() => window.print()}>
+                <Printer className="h-4 w-4" />
+                Imprimir
+              </button>
+              <button className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium" onClick={() => setShowReceiptDialog(false)}>
+                Nova Venda
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Dialog de Seleção de Cliente */}
-      <Dialog open={showCustomerDialog} onOpenChange={setShowCustomerDialog}>
-        <DialogContent className="max-w-md mx-4">
-          <DialogHeader>
-            <DialogTitle>Selecionar Cliente</DialogTitle>
-          </DialogHeader>
+      {showCustomerDialog && (
+        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
+          <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
+              <h2 className="text-lg font-semibold">Selecionar Cliente</h2>
+              <button onClick={() => { setShowCustomerDialog(false); setCustomerSearch(''); }} className="p-2 hover:bg-gray-100 rounded-full">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
 
-          <div className="space-y-4">
-            <Input
-              placeholder="Buscar por nome, telefone ou documento..."
-              leftIcon={<Search className="h-4 w-4" />}
-              value={customerSearch}
-              onChange={(e) => setCustomerSearch(e.target.value)}
-            />
+            <div className="p-4 border-b flex-shrink-0">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
+                <input
+                  type="text"
+                  placeholder="Buscar cliente..."
+                  value={customerSearch}
+                  onChange={(e) => setCustomerSearch(e.target.value)}
+                  className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+            </div>
 
-            <div className="max-h-64 overflow-y-auto space-y-2">
+            <div className="flex-1 overflow-y-auto p-4">
               {loadingCustomers ? (
                 <div className="flex items-center justify-center py-8">
                   <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
@@ -812,40 +745,28 @@ export default function PDVPage() {
                   <p>Nenhum cliente encontrado</p>
                 </div>
               ) : (
-                customersData?.data?.map((c: Customer) => (
-                  <button
-                    key={c.id}
-                    className="w-full p-3 text-left rounded-lg border hover:bg-gray-50 transition-colors"
-                    onClick={() => {
-                      setCustomer(c);
-                      setShowCustomerDialog(false);
-                      setCustomerSearch('');
-                      toast({ title: 'Cliente selecionado', description: c.name });
-                    }}
-                  >
-                    <p className="font-medium">{c.name}</p>
-                    <p className="text-sm text-gray-500">
-                      {c.phone || c.email || c.document || 'Sem contato'}
-                    </p>
-                  </button>
-                ))
+                <div className="space-y-2">
+                  {customersData?.data?.map((c: Customer) => (
+                    <button
+                      key={c.id}
+                      className="w-full p-3 text-left rounded-lg border hover:bg-gray-50 transition-colors"
+                      onClick={() => {
+                        setCustomer(c);
+                        setShowCustomerDialog(false);
+                        setCustomerSearch('');
+                        toast({ title: 'Cliente selecionado', description: c.name });
+                      }}
+                    >
+                      <p className="font-medium">{c.name}</p>
+                      <p className="text-sm text-gray-500">{c.phone || c.email || c.document || 'Sem contato'}</p>
+                    </button>
+                  ))}
+                </div>
               )}
             </div>
           </div>
-
-          <DialogFooter>
-            <Button
-              variant="outline"
-              onClick={() => {
-                setShowCustomerDialog(false);
-                setCustomerSearch('');
-              }}
-            >
-              Cancelar
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+        </div>
+      )}
     </div>
   );
 }
@@ -884,45 +805,44 @@ function CartContent({
   return (
     <>
       {/* Header do Carrinho */}
-      <div className="p-4 border-b">
+      <div className="p-3 border-b flex-shrink-0">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-semibold">Carrinho</h2>
+          <h2 className="font-semibold">Carrinho</h2>
           {itemCount > 0 && (
-            <Button variant="ghost" size="sm" className="text-red-500" onClick={onClearCart}>
-              <Trash2 className="h-4 w-4 mr-1" />
+            <button className="text-xs text-red-500 hover:text-red-600 flex items-center gap-1" onClick={onClearCart}>
+              <Trash2 className="h-3 w-3" />
               Limpar
-            </Button>
+            </button>
           )}
         </div>
 
         {/* Cliente */}
-        <div className="mt-3">
+        <div className="mt-2">
           {customer ? (
             <div className="flex items-center justify-between p-2 bg-blue-50 rounded-lg">
-              <div className="flex items-center">
-                <User className="h-4 w-4 mr-2 text-blue-600" />
-                <span className="text-sm font-medium text-blue-700">{customer.name}</span>
+              <div className="flex items-center min-w-0">
+                <User className="h-4 w-4 mr-2 text-blue-600 flex-shrink-0" />
+                <span className="text-sm font-medium text-blue-700 truncate">{customer.name}</span>
               </div>
-              <Button variant="ghost" size="icon" className="h-7 w-7" onClick={onRemoveCustomer}>
-                <X className="h-4 w-4" />
-              </Button>
+              <button className="p-1 hover:bg-blue-100 rounded flex-shrink-0" onClick={onRemoveCustomer}>
+                <X className="h-4 w-4 text-blue-600" />
+              </button>
             </div>
           ) : (
-            <Button variant="outline" className="w-full" onClick={onSelectCustomer}>
-              <User className="h-4 w-4 mr-2" />
+            <button className="w-full py-2 text-sm text-gray-600 border border-dashed rounded-lg hover:bg-gray-50 flex items-center justify-center gap-2" onClick={onSelectCustomer}>
+              <User className="h-4 w-4" />
               Selecionar Cliente
-            </Button>
+            </button>
           )}
         </div>
       </div>
 
       {/* Itens do Carrinho */}
-      <div className="flex-1 overflow-y-auto">
+      <div className="flex-1 overflow-y-auto min-h-0">
         {items.length === 0 ? (
           <div className="flex flex-col items-center justify-center h-full text-gray-400 p-4">
-            <ShoppingBag className="h-12 w-12 mb-4" />
-            <p>Carrinho vazio</p>
-            <p className="text-sm">Adicione produtos para começar</p>
+            <ShoppingBag className="h-10 w-10 mb-2" />
+            <p className="text-sm">Carrinho vazio</p>
           </div>
         ) : (
           items.map((item) => (
@@ -937,32 +857,31 @@ function CartContent({
       </div>
 
       {/* Totais */}
-      <div className="p-4 border-t bg-gray-50">
-        <div className="space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="text-gray-600">Subtotal ({itemCount} itens)</span>
+      <div className="p-3 border-t bg-gray-50 flex-shrink-0">
+        <div className="space-y-1 text-sm">
+          <div className="flex justify-between text-gray-600">
+            <span>Subtotal ({itemCount} itens)</span>
             <span>{formatCurrency(subtotal)}</span>
           </div>
           {discountTotal > 0 && (
-            <div className="flex justify-between text-sm text-green-600">
+            <div className="flex justify-between text-green-600">
               <span>Desconto</span>
               <span>-{formatCurrency(discountTotal)}</span>
             </div>
           )}
-          <div className="flex justify-between text-xl font-bold pt-2 border-t">
+          <div className="flex justify-between text-lg font-bold pt-2 border-t">
             <span>Total</span>
             <span className="text-blue-600">{formatCurrency(total)}</span>
           </div>
         </div>
 
-        <Button
-          className="w-full mt-4 h-12 text-base"
-          size="lg"
+        <button
+          className="w-full mt-3 py-3 bg-blue-600 text-white font-medium rounded-xl disabled:opacity-50 disabled:cursor-not-allowed"
           disabled={items.length === 0}
           onClick={onCheckout}
         >
           Finalizar Venda
-        </Button>
+        </button>
       </div>
     </>
   );
