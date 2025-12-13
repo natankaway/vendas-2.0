@@ -35,6 +35,7 @@ import {
   Sun,
   Wallet,
   FileText,
+  Boxes,
 } from 'lucide-react';
 import { useTheme } from '@/lib/contexts/theme-context';
 import { Button } from '@/components/ui/button';
@@ -43,6 +44,7 @@ import { useConnectionStore } from '@/lib/stores/connection-store';
 import { useSidebarStore } from '@/lib/stores/sidebar-store';
 import { authService } from '@/lib/services/auth-service';
 import { cn, formatRelativeTime } from '@/lib/utils';
+import { StockAlertsButton } from '@/components/stock-alerts';
 
 /**
  * Links de navegação
@@ -82,6 +84,12 @@ const navLinks = [
     href: '/categorias',
     label: 'Categorias',
     icon: FolderTree,
+    permissions: ['products'],
+  },
+  {
+    href: '/estoque',
+    label: 'Estoque',
+    icon: Boxes,
     permissions: ['products'],
   },
   {
@@ -411,6 +419,9 @@ export default function DashboardLayout({
           </div>
 
           <div className="flex items-center gap-2 sm:gap-4">
+            {/* Stock Alerts */}
+            <StockAlertsButton />
+
             {/* Dark Mode Toggle */}
             <Button
               variant="ghost"
