@@ -38,6 +38,7 @@ import { useTheme } from '@/lib/contexts/theme-context';
 import { Button } from '@/components/ui/button';
 import { useAuthStore } from '@/lib/stores/auth-store';
 import { useConnectionStore } from '@/lib/stores/connection-store';
+import { useSidebarStore } from '@/lib/stores/sidebar-store';
 import { authService } from '@/lib/services/auth-service';
 import { cn, formatRelativeTime } from '@/lib/utils';
 
@@ -111,27 +112,9 @@ export default function DashboardLayout({
   } = useConnectionStore();
   const { theme, toggleTheme } = useTheme();
 
-  // Estado do sidebar - carrega do localStorage
-  const [sidebarOpen, setSidebarOpen] = useState(false); // Mobile
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false); // Desktop
+  // Estado do sidebar - usa store global
+  const { isCollapsed: sidebarCollapsed, isMobileOpen: sidebarOpen, setCollapsed: setSidebarCollapsed, setMobileOpen: setSidebarOpen, toggleCollapsed } = useSidebarStore();
   const [userMenuOpen, setUserMenuOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  // Carrega estado do sidebar do localStorage
-  useEffect(() => {
-    setMounted(true);
-    const savedState = localStorage.getItem('sidebarCollapsed');
-    if (savedState !== null) {
-      setSidebarCollapsed(JSON.parse(savedState));
-    }
-  }, []);
-
-  // Salva estado do sidebar no localStorage
-  useEffect(() => {
-    if (mounted) {
-      localStorage.setItem('sidebarCollapsed', JSON.stringify(sidebarCollapsed));
-    }
-  }, [sidebarCollapsed, mounted]);
 
   // Fecha menu mobile ao mudar de rota
   useEffect(() => {
@@ -153,10 +136,6 @@ export default function DashboardLayout({
 
   const handleSync = async () => {
     console.log('Sincronização manual não necessária com Supabase');
-  };
-
-  const toggleSidebar = () => {
-    setSidebarCollapsed(!sidebarCollapsed);
   };
 
   // Filtra links baseado em permissões
@@ -198,7 +177,7 @@ export default function DashboardLayout({
 
         {/* Toggle Button */}
         <button
-          onClick={toggleSidebar}
+          onClick={toggleCollapsed}
           className="absolute -right-3 top-20 w-6 h-6 bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-full shadow-md flex items-center justify-center hover:bg-gray-50 dark:hover:bg-gray-600 transition-colors z-50"
           title={sidebarCollapsed ? 'Expandir menu' : 'Recolher menu'}
         >
@@ -400,7 +379,7 @@ export default function DashboardLayout({
               variant="ghost"
               size="icon"
               className="hidden lg:flex dark:text-gray-300 dark:hover:bg-gray-700"
-              onClick={toggleSidebar}
+              onClick={toggleCollapsed}
               title={sidebarCollapsed ? 'Expandir menu' : 'Recolher menu'}
             >
               {sidebarCollapsed ? (

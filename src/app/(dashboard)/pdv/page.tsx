@@ -37,6 +37,7 @@ import { Label } from '@/components/ui/label';
 import { toast } from '@/components/ui/use-toast';
 import { useCartStore, type PaymentMethod } from '@/lib/stores/cart-store';
 import { useAuthStore } from '@/lib/stores/auth-store';
+import { useSidebarStore } from '@/lib/stores/sidebar-store';
 import { formatCurrency, cn, debounce } from '@/lib/utils';
 import type { Product, Customer } from '@/lib/types';
 
@@ -59,7 +60,7 @@ function ProductCard({
       onClick={() => !isOutOfStock && onAdd(product)}
       disabled={isOutOfStock}
       className={cn(
-        'flex flex-col items-center p-2 sm:p-3 bg-white rounded-lg border border-gray-100 hover:border-blue-200 hover:shadow-sm transition-all',
+        'flex flex-col items-center p-2 sm:p-3 bg-white dark:bg-gray-800 rounded-lg border border-gray-100 dark:border-gray-700 hover:border-blue-200 dark:hover:border-blue-500 hover:shadow-sm transition-all',
         isOutOfStock && 'opacity-50 cursor-not-allowed'
       )}
     >
@@ -75,7 +76,7 @@ function ProductCard({
         </div>
       )}
 
-      <span className="text-[10px] sm:text-xs font-medium text-center line-clamp-2 w-full text-gray-700 leading-tight">
+      <span className="text-[10px] sm:text-xs font-medium text-center line-clamp-2 w-full text-gray-700 dark:text-gray-200 leading-tight">
         {product.name}
       </span>
       <span className="text-xs sm:text-sm font-bold text-blue-600 mt-0.5">
@@ -124,17 +125,17 @@ function CartItemRow({
   };
 
   return (
-    <div className="flex items-center gap-2 p-2 sm:p-3 border-b last:border-0">
+    <div className="flex items-center gap-2 p-2 sm:p-3 border-b dark:border-gray-700 last:border-0">
       <div className="flex-1 min-w-0">
-        <p className="font-medium truncate text-sm">{item.product.name}</p>
-        <p className="text-xs text-gray-500">
+        <p className="font-medium truncate text-sm dark:text-white">{item.product.name}</p>
+        <p className="text-xs text-gray-500 dark:text-gray-400">
           {formatCurrency(item.unitPrice)} x {item.quantity}
         </p>
       </div>
 
       <div className="flex items-center gap-1 flex-shrink-0">
         <button
-          className="w-7 h-7 flex items-center justify-center border rounded-md hover:bg-gray-50"
+          className="w-7 h-7 flex items-center justify-center border dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"
           onClick={() => onUpdateQuantity(item.id, item.quantity - 1)}
         >
           <Minus className="h-3 w-3" />
@@ -145,10 +146,10 @@ function CartItemRow({
           value={inputValue}
           onChange={handleInputChange}
           onBlur={handleInputBlur}
-          className="w-8 h-7 text-center text-sm font-medium border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500"
+          className="w-8 h-7 text-center text-sm font-medium border dark:border-gray-600 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
         />
         <button
-          className="w-7 h-7 flex items-center justify-center border rounded-md hover:bg-gray-50"
+          className="w-7 h-7 flex items-center justify-center border dark:border-gray-600 rounded-md hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300"
           onClick={() => onUpdateQuantity(item.id, item.quantity + 1)}
         >
           <Plus className="h-3 w-3" />
@@ -156,11 +157,11 @@ function CartItemRow({
       </div>
 
       <div className="flex items-center gap-1 flex-shrink-0">
-        <span className="font-bold text-sm tabular-nums w-16 text-right">
+        <span className="font-bold text-sm tabular-nums w-16 text-right dark:text-white">
           {formatCurrency(item.total)}
         </span>
         <button
-          className="w-7 h-7 flex items-center justify-center text-red-500 hover:bg-red-50 rounded-md"
+          className="w-7 h-7 flex items-center justify-center text-red-500 hover:bg-red-50 dark:hover:bg-red-900/30 rounded-md"
           onClick={() => onRemove(item.id)}
         >
           <Trash2 className="h-4 w-4" />
@@ -189,11 +190,11 @@ function PaymentMethodButton({
       className={cn(
         'flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all',
         selected
-          ? 'border-blue-500 bg-blue-50 text-blue-600'
-          : 'border-gray-200 hover:border-blue-300 hover:bg-gray-50'
+          ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+          : 'border-gray-200 dark:border-gray-600 hover:border-blue-300 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300'
       )}
     >
-      <Icon className={cn('h-5 w-5 mb-1', selected && 'text-blue-600')} />
+      <Icon className={cn('h-5 w-5 mb-1', selected && 'text-blue-600 dark:text-blue-400')} />
       <span className={cn('text-xs', selected && 'font-medium')}>{label}</span>
     </button>
   );
@@ -206,6 +207,7 @@ function PaymentMethodButton({
 export default function PDVPage() {
   const queryClient = useQueryClient();
   const { user } = useAuthStore();
+  const { isCollapsed: sidebarCollapsed } = useSidebarStore();
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -448,15 +450,18 @@ export default function PDVPage() {
   const products = productsData?.data || [];
   const categories = categoriesData?.data || [];
 
-  // Calcula o padding left baseado no estado do sidebar (se colapsado = 80px, se expandido = 256px)
-  // Por enquanto usa 64 que é o tamanho do sidebar colapsado como padrão seguro
+  // Calcula o left baseado no estado real do sidebar
+  const sidebarWidth = sidebarCollapsed ? 'lg:left-20' : 'lg:left-64';
 
   return (
-    <div className="fixed inset-0 top-14 lg:top-16 lg:left-20 xl:left-64 flex flex-col lg:flex-row overflow-hidden bg-gray-100">
+    <div className={cn(
+      "fixed inset-0 top-14 lg:top-16 flex flex-col lg:flex-row overflow-hidden bg-gray-100 dark:bg-gray-900 transition-all duration-300",
+      sidebarWidth
+    )}>
       {/* Área de Produtos */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
         {/* Barra de Busca */}
-        <div className="p-2 sm:p-3 bg-white border-b shadow-sm flex-shrink-0">
+        <div className="p-2 sm:p-3 bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm flex-shrink-0">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
@@ -464,7 +469,7 @@ export default function PDVPage() {
               type="text"
               placeholder="Buscar produto..."
               onChange={(e) => handleSearch(e.target.value)}
-              className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
             />
           </div>
 
@@ -477,7 +482,7 @@ export default function PDVPage() {
                   'px-3 py-1.5 text-xs font-medium rounded-full whitespace-nowrap transition-colors',
                   selectedCategory === null
                     ? 'bg-blue-600 text-white'
-                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                 )}
               >
                 Todos
@@ -490,7 +495,7 @@ export default function PDVPage() {
                     'px-3 py-1.5 text-xs font-medium rounded-full whitespace-nowrap transition-colors',
                     selectedCategory === cat.id
                       ? 'bg-blue-600 text-white'
-                      : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                      : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-600'
                   )}
                 >
                   {cat.name}
@@ -542,7 +547,7 @@ export default function PDVPage() {
       </div>
 
       {/* Carrinho - Desktop */}
-      <div className="hidden lg:flex w-80 flex-col bg-white border-l shadow-lg flex-shrink-0">
+      <div className="hidden lg:flex w-80 flex-col bg-white dark:bg-gray-800 border-l dark:border-gray-700 shadow-lg flex-shrink-0">
         <CartContent
           items={items}
           customer={customer}
@@ -561,10 +566,10 @@ export default function PDVPage() {
 
       {/* Carrinho Modal - Mobile (Full Screen) */}
       {showCartDrawer && (
-        <div className="lg:hidden fixed inset-0 top-14 bg-white flex flex-col" style={{ zIndex: 9999 }}>
+        <div className="lg:hidden fixed inset-0 top-14 bg-white dark:bg-gray-900 flex flex-col" style={{ zIndex: 9999 }}>
           {/* Header fixo do modal */}
-          <div className="flex items-center justify-between p-4 border-b bg-white flex-shrink-0">
-            <h2 className="text-xl font-bold">Carrinho</h2>
+          <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 bg-white dark:bg-gray-900 flex-shrink-0">
+            <h2 className="text-xl font-bold dark:text-white">Carrinho</h2>
             <div className="flex items-center gap-3">
               {itemCount > 0 && (
                 <button
@@ -577,28 +582,28 @@ export default function PDVPage() {
               )}
               <button
                 onClick={() => setShowCartDrawer(false)}
-                className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full"
+                className="p-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full"
               >
-                <X className="h-6 w-6" />
+                <X className="h-6 w-6 dark:text-gray-300" />
               </button>
             </div>
           </div>
 
           {/* Cliente */}
-          <div className="p-4 border-b flex-shrink-0">
+          <div className="p-4 border-b dark:border-gray-700 flex-shrink-0">
             {customer ? (
-              <div className="flex items-center justify-between p-3 bg-blue-50 rounded-lg">
+              <div className="flex items-center justify-between p-3 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
                 <div className="flex items-center min-w-0">
-                  <User className="h-5 w-5 mr-2 text-blue-600 flex-shrink-0" />
-                  <span className="font-medium text-blue-700 truncate">{customer.name}</span>
+                  <User className="h-5 w-5 mr-2 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                  <span className="font-medium text-blue-700 dark:text-blue-300 truncate">{customer.name}</span>
                 </div>
-                <button className="p-1.5 hover:bg-blue-100 rounded" onClick={() => setCustomer(null)}>
-                  <X className="h-5 w-5 text-blue-600" />
+                <button className="p-1.5 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded" onClick={() => setCustomer(null)}>
+                  <X className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                 </button>
               </div>
             ) : (
               <button
-                className="w-full py-3 text-gray-600 border-2 border-dashed rounded-lg hover:bg-gray-50 flex items-center justify-center gap-2"
+                className="w-full py-3 text-gray-600 dark:text-gray-400 border-2 border-dashed dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 flex items-center justify-center gap-2"
                 onClick={() => setShowCustomerDialog(true)}
               >
                 <User className="h-5 w-5" />
@@ -610,13 +615,13 @@ export default function PDVPage() {
           {/* Lista de itens */}
           <div className="flex-1 overflow-y-auto">
             {items.length === 0 ? (
-              <div className="flex flex-col items-center justify-center h-full text-gray-400 p-4">
+              <div className="flex flex-col items-center justify-center h-full text-gray-400 dark:text-gray-500 p-4">
                 <ShoppingBag className="h-16 w-16 mb-4" />
                 <p className="text-lg">Carrinho vazio</p>
                 <p className="text-sm mt-1">Adicione produtos para começar</p>
               </div>
             ) : (
-              <div className="divide-y">
+              <div className="divide-y dark:divide-gray-700">
                 {items.map((item) => (
                   <CartItemRow
                     key={item.id}
@@ -630,21 +635,21 @@ export default function PDVPage() {
           </div>
 
           {/* Totais e botão finalizar */}
-          <div className="p-4 border-t bg-gray-50 flex-shrink-0">
+          <div className="p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex-shrink-0">
             <div className="space-y-2 mb-4">
-              <div className="flex justify-between text-gray-600">
+              <div className="flex justify-between text-gray-600 dark:text-gray-400">
                 <span>Subtotal ({itemCount} itens)</span>
                 <span>{formatCurrency(subtotal)}</span>
               </div>
               {discountTotal > 0 && (
-                <div className="flex justify-between text-green-600">
+                <div className="flex justify-between text-green-600 dark:text-green-400">
                   <span>Desconto</span>
                   <span>-{formatCurrency(discountTotal)}</span>
                 </div>
               )}
-              <div className="flex justify-between text-xl font-bold pt-2 border-t">
+              <div className="flex justify-between text-xl font-bold pt-2 border-t dark:border-gray-600 dark:text-white">
                 <span>Total</span>
-                <span className="text-blue-600">{formatCurrency(total)}</span>
+                <span className="text-blue-600 dark:text-blue-400">{formatCurrency(total)}</span>
               </div>
             </div>
 
@@ -665,18 +670,18 @@ export default function PDVPage() {
       {/* Dialog de Pagamento */}
       {showPaymentDialog && (
         <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center" style={{ zIndex: 10000 }}>
-          <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
-            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
-              <h2 className="text-lg font-semibold">Forma de Pagamento</h2>
-              <button onClick={() => setShowPaymentDialog(false)} className="p-2 hover:bg-gray-100 rounded-full">
-                <X className="h-5 w-5" />
+          <div className="bg-white dark:bg-gray-800 w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 flex-shrink-0">
+              <h2 className="text-lg font-semibold dark:text-white">Forma de Pagamento</h2>
+              <button onClick={() => setShowPaymentDialog(false)} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <X className="h-5 w-5 dark:text-gray-300" />
               </button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 space-y-4">
-              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl">
-                <p className="text-sm text-gray-500">Total a pagar</p>
-                <p className="text-3xl font-bold text-blue-600">{formatCurrency(total)}</p>
+              <div className="text-center p-4 bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/30 dark:to-purple-900/30 rounded-xl">
+                <p className="text-sm text-gray-500 dark:text-gray-400">Total a pagar</p>
+                <p className="text-3xl font-bold text-blue-600 dark:text-blue-400">{formatCurrency(total)}</p>
               </div>
 
               <div className="grid grid-cols-2 gap-2">
@@ -894,9 +899,9 @@ function CartContent({
   return (
     <>
       {/* Header do Carrinho */}
-      <div className="p-3 border-b flex-shrink-0">
+      <div className="p-3 border-b dark:border-gray-700 flex-shrink-0">
         <div className="flex items-center justify-between">
-          <h2 className="font-semibold text-lg">Carrinho</h2>
+          <h2 className="font-semibold text-lg dark:text-white">Carrinho</h2>
           <div className="flex items-center gap-2">
             {itemCount > 0 && (
               <button className="text-xs text-red-500 hover:text-red-600 flex items-center gap-1" onClick={onClearCart}>
@@ -907,10 +912,10 @@ function CartContent({
             {showCloseButton && onClose && (
               <button
                 onClick={onClose}
-                className="p-2 bg-gray-100 hover:bg-gray-200 rounded-full transition-colors"
+                className="p-2 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 rounded-full transition-colors"
                 aria-label="Fechar carrinho"
               >
-                <X className="h-5 w-5 text-gray-700" />
+                <X className="h-5 w-5 text-gray-700 dark:text-gray-300" />
               </button>
             )}
           </div>
@@ -919,17 +924,17 @@ function CartContent({
         {/* Cliente */}
         <div className="mt-2">
           {customer ? (
-            <div className="flex items-center justify-between p-2 bg-blue-50 rounded-lg">
+            <div className="flex items-center justify-between p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg">
               <div className="flex items-center min-w-0">
-                <User className="h-4 w-4 mr-2 text-blue-600 flex-shrink-0" />
-                <span className="text-sm font-medium text-blue-700 truncate">{customer.name}</span>
+                <User className="h-4 w-4 mr-2 text-blue-600 dark:text-blue-400 flex-shrink-0" />
+                <span className="text-sm font-medium text-blue-700 dark:text-blue-300 truncate">{customer.name}</span>
               </div>
-              <button className="p-1 hover:bg-blue-100 rounded flex-shrink-0" onClick={onRemoveCustomer}>
-                <X className="h-4 w-4 text-blue-600" />
+              <button className="p-1 hover:bg-blue-100 dark:hover:bg-blue-900/50 rounded flex-shrink-0" onClick={onRemoveCustomer}>
+                <X className="h-4 w-4 text-blue-600 dark:text-blue-400" />
               </button>
             </div>
           ) : (
-            <button className="w-full py-2 text-sm text-gray-600 border border-dashed rounded-lg hover:bg-gray-50 flex items-center justify-center gap-2" onClick={onSelectCustomer}>
+            <button className="w-full py-2 text-sm text-gray-600 dark:text-gray-400 border border-dashed dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 flex items-center justify-center gap-2" onClick={onSelectCustomer}>
               <User className="h-4 w-4" />
               Selecionar Cliente
             </button>
@@ -940,7 +945,7 @@ function CartContent({
       {/* Itens do Carrinho */}
       <div className="flex-1 overflow-y-auto min-h-0">
         {items.length === 0 ? (
-          <div className="flex flex-col items-center justify-center h-full text-gray-400 p-4">
+          <div className="flex flex-col items-center justify-center h-full text-gray-400 dark:text-gray-500 p-4">
             <ShoppingBag className="h-10 w-10 mb-2" />
             <p className="text-sm">Carrinho vazio</p>
           </div>
@@ -957,21 +962,21 @@ function CartContent({
       </div>
 
       {/* Totais */}
-      <div className="p-3 border-t bg-gray-50 flex-shrink-0">
+      <div className="p-3 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-800 flex-shrink-0">
         <div className="space-y-1 text-sm">
-          <div className="flex justify-between text-gray-600">
+          <div className="flex justify-between text-gray-600 dark:text-gray-400">
             <span>Subtotal ({itemCount} itens)</span>
             <span>{formatCurrency(subtotal)}</span>
           </div>
           {discountTotal > 0 && (
-            <div className="flex justify-between text-green-600">
+            <div className="flex justify-between text-green-600 dark:text-green-400">
               <span>Desconto</span>
               <span>-{formatCurrency(discountTotal)}</span>
             </div>
           )}
-          <div className="flex justify-between text-lg font-bold pt-2 border-t">
+          <div className="flex justify-between text-lg font-bold pt-2 border-t dark:border-gray-600 dark:text-white">
             <span>Total</span>
-            <span className="text-blue-600">{formatCurrency(total)}</span>
+            <span className="text-blue-600 dark:text-blue-400">{formatCurrency(total)}</span>
           </div>
         </div>
 

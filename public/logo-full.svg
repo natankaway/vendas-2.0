@@ -1,36 +1,18 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 100" fill="none">
   <defs>
-    <linearGradient id="darkBlue2" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" style="stop-color:#1a365d"/>
-      <stop offset="100%" style="stop-color:#0f2744"/>
-    </linearGradient>
-    <linearGradient id="teal2" x1="0%" y1="100%" x2="100%" y2="0%">
-      <stop offset="0%" style="stop-color:#234e52"/>
-      <stop offset="100%" style="stop-color:#38b2ac"/>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6"/>
+      <stop offset="100%" style="stop-color:#8B5CF6"/>
     </linearGradient>
   </defs>
 
-  <!-- K Icon centered at top -->
-  <g transform="translate(110, 10) scale(0.7)">
-    <!-- K left vertical bar -->
-    <path d="M10 5 L10 115 L30 115 L30 75 L30 45 L30 5 Z" fill="url(#darkBlue2)"/>
-    <!-- K hollow center -->
-    <path d="M10 45 L10 75 L30 75 L30 45 Z" fill="url(#darkBlue2)"/>
-    <rect x="15" y="50" width="10" height="20" fill="white"/>
-    <!-- K upper arm -->
-    <path d="M35 40 L65 5 L50 5 L30 30 L30 45 Z" fill="url(#darkBlue2)"/>
-    <!-- Teal arrow part -->
-    <path d="M30 75 L30 115 L50 115 L50 95 Z" fill="url(#teal2)"/>
-    <path d="M50 95 L50 115 L60 115 L75 95 L75 80 L60 95 Z" fill="url(#teal2)"/>
-    <!-- Arrow pointing up-right -->
-    <path d="M65 70 L65 55 L90 55 L90 40 L110 60 L90 80 L90 65 L75 65 L75 85 Z" fill="url(#teal2)"/>
-  </g>
+  <!-- K Icon -->
+  <rect x="10" y="15" width="70" height="70" rx="16" fill="url(#grad)"/>
+  <text x="45" y="58" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central">K</text>
 
   <!-- KAWAY text -->
-  <text x="80" y="138" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1a365d">KAWAY</text>
-  <!-- POS text -->
-  <text x="195" y="138" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#38b2ac">POS</text>
+  <text x="95" y="52" font-family="Arial, sans-serif" font-size="36" font-weight="bold" fill="#1e293b">KAWAY</text>
 
-  <!-- Tagline -->
-  <text x="150" y="165" font-family="Arial, sans-serif" font-size="14" fill="#4a5568" text-anchor="middle">Pagamento Rápido</text>
+  <!-- POS text -->
+  <text x="95" y="80" font-family="Arial, sans-serif" font-size="20" font-weight="600" fill="#3B82F6">Pagamento Rápido</text>
 </svg>

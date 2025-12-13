@@ -273,7 +273,7 @@ export default function RelatoriosPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
@@ -281,12 +281,12 @@ export default function RelatoriosPage() {
             <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Relatórios
             </h1>
-            <p className="text-gray-500 mt-1">Análise completa de vendas e desempenho</p>
+            <p className="text-gray-500 dark:text-gray-400 mt-1">Análise completa de vendas e desempenho</p>
           </div>
 
           {/* Date Range Filter */}
           <div className="flex flex-wrap items-center gap-3">
-            <div className="flex bg-white rounded-xl shadow-sm border border-gray-100 p-1">
+            <div className="flex bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-100 dark:border-gray-700 p-1">
               {(['today', 'week', 'month', 'year'] as DateRange[]).map((range) => (
                 <button
                   key={range}
@@ -294,7 +294,7 @@ export default function RelatoriosPage() {
                   className={`px-4 py-2 text-sm font-medium rounded-lg transition-all ${
                     dateRange === range
                       ? 'bg-blue-600 text-white shadow-md'
-                      : 'text-gray-600 hover:bg-gray-50'
+                      : 'text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700'
                   }`}
                 >
                   {range === 'today' && 'Hoje'}
@@ -310,7 +310,7 @@ export default function RelatoriosPage() {
               className={`flex items-center gap-2 px-4 py-2 rounded-xl border transition-all ${
                 dateRange === 'custom'
                   ? 'bg-blue-600 text-white border-blue-600'
-                  : 'bg-white text-gray-600 border-gray-200 hover:border-blue-300'
+                  : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-200 dark:border-gray-700 hover:border-blue-300'
               }`}
             >
               <Calendar className="w-4 h-4" />
@@ -318,19 +318,19 @@ export default function RelatoriosPage() {
             </button>
 
             {dateRange === 'custom' && (
-              <div className="flex items-center gap-2 bg-white rounded-xl border border-gray-200 p-2">
+              <div className="flex items-center gap-2 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 p-2">
                 <input
                   type="date"
                   value={startDate}
                   onChange={(e) => setStartDate(e.target.value)}
-                  className="px-3 py-1.5 text-sm border-0 focus:ring-0"
+                  className="px-3 py-1.5 text-sm border-0 focus:ring-0 dark:bg-gray-800 dark:text-white"
                 />
                 <span className="text-gray-400">→</span>
                 <input
                   type="date"
                   value={endDate}
                   onChange={(e) => setEndDate(e.target.value)}
-                  className="px-3 py-1.5 text-sm border-0 focus:ring-0"
+                  className="px-3 py-1.5 text-sm border-0 focus:ring-0 dark:bg-gray-800 dark:text-white"
                 />
               </div>
             )}
@@ -340,86 +340,86 @@ export default function RelatoriosPage() {
         {/* Main Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 mb-8">
           {/* Total de Vendas */}
-          <div className="bg-white rounded-2xl shadow-lg shadow-blue-100/50 p-6 border border-blue-50 hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg shadow-blue-100/50 dark:shadow-none p-6 border border-blue-50 dark:border-gray-700 hover:shadow-xl transition-shadow">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Total de Vendas</p>
-                <p className="text-3xl font-bold text-gray-900 mt-2">{formatNumber(summary.completedSales)}</p>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Total de Vendas</p>
+                <p className="text-3xl font-bold text-gray-900 dark:text-white mt-2">{formatNumber(summary.completedSales)}</p>
                 <div className="flex items-center gap-2 mt-3">
                   {comparison.countChange >= 0 ? (
-                    <span className="flex items-center text-sm font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                    <span className="flex items-center text-sm font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full">
                       <ArrowUpRight className="w-3.5 h-3.5 mr-0.5" />
                       {comparison.countChange.toFixed(1)}%
                     </span>
                   ) : (
-                    <span className="flex items-center text-sm font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
+                    <span className="flex items-center text-sm font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 px-2 py-0.5 rounded-full">
                       <ArrowDownRight className="w-3.5 h-3.5 mr-0.5" />
                       {Math.abs(comparison.countChange).toFixed(1)}%
                     </span>
                   )}
-                  <span className="text-xs text-gray-400">vs período anterior</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">vs período anterior</span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg shadow-blue-200">
+              <div className="p-3 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl shadow-lg shadow-blue-200 dark:shadow-none">
                 <ShoppingCart className="w-6 h-6 text-white" />
               </div>
             </div>
           </div>
 
           {/* Receita Total */}
-          <div className="bg-white rounded-2xl shadow-lg shadow-green-100/50 p-6 border border-green-50 hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg shadow-green-100/50 dark:shadow-none p-6 border border-green-50 dark:border-gray-700 hover:shadow-xl transition-shadow">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Receita Total</p>
-                <p className="text-3xl font-bold text-green-600 mt-2">{formatCurrency(summary.totalRevenue)}</p>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Receita Total</p>
+                <p className="text-3xl font-bold text-green-600 dark:text-green-400 mt-2">{formatCurrency(summary.totalRevenue)}</p>
                 <div className="flex items-center gap-2 mt-3">
                   {comparison.revenueChange >= 0 ? (
-                    <span className="flex items-center text-sm font-medium text-green-600 bg-green-50 px-2 py-0.5 rounded-full">
+                    <span className="flex items-center text-sm font-medium text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-2 py-0.5 rounded-full">
                       <ArrowUpRight className="w-3.5 h-3.5 mr-0.5" />
                       {comparison.revenueChange.toFixed(1)}%
                     </span>
                   ) : (
-                    <span className="flex items-center text-sm font-medium text-red-600 bg-red-50 px-2 py-0.5 rounded-full">
+                    <span className="flex items-center text-sm font-medium text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/30 px-2 py-0.5 rounded-full">
                       <ArrowDownRight className="w-3.5 h-3.5 mr-0.5" />
                       {Math.abs(comparison.revenueChange).toFixed(1)}%
                     </span>
                   )}
-                  <span className="text-xs text-gray-400">vs período anterior</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">vs período anterior</span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg shadow-green-200">
+              <div className="p-3 bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl shadow-lg shadow-green-200 dark:shadow-none">
                 <DollarSign className="w-6 h-6 text-white" />
               </div>
             </div>
           </div>
 
           {/* Ticket Médio */}
-          <div className="bg-white rounded-2xl shadow-lg shadow-purple-100/50 p-6 border border-purple-50 hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg shadow-purple-100/50 dark:shadow-none p-6 border border-purple-50 dark:border-gray-700 hover:shadow-xl transition-shadow">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Ticket Médio</p>
-                <p className="text-3xl font-bold text-purple-600 mt-2">{formatCurrency(summary.avgTicket)}</p>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Ticket Médio</p>
+                <p className="text-3xl font-bold text-purple-600 dark:text-purple-400 mt-2">{formatCurrency(summary.avgTicket)}</p>
                 <div className="mt-3">
-                  <span className="text-xs text-gray-400">Por venda concluída</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">Por venda concluída</span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl shadow-lg shadow-purple-200">
+              <div className="p-3 bg-gradient-to-br from-purple-500 to-violet-600 rounded-xl shadow-lg shadow-purple-200 dark:shadow-none">
                 <Target className="w-6 h-6 text-white" />
               </div>
             </div>
           </div>
 
           {/* Vendas Balcão */}
-          <div className="bg-white rounded-2xl shadow-lg shadow-orange-100/50 p-6 border border-orange-50 hover:shadow-xl transition-shadow">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg shadow-orange-100/50 dark:shadow-none p-6 border border-orange-50 dark:border-gray-700 hover:shadow-xl transition-shadow">
             <div className="flex items-start justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-500">Vendas Balcão</p>
-                <p className="text-3xl font-bold text-orange-600 mt-2">{formatNumber(summary.balcaoSales)}</p>
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Vendas Balcão</p>
+                <p className="text-3xl font-bold text-orange-600 dark:text-orange-400 mt-2">{formatNumber(summary.balcaoSales)}</p>
                 <div className="mt-3">
-                  <span className="text-xs text-gray-400">{formatCurrency(summary.balcaoRevenue)} em receita</span>
+                  <span className="text-xs text-gray-400 dark:text-gray-500">{formatCurrency(summary.balcaoRevenue)} em receita</span>
                 </div>
               </div>
-              <div className="p-3 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl shadow-lg shadow-orange-200">
+              <div className="p-3 bg-gradient-to-br from-orange-500 to-amber-600 rounded-xl shadow-lg shadow-orange-200 dark:shadow-none">
                 <Store className="w-6 h-6 text-white" />
               </div>
             </div>
@@ -429,25 +429,25 @@ export default function RelatoriosPage() {
         {/* Charts Row */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Daily Sales Chart - takes 2 cols */}
-          <div className="lg:col-span-2 bg-white rounded-2xl shadow-lg p-6">
+          <div className="lg:col-span-2 bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-none p-6">
             <div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-lg font-semibold text-gray-900">Vendas por Dia</h3>
-                <p className="text-sm text-gray-500 mt-0.5">{getDateRangeLabel()}</p>
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Vendas por Dia</h3>
+                <p className="text-sm text-gray-500 dark:text-gray-400 mt-0.5">{getDateRangeLabel()}</p>
               </div>
               <div className="flex items-center gap-4 text-sm">
                 <div className="flex items-center gap-2">
                   <div className="w-3 h-3 rounded-full bg-blue-500"></div>
-                  <span className="text-gray-600">Receita</span>
+                  <span className="text-gray-600 dark:text-gray-400">Receita</span>
                 </div>
               </div>
             </div>
             {isLoading ? (
-              <div className="h-64 flex items-center justify-center text-gray-500">
+              <div className="h-64 flex items-center justify-center text-gray-500 dark:text-gray-400">
                 <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
               </div>
             ) : dailySales.length === 0 ? (
-              <div className="h-64 flex flex-col items-center justify-center text-gray-400">
+              <div className="h-64 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                 <BarChart3 className="w-12 h-12 mb-2 opacity-50" />
                 <p>Sem dados para o período selecionado</p>
               </div>
@@ -481,13 +481,13 @@ export default function RelatoriosPage() {
           </div>
 
           {/* Hourly Distribution */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-none p-6">
             <div className="flex items-center gap-2 mb-6">
-              <Clock className="w-5 h-5 text-blue-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Horários de Pico</h3>
+              <Clock className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Horários de Pico</h3>
             </div>
             {hourlyDistribution.every(h => h.sales === 0) ? (
-              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                 <Clock className="w-10 h-10 mb-2 opacity-50" />
                 <p className="text-sm">Sem dados de horário</p>
               </div>
@@ -499,10 +499,10 @@ export default function RelatoriosPage() {
                   .slice(0, 6)
                   .map((hour) => (
                     <div key={hour.hour} className="flex items-center gap-3">
-                      <span className="w-12 text-sm font-medium text-gray-600">
+                      <span className="w-12 text-sm font-medium text-gray-600 dark:text-gray-400">
                         {String(hour.hour).padStart(2, '0')}:00
                       </span>
-                      <div className="flex-1 bg-gray-100 rounded-full h-6 overflow-hidden">
+                      <div className="flex-1 bg-gray-100 dark:bg-gray-700 rounded-full h-6 overflow-hidden">
                         <div
                           className="h-full bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-end pr-2"
                           style={{ width: `${(hour.sales / maxHourlySales) * 100}%` }}
@@ -520,13 +520,13 @@ export default function RelatoriosPage() {
         {/* Payment Methods & Top Items */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
           {/* Payment Methods */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-none p-6">
             <div className="flex items-center gap-2 mb-6">
-              <CreditCard className="w-5 h-5 text-purple-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Formas de Pagamento</h3>
+              <CreditCard className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Formas de Pagamento</h3>
             </div>
             {paymentStats.length === 0 ? (
-              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                 <CreditCard className="w-10 h-10 mb-2 opacity-50" />
                 <p className="text-sm">Sem dados de pagamento</p>
               </div>
@@ -541,26 +541,26 @@ export default function RelatoriosPage() {
                     <div key={stat.method} className="group">
                       <div className="flex items-center justify-between mb-2">
                         <div className="flex items-center gap-2">
-                          <div className={`p-1.5 rounded-lg ${paymentMethodColors[stat.method]} bg-opacity-20`}>
+                          <div className={`p-1.5 rounded-lg ${paymentMethodColors[stat.method]} bg-opacity-20 dark:bg-opacity-30`}>
                             {paymentMethodIcons[stat.method]}
                           </div>
-                          <span className="text-sm font-medium text-gray-700">
+                          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                             {paymentMethodLabels[stat.method] || stat.method}
                           </span>
                         </div>
-                        <span className="text-sm font-bold text-gray-900">
+                        <span className="text-sm font-bold text-gray-900 dark:text-white">
                           {formatCurrency(stat.total)}
                         </span>
                       </div>
-                      <div className="relative w-full bg-gray-100 rounded-full h-2">
+                      <div className="relative w-full bg-gray-100 dark:bg-gray-700 rounded-full h-2">
                         <div
                           className={`h-2 rounded-full transition-all duration-500 ${paymentMethodColors[stat.method]}`}
                           style={{ width: `${percentage}%` }}
                         />
                       </div>
                       <div className="flex justify-between mt-1">
-                        <span className="text-xs text-gray-400">{stat.count} vendas</span>
-                        <span className="text-xs text-gray-500 font-medium">{percentage.toFixed(1)}%</span>
+                        <span className="text-xs text-gray-400 dark:text-gray-500">{stat.count} vendas</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 font-medium">{percentage.toFixed(1)}%</span>
                       </div>
                     </div>
                   );
@@ -570,13 +570,13 @@ export default function RelatoriosPage() {
           </div>
 
           {/* Top Products */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-none p-6">
             <div className="flex items-center gap-2 mb-6">
-              <Package className="w-5 h-5 text-blue-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Produtos Mais Vendidos</h3>
+              <Package className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Produtos Mais Vendidos</h3>
             </div>
             {topProducts.length === 0 ? (
-              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                 <Package className="w-10 h-10 mb-2 opacity-50" />
                 <p className="text-sm">Sem dados de produtos</p>
               </div>
@@ -585,21 +585,21 @@ export default function RelatoriosPage() {
                 {topProducts.slice(0, 5).map((product, index) => (
                   <div
                     key={product.id}
-                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     <span className={`w-7 h-7 flex items-center justify-center text-sm font-bold rounded-lg ${
-                      index === 0 ? 'bg-yellow-100 text-yellow-700' :
-                      index === 1 ? 'bg-gray-100 text-gray-600' :
-                      index === 2 ? 'bg-orange-100 text-orange-700' :
-                      'bg-blue-50 text-blue-600'
+                      index === 0 ? 'bg-yellow-100 dark:bg-yellow-900/50 text-yellow-700 dark:text-yellow-400' :
+                      index === 1 ? 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300' :
+                      index === 2 ? 'bg-orange-100 dark:bg-orange-900/50 text-orange-700 dark:text-orange-400' :
+                      'bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
                     }`}>
                       {index + 1}
                     </span>
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-gray-900 text-sm truncate">{product.name}</p>
-                      <p className="text-xs text-gray-400">{product.quantity} un.</p>
+                      <p className="font-medium text-gray-900 dark:text-white text-sm truncate">{product.name}</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-500">{product.quantity} un.</p>
                     </div>
-                    <span className="font-bold text-green-600 text-sm">{formatCurrency(product.revenue)}</span>
+                    <span className="font-bold text-green-600 dark:text-green-400 text-sm">{formatCurrency(product.revenue)}</span>
                   </div>
                 ))}
               </div>
@@ -607,13 +607,13 @@ export default function RelatoriosPage() {
           </div>
 
           {/* Top Customers */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-none p-6">
             <div className="flex items-center gap-2 mb-6">
-              <Users className="w-5 h-5 text-purple-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Melhores Clientes</h3>
+              <Users className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Melhores Clientes</h3>
             </div>
             {topCustomers.length === 0 ? (
-              <div className="h-48 flex flex-col items-center justify-center text-gray-400">
+              <div className="h-48 flex flex-col items-center justify-center text-gray-400 dark:text-gray-500">
                 <Users className="w-10 h-10 mb-2 opacity-50" />
                 <p className="text-sm">Sem dados de clientes</p>
               </div>
@@ -622,21 +622,21 @@ export default function RelatoriosPage() {
                 {topCustomers.slice(0, 5).map((customer, index) => (
                   <div
                     key={customer.id}
-                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 transition-colors"
+                    className="flex items-center gap-3 p-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                   >
                     <div className={`w-8 h-8 flex items-center justify-center text-sm font-bold rounded-full ${
                       index === 0 ? 'bg-gradient-to-br from-yellow-400 to-orange-500 text-white' :
                       index === 1 ? 'bg-gradient-to-br from-gray-300 to-gray-400 text-white' :
                       index === 2 ? 'bg-gradient-to-br from-orange-300 to-orange-400 text-white' :
-                      'bg-purple-100 text-purple-600'
+                      'bg-purple-100 dark:bg-purple-900/50 text-purple-600 dark:text-purple-400'
                     }`}>
                       {customer.name.charAt(0).toUpperCase()}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="font-medium text-gray-900 text-sm truncate">{customer.name}</p>
-                      <p className="text-xs text-gray-400">{customer.purchases} compras</p>
+                      <p className="font-medium text-gray-900 dark:text-white text-sm truncate">{customer.name}</p>
+                      <p className="text-xs text-gray-400 dark:text-gray-500">{customer.purchases} compras</p>
                     </div>
-                    <span className="font-bold text-green-600 text-sm">{formatCurrency(customer.totalSpent)}</span>
+                    <span className="font-bold text-green-600 dark:text-green-400 text-sm">{formatCurrency(customer.totalSpent)}</span>
                   </div>
                 ))}
               </div>
@@ -707,36 +707,36 @@ export default function RelatoriosPage() {
           </div>
 
           {/* Quick Actions */}
-          <div className="bg-white rounded-2xl shadow-lg p-6">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg dark:shadow-none p-6">
             <div className="flex items-center gap-2 mb-4">
-              <BarChart3 className="w-5 h-5 text-green-600" />
-              <h3 className="text-lg font-semibold text-gray-900">Ações Rápidas</h3>
+              <BarChart3 className="w-5 h-5 text-green-600 dark:text-green-400" />
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">Ações Rápidas</h3>
             </div>
             <div className="space-y-3">
               <a
                 href="/pdv"
-                className="flex items-center justify-center gap-2 w-full p-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg shadow-blue-200 font-medium"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gradient-to-r from-blue-600 to-blue-700 text-white rounded-xl hover:from-blue-700 hover:to-blue-800 transition-all shadow-lg shadow-blue-200 dark:shadow-none font-medium"
               >
                 <ShoppingCart className="w-5 h-5" />
                 Abrir PDV
               </a>
               <a
                 href="/vendas"
-                className="flex items-center justify-center gap-2 w-full p-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-200 font-medium"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg shadow-green-200 dark:shadow-none font-medium"
               >
                 <Receipt className="w-5 h-5" />
                 Ver Vendas
               </a>
               <a
                 href="/produtos"
-                className="flex items-center justify-center gap-2 w-full p-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium"
               >
                 <Package className="w-5 h-5" />
                 Gerenciar Produtos
               </a>
               <a
                 href="/clientes"
-                className="flex items-center justify-center gap-2 w-full p-3 bg-gray-100 text-gray-700 rounded-xl hover:bg-gray-200 transition-colors font-medium"
+                className="flex items-center justify-center gap-2 w-full p-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors font-medium"
               >
                 <Users className="w-5 h-5" />
                 Gerenciar Clientes
