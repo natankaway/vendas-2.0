@@ -33,6 +33,8 @@ import {
   FolderTree,
   Moon,
   Sun,
+  Wallet,
+  FileText,
 } from 'lucide-react';
 import { useTheme } from '@/lib/contexts/theme-context';
 import { Button } from '@/components/ui/button';
@@ -56,6 +58,18 @@ const navLinks = [
     href: '/vendas',
     label: 'Vendas',
     icon: Receipt,
+    permissions: ['sales'],
+  },
+  {
+    href: '/caixa',
+    label: 'Caixa',
+    icon: Wallet,
+    permissions: ['pdv'],
+  },
+  {
+    href: '/contas-receber',
+    label: 'Contas a Receber',
+    icon: FileText,
     permissions: ['sales'],
   },
   {

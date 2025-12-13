@@ -231,6 +231,7 @@ export type PaymentMethod =
   | 'pix'
   | 'bank_transfer'
   | 'store_credit'
+  | 'pay_later'
   | 'other';
 
 /**
@@ -239,6 +240,7 @@ export type PaymentMethod =
 export interface Sale extends BaseEntity {
   customer_id: string | null;
   user_id: string; // Operador que realizou a venda
+  cash_register_id: string | null; // Caixa em que foi realizada
   status: SaleStatus;
   subtotal: number; // Em centavos
   discount_amount: number;
@@ -318,6 +320,138 @@ export interface CreateSaleItemInput {
   discount_amount?: number;
   discount_percent?: number;
   notes?: string;
+}
+
+// =============================================================================
+// GESTÃO DE CAIXA
+// =============================================================================
+
+/**
+ * Status do caixa
+ */
+export type CashRegisterStatus = 'open' | 'closed';
+
+/**
+ * Tipo de movimentação de caixa
+ */
+export type CashMovementType = 'opening' | 'sale' | 'withdrawal' | 'supply' | 'closing';
+
+/**
+ * Entidade de caixa (sessão de caixa)
+ */
+export interface CashRegister extends BaseEntity {
+  user_id: string;
+  status: CashRegisterStatus;
+  opening_balance: number; // Valor inicial em centavos
+  closing_balance: number | null; // Valor final em centavos
+  expected_balance: number | null; // Saldo esperado calculado
+  difference: number | null; // Diferença (sobra/falta)
+  notes: string | null;
+  opened_at: string;
+  closed_at: string | null;
+}
+
+/**
+ * Dados para abertura de caixa
+ */
+export interface OpenCashRegisterInput {
+  opening_balance: number;
+  notes?: string;
+}
+
+/**
+ * Dados para fechamento de caixa
+ */
+export interface CloseCashRegisterInput {
+  closing_balance: number;
+  notes?: string;
+}
+
+/**
+ * Movimentação de caixa (sangria, suprimento, etc)
+ */
+export interface CashMovement extends BaseEntity {
+  cash_register_id: string;
+  type: CashMovementType;
+  amount: number; // Sempre positivo, tipo indica entrada/saída
+  description: string | null;
+  sale_id: string | null; // Referência à venda se for do tipo 'sale'
+  user_id: string;
+}
+
+/**
+ * Dados para criar movimentação de caixa
+ */
+export interface CreateCashMovementInput {
+  type: 'withdrawal' | 'supply';
+  amount: number;
+  description?: string;
+}
+
+/**
+ * Resumo do caixa
+ */
+export interface CashRegisterSummary {
+  cash_register: CashRegister;
+  movements: CashMovement[];
+  total_sales: number;
+  total_withdrawals: number;
+  total_supplies: number;
+  sales_count: number;
+  expected_balance: number;
+}
+
+// =============================================================================
+// CONTAS A RECEBER
+// =============================================================================
+
+/**
+ * Registro de pagamento (pagamentos parciais de vendas pendentes)
+ */
+export interface PaymentRecord extends BaseEntity {
+  sale_id: string;
+  customer_id: string;
+  amount: number; // Valor pago em centavos
+  payment_method: PaymentMethod;
+  notes: string | null;
+  received_by: string; // ID do usuário que recebeu
+}
+
+/**
+ * Dados para registrar pagamento
+ */
+export interface CreatePaymentRecordInput {
+  sale_id: string;
+  amount: number;
+  payment_method: PaymentMethod;
+  notes?: string;
+}
+
+/**
+ * Conta a receber (venda pendente com informações adicionais)
+ */
+export interface AccountReceivable {
+  sale: Sale;
+  customer: Customer;
+  total_paid: number;
+  remaining_balance: number;
+  payments: PaymentRecord[];
+  days_overdue: number;
+}
+
+/**
+ * Resumo de contas a receber
+ */
+export interface AccountsReceivableSummary {
+  total_receivable: number;
+  total_overdue: number;
+  accounts_count: number;
+  overdue_count: number;
+  by_customer: Array<{
+    customer: Customer;
+    total_debt: number;
+    sales_count: number;
+  }>;
 }
 
 // =============================================================================
