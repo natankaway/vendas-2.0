@@ -181,20 +181,20 @@ export default function CaixaPage() {
   const history = historyData?.data || [];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-6">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-3 sm:p-6">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
           <div>
-            <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+            <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
               Gestão de Caixa
             </h1>
-            <p className="text-gray-500 dark:text-gray-400 mt-1">Abertura, fechamento e movimentações</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Abertura, fechamento e movimentações</p>
           </div>
 
           <button
             onClick={() => refetch()}
-            className="flex items-center gap-2 px-4 py-2 text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 rounded-xl transition-colors"
+            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 rounded-xl transition-colors"
           >
             <RefreshCw className="w-4 h-4" />
             Atualizar
@@ -207,17 +207,17 @@ export default function CaixaPage() {
           </div>
         ) : !currentCashRegister ? (
           /* Cash Register Closed State */
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-8 text-center">
-            <div className="w-20 h-20 mx-auto mb-6 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
-              <Lock className="w-10 h-10 text-gray-400 dark:text-gray-500" />
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 sm:p-8 text-center">
+            <div className="w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-4 sm:mb-6 bg-gray-100 dark:bg-gray-700 rounded-full flex items-center justify-center">
+              <Lock className="w-8 h-8 sm:w-10 sm:h-10 text-gray-400 dark:text-gray-500" />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Caixa Fechado</h2>
-            <p className="text-gray-500 dark:text-gray-400 mb-6">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">Caixa Fechado</h2>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 mb-4 sm:mb-6">
               Abra o caixa para começar a registrar vendas
             </p>
             <button
               onClick={() => setShowOpenModal(true)}
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg font-medium"
+              className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg font-medium text-sm sm:text-base"
             >
               <Unlock className="w-5 h-5" />
               Abrir Caixa
@@ -227,110 +227,113 @@ export default function CaixaPage() {
           /* Cash Register Open State */
           <>
             {/* Status Card */}
-            <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg p-6 mb-6 text-white">
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
-                    <Wallet className="w-8 h-8" />
+            <div className="bg-gradient-to-r from-green-600 to-emerald-600 rounded-2xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6 text-white">
+              <div className="flex flex-col gap-4">
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/20 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Wallet className="w-6 h-6 sm:w-8 sm:h-8" />
                   </div>
-                  <div>
+                  <div className="min-w-0">
                     <div className="flex items-center gap-2">
                       <span className="w-2 h-2 bg-green-300 rounded-full animate-pulse"></span>
-                      <span className="text-green-100 text-sm font-medium">Caixa Aberto</span>
+                      <span className="text-green-100 text-xs sm:text-sm font-medium">Caixa Aberto</span>
                     </div>
-                    <p className="text-2xl font-bold mt-1">
+                    <p className="text-xl sm:text-2xl font-bold mt-1">
                       {formatCurrency(currentCashRegister.expected_balance)}
                     </p>
-                    <p className="text-green-100 text-sm">Saldo esperado</p>
+                    <p className="text-green-100 text-xs sm:text-sm">Saldo esperado</p>
                   </div>
                 </div>
 
-                <div className="flex flex-wrap gap-3">
+                <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
                   <button
                     onClick={() => setShowMovementModal('supply')}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors text-xs sm:text-sm"
                   >
                     <Plus className="w-4 h-4" />
-                    Suprimento
+                    <span className="hidden xs:inline">Suprimento</span>
+                    <span className="xs:hidden">Suprir</span>
                   </button>
                   <button
                     onClick={() => setShowMovementModal('withdrawal')}
-                    className="flex items-center gap-2 px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors text-xs sm:text-sm"
                   >
                     <Minus className="w-4 h-4" />
-                    Sangria
+                    <span className="hidden xs:inline">Sangria</span>
+                    <span className="xs:hidden">Sangria</span>
                   </button>
                   <button
                     onClick={() => setShowCloseModal(true)}
-                    className="flex items-center gap-2 px-4 py-2 bg-red-500 hover:bg-red-600 rounded-xl transition-colors"
+                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-red-500 hover:bg-red-600 rounded-xl transition-colors text-xs sm:text-sm"
                   >
                     <Lock className="w-4 h-4" />
-                    Fechar Caixa
+                    <span className="hidden xs:inline">Fechar Caixa</span>
+                    <span className="xs:hidden">Fechar</span>
                   </button>
                 </div>
               </div>
             </div>
 
             {/* Stats Grid */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-                <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 mb-2">
-                  <DollarSign className="w-4 h-4" />
-                  <span className="text-sm font-medium">Abertura</span>
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 mb-4 sm:mb-6">
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-3 sm:p-4 shadow-sm">
+                <div className="flex items-center gap-1 sm:gap-2 text-blue-600 dark:text-blue-400 mb-1 sm:mb-2">
+                  <DollarSign className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="text-xs sm:text-sm font-medium">Abertura</span>
                 </div>
-                <p className="text-xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base sm:text-xl font-bold text-gray-900 dark:text-white truncate">
                   {formatCurrency(currentCashRegister.opening_balance)}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                   {formatTime(currentCashRegister.opened_at)}
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-                <div className="flex items-center gap-2 text-green-600 dark:text-green-400 mb-2">
-                  <TrendingUp className="w-4 h-4" />
-                  <span className="text-sm font-medium">Vendas</span>
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-3 sm:p-4 shadow-sm">
+                <div className="flex items-center gap-1 sm:gap-2 text-green-600 dark:text-green-400 mb-1 sm:mb-2">
+                  <TrendingUp className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="text-xs sm:text-sm font-medium">Vendas</span>
                 </div>
-                <p className="text-xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base sm:text-xl font-bold text-gray-900 dark:text-white truncate">
                   {formatCurrency(currentCashRegister.total_sales)}
                 </p>
-                <p className="text-xs text-gray-500 dark:text-gray-400">
+                <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                   {currentCashRegister.sales_count} vendas
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-                <div className="flex items-center gap-2 text-purple-600 dark:text-purple-400 mb-2">
-                  <ArrowDownCircle className="w-4 h-4" />
-                  <span className="text-sm font-medium">Suprimentos</span>
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-3 sm:p-4 shadow-sm">
+                <div className="flex items-center gap-1 sm:gap-2 text-purple-600 dark:text-purple-400 mb-1 sm:mb-2">
+                  <ArrowDownCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="text-xs sm:text-sm font-medium">Suprimentos</span>
                 </div>
-                <p className="text-xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base sm:text-xl font-bold text-gray-900 dark:text-white truncate">
                   {formatCurrency(currentCashRegister.total_supplies)}
                 </p>
               </div>
 
-              <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm">
-                <div className="flex items-center gap-2 text-orange-600 dark:text-orange-400 mb-2">
-                  <ArrowUpCircle className="w-4 h-4" />
-                  <span className="text-sm font-medium">Sangrias</span>
+              <div className="bg-white dark:bg-gray-800 rounded-xl p-3 sm:p-4 shadow-sm">
+                <div className="flex items-center gap-1 sm:gap-2 text-orange-600 dark:text-orange-400 mb-1 sm:mb-2">
+                  <ArrowUpCircle className="w-3 h-3 sm:w-4 sm:h-4" />
+                  <span className="text-xs sm:text-sm font-medium">Sangrias</span>
                 </div>
-                <p className="text-xl font-bold text-gray-900 dark:text-white">
+                <p className="text-base sm:text-xl font-bold text-gray-900 dark:text-white truncate">
                   {formatCurrency(currentCashRegister.total_withdrawals)}
                 </p>
               </div>
             </div>
 
             {/* Movements List */}
-            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 mb-6">
-              <div className="flex items-center gap-2 mb-6">
-                <History className="w-5 h-5 text-blue-600 dark:text-blue-400" />
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+            <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+              <div className="flex items-center gap-2 mb-4 sm:mb-6">
+                <History className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 dark:text-blue-400" />
+                <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                   Movimentações do Dia
                 </h3>
               </div>
 
               {currentCashRegister.movements && currentCashRegister.movements.length > 0 ? (
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {currentCashRegister.movements.map((movement) => {
                     const config = movementTypeConfig[movement.type] || movementTypeConfig.opening;
                     const isNegative = movement.type === 'withdrawal';
@@ -338,30 +341,30 @@ export default function CaixaPage() {
                     return (
                       <div
                         key={movement.id}
-                        className="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl"
+                        className="flex items-center justify-between p-3 sm:p-4 bg-gray-50 dark:bg-gray-700/50 rounded-xl"
                       >
-                        <div className="flex items-center gap-3">
-                          <div className={`p-2 rounded-lg ${config.color}`}>
+                        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                          <div className={`p-1.5 sm:p-2 rounded-lg flex-shrink-0 ${config.color}`}>
                             {config.icon}
                           </div>
-                          <div>
-                            <p className="font-medium text-gray-900 dark:text-white">
+                          <div className="min-w-0">
+                            <p className="text-sm sm:text-base font-medium text-gray-900 dark:text-white">
                               {config.label}
                             </p>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">
+                            <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">
                               {movement.description || config.label}
                             </p>
                           </div>
                         </div>
-                        <div className="text-right">
-                          <p className={`font-bold ${
+                        <div className="text-right flex-shrink-0 ml-2">
+                          <p className={`text-sm sm:text-base font-bold ${
                             isNegative
                               ? 'text-red-600 dark:text-red-400'
                               : 'text-green-600 dark:text-green-400'
                           }`}>
                             {isNegative ? '-' : '+'}{formatCurrency(movement.amount)}
                           </p>
-                          <p className="text-xs text-gray-500 dark:text-gray-400">
+                          <p className="text-[10px] sm:text-xs text-gray-500 dark:text-gray-400">
                             {formatTime(movement.created_at)}
                           </p>
                         </div>
@@ -370,9 +373,9 @@ export default function CaixaPage() {
                   })}
                 </div>
               ) : (
-                <div className="text-center py-8 text-gray-500 dark:text-gray-400">
-                  <History className="w-12 h-12 mx-auto mb-2 opacity-50" />
-                  <p>Nenhuma movimentação registrada</p>
+                <div className="text-center py-6 sm:py-8 text-gray-500 dark:text-gray-400">
+                  <History className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-2 opacity-50" />
+                  <p className="text-sm">Nenhuma movimentação registrada</p>
                 </div>
               )}
             </div>
@@ -381,15 +384,83 @@ export default function CaixaPage() {
 
         {/* History Section */}
         {history.length > 0 && (
-          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6">
-            <div className="flex items-center gap-2 mb-6">
-              <Clock className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6">
+            <div className="flex items-center gap-2 mb-4 sm:mb-6">
+              <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-purple-600 dark:text-purple-400" />
+              <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
                 Histórico de Caixas
               </h3>
             </div>
 
-            <div className="overflow-x-auto">
+            {/* Mobile Cards View */}
+            <div className="sm:hidden space-y-3">
+              {history.map((register: CashRegisterWithSummary) => (
+                <div
+                  key={register.id}
+                  className="bg-gray-50 dark:bg-gray-700/50 rounded-xl p-4"
+                >
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-sm font-medium text-gray-900 dark:text-white">
+                      {new Date(register.opened_at).toLocaleDateString('pt-BR')}
+                    </span>
+                    <span className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium ${
+                      register.status === 'closed'
+                        ? 'bg-gray-200 text-gray-600 dark:bg-gray-600 dark:text-gray-300'
+                        : 'bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400'
+                    }`}>
+                      {register.status === 'closed' ? (
+                        <>
+                          <CheckCircle className="w-3 h-3" />
+                          Fechado
+                        </>
+                      ) : (
+                        <>
+                          <AlertCircle className="w-3 h-3" />
+                          Aberto
+                        </>
+                      )}
+                    </span>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-3 text-sm">
+                    <div>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Abertura</p>
+                      <p className="font-medium text-gray-900 dark:text-white">
+                        {formatCurrency(register.opening_balance)}
+                      </p>
+                    </div>
+                    <div>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">Fechamento</p>
+                      <p className="font-medium text-gray-900 dark:text-white">
+                        {register.closing_balance ? formatCurrency(register.closing_balance) : '-'}
+                      </p>
+                    </div>
+                  </div>
+
+                  {register.difference !== null && register.difference !== undefined && (
+                    <div className="mt-3 pt-3 border-t border-gray-200 dark:border-gray-600">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs text-gray-500 dark:text-gray-400">Diferença</span>
+                        <span className={`text-sm font-bold ${
+                          register.difference === 0
+                            ? 'text-green-600 dark:text-green-400'
+                            : register.difference > 0
+                            ? 'text-blue-600 dark:text-blue-400'
+                            : 'text-red-600 dark:text-red-400'
+                        }`}>
+                          {register.difference === 0 ? 'Correto' :
+                           register.difference > 0 ? `+${formatCurrency(register.difference)}` :
+                           formatCurrency(register.difference)}
+                        </span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+
+            {/* Desktop Table View */}
+            <div className="hidden sm:block overflow-x-auto">
               <table className="w-full">
                 <thead>
                   <tr className="text-left text-sm text-gray-500 dark:text-gray-400">
