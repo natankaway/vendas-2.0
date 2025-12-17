@@ -8,7 +8,7 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Search,
@@ -47,6 +47,12 @@ interface Sale {
   receipt_number: string;
   customer_id: string | null;
   customer_name: string | null;
+  customer?: {
+    id: string;
+    name: string;
+    address?: string;
+    phone?: string;
+  } | null;
   user_id: string;
   user_name: string | null;
   status: 'pending' | 'completed' | 'cancelled';
@@ -115,8 +121,27 @@ export default function VendasPage() {
     status: '',
     paymentMethod: '',
   });
+  const [companySettings, setCompanySettings] = useState<{
+    name: string;
+    logo: string | null;
+    address: string;
+    phone: string;
+    document: string;
+  } | null>(null);
 
   const perPage = 20;
+
+  // Load company settings from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('companySettings');
+    if (saved) {
+      try {
+        setCompanySettings(JSON.parse(saved));
+      } catch (e) {
+        console.error('Erro ao carregar configurações da empresa:', e);
+      }
+    }
+  }, []);
 
   const { data: salesData, isLoading } = useQuery({
     queryKey: ['sales', search, searchType, page, filters],
@@ -582,69 +607,125 @@ export default function VendasPage() {
       {/* Receipt Modal */}
       {showReceiptModal && selectedSale && (
         <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50">
-          <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
-            <div className="flex items-center justify-between p-3 border-b flex-shrink-0">
-              <h2 className="text-lg font-semibold">Recibo</h2>
-              <button onClick={closeReceipt} className="p-2 hover:bg-gray-100 rounded-full">
-                <X className="w-5 h-5" />
+          <div className="bg-white dark:bg-gray-800 w-full max-w-sm sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 flex-shrink-0">
+              <h2 className="text-lg font-semibold dark:text-white">Recibo</h2>
+              <button onClick={closeReceipt} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <X className="w-5 h-5 dark:text-gray-300" />
               </button>
             </div>
 
-            <div id="receipt-content" className="flex-1 overflow-y-auto p-4 font-mono text-sm">
+            <div id="receipt-content" className="flex-1 overflow-y-auto p-4 font-mono text-sm dark:text-gray-200 print-receipt">
               <div className="text-center mb-4">
-                <h3 className="font-bold text-lg">VENDAS PDV</h3>
-                <p className="text-[10px] text-gray-400">CUPOM NÃO FISCAL</p>
+                {/* Logo da empresa */}
+                {companySettings?.logo && (
+                  <div className="flex justify-center mb-2">
+                    <img
+                      src={companySettings.logo}
+                      alt="Logo"
+                      className="max-h-16 max-w-[150px] object-contain"
+                    />
+                  </div>
+                )}
+                <h3 className="font-bold text-lg dark:text-white print:text-black">
+                  {companySettings?.name || 'KAWAY POS'}
+                </h3>
+                {companySettings?.document && (
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">{companySettings.document}</p>
+                )}
+                {companySettings?.address && (
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">{companySettings.address}</p>
+                )}
+                {companySettings?.phone && (
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">{companySettings.phone}</p>
+                )}
+                <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-1">CUPOM NÃO FISCAL</p>
+                <p className="text-xs mt-2">{formatDateTime(selectedSale.created_at)}</p>
+                <p className="text-xs font-medium">Recibo: {selectedSale.receipt_number}</p>
               </div>
 
-              <div className="border-t border-dashed border-gray-300 my-3" />
+              {/* Cliente */}
+              {(selectedSale.customer || selectedSale.customer_name) && (
+                <>
+                  <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
+                  <div className="text-xs space-y-0.5">
+                    <div className="flex justify-between">
+                      <span className="text-gray-500 dark:text-gray-400">Cliente:</span>
+                      <span className="font-medium">{selectedSale.customer?.name || selectedSale.customer_name}</span>
+                    </div>
+                    {selectedSale.customer?.address && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 dark:text-gray-400">Endereço:</span>
+                        <span className="text-right max-w-[60%] truncate">{selectedSale.customer.address}</span>
+                      </div>
+                    )}
+                    {selectedSale.customer?.phone && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 dark:text-gray-400">Telefone:</span>
+                        <span>{selectedSale.customer.phone}</span>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
 
-              <div className="space-y-1 text-xs">
-                <p><strong>Recibo:</strong> {selectedSale.receipt_number}</p>
-                <p><strong>Data:</strong> {formatDateTime(selectedSale.created_at)}</p>
-                <p><strong>Cliente:</strong> {selectedSale.customer_name || 'Balcão'}</p>
-                <p><strong>Pagamento:</strong> {getPaymentMethodLabel(selectedSale.payment_method)}</p>
-                <p><strong>Status:</strong> {getStatusLabel(selectedSale.status).label}</p>
-              </div>
+              <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
 
-              <div className="border-t border-dashed border-gray-300 my-3" />
-
-              <div className="space-y-1.5">
-                <p className="font-bold text-xs">ITENS:</p>
-                {selectedSale.items?.map((item, index) => (
-                  <div key={item.id || index} className="flex justify-between text-xs gap-2">
-                    <span className="flex-1 min-w-0 truncate">{item.quantity}x {item.product_name}</span>
-                    <span className="flex-shrink-0">{formatCurrency(item.total)}</span>
+              {/* Itens */}
+              <div className="space-y-2">
+                {selectedSale.items?.map((item: any, index: number) => (
+                  <div key={item.id || index}>
+                    {index > 0 && <div className="border-t border-dotted border-gray-200 dark:border-gray-700 my-1" />}
+                    <div className="text-xs">
+                      <div className="font-medium truncate">{item.product_name}</div>
+                      <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                        <span>{item.quantity} {item.unit || 'un'} x {formatCurrency(item.unit_price)}</span>
+                        <span className="font-medium tabular-nums dark:text-gray-200">{formatCurrency(item.total)}</span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              <div className="border-t border-dashed border-gray-300 my-3" />
+              <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
 
-              <div className="space-y-1">
-                <div className="flex justify-between text-xs">
+              {/* Totais */}
+              {selectedSale.discount_amount > 0 && (
+                <div className="flex justify-between text-xs mb-1">
                   <span>Subtotal:</span>
                   <span>{formatCurrency(selectedSale.subtotal)}</span>
                 </div>
-                {selectedSale.discount_amount > 0 && (
-                  <div className="flex justify-between text-xs text-green-600">
-                    <span>Desconto:</span>
-                    <span>-{formatCurrency(selectedSale.discount_amount)}</span>
-                  </div>
-                )}
-                <div className="flex justify-between font-bold text-base pt-2 border-t">
-                  <span>TOTAL:</span>
-                  <span>{formatCurrency(selectedSale.total)}</span>
+              )}
+              {selectedSale.discount_amount > 0 && (
+                <div className="flex justify-between text-xs text-green-600 dark:text-green-400 mb-1">
+                  <span>Desconto:</span>
+                  <span>-{formatCurrency(selectedSale.discount_amount)}</span>
+                </div>
+              )}
+              <div className="flex justify-between font-bold text-base dark:text-white">
+                <span>TOTAL</span>
+                <span>{formatCurrency(selectedSale.total)}</span>
+              </div>
+
+              <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
+
+              {/* Pagamento */}
+              <div className="text-xs space-y-0.5">
+                <div className="flex justify-between">
+                  <span className="text-gray-500 dark:text-gray-400">Pagamento:</span>
+                  <span className="font-medium">{getPaymentMethodLabel(selectedSale.payment_method)}</span>
                 </div>
               </div>
 
-              <div className="border-t border-dashed border-gray-300 my-3" />
+              <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
 
-              <div className="text-center text-xs text-gray-400">
+              <div className="text-center text-xs text-gray-400 dark:text-gray-500">
                 <p>Obrigado pela preferência!</p>
+                <p className="mt-1">DOCUMENTO SEM VALOR FISCAL</p>
               </div>
             </div>
 
-            <div className="flex gap-2 p-3 border-t bg-gray-50 flex-shrink-0">
+            <div className="flex gap-2 p-3 border-t bg-gray-50 dark:bg-gray-800 dark:border-gray-700 flex-shrink-0">
               {selectedSale.status === 'pending' && (
                 <button
                   onClick={() => {
