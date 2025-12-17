@@ -661,7 +661,7 @@ export default function VendasPage() {
                 <Printer className="w-4 h-4" />
                 Imprimir
               </button>
-              <button onClick={closeReceipt} className="flex-1 py-2.5 bg-gray-200 text-gray-700 rounded-xl font-medium">
+              <button onClick={closeReceipt} className="flex-1 py-2.5 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-white rounded-xl font-medium">
                 Fechar
               </button>
             </div>
@@ -745,10 +745,10 @@ export default function VendasPage() {
               </div>
             </div>
 
-            <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
+            <div className="flex gap-3 p-4 border-t bg-gray-50 dark:bg-gray-800 dark:border-gray-700 flex-shrink-0">
               <button
                 onClick={closePaymentModal}
-                className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium"
+                className="flex-1 py-3 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-white rounded-xl font-medium"
               >
                 Cancelar
               </button>

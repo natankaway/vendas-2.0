@@ -720,8 +720,8 @@ export default function ProdutosPage() {
               </div>
             </form>
 
-            <div className="flex gap-2 p-3 border-t bg-gray-50 flex-shrink-0">
-              <button type="button" onClick={closeModal} className="flex-1 py-2.5 bg-gray-200 text-gray-700 rounded-xl font-medium text-sm">
+            <div className="flex gap-2 p-3 border-t bg-gray-50 dark:bg-gray-800 dark:border-gray-700 flex-shrink-0">
+              <button type="button" onClick={closeModal} className="flex-1 py-2.5 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-white rounded-xl font-medium text-sm">
                 Cancelar
               </button>
               <button

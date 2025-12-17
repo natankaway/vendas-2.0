@@ -509,10 +509,10 @@ export default function CategoriasPage() {
                 </button>
               </div>
 
-              <div className="p-4 border-t bg-gray-50">
+              <div className="p-4 border-t bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
                 <button
                   onClick={() => setSelectedCategory(null)}
-                  className="w-full py-3 text-center font-medium text-gray-700 bg-white border rounded-lg hover:bg-gray-50"
+                  className="w-full py-3 text-center font-medium text-gray-700 dark:text-white bg-white dark:bg-gray-600 border dark:border-gray-600 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-500"
                 >
                   Cancelar
                 </button>
@@ -631,11 +631,11 @@ export default function CategoriasPage() {
               </form>
 
               {/* Actions */}
-              <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
+              <div className="flex gap-3 p-4 border-t bg-gray-50 dark:bg-gray-800 dark:border-gray-700 flex-shrink-0">
                 <button
                   type="button"
                   onClick={closeModal}
-                  className="flex-1 py-3 text-gray-700 bg-gray-200 rounded-xl font-medium hover:bg-gray-300 transition-colors"
+                  className="flex-1 py-3 text-gray-700 dark:text-white bg-gray-200 dark:bg-gray-600 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-500 transition-colors"
                 >
                   Cancelar
                 </button>
