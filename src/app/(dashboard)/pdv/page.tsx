@@ -177,25 +177,30 @@ function PaymentMethodButton({
   icon: Icon,
   selected,
   onClick,
+  disabled = false,
 }: {
   method: PaymentMethod;
   label: string;
   icon: any;
   selected: boolean;
   onClick: (method: PaymentMethod) => void;
+  disabled?: boolean;
 }) {
   return (
     <button
-      onClick={() => onClick(method)}
+      onClick={() => !disabled && onClick(method)}
+      disabled={disabled}
       className={cn(
         'flex flex-col items-center justify-center p-3 rounded-xl border-2 transition-all',
-        selected
-          ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
-          : 'border-gray-200 dark:border-gray-600 hover:border-blue-300 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300'
+        disabled
+          ? 'border-gray-200 dark:border-gray-700 bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-600 cursor-not-allowed opacity-50'
+          : selected
+            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400'
+            : 'border-gray-200 dark:border-gray-600 hover:border-blue-300 hover:bg-gray-50 dark:hover:bg-gray-700 dark:text-gray-300'
       )}
     >
-      <Icon className={cn('h-5 w-5 mb-1', selected && 'text-blue-600 dark:text-blue-400')} />
-      <span className={cn('text-xs', selected && 'font-medium')}>{label}</span>
+      <Icon className={cn('h-5 w-5 mb-1', selected && !disabled && 'text-blue-600 dark:text-blue-400')} />
+      <span className={cn('text-xs', selected && !disabled && 'font-medium')}>{label}</span>
     </button>
   );
 }
@@ -372,6 +377,16 @@ export default function PDVPage() {
       toast({
         title: 'Forma de pagamento',
         description: 'Selecione uma forma de pagamento',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    // Validação: "Receber Depois" requer cliente
+    if (paymentMethod === 'pay_later' && !customer) {
+      toast({
+        title: 'Cliente obrigatório',
+        description: 'Selecione um cliente para usar "Receber Depois"',
         variant: 'destructive',
       });
       return;
@@ -711,14 +726,22 @@ export default function PDVPage() {
                 <PaymentMethodButton method="credit_card" label="Crédito" icon={CreditCard} selected={paymentMethod === 'credit_card'} onClick={setPaymentMethod} />
                 <PaymentMethodButton method="debit_card" label="Débito" icon={CreditCard} selected={paymentMethod === 'debit_card'} onClick={setPaymentMethod} />
                 <PaymentMethodButton method="pix" label="PIX" icon={Smartphone} selected={paymentMethod === 'pix'} onClick={setPaymentMethod} />
-                <PaymentMethodButton method="pay_later" label="Receber Depois" icon={Clock} selected={paymentMethod === 'pay_later'} onClick={setPaymentMethod} />
+                <PaymentMethodButton method="pay_later" label="Receber Depois" icon={Clock} selected={paymentMethod === 'pay_later'} onClick={setPaymentMethod} disabled={!customer} />
               </div>
 
-              {paymentMethod === 'pay_later' && (
+              {!customer && (
+                <div className="p-3 bg-gray-100 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg">
+                  <p className="text-sm text-gray-600 dark:text-gray-400">
+                    <strong>Dica:</strong> Para usar "Receber Depois", selecione um cliente primeiro.
+                  </p>
+                </div>
+              )}
+
+              {paymentMethod === 'pay_later' && customer && (
                 <div className="p-3 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg">
                   <p className="text-sm text-yellow-800 dark:text-yellow-200">
-                    <strong>Atenção:</strong> A venda ficará com status "Pendente" até o pagamento ser recebido.
-                    Você poderá registrar o pagamento na tela de Vendas.
+                    <strong>Atenção:</strong> A venda ficará pendente para <strong>{customer.name}</strong> até o pagamento ser recebido.
+                    Você poderá registrar o pagamento em Contas a Receber.
                   </p>
                 </div>
               )}
