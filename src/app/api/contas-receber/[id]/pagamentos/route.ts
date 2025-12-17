@@ -117,7 +117,7 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
     // Get sale with current payments
     const { data: sale, error: saleError } = await supabase
       .from('sales')
-      .select('id, customer_id, total, payment_method')
+      .select('id, customer_id, total, payment_method, notes')
       .eq('id', id)
       .single();
 

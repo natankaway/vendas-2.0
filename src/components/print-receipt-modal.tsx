@@ -19,6 +19,7 @@ interface SaleItem {
   product_name: string;
   quantity: number;
   unit_price: number;
+  unit?: string;
   total: number;
 }
 
@@ -26,6 +27,8 @@ interface ReceiptData {
   receipt_number: string;
   created_at: string;
   customer_name?: string;
+  customer_address?: string;
+  customer_phone?: string;
   items: SaleItem[];
   subtotal: number;
   discount_amount: number;
@@ -190,10 +193,24 @@ export function PrintReceiptModal({ isOpen, onClose, data, company }: PrintRecei
                 </div>
               )}
               {data.customer_name && (
-                <div className="flex justify-between">
-                  <span>Cliente:</span>
-                  <span>{data.customer_name}</span>
-                </div>
+                <>
+                  <div className="flex justify-between">
+                    <span>Cliente:</span>
+                    <span>{data.customer_name}</span>
+                  </div>
+                  {data.customer_address && (
+                    <div className="flex justify-between">
+                      <span>Endereço:</span>
+                      <span className="text-right max-w-[60%] text-[10px]">{data.customer_address}</span>
+                    </div>
+                  )}
+                  {data.customer_phone && (
+                    <div className="flex justify-between">
+                      <span>Telefone:</span>
+                      <span>{data.customer_phone}</span>
+                    </div>
+                  )}
+                </>
               )}
             </div>
 
@@ -210,15 +227,14 @@ export function PrintReceiptModal({ isOpen, onClose, data, company }: PrintRecei
             <div className="border-t border-black my-1" />
 
             {/* Items */}
-            <div className="text-xs space-y-1">
+            <div className="text-xs">
               {data.items.map((item, index) => (
                 <div key={index}>
+                  {index > 0 && <div className="border-t border-dotted border-gray-400 my-1" />}
                   <div className="font-medium truncate text-[11px]">{item.product_name}</div>
                   <div className="flex justify-between text-[10px]">
-                    <span className="flex-1"></span>
-                    <span className="w-10 text-center">{item.quantity}</span>
-                    <span className="w-14 text-right">{formatCurrency(item.unit_price)}</span>
-                    <span className="w-14 text-right">{formatCurrency(item.total)}</span>
+                    <span className="flex-1">{item.quantity} {item.unit || 'un'} x {formatCurrency(item.unit_price)}</span>
+                    <span className="w-16 text-right font-medium">{formatCurrency(item.total)}</span>
                   </div>
                 </div>
               ))}

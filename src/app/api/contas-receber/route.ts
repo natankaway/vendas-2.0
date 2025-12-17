@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
         .from('sales')
         .select('id, customer_id, total, created_at')
         .eq('payment_method', 'pay_later')
-        .eq('status', 'completed')
+        .eq('status', 'pending')
         .is('deleted_at', null);
 
       // Get all payments
@@ -123,7 +123,7 @@ export async function GET(request: NextRequest) {
       .order('created_at', { ascending: false });
 
     if (status === 'pending') {
-      query = query.eq('status', 'completed');
+      query = query.eq('status', 'pending');
     }
 
     if (customerId) {

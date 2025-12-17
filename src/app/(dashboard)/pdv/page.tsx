@@ -297,13 +297,25 @@ export default function PDVPage() {
     },
     onSuccess: (response) => {
       const saleData = response.data;
-      setLastSale(saleData);
+      // Include customer and payment info in lastSale for receipt
+      setLastSale({
+        ...saleData,
+        customer: customer,
+        payment_method: paymentMethod,
+        payment_details: paymentMethod === 'cash' ? {
+          amount_received: parseFloat(cashReceived.replace(',', '.') || '0') * 100,
+          change_amount: parseFloat(cashReceived.replace(',', '.') || '0') * 100 - saleData.total,
+        } : null,
+      });
       setShowPaymentDialog(false);
       setShowCartDrawer(false);
       setShowReceiptDialog(true);
+      setCashReceived('');
       clearCart();
       queryClient.invalidateQueries({ queryKey: ['products'] });
       queryClient.invalidateQueries({ queryKey: ['sales'] });
+      queryClient.invalidateQueries({ queryKey: ['accounts-receivable'] });
+      queryClient.invalidateQueries({ queryKey: ['accounts-receivable-summary'] });
 
       toast({
         title: 'Venda realizada!',
@@ -368,8 +380,17 @@ export default function PDVPage() {
     let paymentDetails: any = {};
 
     if (paymentMethod === 'cash') {
-      const received = parseFloat(cashReceived.replace(',', '.')) * 100;
-      if (received < total) {
+      const receivedValue = cashReceived.replace(',', '.').trim();
+      if (!receivedValue || receivedValue === '' || parseFloat(receivedValue) <= 0) {
+        toast({
+          title: 'Valor obrigatório',
+          description: 'Informe o valor recebido para pagamento em dinheiro',
+          variant: 'destructive',
+        });
+        return;
+      }
+      const received = parseFloat(receivedValue) * 100;
+      if (isNaN(received) || received < total) {
         toast({
           title: 'Valor insuficiente',
           description: 'O valor recebido é menor que o total',
@@ -391,6 +412,7 @@ export default function PDVPage() {
         product_name: item.product.name,
         quantity: item.quantity,
         unit_price: item.unitPrice,
+        unit: item.product.unit || 'un',
         discount_amount: item.discountAmount,
         discount_percent: item.discountPercent,
         notes: item.notes,
@@ -693,8 +715,8 @@ export default function PDVPage() {
               </div>
 
               {paymentMethod === 'pay_later' && (
-                <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                  <p className="text-sm text-yellow-800">
+                <div className="p-3 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg">
+                  <p className="text-sm text-yellow-800 dark:text-yellow-200">
                     <strong>Atenção:</strong> A venda ficará com status "Pendente" até o pagamento ser recebido.
                     Você poderá registrar o pagamento na tela de Vendas.
                   </p>
@@ -703,20 +725,20 @@ export default function PDVPage() {
 
               {paymentMethod === 'cash' && (
                 <div className="space-y-2">
-                  <label className="block text-sm font-medium text-gray-700">Valor Recebido</label>
+                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300">Valor Recebido *</label>
                   <input
                     type="text"
                     inputMode="decimal"
                     placeholder="0,00"
                     value={cashReceived}
                     onChange={(e) => setCashReceived(e.target.value)}
-                    className="w-full px-3 py-2 text-right text-lg border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    className="w-full px-3 py-2 text-right text-lg border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
                   />
                   {cashReceived && (
-                    <div className="flex justify-between text-sm p-2 bg-green-50 rounded-lg">
-                      <span className="text-green-700">Troco:</span>
-                      <span className="font-bold text-green-700">
-                        {formatCurrency(Math.max(0, parseFloat(cashReceived.replace(',', '.')) * 100 - total))}
+                    <div className="flex justify-between text-sm p-2 bg-green-50 dark:bg-green-900/30 rounded-lg">
+                      <span className="text-green-700 dark:text-green-400">Troco:</span>
+                      <span className="font-bold text-green-700 dark:text-green-400">
+                        {formatCurrency(Math.max(0, parseFloat(cashReceived.replace(',', '.') || '0') * 100 - total))}
                       </span>
                     </div>
                   )}
@@ -724,8 +746,8 @@ export default function PDVPage() {
               )}
             </div>
 
-            <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
-              <button onClick={() => setShowPaymentDialog(false)} className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium">
+            <div className="flex gap-3 p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex-shrink-0">
+              <button onClick={() => setShowPaymentDialog(false)} className="flex-1 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors">
                 Cancelar
               </button>
               <button
@@ -748,51 +770,125 @@ export default function PDVPage() {
       {/* Dialog do Recibo */}
       {showReceiptDialog && lastSale && (
         <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center" style={{ zIndex: 10000 }}>
-          <div className="bg-white w-full max-w-sm sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
-            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
-              <h2 className="text-lg font-semibold text-green-600">Venda Realizada!</h2>
-              <button onClick={() => setShowReceiptDialog(false)} className="p-2 hover:bg-gray-100 rounded-full">
-                <X className="h-5 w-5" />
+          <div className="bg-white dark:bg-gray-800 w-full max-w-sm sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 flex-shrink-0">
+              <h2 className="text-lg font-semibold text-green-600 dark:text-green-400">Venda Realizada!</h2>
+              <button onClick={() => setShowReceiptDialog(false)} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <X className="h-5 w-5 dark:text-gray-300" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 font-mono text-sm">
+            <div className="flex-1 overflow-y-auto p-4 font-mono text-sm dark:text-gray-200">
               <div className="text-center mb-4">
-                <h3 className="font-bold text-lg">VENDAS PDV</h3>
-                <p className="text-[10px] text-gray-400">CUPOM NÃO FISCAL</p>
+                <h3 className="font-bold text-lg dark:text-white">KAWAY POS</h3>
+                <p className="text-[10px] text-gray-400 dark:text-gray-500">CUPOM NÃO FISCAL</p>
                 <p className="text-xs mt-2">{new Date(lastSale.created_at).toLocaleString('pt-BR')}</p>
                 <p className="text-xs font-medium">Recibo: {lastSale.receipt_number}</p>
               </div>
 
-              <div className="border-t border-dashed border-gray-300 my-4" />
+              {/* Cliente */}
+              {lastSale.customer && (
+                <>
+                  <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
+                  <div className="text-xs space-y-0.5">
+                    <div className="flex justify-between">
+                      <span className="text-gray-500 dark:text-gray-400">Cliente:</span>
+                      <span className="font-medium">{lastSale.customer.name}</span>
+                    </div>
+                    {lastSale.customer.address && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 dark:text-gray-400">Endereço:</span>
+                        <span className="text-right max-w-[60%] truncate">{lastSale.customer.address}</span>
+                      </div>
+                    )}
+                    {lastSale.customer.phone && (
+                      <div className="flex justify-between">
+                        <span className="text-gray-500 dark:text-gray-400">Telefone:</span>
+                        <span>{lastSale.customer.phone}</span>
+                      </div>
+                    )}
+                  </div>
+                </>
+              )}
 
-              <div className="space-y-1">
-                {lastSale.items?.map((item: any) => (
-                  <div key={item.id} className="flex justify-between text-xs">
-                    <span className="truncate flex-1 mr-2">{item.quantity}x {item.product_name}</span>
-                    <span className="tabular-nums">{formatCurrency(item.total)}</span>
+              <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
+
+              {/* Itens */}
+              <div className="space-y-2">
+                {lastSale.items?.map((item: any, index: number) => (
+                  <div key={item.id}>
+                    {index > 0 && <div className="border-t border-dotted border-gray-200 dark:border-gray-700 my-1" />}
+                    <div className="text-xs">
+                      <div className="font-medium truncate">{item.product_name}</div>
+                      <div className="flex justify-between text-gray-600 dark:text-gray-400">
+                        <span>{item.quantity} {item.unit || 'un'} x {formatCurrency(item.unit_price)}</span>
+                        <span className="font-medium tabular-nums dark:text-gray-200">{formatCurrency(item.total)}</span>
+                      </div>
+                    </div>
                   </div>
                 ))}
               </div>
 
-              <div className="border-t border-dashed border-gray-300 my-4" />
+              <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
 
-              <div className="flex justify-between font-bold text-base">
+              {/* Totais */}
+              {lastSale.discount_amount > 0 && (
+                <div className="flex justify-between text-xs mb-1">
+                  <span>Subtotal:</span>
+                  <span>{formatCurrency(lastSale.subtotal)}</span>
+                </div>
+              )}
+              {lastSale.discount_amount > 0 && (
+                <div className="flex justify-between text-xs text-green-600 dark:text-green-400 mb-1">
+                  <span>Desconto:</span>
+                  <span>-{formatCurrency(lastSale.discount_amount)}</span>
+                </div>
+              )}
+              <div className="flex justify-between font-bold text-base dark:text-white">
                 <span>TOTAL</span>
                 <span>{formatCurrency(lastSale.total)}</span>
               </div>
 
-              <div className="text-center text-xs text-gray-400 mt-4 pt-4 border-t border-dashed">
+              {/* Forma de Pagamento */}
+              <div className="border-t border-dashed border-gray-300 dark:border-gray-600 my-3" />
+              <div className="text-xs">
+                <div className="flex justify-between">
+                  <span className="text-gray-500 dark:text-gray-400">Pagamento:</span>
+                  <span className="font-medium">
+                    {lastSale.payment_method === 'cash' && 'Dinheiro'}
+                    {lastSale.payment_method === 'credit_card' && 'Cartão Crédito'}
+                    {lastSale.payment_method === 'debit_card' && 'Cartão Débito'}
+                    {lastSale.payment_method === 'pix' && 'PIX'}
+                    {lastSale.payment_method === 'pay_later' && 'A Receber'}
+                    {!['cash', 'credit_card', 'debit_card', 'pix', 'pay_later'].includes(lastSale.payment_method) && lastSale.payment_method}
+                  </span>
+                </div>
+                {lastSale.payment_details?.amount_received && (
+                  <>
+                    <div className="flex justify-between mt-1">
+                      <span className="text-gray-500 dark:text-gray-400">Recebido:</span>
+                      <span>{formatCurrency(lastSale.payment_details.amount_received)}</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-500 dark:text-gray-400">Troco:</span>
+                      <span>{formatCurrency(lastSale.payment_details.change_amount || 0)}</span>
+                    </div>
+                  </>
+                )}
+              </div>
+
+              <div className="text-center text-xs text-gray-400 dark:text-gray-500 mt-4 pt-4 border-t border-dashed dark:border-gray-600">
                 <p>Obrigado pela preferência!</p>
+                <p className="text-[10px] mt-1">DOCUMENTO SEM VALOR FISCAL</p>
               </div>
             </div>
 
-            <div className="flex gap-3 p-4 border-t bg-gray-50 flex-shrink-0">
-              <button className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-medium flex items-center justify-center gap-2" onClick={() => window.print()}>
+            <div className="flex gap-3 p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex-shrink-0">
+              <button className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors" onClick={() => window.print()}>
                 <Printer className="h-4 w-4" />
                 Imprimir
               </button>
-              <button className="flex-1 py-3 bg-gray-200 text-gray-700 rounded-xl font-medium" onClick={() => setShowReceiptDialog(false)}>
+              <button className="flex-1 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" onClick={() => setShowReceiptDialog(false)}>
                 Nova Venda
               </button>
             </div>
@@ -803,15 +899,15 @@ export default function PDVPage() {
       {/* Dialog de Seleção de Cliente */}
       {showCustomerDialog && (
         <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center" style={{ zIndex: 10000 }}>
-          <div className="bg-white w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
-            <div className="flex items-center justify-between p-4 border-b flex-shrink-0">
-              <h2 className="text-lg font-semibold">Selecionar Cliente</h2>
-              <button onClick={() => { setShowCustomerDialog(false); setCustomerSearch(''); }} className="p-2 hover:bg-gray-100 rounded-full">
-                <X className="h-5 w-5" />
+          <div className="bg-white dark:bg-gray-800 w-full max-w-md sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+            <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 flex-shrink-0">
+              <h2 className="text-lg font-semibold dark:text-white">Selecionar Cliente</h2>
+              <button onClick={() => { setShowCustomerDialog(false); setCustomerSearch(''); }} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
+                <X className="h-5 w-5 dark:text-gray-300" />
               </button>
             </div>
 
-            <div className="p-4 border-b flex-shrink-0">
+            <div className="p-4 border-b dark:border-gray-700 flex-shrink-0">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
                 <input
@@ -819,7 +915,7 @@ export default function PDVPage() {
                   placeholder="Buscar cliente..."
                   value={customerSearch}
                   onChange={(e) => setCustomerSearch(e.target.value)}
-                  className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+                  className="w-full pl-9 pr-3 py-2 text-sm border border-gray-200 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white dark:placeholder-gray-400"
                 />
               </div>
             </div>
@@ -830,7 +926,7 @@ export default function PDVPage() {
                   <div className="animate-spin rounded-full h-6 w-6 border-b-2 border-blue-600" />
                 </div>
               ) : customersData?.data?.length === 0 ? (
-                <div className="text-center py-8 text-gray-400">
+                <div className="text-center py-8 text-gray-400 dark:text-gray-500">
                   <User className="h-8 w-8 mx-auto mb-2" />
                   <p>Nenhum cliente encontrado</p>
                 </div>
@@ -839,7 +935,7 @@ export default function PDVPage() {
                   {customersData?.data?.map((c: Customer) => (
                     <button
                       key={c.id}
-                      className="w-full p-3 text-left rounded-lg border hover:bg-gray-50 transition-colors"
+                      className="w-full p-3 text-left rounded-lg border dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors"
                       onClick={() => {
                         setCustomer(c);
                         setShowCustomerDialog(false);
@@ -847,8 +943,8 @@ export default function PDVPage() {
                         toast({ title: 'Cliente selecionado', description: c.name });
                       }}
                     >
-                      <p className="font-medium">{c.name}</p>
-                      <p className="text-sm text-gray-500">{c.phone || c.email || c.document || 'Sem contato'}</p>
+                      <p className="font-medium dark:text-white">{c.name}</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">{c.phone || c.email || c.document || 'Sem contato'}</p>
                     </button>
                   ))}
                 </div>

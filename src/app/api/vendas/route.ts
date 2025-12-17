@@ -272,6 +272,7 @@ export async function POST(request: NextRequest) {
         product_sku: productInfo?.sku || 'SEM-SKU',
         quantity: item.quantity,
         unit_price: item.unit_price,
+        unit: item.unit || 'un',
         discount_amount: itemDiscount,
         discount_percent: item.discount_percent || 0,
         tax_amount: item.tax_amount || 0,
