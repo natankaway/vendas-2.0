@@ -29,7 +29,7 @@ export async function GET(
 
     const { data: sale, error } = await supabase
       .from('sales')
-      .select('*, sale_items(*), customer:customers(id, name)')
+      .select('*, sale_items(*), customer:customers(id, name, address, phone)')
       .eq('id', id)
       .single();
 

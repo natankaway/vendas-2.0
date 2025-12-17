@@ -63,7 +63,7 @@ export async function GET(request: NextRequest) {
     // Get sales for the period
     const { data: sales, error: salesError } = await supabase
       .from('sales')
-      .select('*, customer:customers(id, name), sale_items(*)')
+      .select('*, customer:customers(id, name, address, phone), sale_items(*)')
       .gte('created_at', start.toISOString())
       .lte('created_at', end.toISOString())
       .order('created_at', { ascending: false });

@@ -108,7 +108,7 @@ export async function GET(request: NextRequest) {
     // Listagem com paginação
     let query = supabase
       .from('sales')
-      .select('*, customer:customers(id, name), user:users(id, name), items:sale_items(*)', { count: 'exact' })
+      .select('*, customer:customers(id, name, address, phone), user:users(id, name), items:sale_items(*)', { count: 'exact' })
       .order('created_at', { ascending: false });
 
     if (status) {
