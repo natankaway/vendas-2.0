@@ -275,6 +275,98 @@ export default function VendasPage() {
     }
   };
 
+  // Impressão direta sem abrir modal
+  const handleDirectPrint = (sale: Sale) => {
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    const logoHtml = companySettings?.logo
+      ? `<img src="${companySettings.logo}" alt="Logo" style="max-height: 60px; max-width: 150px; margin: 0 auto 10px; display: block;" />`
+      : '';
+
+    const companyName = companySettings?.name || 'KAWAY POS';
+    const companyDoc = companySettings?.document ? `<p style="font-size: 10px; color: #666;">${companySettings.document}</p>` : '';
+    const companyAddr = companySettings?.address ? `<p style="font-size: 10px; color: #666;">${companySettings.address}</p>` : '';
+    const companyPhone = companySettings?.phone ? `<p style="font-size: 10px; color: #666;">${companySettings.phone}</p>` : '';
+
+    const customerName = sale.customer?.name || sale.customer_name || 'Balcão';
+    const customerAddr = sale.customer?.address ? `<div style="display: flex; justify-content: space-between;"><span style="color: #666;">Endereço:</span><span>${sale.customer.address}</span></div>` : '';
+    const customerPhone = sale.customer?.phone ? `<div style="display: flex; justify-content: space-between;"><span style="color: #666;">Telefone:</span><span>${sale.customer.phone}</span></div>` : '';
+
+    const itemsHtml = sale.items?.map((item, index) => `
+      ${index > 0 ? '<div style="border-top: 1px dotted #ddd; margin: 5px 0;"></div>' : ''}
+      <div style="font-weight: 500;">${item.product_name}</div>
+      <div style="display: flex; justify-content: space-between; color: #666;">
+        <span>${item.quantity} un x ${formatCurrency(item.unit_price)}</span>
+        <span style="font-weight: 500; color: #333;">${formatCurrency(item.total)}</span>
+      </div>
+    `).join('') || '';
+
+    const subtotalHtml = sale.discount_amount > 0
+      ? `<div style="display: flex; justify-content: space-between; font-size: 12px;"><span>Subtotal:</span><span>${formatCurrency(sale.subtotal)}</span></div>
+         <div style="display: flex; justify-content: space-between; font-size: 12px; color: green;"><span>Desconto:</span><span>-${formatCurrency(sale.discount_amount)}</span></div>`
+      : '';
+
+    printWindow.document.write(`
+      <html>
+        <head>
+          <title>Recibo - ${sale.receipt_number}</title>
+          <style>
+            body { font-family: 'Courier New', monospace; font-size: 12px; max-width: 300px; margin: 0 auto; padding: 20px; }
+            .divider { border-top: 1px dashed #333; margin: 15px 0; }
+          </style>
+        </head>
+        <body>
+          <div style="text-align: center; margin-bottom: 15px;">
+            ${logoHtml}
+            <h3 style="margin: 0; font-size: 16px;">${companyName}</h3>
+            ${companyDoc}
+            ${companyAddr}
+            ${companyPhone}
+            <p style="font-size: 10px; color: #999; margin-top: 5px;">CUPOM NÃO FISCAL</p>
+            <p style="margin: 10px 0 0;">${formatDateTime(sale.created_at)}</p>
+            <p style="font-weight: 500;">Recibo: ${sale.receipt_number}</p>
+          </div>
+
+          ${(customerName !== 'Balcão' || customerAddr || customerPhone) ? `
+            <div class="divider"></div>
+            <div style="font-size: 12px;">
+              <div style="display: flex; justify-content: space-between;"><span style="color: #666;">Cliente:</span><span style="font-weight: 500;">${customerName}</span></div>
+              ${customerAddr}
+              ${customerPhone}
+            </div>
+          ` : ''}
+
+          <div class="divider"></div>
+          <div style="font-size: 12px;">
+            ${itemsHtml}
+          </div>
+
+          <div class="divider"></div>
+          ${subtotalHtml}
+          <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; margin-top: 5px;">
+            <span>TOTAL</span>
+            <span>${formatCurrency(sale.total)}</span>
+          </div>
+
+          <div class="divider"></div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px;">
+            <span style="color: #666;">Pagamento:</span>
+            <span style="font-weight: 500;">${getPaymentMethodLabel(sale.payment_method)}</span>
+          </div>
+
+          <div class="divider"></div>
+          <div style="text-align: center; font-size: 10px; color: #999;">
+            <p>Obrigado pela preferência!</p>
+            <p>DOCUMENTO SEM VALOR FISCAL</p>
+          </div>
+        </body>
+      </html>
+    `);
+    printWindow.document.close();
+    printWindow.print();
+  };
+
   const clearFilters = () => {
     setFilters({ startDate: '', endDate: '', status: '', paymentMethod: '' });
     setPage(1);
@@ -504,10 +596,10 @@ export default function VendasPage() {
                               <DollarSign className="w-4 h-4" />
                             </button>
                           )}
-                          <button onClick={() => openReceipt(sale)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg" title="Ver">
+                          <button onClick={() => openReceipt(sale)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg" title="Ver recibo">
                             <Eye className="w-4 h-4" />
                           </button>
-                          <button onClick={() => openReceipt(sale)} className="p-1.5 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg" title="Imprimir">
+                          <button onClick={() => handleDirectPrint(sale)} className="p-1.5 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg" title="Imprimir direto">
                             <Printer className="w-4 h-4" />
                           </button>
                         </div>
