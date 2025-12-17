@@ -25,6 +25,9 @@ import {
   AlertTriangle,
   HardDrive,
   Clock,
+  Building2,
+  ImagePlus,
+  X,
 } from 'lucide-react';
 
 interface SyncStatus {
@@ -40,6 +43,14 @@ interface StorageInfo {
   products: number;
   customers: number;
   sales: number;
+}
+
+interface CompanySettings {
+  name: string;
+  logo: string | null;
+  address: string;
+  phone: string;
+  document: string;
 }
 
 export default function ConfiguracoesPage() {
@@ -70,6 +81,28 @@ export default function ConfiguracoesPage() {
 
   const [isSyncing, setIsSyncing] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  // Company settings
+  const [companySettings, setCompanySettings] = useState<CompanySettings>({
+    name: '',
+    logo: null,
+    address: '',
+    phone: '',
+    document: '',
+  });
+  const [isUploadingLogo, setIsUploadingLogo] = useState(false);
+
+  // Load company settings from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('companySettings');
+    if (saved) {
+      try {
+        setCompanySettings(JSON.parse(saved));
+      } catch (e) {
+        console.error('Erro ao carregar configurações da empresa:', e);
+      }
+    }
+  }, []);
 
   // Check online status
   useEffect(() => {
@@ -146,6 +179,59 @@ export default function ConfiguracoesPage() {
 
     loadSyncInfo();
   }, []);
+
+  // Company settings handlers
+  const handleLogoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      setMessage({ type: 'error', text: 'Selecione um arquivo de imagem válido.' });
+      setTimeout(() => setMessage(null), 3000);
+      return;
+    }
+
+    // Validate file size (max 500KB for localStorage)
+    if (file.size > 500 * 1024) {
+      setMessage({ type: 'error', text: 'A imagem deve ter no máximo 500KB.' });
+      setTimeout(() => setMessage(null), 3000);
+      return;
+    }
+
+    setIsUploadingLogo(true);
+
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const base64 = e.target?.result as string;
+      const newSettings = { ...companySettings, logo: base64 };
+      setCompanySettings(newSettings);
+      localStorage.setItem('companySettings', JSON.stringify(newSettings));
+      setIsUploadingLogo(false);
+      setMessage({ type: 'success', text: 'Logo atualizada com sucesso!' });
+      setTimeout(() => setMessage(null), 3000);
+    };
+    reader.onerror = () => {
+      setIsUploadingLogo(false);
+      setMessage({ type: 'error', text: 'Erro ao processar a imagem.' });
+      setTimeout(() => setMessage(null), 3000);
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleRemoveLogo = () => {
+    const newSettings = { ...companySettings, logo: null };
+    setCompanySettings(newSettings);
+    localStorage.setItem('companySettings', JSON.stringify(newSettings));
+    setMessage({ type: 'success', text: 'Logo removida.' });
+    setTimeout(() => setMessage(null), 3000);
+  };
+
+  const handleSaveCompanySettings = () => {
+    localStorage.setItem('companySettings', JSON.stringify(companySettings));
+    setMessage({ type: 'success', text: 'Dados da empresa salvos com sucesso!' });
+    setTimeout(() => setMessage(null), 3000);
+  };
 
   // Handlers
   const handleSync = async () => {
@@ -316,6 +402,133 @@ export default function ConfiguracoesPage() {
               </p>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Company Settings Section */}
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-6">
+        <div className="flex items-center gap-2 mb-4">
+          <Building2 className="w-5 h-5 text-blue-600" />
+          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Dados da Empresa</h2>
+        </div>
+
+        <div className="space-y-4">
+          {/* Logo Upload */}
+          <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
+              Logo da Empresa
+            </label>
+            <div className="flex items-center gap-4">
+              {/* Logo Preview */}
+              <div className="relative">
+                {companySettings.logo ? (
+                  <div className="relative">
+                    <img
+                      src={companySettings.logo}
+                      alt="Logo da empresa"
+                      className="w-24 h-24 object-contain rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white"
+                    />
+                    <button
+                      onClick={handleRemoveLogo}
+                      className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                      title="Remover logo"
+                    >
+                      <X className="w-4 h-4" />
+                    </button>
+                  </div>
+                ) : (
+                  <div className="w-24 h-24 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-500 bg-gray-100 dark:bg-gray-600">
+                    <ImagePlus className="w-8 h-8 text-gray-400" />
+                  </div>
+                )}
+              </div>
+
+              {/* Upload Button */}
+              <div className="flex-1">
+                <label className="cursor-pointer">
+                  <div className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-fit">
+                    <Upload className="w-4 h-4" />
+                    <span>{isUploadingLogo ? 'Processando...' : 'Escolher Imagem'}</span>
+                  </div>
+                  <input
+                    type="file"
+                    accept="image/*"
+                    onChange={handleLogoUpload}
+                    disabled={isUploadingLogo}
+                    className="hidden"
+                  />
+                </label>
+                <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
+                  PNG, JPG ou GIF. Máximo 500KB. Esta logo aparecerá no recibo de vendas.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Company Name */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Nome da Empresa
+            </label>
+            <input
+              type="text"
+              value={companySettings.name}
+              onChange={(e) => setCompanySettings({ ...companySettings, name: e.target.value })}
+              placeholder="Nome da sua empresa"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          {/* Document (CNPJ/CPF) */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              CNPJ / CPF
+            </label>
+            <input
+              type="text"
+              value={companySettings.document}
+              onChange={(e) => setCompanySettings({ ...companySettings, document: e.target.value })}
+              placeholder="00.000.000/0000-00"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          {/* Address */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Endereço
+            </label>
+            <input
+              type="text"
+              value={companySettings.address}
+              onChange={(e) => setCompanySettings({ ...companySettings, address: e.target.value })}
+              placeholder="Rua, número, bairro, cidade"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          {/* Phone */}
+          <div>
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+              Telefone
+            </label>
+            <input
+              type="text"
+              value={companySettings.phone}
+              onChange={(e) => setCompanySettings({ ...companySettings, phone: e.target.value })}
+              placeholder="(00) 00000-0000"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+            />
+          </div>
+
+          {/* Save Button */}
+          <button
+            onClick={handleSaveCompanySettings}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+          >
+            <CheckCircle className="w-5 h-5" />
+            Salvar Dados da Empresa
+          </button>
         </div>
       </div>
 

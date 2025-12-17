@@ -224,6 +224,25 @@ export default function PDVPage() {
   const [customerSearch, setCustomerSearch] = useState('');
   const [lastSale, setLastSale] = useState<any>(null);
   const [cashReceived, setCashReceived] = useState('');
+  const [companySettings, setCompanySettings] = useState<{
+    name: string;
+    logo: string | null;
+    address: string;
+    phone: string;
+    document: string;
+  } | null>(null);
+
+  // Load company settings from localStorage
+  useEffect(() => {
+    const saved = localStorage.getItem('companySettings');
+    if (saved) {
+      try {
+        setCompanySettings(JSON.parse(saved));
+      } catch (e) {
+        console.error('Erro ao carregar configurações da empresa:', e);
+      }
+    }
+  }, []);
 
   const {
     items,
@@ -803,8 +822,29 @@ export default function PDVPage() {
 
             <div className="flex-1 overflow-y-auto p-4 font-mono text-sm dark:text-gray-200 print-receipt">
               <div className="text-center mb-4">
-                <h3 className="font-bold text-lg dark:text-white print:text-black">KAWAY POS</h3>
-                <p className="text-[10px] text-gray-400 dark:text-gray-500">CUPOM NÃO FISCAL</p>
+                {/* Logo da empresa */}
+                {companySettings?.logo && (
+                  <div className="flex justify-center mb-2">
+                    <img
+                      src={companySettings.logo}
+                      alt="Logo"
+                      className="max-h-16 max-w-[150px] object-contain"
+                    />
+                  </div>
+                )}
+                <h3 className="font-bold text-lg dark:text-white print:text-black">
+                  {companySettings?.name || 'KAWAY POS'}
+                </h3>
+                {companySettings?.document && (
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">{companySettings.document}</p>
+                )}
+                {companySettings?.address && (
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">{companySettings.address}</p>
+                )}
+                {companySettings?.phone && (
+                  <p className="text-[10px] text-gray-500 dark:text-gray-400">{companySettings.phone}</p>
+                )}
+                <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-1">CUPOM NÃO FISCAL</p>
                 <p className="text-xs mt-2">{new Date(lastSale.created_at).toLocaleString('pt-BR')}</p>
                 <p className="text-xs font-medium">Recibo: {lastSale.receipt_number}</p>
               </div>
