@@ -91,6 +91,7 @@ export default function ConfiguracoesPage() {
     document: '',
   });
   const [isUploadingLogo, setIsUploadingLogo] = useState(false);
+  const [companySettingsLoaded, setCompanySettingsLoaded] = useState(false);
 
   // Load company settings from localStorage
   useEffect(() => {
@@ -102,7 +103,15 @@ export default function ConfiguracoesPage() {
         console.error('Erro ao carregar configurações da empresa:', e);
       }
     }
+    setCompanySettingsLoaded(true);
   }, []);
+
+  // Auto-save company settings when they change (after initial load)
+  useEffect(() => {
+    if (companySettingsLoaded) {
+      localStorage.setItem('companySettings', JSON.stringify(companySettings));
+    }
+  }, [companySettings, companySettingsLoaded]);
 
   // Check online status
   useEffect(() => {
@@ -204,9 +213,7 @@ export default function ConfiguracoesPage() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const base64 = e.target?.result as string;
-      const newSettings = { ...companySettings, logo: base64 };
-      setCompanySettings(newSettings);
-      localStorage.setItem('companySettings', JSON.stringify(newSettings));
+      setCompanySettings(prev => ({ ...prev, logo: base64 }));
       setIsUploadingLogo(false);
       setMessage({ type: 'success', text: 'Logo atualizada com sucesso!' });
       setTimeout(() => setMessage(null), 3000);
@@ -220,15 +227,13 @@ export default function ConfiguracoesPage() {
   };
 
   const handleRemoveLogo = () => {
-    const newSettings = { ...companySettings, logo: null };
-    setCompanySettings(newSettings);
-    localStorage.setItem('companySettings', JSON.stringify(newSettings));
+    setCompanySettings(prev => ({ ...prev, logo: null }));
     setMessage({ type: 'success', text: 'Logo removida.' });
     setTimeout(() => setMessage(null), 3000);
   };
 
   const handleSaveCompanySettings = () => {
-    localStorage.setItem('companySettings', JSON.stringify(companySettings));
+    // Auto-save já acontece via useEffect, este botão é apenas para feedback visual
     setMessage({ type: 'success', text: 'Dados da empresa salvos com sucesso!' });
     setTimeout(() => setMessage(null), 3000);
   };
