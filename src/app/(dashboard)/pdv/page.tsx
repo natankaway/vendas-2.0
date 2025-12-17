@@ -778,9 +778,9 @@ export default function PDVPage() {
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 font-mono text-sm dark:text-gray-200">
+            <div className="flex-1 overflow-y-auto p-4 font-mono text-sm dark:text-gray-200 print-receipt">
               <div className="text-center mb-4">
-                <h3 className="font-bold text-lg dark:text-white">KAWAY POS</h3>
+                <h3 className="font-bold text-lg dark:text-white print:text-black">KAWAY POS</h3>
                 <p className="text-[10px] text-gray-400 dark:text-gray-500">CUPOM NÃO FISCAL</p>
                 <p className="text-xs mt-2">{new Date(lastSale.created_at).toLocaleString('pt-BR')}</p>
                 <p className="text-xs font-medium">Recibo: {lastSale.receipt_number}</p>

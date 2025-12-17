@@ -158,23 +158,39 @@ export async function POST(request: NextRequest, { params }: RouteParams) {
     const now = new Date().toISOString();
     const paymentId = uuidv4();
 
-    // Create payment record
+    // Create payment record (customer_id is optional)
+    const paymentData: Record<string, any> = {
+      id: paymentId,
+      sale_id: id,
+      amount,
+      payment_method,
+      notes: notes || null,
+      received_by: user_id,
+      created_at: now,
+      updated_at: now,
+    };
+
+    // Only include customer_id if it exists
+    if (sale.customer_id) {
+      paymentData.customer_id = sale.customer_id;
+    }
+
     const { error: createError } = await supabase
       .from('payment_records')
-      .insert({
-        id: paymentId,
-        sale_id: id,
-        customer_id: sale.customer_id,
-        amount,
-        payment_method,
-        notes: notes || null,
-        received_by: user_id,
-        created_at: now,
-        updated_at: now,
-      });
+      .insert(paymentData);
 
     if (createError) {
       console.error('Erro ao registrar pagamento:', createError);
+      // Check for customer_id constraint error
+      if (createError.code === '23502' && createError.message.includes('customer_id')) {
+        return NextResponse.json(
+          {
+            success: false,
+            error: 'Esta venda não tem cliente associado. Para registrar pagamentos, a venda precisa ter um cliente.'
+          },
+          { status: 400 }
+        );
+      }
       return NextResponse.json(
         { success: false, error: 'Erro ao registrar pagamento' },
         { status: 500 }

@@ -272,11 +272,12 @@ export async function POST(request: NextRequest) {
         product_sku: productInfo?.sku || 'SEM-SKU',
         quantity: item.quantity,
         unit_price: item.unit_price,
-        unit: item.unit || 'un',
         discount_amount: itemDiscount,
         discount_percent: item.discount_percent || 0,
         tax_amount: item.tax_amount || 0,
         total: itemTotal - itemDiscount,
+        // unit is not stored in DB, will be added to response
+        _unit: item.unit || 'un',
       });
     }
 
@@ -316,8 +317,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insere itens da venda
-    const itemsWithSaleId = saleItems.map((item) => ({
+    // Insere itens da venda (remove _unit que não existe na tabela)
+    const itemsWithSaleId = saleItems.map(({ _unit, ...item }) => ({
       ...item,
       sale_id: saleId,
       created_at: new Date().toISOString(),
@@ -371,13 +372,19 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // Prepara itens para resposta (renomeia _unit para unit)
+    const responseItems = saleItems.map(({ _unit, ...item }) => ({
+      ...item,
+      unit: _unit,
+    }));
+
     return NextResponse.json({
       success: true,
       data: {
         id: saleId,
         receipt_number: receiptNumber,
         total,
-        items: saleItems,
+        items: responseItems,
         created_at: now,
       },
     });

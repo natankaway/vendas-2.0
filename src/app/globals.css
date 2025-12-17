@@ -383,6 +383,35 @@
  * Estilos para impressão
  */
 @media print {
+  /* Esconde tudo por padrão */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Mostra apenas o conteúdo do recibo */
+  .print-receipt,
+  .print-receipt * {
+    visibility: visible !important;
+  }
+
+  /* Posiciona o recibo para impressão */
+  .print-receipt {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 80mm !important;
+    padding: 5mm !important;
+    background: white !important;
+    color: black !important;
+    font-size: 12px !important;
+  }
+
+  /* Esconde elementos de interface no recibo */
+  .print-receipt button,
+  .print-receipt .no-print {
+    display: none !important;
+  }
+
   body {
     background: white !important;
     color: black !important;
