@@ -58,7 +58,7 @@ export default function RootLayout({
         <link rel="icon" href="/logo-icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
-      <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+      <body className="font-sans antialiased bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 overflow-x-hidden">
         <ThemeProvider>
           <Providers>
             {children}

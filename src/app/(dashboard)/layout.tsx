@@ -177,7 +177,7 @@ export default function DashboardLayout({
   const mainPadding = sidebarCollapsed ? 'lg:pl-20' : 'lg:pl-64';
 
   return (
-    <div className="min-h-screen flex bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen flex bg-gray-50 dark:bg-gray-900 overflow-x-hidden w-full max-w-full">
       {/* Sidebar - Desktop */}
       <aside
         className={cn(
@@ -382,7 +382,7 @@ export default function DashboardLayout({
       )}
 
       {/* Main Content */}
-      <div className={cn('flex-1 flex flex-col min-h-screen transition-all duration-300', mainPadding)}>
+      <div className={cn('flex-1 flex flex-col min-h-screen transition-all duration-300 overflow-x-hidden w-full', mainPadding)}>
         {/* Header */}
         <header className="sticky top-0 z-40 h-16 bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm flex items-center justify-between px-4 lg:px-6">
           <div className="flex items-center gap-3">
