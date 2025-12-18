@@ -88,6 +88,7 @@ const paymentMethodLabels: Record<string, string> = {
   pix: 'PIX',
   bank_transfer: 'Transferência',
   store_credit: 'Crédito Loja',
+  pay_later: 'Receber Depois',
   other: 'Outro',
 };
 
@@ -98,6 +99,7 @@ const paymentMethodIcons: Record<string, React.ReactNode> = {
   pix: <Smartphone className="w-4 h-4" />,
   bank_transfer: <Receipt className="w-4 h-4" />,
   store_credit: <Store className="w-4 h-4" />,
+  pay_later: <Clock className="w-4 h-4" />,
   other: <DollarSign className="w-4 h-4" />,
 };
 
@@ -108,6 +110,7 @@ const paymentMethodColors: Record<string, string> = {
   pix: 'bg-teal-500',
   bank_transfer: 'bg-orange-500',
   store_credit: 'bg-pink-500',
+  pay_later: 'bg-yellow-500',
   other: 'bg-gray-500',
 };
 

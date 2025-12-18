@@ -7,6 +7,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Settings,
   Database,
@@ -28,6 +29,7 @@ import {
   Building2,
   ImagePlus,
   X,
+  Loader2,
 } from 'lucide-react';
 
 interface SyncStatus {
@@ -54,6 +56,8 @@ interface CompanySettings {
 }
 
 export default function ConfiguracoesPage() {
+  const queryClient = useQueryClient();
+
   const [syncStatus, setSyncStatus] = useState<SyncStatus>({
     isOnline: true,
     lastSync: null,
@@ -82,8 +86,8 @@ export default function ConfiguracoesPage() {
   const [isSyncing, setIsSyncing] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
-  // Company settings
-  const [companySettings, setCompanySettings] = useState<CompanySettings>({
+  // Company settings from database
+  const [companyForm, setCompanyForm] = useState<CompanySettings>({
     name: '',
     logo: null,
     address: '',
@@ -91,27 +95,47 @@ export default function ConfiguracoesPage() {
     document: '',
   });
   const [isUploadingLogo, setIsUploadingLogo] = useState(false);
-  const [companySettingsLoaded, setCompanySettingsLoaded] = useState(false);
 
-  // Load company settings from localStorage
+  // Fetch company settings from database
+  const { data: companyData, isLoading: isLoadingCompany } = useQuery({
+    queryKey: ['company-settings'],
+    queryFn: async () => {
+      const res = await fetch('/api/configuracoes/empresa');
+      const data = await res.json();
+      return data.data as CompanySettings;
+    },
+  });
+
+  // Update form when data loads
   useEffect(() => {
-    const saved = localStorage.getItem('companySettings');
-    if (saved) {
-      try {
-        setCompanySettings(JSON.parse(saved));
-      } catch (e) {
-        console.error('Erro ao carregar configurações da empresa:', e);
+    if (companyData) {
+      setCompanyForm(companyData);
+    }
+  }, [companyData]);
+
+  // Save company settings mutation
+  const saveCompanyMutation = useMutation({
+    mutationFn: async (data: CompanySettings) => {
+      const res = await fetch('/api/configuracoes/empresa', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      if (!res.ok) {
+        throw new Error('Erro ao salvar');
       }
-    }
-    setCompanySettingsLoaded(true);
-  }, []);
-
-  // Auto-save company settings when they change (after initial load)
-  useEffect(() => {
-    if (companySettingsLoaded) {
-      localStorage.setItem('companySettings', JSON.stringify(companySettings));
-    }
-  }, [companySettings, companySettingsLoaded]);
+      return res.json();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['company-settings'] });
+      setMessage({ type: 'success', text: 'Dados da empresa salvos com sucesso!' });
+      setTimeout(() => setMessage(null), 3000);
+    },
+    onError: () => {
+      setMessage({ type: 'error', text: 'Erro ao salvar dados da empresa.' });
+      setTimeout(() => setMessage(null), 3000);
+    },
+  });
 
   // Check online status
   useEffect(() => {
@@ -201,7 +225,7 @@ export default function ConfiguracoesPage() {
       return;
     }
 
-    // Validate file size (max 500KB for localStorage)
+    // Validate file size (max 500KB)
     if (file.size > 500 * 1024) {
       setMessage({ type: 'error', text: 'A imagem deve ter no máximo 500KB.' });
       setTimeout(() => setMessage(null), 3000);
@@ -213,9 +237,9 @@ export default function ConfiguracoesPage() {
     const reader = new FileReader();
     reader.onload = (e) => {
       const base64 = e.target?.result as string;
-      setCompanySettings(prev => ({ ...prev, logo: base64 }));
+      setCompanyForm(prev => ({ ...prev, logo: base64 }));
       setIsUploadingLogo(false);
-      setMessage({ type: 'success', text: 'Logo atualizada com sucesso!' });
+      setMessage({ type: 'success', text: 'Logo carregada! Clique em Salvar para confirmar.' });
       setTimeout(() => setMessage(null), 3000);
     };
     reader.onerror = () => {
@@ -227,15 +251,13 @@ export default function ConfiguracoesPage() {
   };
 
   const handleRemoveLogo = () => {
-    setCompanySettings(prev => ({ ...prev, logo: null }));
-    setMessage({ type: 'success', text: 'Logo removida.' });
+    setCompanyForm(prev => ({ ...prev, logo: null }));
+    setMessage({ type: 'success', text: 'Logo removida! Clique em Salvar para confirmar.' });
     setTimeout(() => setMessage(null), 3000);
   };
 
   const handleSaveCompanySettings = () => {
-    // Auto-save já acontece via useEffect, este botão é apenas para feedback visual
-    setMessage({ type: 'success', text: 'Dados da empresa salvos com sucesso!' });
-    setTimeout(() => setMessage(null), 3000);
+    saveCompanyMutation.mutate(companyForm);
   };
 
   // Handlers
@@ -335,44 +357,46 @@ export default function ConfiguracoesPage() {
     : 0;
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto">
       {/* Header */}
-      <div className="mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Configurações</h1>
-        <p className="text-gray-600">Gerencie as configurações do sistema</p>
+      <div className="mb-4 sm:mb-6">
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Configurações</h1>
+        <p className="text-sm text-gray-600 dark:text-gray-400">Gerencie as configurações do sistema</p>
       </div>
 
       {/* Message */}
       {message && (
         <div
-          className={`mb-6 p-4 rounded-lg flex items-center gap-2 ${
-            message.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
+          className={`mb-4 sm:mb-6 p-3 sm:p-4 rounded-lg flex items-center gap-2 text-sm ${
+            message.type === 'success'
+              ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+              : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
           }`}
         >
           {message.type === 'success' ? (
-            <CheckCircle className="w-5 h-5" />
+            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
           ) : (
-            <AlertTriangle className="w-5 h-5" />
+            <AlertTriangle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0" />
           )}
           {message.text}
         </div>
       )}
 
       {/* Status Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 mb-4 sm:mb-6">
         {/* Connection Status */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-3 sm:p-4">
           <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg ${syncStatus.isOnline ? 'bg-green-100' : 'bg-red-100'}`}>
+            <div className={`p-2 rounded-lg ${syncStatus.isOnline ? 'bg-green-100 dark:bg-green-900/30' : 'bg-red-100 dark:bg-red-900/30'}`}>
               {syncStatus.isOnline ? (
-                <Wifi className="w-6 h-6 text-green-600" />
+                <Wifi className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" />
               ) : (
-                <WifiOff className="w-6 h-6 text-red-600" />
+                <WifiOff className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 dark:text-red-400" />
               )}
             </div>
             <div>
-              <p className="text-sm text-gray-600">Conexão</p>
-              <p className={`font-bold ${syncStatus.isOnline ? 'text-green-600' : 'text-red-600'}`}>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Conexão</p>
+              <p className={`text-sm sm:text-base font-bold ${syncStatus.isOnline ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
                 {syncStatus.isOnline ? 'Online' : 'Offline'}
               </p>
             </div>
@@ -380,14 +404,14 @@ export default function ConfiguracoesPage() {
         </div>
 
         {/* Last Sync */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-3 sm:p-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-blue-100 rounded-lg">
-              <Clock className="w-6 h-6 text-blue-600" />
+            <div className="p-2 bg-blue-100 dark:bg-blue-900/30 rounded-lg">
+              <Clock className="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400" />
             </div>
-            <div>
-              <p className="text-sm text-gray-600">Última Sincronização</p>
-              <p className="font-bold text-gray-900 text-sm">
+            <div className="min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Última Sincronização</p>
+              <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
                 {formatDate(syncStatus.lastSync)}
               </p>
             </div>
@@ -395,14 +419,14 @@ export default function ConfiguracoesPage() {
         </div>
 
         {/* Pending Items */}
-        <div className="bg-white rounded-lg shadow p-4">
+        <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-3 sm:p-4">
           <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg ${syncStatus.pendingItems > 0 ? 'bg-yellow-100' : 'bg-green-100'}`}>
-              <Cloud className={`w-6 h-6 ${syncStatus.pendingItems > 0 ? 'text-yellow-600' : 'text-green-600'}`} />
+            <div className={`p-2 rounded-lg ${syncStatus.pendingItems > 0 ? 'bg-yellow-100 dark:bg-yellow-900/30' : 'bg-green-100 dark:bg-green-900/30'}`}>
+              <Cloud className={`w-5 h-5 sm:w-6 sm:h-6 ${syncStatus.pendingItems > 0 ? 'text-yellow-600 dark:text-yellow-400' : 'text-green-600 dark:text-green-400'}`} />
             </div>
             <div>
-              <p className="text-sm text-gray-600">Pendente de Sync</p>
-              <p className={`font-bold ${syncStatus.pendingItems > 0 ? 'text-yellow-600' : 'text-green-600'}`}>
+              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Pendente de Sync</p>
+              <p className={`text-sm sm:text-base font-bold ${syncStatus.pendingItems > 0 ? 'text-yellow-600 dark:text-yellow-400' : 'text-green-600 dark:text-green-400'}`}>
                 {syncStatus.pendingItems} {syncStatus.pendingItems === 1 ? 'item' : 'itens'}
               </p>
             </div>
@@ -411,47 +435,48 @@ export default function ConfiguracoesPage() {
       </div>
 
       {/* Company Settings Section */}
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
         <div className="flex items-center gap-2 mb-4">
-          <Building2 className="w-5 h-5 text-blue-600" />
-          <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Dados da Empresa</h2>
+          <Building2 className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Dados da Empresa</h2>
+          {isLoadingCompany && <Loader2 className="w-4 h-4 animate-spin text-gray-400" />}
         </div>
 
         <div className="space-y-4">
           {/* Logo Upload */}
-          <div className="p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
               Logo da Empresa
             </label>
-            <div className="flex items-center gap-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               {/* Logo Preview */}
-              <div className="relative">
-                {companySettings.logo ? (
+              <div className="relative flex-shrink-0">
+                {companyForm.logo ? (
                   <div className="relative">
                     <img
-                      src={companySettings.logo}
+                      src={companyForm.logo}
                       alt="Logo da empresa"
-                      className="w-24 h-24 object-contain rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white"
+                      className="w-20 h-20 sm:w-24 sm:h-24 object-contain rounded-lg border-2 border-gray-200 dark:border-gray-600 bg-white"
                     />
                     <button
                       onClick={handleRemoveLogo}
                       className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
                       title="Remover logo"
                     >
-                      <X className="w-4 h-4" />
+                      <X className="w-3 h-3 sm:w-4 sm:h-4" />
                     </button>
                   </div>
                 ) : (
-                  <div className="w-24 h-24 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-500 bg-gray-100 dark:bg-gray-600">
-                    <ImagePlus className="w-8 h-8 text-gray-400" />
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-500 bg-gray-100 dark:bg-gray-600">
+                    <ImagePlus className="w-6 h-6 sm:w-8 sm:h-8 text-gray-400" />
                   </div>
                 )}
               </div>
 
               {/* Upload Button */}
-              <div className="flex-1">
+              <div className="flex-1 w-full sm:w-auto">
                 <label className="cursor-pointer">
-                  <div className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-fit">
+                  <div className="flex items-center gap-2 px-3 sm:px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors w-fit text-sm">
                     <Upload className="w-4 h-4" />
                     <span>{isUploadingLogo ? 'Processando...' : 'Escolher Imagem'}</span>
                   </div>
@@ -464,7 +489,7 @@ export default function ConfiguracoesPage() {
                   />
                 </label>
                 <p className="text-xs text-gray-500 dark:text-gray-400 mt-2">
-                  PNG, JPG ou GIF. Máximo 500KB. Esta logo aparecerá no recibo de vendas.
+                  PNG, JPG ou GIF. Máximo 500KB.
                 </p>
               </div>
             </div>
@@ -477,10 +502,10 @@ export default function ConfiguracoesPage() {
             </label>
             <input
               type="text"
-              value={companySettings.name}
-              onChange={(e) => setCompanySettings({ ...companySettings, name: e.target.value })}
+              value={companyForm.name}
+              onChange={(e) => setCompanyForm({ ...companyForm, name: e.target.value })}
               placeholder="Nome da sua empresa"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white text-sm"
             />
           </div>
 
@@ -491,10 +516,10 @@ export default function ConfiguracoesPage() {
             </label>
             <input
               type="text"
-              value={companySettings.document}
-              onChange={(e) => setCompanySettings({ ...companySettings, document: e.target.value })}
+              value={companyForm.document}
+              onChange={(e) => setCompanyForm({ ...companyForm, document: e.target.value })}
               placeholder="00.000.000/0000-00"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white text-sm"
             />
           </div>
 
@@ -505,10 +530,10 @@ export default function ConfiguracoesPage() {
             </label>
             <input
               type="text"
-              value={companySettings.address}
-              onChange={(e) => setCompanySettings({ ...companySettings, address: e.target.value })}
+              value={companyForm.address}
+              onChange={(e) => setCompanyForm({ ...companyForm, address: e.target.value })}
               placeholder="Rua, número, bairro, cidade"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white text-sm"
             />
           </div>
 
@@ -519,60 +544,65 @@ export default function ConfiguracoesPage() {
             </label>
             <input
               type="text"
-              value={companySettings.phone}
-              onChange={(e) => setCompanySettings({ ...companySettings, phone: e.target.value })}
+              value={companyForm.phone}
+              onChange={(e) => setCompanyForm({ ...companyForm, phone: e.target.value })}
               placeholder="(00) 00000-0000"
-              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
+              className="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white text-sm"
             />
           </div>
 
           {/* Save Button */}
           <button
             onClick={handleSaveCompanySettings}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors"
+            disabled={saveCompanyMutation.isPending}
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            <CheckCircle className="w-5 h-5" />
+            {saveCompanyMutation.isPending ? (
+              <Loader2 className="w-5 h-5 animate-spin" />
+            ) : (
+              <CheckCircle className="w-5 h-5" />
+            )}
             Salvar Dados da Empresa
           </button>
         </div>
       </div>
 
       {/* Sync Section */}
-      <div className="bg-white rounded-lg shadow p-6 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
         <div className="flex items-center gap-2 mb-4">
-          <RefreshCw className="w-5 h-5 text-blue-600" />
-          <h2 className="text-lg font-semibold text-gray-900">Sincronização</h2>
+          <RefreshCw className="w-5 h-5 text-blue-600 dark:text-blue-400" />
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Sincronização</h2>
         </div>
 
         <div className="space-y-4">
           {/* Auto Sync Toggle */}
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div>
-              <p className="font-medium text-gray-900">Sincronização Automática</p>
-              <p className="text-sm text-gray-500">Sincronizar dados automaticamente quando online</p>
+          <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg gap-4">
+            <div className="min-w-0">
+              <p className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">Sincronização Automática</p>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Sincronizar dados automaticamente quando online</p>
             </div>
-            <label className="relative inline-flex items-center cursor-pointer">
+            <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
               <input
                 type="checkbox"
                 checked={settings.autoSync}
                 onChange={(e) => setSettings({ ...settings, autoSync: e.target.checked })}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div className="w-11 h-6 bg-gray-200 dark:bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
 
           {/* Sync Interval */}
           {settings.autoSync && (
-            <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg gap-3">
               <div>
-                <p className="font-medium text-gray-900">Intervalo de Sincronização</p>
-                <p className="text-sm text-gray-500">Frequência da sincronização automática</p>
+                <p className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">Intervalo de Sincronização</p>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Frequência da sincronização automática</p>
               </div>
               <select
                 value={settings.syncInterval}
                 onChange={(e) => setSettings({ ...settings, syncInterval: parseInt(e.target.value) })}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                className="px-3 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-600 dark:text-white text-sm"
               >
                 <option value={1}>1 minuto</option>
                 <option value={5}>5 minutos</option>
@@ -596,20 +626,20 @@ export default function ConfiguracoesPage() {
       </div>
 
       {/* Storage Section */}
-      <div className="bg-white rounded-lg shadow p-6 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
         <div className="flex items-center gap-2 mb-4">
-          <HardDrive className="w-5 h-5 text-purple-600" />
-          <h2 className="text-lg font-semibold text-gray-900">Armazenamento Local</h2>
+          <HardDrive className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Armazenamento Local</h2>
         </div>
 
         <div className="space-y-4">
           {/* Storage Bar */}
           <div>
-            <div className="flex justify-between text-sm mb-2">
-              <span className="text-gray-600">Espaço utilizado</span>
-              <span className="font-medium">{formatBytes(storageInfo.used)} / {formatBytes(storageInfo.total)}</span>
+            <div className="flex justify-between text-xs sm:text-sm mb-2">
+              <span className="text-gray-600 dark:text-gray-400">Espaço utilizado</span>
+              <span className="font-medium text-gray-900 dark:text-white">{formatBytes(storageInfo.used)} / {formatBytes(storageInfo.total)}</span>
             </div>
-            <div className="w-full bg-gray-200 rounded-full h-3">
+            <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-3">
               <div
                 className={`h-3 rounded-full transition-all duration-300 ${
                   storagePercentage > 80 ? 'bg-red-500' : storagePercentage > 60 ? 'bg-yellow-500' : 'bg-blue-500'
@@ -617,37 +647,37 @@ export default function ConfiguracoesPage() {
                 style={{ width: `${Math.min(storagePercentage, 100)}%` }}
               />
             </div>
-            <p className="text-xs text-gray-500 mt-1">{storagePercentage}% utilizado</p>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">{storagePercentage}% utilizado</p>
           </div>
 
           {/* Data Breakdown */}
-          <div className="grid grid-cols-3 gap-4 pt-4 border-t">
+          <div className="grid grid-cols-3 gap-2 sm:gap-4 pt-4 border-t border-gray-200 dark:border-gray-700">
             <div className="text-center">
-              <p className="text-2xl font-bold text-gray-900">{storageInfo.products}</p>
-              <p className="text-sm text-gray-500">Produtos</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{storageInfo.products}</p>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Produtos</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-gray-900">{storageInfo.customers}</p>
-              <p className="text-sm text-gray-500">Clientes</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{storageInfo.customers}</p>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Clientes</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-gray-900">{storageInfo.sales}</p>
-              <p className="text-sm text-gray-500">Vendas</p>
+              <p className="text-lg sm:text-2xl font-bold text-gray-900 dark:text-white">{storageInfo.sales}</p>
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">Vendas</p>
             </div>
           </div>
 
           {/* Actions */}
-          <div className="flex gap-3 pt-4 border-t">
+          <div className="flex flex-col sm:flex-row gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
             <button
               onClick={handleExportData}
-              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+              className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors text-sm"
             >
               <Download className="w-5 h-5" />
               Exportar Dados
             </button>
             <button
               onClick={handleClearLocalData}
-              className="flex items-center justify-center gap-2 px-4 py-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors"
+              className="flex items-center justify-center gap-2 px-4 py-2 bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 rounded-lg hover:bg-red-200 dark:hover:bg-red-900/50 transition-colors text-sm"
             >
               <Trash2 className="w-5 h-5" />
               Limpar Cache
@@ -657,88 +687,88 @@ export default function ConfiguracoesPage() {
       </div>
 
       {/* App Settings */}
-      <div className="bg-white rounded-lg shadow p-6 mb-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6 mb-4 sm:mb-6">
         <div className="flex items-center gap-2 mb-4">
-          <Settings className="w-5 h-5 text-gray-600" />
-          <h2 className="text-lg font-semibold text-gray-900">Configurações do App</h2>
+          <Settings className="w-5 h-5 text-gray-600 dark:text-gray-400" />
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Configurações do App</h2>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {/* Notifications */}
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div className="flex items-center gap-3">
-              <Bell className="w-5 h-5 text-gray-600" />
-              <div>
-                <p className="font-medium text-gray-900">Notificações</p>
-                <p className="text-sm text-gray-500">Receber alertas de estoque baixo e vendas</p>
+          <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <Bell className="w-5 h-5 text-gray-600 dark:text-gray-400 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">Notificações</p>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">Receber alertas de estoque baixo e vendas</p>
               </div>
             </div>
-            <label className="relative inline-flex items-center cursor-pointer">
+            <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
               <input
                 type="checkbox"
                 checked={settings.notifications}
                 onChange={(e) => setSettings({ ...settings, notifications: e.target.checked })}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div className="w-11 h-6 bg-gray-200 dark:bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
 
           {/* Print Receipt */}
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div className="flex items-center gap-3">
-              <Monitor className="w-5 h-5 text-gray-600" />
-              <div>
-                <p className="font-medium text-gray-900">Imprimir Recibo</p>
-                <p className="text-sm text-gray-500">Imprimir recibo após cada venda</p>
+          <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <Monitor className="w-5 h-5 text-gray-600 dark:text-gray-400 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">Imprimir Recibo</p>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">Imprimir recibo após cada venda</p>
               </div>
             </div>
-            <label className="relative inline-flex items-center cursor-pointer">
+            <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
               <input
                 type="checkbox"
                 checked={settings.printReceipt}
                 onChange={(e) => setSettings({ ...settings, printReceipt: e.target.checked })}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div className="w-11 h-6 bg-gray-200 dark:bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
 
           {/* Sound Effects */}
-          <div className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-            <div className="flex items-center gap-3">
-              <Bell className="w-5 h-5 text-gray-600" />
-              <div>
-                <p className="font-medium text-gray-900">Sons</p>
-                <p className="text-sm text-gray-500">Efeitos sonoros ao adicionar itens e finalizar vendas</p>
+          <div className="flex items-center justify-between p-3 bg-gray-50 dark:bg-gray-700 rounded-lg gap-4">
+            <div className="flex items-center gap-3 min-w-0">
+              <Bell className="w-5 h-5 text-gray-600 dark:text-gray-400 flex-shrink-0" />
+              <div className="min-w-0">
+                <p className="font-medium text-gray-900 dark:text-white text-sm sm:text-base">Sons</p>
+                <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">Efeitos sonoros ao adicionar itens</p>
               </div>
             </div>
-            <label className="relative inline-flex items-center cursor-pointer">
+            <label className="relative inline-flex items-center cursor-pointer flex-shrink-0">
               <input
                 type="checkbox"
                 checked={settings.soundEffects}
                 onChange={(e) => setSettings({ ...settings, soundEffects: e.target.checked })}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
+              <div className="w-11 h-6 bg-gray-200 dark:bg-gray-600 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
         </div>
       </div>
 
       {/* About */}
-      <div className="bg-white rounded-lg shadow p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 sm:p-6">
         <div className="flex items-center gap-2 mb-4">
-          <Shield className="w-5 h-5 text-green-600" />
-          <h2 className="text-lg font-semibold text-gray-900">Sobre</h2>
+          <Shield className="w-5 h-5 text-green-600 dark:text-green-400" />
+          <h2 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">Sobre</h2>
         </div>
 
-        <div className="space-y-2 text-sm text-gray-600">
-          <p><strong>Vendas PDV</strong> - Sistema de Ponto de Venda</p>
+        <div className="space-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-400">
+          <p><strong className="text-gray-900 dark:text-white">Vendas PDV</strong> - Sistema de Ponto de Venda</p>
           <p>Versão: 2.0.0</p>
           <p>Offline-First com Sincronização Automática</p>
-          <div className="pt-4 border-t mt-4">
-            <p className="text-xs text-gray-400">
+          <div className="pt-4 border-t border-gray-200 dark:border-gray-700 mt-4">
+            <p className="text-xs text-gray-400 dark:text-gray-500">
               Desenvolvido com Next.js, Supabase e SQLite.
               Todos os dados são criptografados e sincronizados de forma segura.
             </p>

@@ -224,25 +224,23 @@ export default function PDVPage() {
   const [customerSearch, setCustomerSearch] = useState('');
   const [lastSale, setLastSale] = useState<any>(null);
   const [cashReceived, setCashReceived] = useState('');
-  const [companySettings, setCompanySettings] = useState<{
-    name: string;
-    logo: string | null;
-    address: string;
-    phone: string;
-    document: string;
-  } | null>(null);
 
-  // Load company settings from localStorage
-  useEffect(() => {
-    const saved = localStorage.getItem('companySettings');
-    if (saved) {
-      try {
-        setCompanySettings(JSON.parse(saved));
-      } catch (e) {
-        console.error('Erro ao carregar configurações da empresa:', e);
-      }
-    }
-  }, []);
+  // Load company settings from database
+  const { data: companySettings } = useQuery({
+    queryKey: ['company-settings'],
+    queryFn: async () => {
+      const res = await fetch('/api/configuracoes/empresa');
+      const data = await res.json();
+      return data.data as {
+        name: string;
+        logo: string | null;
+        address: string;
+        phone: string;
+        document: string;
+      };
+    },
+    staleTime: 60000,
+  });
 
   const {
     items,
