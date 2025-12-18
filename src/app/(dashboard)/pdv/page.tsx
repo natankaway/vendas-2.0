@@ -809,8 +809,8 @@ export default function PDVPage() {
 
       {/* Dialog do Recibo */}
       {showReceiptDialog && lastSale && (
-        <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center" style={{ zIndex: 10000 }}>
-          <div className="bg-white dark:bg-gray-800 w-full max-w-sm sm:rounded-2xl sm:m-4 max-h-[90vh] overflow-hidden flex flex-col rounded-t-2xl">
+        <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4" style={{ zIndex: 10000 }}>
+          <div className="bg-white dark:bg-gray-800 w-full max-w-sm rounded-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-xl">
             <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 flex-shrink-0">
               <h2 className="text-lg font-semibold text-green-600 dark:text-green-400">Venda Realizada!</h2>
               <button onClick={() => setShowReceiptDialog(false)} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">

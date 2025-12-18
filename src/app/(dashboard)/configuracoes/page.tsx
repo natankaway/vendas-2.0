@@ -357,7 +357,7 @@ export default function ConfiguracoesPage() {
     : 0;
 
   return (
-    <div className="p-3 sm:p-6 max-w-4xl mx-auto">
+    <div className="p-3 sm:p-6 max-w-4xl mx-auto overflow-x-hidden">
       {/* Header */}
       <div className="mb-4 sm:mb-6">
         <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Configurações</h1>
@@ -444,13 +444,13 @@ export default function ConfiguracoesPage() {
 
         <div className="space-y-4">
           {/* Logo Upload */}
-          <div className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg">
+          <div className="p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg overflow-hidden">
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
               Logo da Empresa
             </label>
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               {/* Logo Preview */}
-              <div className="relative flex-shrink-0">
+              <div className="relative flex-shrink-0 p-1">
                 {companyForm.logo ? (
                   <div className="relative">
                     <img
@@ -460,7 +460,7 @@ export default function ConfiguracoesPage() {
                     />
                     <button
                       onClick={handleRemoveLogo}
-                      className="absolute -top-2 -right-2 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
+                      className="absolute -top-1 -right-1 p-1 bg-red-500 text-white rounded-full hover:bg-red-600 transition-colors"
                       title="Remover logo"
                     >
                       <X className="w-3 h-3 sm:w-4 sm:h-4" />
