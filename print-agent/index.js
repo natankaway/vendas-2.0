@@ -1,18 +1,20 @@
 /**
- * KAWAY POS - Agente de Impressão
+ * KAWAY POS - Agente de Impressao
  *
- * Este programa conecta o sistema PDV à impressora térmica.
+ * Este programa conecta o sistema PDV a impressora termica.
  * Ele busca trabalhos pendentes no servidor e envia para a impressora.
  *
- * Compatível com impressoras Elgin, Epson, Bematech e outras que usam ESC/POS
+ * Compativel com impressoras Elgin, Epson, Bematech e outras que usam ESC/POS
  */
 
 require('dotenv').config();
 const fetch = require('node-fetch');
 const https = require('https');
 const http = require('http');
+const fs = require('fs');
+const path = require('path');
 
-// Configurações
+// Configuracoes
 const config = {
   apiUrl: process.env.API_URL || 'http://localhost:3000',
   printerType: process.env.PRINTER_TYPE || 'network',
@@ -22,6 +24,8 @@ const config = {
   printerId: process.env.PRINTER_ID || 'default',
   paperWidth: parseInt(process.env.PAPER_WIDTH || '48'),
   printLogo: process.env.PRINT_LOGO !== 'false',
+  // Encoding: PC850 para portugues (suporta acentos)
+  encoding: process.env.PRINTER_ENCODING || 'PC850',
 };
 
 // Estado
@@ -31,7 +35,7 @@ let device = null;
 let printer = null;
 
 // Cache de logo
-let logoCache = null;
+let logoImageCache = null;
 let logoCacheUrl = null;
 
 // Cores para console
@@ -55,23 +59,6 @@ function log(message, type = 'info') {
   console.log(`${colors.cyan}[${timestamp}]${colors.reset} ${prefix[type] || prefix.info} ${message}`);
 }
 
-// ============================================
-// FUNÇÃO PARA REMOVER ACENTOS (ASCII)
-// ============================================
-function removeAccents(str) {
-  if (!str) return str;
-
-  // Usa normalize para decompor caracteres acentuados
-  // NFD separa o caractere base do acento
-  // Depois remove os acentos (diacriticos) com regex
-  let result = str
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '');
-
-  // Remove caracteres não-ASCII restantes
-  return result.replace(/[^\x20-\x7E]/g, '');
-}
-
 // Inicializar impressora
 async function initPrinter() {
   try {
@@ -87,8 +74,9 @@ async function initPrinter() {
       log('Conectando a impressora USB...');
     }
 
-    printer = new escpos.Printer(device);
+    printer = new escpos.Printer(device, { encoding: config.encoding });
     log('Impressora configurada com sucesso!', 'success');
+    log(`Encoding: ${config.encoding}`);
     return true;
   } catch (error) {
     log(`Erro ao inicializar impressora: ${error.message}`, 'error');
@@ -114,7 +102,7 @@ async function fetchPendingJobs() {
   }
 }
 
-// Marcar job como concluído
+// Marcar job como concluido
 async function markJobCompleted(jobId, success = true, errorMessage = null) {
   try {
     const url = `${config.apiUrl}/api/print-queue/${jobId}`;
@@ -136,10 +124,8 @@ async function markJobCompleted(jobId, success = true, errorMessage = null) {
   }
 }
 
-// Formatar linha com valor à direita
+// Formatar linha com valor a direita
 function formatLine(left, right, width) {
-  left = removeAccents(left);
-  right = removeAccents(right);
   const spaces = Math.max(1, width - left.length - right.length);
   return left + ' '.repeat(spaces) + right;
 }
@@ -154,46 +140,47 @@ function createSeparator(width, char = '-') {
   return char.repeat(width);
 }
 
-// Criar separador de itens (pontos espaçados)
+// Criar separador de itens (pontos espacados)
 function createItemDivider(width) {
   const pattern = '. ';
   const repeats = Math.floor(width / pattern.length);
   return pattern.repeat(repeats);
 }
 
-// Download e cache da logo (retorna Promise)
-function downloadLogo(logoUrl) {
+// Download da logo e converte para escpos.Image
+async function downloadAndCacheLogo(logoUrl) {
+  if (!logoUrl) return null;
+
+  // Se ja tem cache da mesma URL, retorna
+  if (logoCacheUrl === logoUrl && logoImageCache) {
+    log('Usando logo do cache');
+    return logoImageCache;
+  }
+
   return new Promise((resolve) => {
-    if (!logoUrl) {
-      resolve(null);
-      return;
-    }
+    let buffer = null;
 
-    // Usar cache se a URL for a mesma
-    if (logoCacheUrl === logoUrl && logoCache) {
-      log('Usando logo do cache');
-      resolve(logoCache);
-      return;
-    }
-
-    // Se for base64, converter diretamente
+    // Se for base64
     if (logoUrl.startsWith('data:image')) {
       try {
         const base64Data = logoUrl.split(',')[1];
-        const buffer = Buffer.from(base64Data, 'base64');
-        logoCache = buffer;
-        logoCacheUrl = logoUrl;
-        log('Logo base64 carregada');
-        resolve(buffer);
+        buffer = Buffer.from(base64Data, 'base64');
+        log('Logo base64 decodificada');
       } catch (error) {
         log(`Erro ao processar logo base64: ${error.message}`, 'warning');
         resolve(null);
+        return;
       }
+    }
+
+    // Se ja tem buffer (base64), carrega imagem
+    if (buffer) {
+      loadImageFromBuffer(buffer, logoUrl, resolve);
       return;
     }
 
     // Download da URL
-    log(`Baixando logo de: ${logoUrl.substring(0, 50)}...`);
+    log(`Baixando logo...`);
     const protocol = logoUrl.startsWith('https') ? https : http;
 
     const request = protocol.get(logoUrl, (response) => {
@@ -206,11 +193,9 @@ function downloadLogo(logoUrl) {
       const chunks = [];
       response.on('data', (chunk) => chunks.push(chunk));
       response.on('end', () => {
-        const buffer = Buffer.concat(chunks);
-        logoCache = buffer;
-        logoCacheUrl = logoUrl;
-        log('Logo baixada com sucesso');
-        resolve(buffer);
+        buffer = Buffer.concat(chunks);
+        log('Logo baixada');
+        loadImageFromBuffer(buffer, logoUrl, resolve);
       });
       response.on('error', (err) => {
         log(`Erro ao baixar logo: ${err.message}`, 'warning');
@@ -219,12 +204,11 @@ function downloadLogo(logoUrl) {
     });
 
     request.on('error', (err) => {
-      log(`Erro ao baixar logo: ${err.message}`, 'warning');
+      log(`Erro na requisicao: ${err.message}`, 'warning');
       resolve(null);
     });
 
-    // Timeout de 5 segundos
-    request.setTimeout(5000, () => {
+    request.setTimeout(10000, () => {
       request.destroy();
       log('Timeout ao baixar logo', 'warning');
       resolve(null);
@@ -232,29 +216,30 @@ function downloadLogo(logoUrl) {
   });
 }
 
-// Carregar imagem para impressão
-function loadImage(buffer) {
-  return new Promise((resolve) => {
-    if (!buffer || !escpos || !escpos.Image) {
-      resolve(null);
-      return;
-    }
+// Carrega buffer como escpos.Image
+function loadImageFromBuffer(buffer, logoUrl, resolve) {
+  if (!escpos || !escpos.Image) {
+    log('escpos.Image nao disponivel', 'warning');
+    resolve(null);
+    return;
+  }
 
-    try {
-      escpos.Image.load(buffer, (image) => {
-        if (image) {
-          log('Imagem carregada para impressao');
-          resolve(image);
-        } else {
-          log('Falha ao carregar imagem', 'warning');
-          resolve(null);
-        }
-      });
-    } catch (error) {
-      log(`Erro ao carregar imagem: ${error.message}`, 'warning');
-      resolve(null);
-    }
-  });
+  try {
+    escpos.Image.load(buffer, function(image) {
+      if (image) {
+        logoImageCache = image;
+        logoCacheUrl = logoUrl;
+        log('Imagem carregada para impressao', 'success');
+        resolve(image);
+      } else {
+        log('Falha ao carregar imagem', 'warning');
+        resolve(null);
+      }
+    });
+  } catch (error) {
+    log(`Erro ao carregar imagem: ${error.message}`, 'warning');
+    resolve(null);
+  }
 }
 
 // Imprimir recibo - Layout igual ao navegador
@@ -264,17 +249,10 @@ async function printReceipt(receiptData) {
   const doubleSeparator = createSeparator(width, '=');
   const itemDivider = createItemDivider(width);
 
-  // Tentar baixar e carregar logo se configurado
+  // Carregar logo ANTES de abrir conexao com impressora
   let logoImage = null;
   if (config.printLogo && receiptData.company?.logo) {
-    try {
-      const logoBuffer = await downloadLogo(receiptData.company.logo);
-      if (logoBuffer) {
-        logoImage = await loadImage(logoBuffer);
-      }
-    } catch (e) {
-      log('Falha ao carregar logo, continuando sem ela', 'warning');
-    }
+    logoImage = await downloadAndCacheLogo(receiptData.company.logo);
   }
 
   return new Promise((resolve, reject) => {
@@ -285,14 +263,14 @@ async function printReceipt(receiptData) {
       }
 
       try {
-        // Inicializa impressora com encoding
+        // Inicializa impressora
         printer
           .font('a')
           .align('ct')
           .style('normal');
 
         // ============================================
-        // LOGO (se disponível)
+        // LOGO (se disponivel)
         // ============================================
         if (logoImage) {
           try {
@@ -304,14 +282,13 @@ async function printReceipt(receiptData) {
         }
 
         // ============================================
-        // CABEÇALHO - Nome da empresa (grande e bold)
+        // CABECALHO - Nome da empresa (grande e bold)
         // ============================================
         printer
           .style('b')
           .size(1, 1);
 
-        const companyName = removeAccents(receiptData.company?.name || 'KAWAY POS');
-        printer.text(companyName);
+        printer.text(receiptData.company?.name || 'KAWAY POS');
 
         // Volta ao tamanho normal
         printer
@@ -320,13 +297,13 @@ async function printReceipt(receiptData) {
 
         // Dados da empresa
         if (receiptData.company?.document) {
-          printer.text(removeAccents(receiptData.company.document));
+          printer.text(receiptData.company.document);
         }
         if (receiptData.company?.address) {
-          printer.text(removeAccents(receiptData.company.address));
+          printer.text(receiptData.company.address);
         }
         if (receiptData.company?.phone) {
-          printer.text(removeAccents(receiptData.company.phone));
+          printer.text(receiptData.company.phone);
         }
 
         printer
@@ -349,12 +326,12 @@ async function printReceipt(receiptData) {
         // ============================================
         if (receiptData.customer?.name) {
           printer.text(separator);
-          printer.text(formatLine('Cliente:', removeAccents(receiptData.customer.name), width));
+          printer.text(formatLine('Cliente:', receiptData.customer.name, width));
 
           if (receiptData.customer.address) {
             const addrLabel = 'End: ';
             const maxAddrLen = width - addrLabel.length;
-            let addr = removeAccents(receiptData.customer.address);
+            let addr = receiptData.customer.address;
             if (addr.length > maxAddrLen) {
               addr = addr.substring(0, maxAddrLen - 3) + '...';
             }
@@ -372,7 +349,7 @@ async function printReceipt(receiptData) {
 
         if (receiptData.items && receiptData.items.length > 0) {
           receiptData.items.forEach((item, index) => {
-            // Divisor entre itens (não antes do primeiro)
+            // Divisor entre itens (nao antes do primeiro)
             if (index > 0) {
               printer
                 .style('normal')
@@ -380,12 +357,12 @@ async function printReceipt(receiptData) {
                 .style('b');
             }
 
-            // Nome do produto (bold) - SEM ACENTOS
-            const productName = removeAccents(item.name || item.product_name || 'Produto');
+            // Nome do produto (bold)
+            const productName = item.name || item.product_name || 'Produto';
             printer.text(productName);
 
-            // Quantidade x preço = total
-            const unit = removeAccents(item.unit || 'un');
+            // Quantidade x preco = total
+            const unit = item.unit || 'un';
             const qtyLine = `${item.quantity} ${unit} x ${formatCurrency(item.unit_price)}`;
             const totalLine = formatCurrency(item.total);
             printer.text(formatLine(qtyLine, totalLine, width));
@@ -417,8 +394,7 @@ async function printReceipt(receiptData) {
         // FORMA DE PAGAMENTO
         // ============================================
         printer.text(separator);
-        const paymentLabel = removeAccents(receiptData.payment_method_label || receiptData.payment_method || '---');
-        printer.text(formatLine('Pagamento:', paymentLabel, width));
+        printer.text(formatLine('Pagamento:', receiptData.payment_method_label || receiptData.payment_method || '---', width));
 
         // Troco (se pagamento em dinheiro)
         if (receiptData.cash_received && receiptData.change !== undefined) {
@@ -427,7 +403,7 @@ async function printReceipt(receiptData) {
         }
 
         // ============================================
-        // RODAPÉ
+        // RODAPE
         // ============================================
         printer
           .text(separator)
@@ -472,7 +448,7 @@ async function processJobs() {
       try {
         log(`Imprimindo job ${job.id.substring(0, 8)}...`);
 
-        // Imprimir cada cópia
+        // Imprimir cada copia
         for (let i = 0; i < (job.copies || 1); i++) {
           await printReceipt(job.receipt_data);
           if (job.copies > 1) {
@@ -504,17 +480,18 @@ async function start() {
 
   log(`API URL: ${config.apiUrl}`);
   log(`Tipo de impressora: ${config.printerType}`);
-  log(`ID da impressora: ${config.printerId}`);
+  log(`IP: ${config.printerIp}:${config.printerPort}`);
   log(`Largura do papel: ${config.paperWidth} caracteres`);
+  log(`Encoding: ${config.encoding}`);
   log(`Imprimir logo: ${config.printLogo ? 'Sim' : 'Nao'}`);
-  log(`Intervalo de verificacao: ${config.pollInterval}ms`);
+  log(`Intervalo: ${config.pollInterval}ms`);
   console.log('');
 
   // Inicializar impressora
   const printerReady = await initPrinter();
 
   if (!printerReady) {
-    log('Nao foi possivel inicializar a impressora. Verifique a conexao.', 'error');
+    log('Nao foi possivel inicializar a impressora.', 'error');
     log('O agente continuara tentando...', 'warning');
   }
 
@@ -525,11 +502,11 @@ async function start() {
   // Verificar imediatamente
   processJobs();
 
-  // E então a cada intervalo
+  // E entao a cada intervalo
   setInterval(processJobs, config.pollInterval);
 }
 
-// Tratamento de erros não capturados
+// Tratamento de erros nao capturados
 process.on('uncaughtException', (error) => {
   log(`Erro nao tratado: ${error.message}`, 'error');
 });
