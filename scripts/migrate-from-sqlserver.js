@@ -154,13 +154,14 @@ function migrateCategories() {
 
     const newId = uuidv4();
     idMaps.categories[oldId] = newId;
+    idMaps.categories[name.trim().toLowerCase()] = newId; // Mapeia por nome também
 
-    sql += `INSERT INTO categories (id, name, description, color, is_active, created_at, updated_at) VALUES (\n`;
+    sql += `INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (\n`;
     sql += `  '${newId}',\n`;
     sql += `  ${escapeSQL(name)},\n`;
     sql += `  NULL,\n`;
     sql += `  '#3B82F6',\n`;
-    sql += `  true,\n`;
+    sql += `  0,\n`;
     sql += `  '${now}',\n`;
     sql += `  '${now}'\n`;
     sql += `) ON CONFLICT (id) DO NOTHING;\n\n`;
@@ -245,14 +246,17 @@ function migrateProducts() {
 
     // Busca categoria pelo nome
     let categoryId = 'NULL';
-    for (const [catId, catName] of Object.entries(idMaps.categories)) {
-      // Busca por nome aproximado não é possível aqui, usaremos NULL
+    if (categoria && categoria !== 'NULL') {
+      const catKey = categoria.trim().toLowerCase();
+      if (idMaps.categories[catKey]) {
+        categoryId = `'${idMaps.categories[catKey]}'`;
+      }
     }
 
     // Converte valores para centavos
     const price = toCents(valorVenda);
     const cost = toCents(valorCusto);
-    const stockQty = parseInt(stock) || 0;
+    const stockQty = parseFloat(stock) || 0;
 
     // SKU a partir do código de barras ou gerado
     const sku = codigoBarras && codigoBarras !== 'NULL' ? codigoBarras : `PROD-${oldId}`;
@@ -264,13 +268,13 @@ function migrateProducts() {
       expirationDate = `'${vencimento}'`;
     }
 
-    sql += `INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (\n`;
+    sql += `INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (\n`;
     sql += `  '${newId}',\n`;
     sql += `  ${escapeSQL(nome)},\n`;
     sql += `  NULL,\n`;
     sql += `  ${escapeSQL(sku)},\n`;
     sql += `  ${codigoBarras && codigoBarras !== 'NULL' ? escapeSQL(codigoBarras) : 'NULL'},\n`;
-    sql += `  NULL,\n`;  // category_id - pode ser atualizado depois
+    sql += `  ${categoryId},\n`;
     sql += `  ${price},\n`;
     sql += `  ${cost},\n`;
     sql += `  ${escapeSQL(medida && medida !== 'NULL' ? medida : 'UN')},\n`;
