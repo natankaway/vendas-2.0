@@ -8,6 +8,92 @@ html, body {
   max-width: 100vw;
 }
 
+/* ============================================
+   ESTILOS DE IMPRESSÃO PARA PAPEL TÉRMICO 80mm
+   ============================================ */
+@media print {
+  /* Reset geral para impressão */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Esconde tudo exceto o conteúdo do recibo */
+  body * {
+    visibility: hidden;
+  }
+
+  /* Mostra apenas o recibo */
+  .print-receipt,
+  .print-receipt * {
+    visibility: visible;
+  }
+
+  /* Posiciona o recibo no topo */
+  .print-receipt {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 72mm !important; /* 80mm - margens */
+    max-width: 72mm !important;
+    padding: 2mm !important;
+    margin: 0 !important;
+    font-family: 'Courier New', monospace !important;
+    font-size: 10px !important;
+    line-height: 1.3 !important;
+    color: #000 !important;
+    background: #fff !important;
+  }
+
+  /* Logo da empresa no recibo */
+  .print-receipt img {
+    max-width: 40mm !important;
+    max-height: 15mm !important;
+    height: auto !important;
+    margin: 0 auto 2mm !important;
+    display: block !important;
+  }
+
+  /* Títulos no recibo */
+  .print-receipt h3 {
+    font-size: 12px !important;
+    font-weight: bold !important;
+    margin: 0 0 1mm 0 !important;
+  }
+
+  /* Textos pequenos */
+  .print-receipt p,
+  .print-receipt span,
+  .print-receipt div {
+    font-size: 10px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Linhas divisórias */
+  .print-receipt .border-dashed,
+  .print-receipt .border-dotted {
+    border-color: #000 !important;
+  }
+
+  /* Valores e totais */
+  .print-receipt .font-bold {
+    font-weight: bold !important;
+  }
+
+  /* Esconde botões e elementos de UI */
+  .print-receipt button,
+  .print-receipt .no-print {
+    display: none !important;
+  }
+
+  /* Configuração da página */
+  @page {
+    size: 80mm auto;
+    margin: 0;
+  }
+}
+
 /**
  * Variáveis CSS do sistema de design
  *

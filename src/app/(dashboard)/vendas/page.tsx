@@ -246,122 +246,155 @@ export default function VendasPage() {
   };
 
   const handlePrint = () => {
-    const printContent = document.getElementById('receipt-content');
-    if (printContent) {
-      const printWindow = window.open('', '_blank');
-      if (printWindow) {
-        printWindow.document.write(`
-          <html>
-            <head>
-              <title>Recibo - ${selectedSale?.receipt_number}</title>
-              <style>
-                body { font-family: 'Courier New', monospace; font-size: 12px; max-width: 300px; margin: 0 auto; padding: 20px; }
-                .header { text-align: center; margin-bottom: 20px; }
-                .divider { border-top: 1px dashed #000; margin: 10px 0; }
-                .item { display: flex; justify-content: space-between; margin: 5px 0; }
-                .total { font-weight: bold; font-size: 14px; }
-                .footer { text-align: center; margin-top: 20px; font-size: 10px; }
-              </style>
-            </head>
-            <body>${printContent.innerHTML}</body>
-          </html>
-        `);
-        printWindow.document.close();
-        printWindow.print();
-      }
+    if (selectedSale) {
+      handleDirectPrint(selectedSale);
     }
   };
 
-  // Impressão direta sem abrir modal
+  // Impressão direta sem abrir modal (formatado para papel térmico 80mm)
   const handleDirectPrint = (sale: Sale) => {
     const printWindow = window.open('', '_blank');
     if (!printWindow) return;
 
     const logoHtml = companySettings?.logo
-      ? `<img src="${companySettings.logo}" alt="Logo" style="max-height: 60px; max-width: 150px; margin: 0 auto 10px; display: block;" />`
+      ? `<img src="${companySettings.logo}" alt="Logo" />`
       : '';
 
     const companyName = companySettings?.name || 'KAWAY POS';
-    const companyDoc = companySettings?.document ? `<p style="font-size: 10px; color: #666;">${companySettings.document}</p>` : '';
-    const companyAddr = companySettings?.address ? `<p style="font-size: 10px; color: #666;">${companySettings.address}</p>` : '';
-    const companyPhone = companySettings?.phone ? `<p style="font-size: 10px; color: #666;">${companySettings.phone}</p>` : '';
+    const companyDoc = companySettings?.document ? `<p>${companySettings.document}</p>` : '';
+    const companyAddr = companySettings?.address ? `<p>${companySettings.address}</p>` : '';
+    const companyPhone = companySettings?.phone ? `<p>${companySettings.phone}</p>` : '';
 
-    const customerName = sale.customer?.name || sale.customer_name || 'Balcão';
-    const customerAddr = sale.customer?.address ? `<div style="display: flex; justify-content: space-between;"><span style="color: #666;">Endereço:</span><span>${sale.customer.address}</span></div>` : '';
-    const customerPhone = sale.customer?.phone ? `<div style="display: flex; justify-content: space-between;"><span style="color: #666;">Telefone:</span><span>${sale.customer.phone}</span></div>` : '';
+    const customerName = sale.customer?.name || sale.customer_name || '';
+    const customerInfo = customerName ? `
+      <div class="divider"></div>
+      <div class="row"><span>Cliente:</span><span>${customerName}</span></div>
+      ${sale.customer?.phone ? `<div class="row"><span>Tel:</span><span>${sale.customer.phone}</span></div>` : ''}
+    ` : '';
 
-    const itemsHtml = sale.items?.map((item, index) => `
-      ${index > 0 ? '<div style="border-top: 1px dotted #ddd; margin: 5px 0;"></div>' : ''}
-      <div style="font-weight: 500;">${item.product_name}</div>
-      <div style="display: flex; justify-content: space-between; color: #666;">
-        <span>${item.quantity} un x ${formatCurrency(item.unit_price)}</span>
-        <span style="font-weight: 500; color: #333;">${formatCurrency(item.total)}</span>
+    const itemsHtml = sale.items?.map((item) => `
+      <div class="item-name">${item.product_name}</div>
+      <div class="row">
+        <span>${item.quantity} x ${formatCurrency(item.unit_price)}</span>
+        <span>${formatCurrency(item.total)}</span>
       </div>
     `).join('') || '';
 
-    const subtotalHtml = sale.discount_amount > 0
-      ? `<div style="display: flex; justify-content: space-between; font-size: 12px;"><span>Subtotal:</span><span>${formatCurrency(sale.subtotal)}</span></div>
-         <div style="display: flex; justify-content: space-between; font-size: 12px; color: green;"><span>Desconto:</span><span>-${formatCurrency(sale.discount_amount)}</span></div>`
+    const discountHtml = sale.discount_amount > 0
+      ? `<div class="row"><span>Subtotal:</span><span>${formatCurrency(sale.subtotal)}</span></div>
+         <div class="row discount"><span>Desconto:</span><span>-${formatCurrency(sale.discount_amount)}</span></div>`
       : '';
 
     printWindow.document.write(`
+      <!DOCTYPE html>
       <html>
         <head>
-          <title>Recibo - ${sale.receipt_number}</title>
+          <title>Recibo ${sale.receipt_number}</title>
+          <meta charset="UTF-8">
           <style>
-            body { font-family: 'Courier New', monospace; font-size: 12px; max-width: 300px; margin: 0 auto; padding: 20px; }
-            .divider { border-top: 1px dashed #333; margin: 15px 0; }
+            @page {
+              size: 80mm auto;
+              margin: 0;
+            }
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+            body {
+              font-family: 'Courier New', 'Lucida Console', monospace;
+              font-size: 10px;
+              line-height: 1.3;
+              width: 72mm;
+              max-width: 72mm;
+              padding: 3mm;
+              color: #000;
+            }
+            .center { text-align: center; }
+            .bold { font-weight: bold; }
+            img {
+              max-width: 35mm;
+              max-height: 12mm;
+              display: block;
+              margin: 0 auto 2mm;
+            }
+            h1 {
+              font-size: 12px;
+              font-weight: bold;
+              margin-bottom: 1mm;
+            }
+            p {
+              font-size: 9px;
+              color: #333;
+              margin: 0;
+            }
+            .divider {
+              border-top: 1px dashed #000;
+              margin: 2mm 0;
+            }
+            .row {
+              display: flex;
+              justify-content: space-between;
+              font-size: 10px;
+              margin: 1mm 0;
+            }
+            .item-name {
+              font-size: 10px;
+              font-weight: 500;
+              margin-top: 1.5mm;
+            }
+            .total {
+              font-size: 12px;
+              font-weight: bold;
+              margin: 2mm 0;
+            }
+            .discount { color: #060; }
+            .footer {
+              text-align: center;
+              font-size: 9px;
+              color: #666;
+              margin-top: 3mm;
+            }
           </style>
         </head>
         <body>
-          <div style="text-align: center; margin-bottom: 15px;">
+          <div class="center">
             ${logoHtml}
-            <h3 style="margin: 0; font-size: 16px;">${companyName}</h3>
+            <h1>${companyName}</h1>
             ${companyDoc}
             ${companyAddr}
             ${companyPhone}
-            <p style="font-size: 10px; color: #999; margin-top: 5px;">CUPOM NÃO FISCAL</p>
-            <p style="margin: 10px 0 0;">${formatDateTime(sale.created_at)}</p>
-            <p style="font-weight: 500;">Recibo: ${sale.receipt_number}</p>
-          </div>
-
-          ${(customerName !== 'Balcão' || customerAddr || customerPhone) ? `
-            <div class="divider"></div>
-            <div style="font-size: 12px;">
-              <div style="display: flex; justify-content: space-between;"><span style="color: #666;">Cliente:</span><span style="font-weight: 500;">${customerName}</span></div>
-              ${customerAddr}
-              ${customerPhone}
-            </div>
-          ` : ''}
-
-          <div class="divider"></div>
-          <div style="font-size: 12px;">
-            ${itemsHtml}
+            <p style="margin-top: 2mm; color: #666;">CUPOM NAO FISCAL</p>
           </div>
 
           <div class="divider"></div>
-          ${subtotalHtml}
-          <div style="display: flex; justify-content: space-between; font-weight: bold; font-size: 14px; margin-top: 5px;">
+          <div class="row"><span>Data:</span><span>${formatDateTime(sale.created_at)}</span></div>
+          <div class="row"><span>Recibo:</span><span>${sale.receipt_number}</span></div>
+          ${customerInfo}
+
+          <div class="divider"></div>
+          ${itemsHtml}
+
+          <div class="divider"></div>
+          ${discountHtml}
+          <div class="row total">
             <span>TOTAL</span>
             <span>${formatCurrency(sale.total)}</span>
           </div>
 
           <div class="divider"></div>
-          <div style="display: flex; justify-content: space-between; font-size: 12px;">
-            <span style="color: #666;">Pagamento:</span>
-            <span style="font-weight: 500;">${getPaymentMethodLabel(sale.payment_method)}</span>
-          </div>
+          <div class="row"><span>Pagamento:</span><span>${getPaymentMethodLabel(sale.payment_method)}</span></div>
 
-          <div class="divider"></div>
-          <div style="text-align: center; font-size: 10px; color: #999;">
-            <p>Obrigado pela preferência!</p>
-            <p>DOCUMENTO SEM VALOR FISCAL</p>
+          <div class="footer">
+            <div class="divider"></div>
+            <p>Obrigado pela preferencia!</p>
+            <p>Volte sempre!</p>
           </div>
         </body>
       </html>
     `);
     printWindow.document.close();
-    printWindow.print();
+    setTimeout(() => printWindow.print(), 100);
   };
 
   // Impressão na impressora térmica
