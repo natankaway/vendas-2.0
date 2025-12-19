@@ -546,8 +546,9 @@ export default function PDVPage() {
 
     const customerName = lastSale.customer?.name || '';
     const customerInfo = customerName ? `
-      <div class="divider"></div>
+      <div class="divider">--------------------------------</div>
       <div class="row"><span>Cliente:</span><span>${customerName}</span></div>
+      ${lastSale.customer?.address ? `<p class="customer-addr">End: ${lastSale.customer.address}</p>` : ''}
       ${lastSale.customer?.phone ? `<div class="row"><span>Tel:</span><span>${lastSale.customer.phone}</span></div>` : ''}
     ` : '';
 
@@ -561,13 +562,13 @@ export default function PDVPage() {
 
     const discountHtml = lastSale.discount_amount > 0
       ? `<div class="row"><span>Subtotal:</span><span>${formatCurrency(lastSale.subtotal)}</span></div>
-         <div class="row discount"><span>Desconto:</span><span>-${formatCurrency(lastSale.discount_amount)}</span></div>`
+         <div class="row"><span>Desconto:</span><span>-${formatCurrency(lastSale.discount_amount)}</span></div>`
       : '';
 
     const paymentLabels: Record<string, string> = {
       cash: 'Dinheiro',
-      credit_card: 'Cartão Crédito',
-      debit_card: 'Cartão Débito',
+      credit_card: 'Cartao Credito',
+      debit_card: 'Cartao Debito',
       pix: 'PIX',
       pay_later: 'Receber Depois',
     };
@@ -592,60 +593,67 @@ export default function PDVPage() {
               margin: 0;
               padding: 0;
               box-sizing: border-box;
+              font-weight: bold;
             }
             body {
-              font-family: 'Courier New', 'Lucida Console', monospace;
-              font-size: 10px;
-              line-height: 1.3;
-              width: 72mm;
-              max-width: 72mm;
-              padding: 3mm;
+              font-family: 'Courier New', monospace;
+              font-size: 12px;
+              font-weight: bold;
+              line-height: 1.4;
+              width: 76mm;
+              max-width: 76mm;
+              padding: 2mm;
               color: #000;
             }
             .center { text-align: center; }
-            .bold { font-weight: bold; }
             img {
-              max-width: 35mm;
-              max-height: 12mm;
+              max-width: 38mm;
+              max-height: 15mm;
               display: block;
               margin: 0 auto 2mm;
             }
             h1 {
-              font-size: 12px;
+              font-size: 14px;
               font-weight: bold;
-              margin-bottom: 1mm;
+              margin: 1mm 0;
             }
             p {
-              font-size: 9px;
-              color: #333;
+              font-size: 11px;
+              font-weight: bold;
               margin: 0;
             }
             .divider {
-              border-top: 1px dashed #000;
-              margin: 2mm 0;
+              text-align: center;
+              margin: 1.5mm 0;
+              font-size: 12px;
+              letter-spacing: -1px;
             }
             .row {
               display: flex;
               justify-content: space-between;
+              font-size: 12px;
+              font-weight: bold;
+              margin: 1mm 0;
+            }
+            .customer-addr {
               font-size: 10px;
               margin: 1mm 0;
             }
             .item-name {
-              font-size: 10px;
-              font-weight: 500;
-              margin-top: 1.5mm;
+              font-size: 12px;
+              font-weight: bold;
+              margin-top: 2mm;
             }
             .total {
-              font-size: 12px;
+              font-size: 14px;
               font-weight: bold;
               margin: 2mm 0;
             }
-            .discount { color: #060; }
             .footer {
               text-align: center;
-              font-size: 9px;
-              color: #666;
-              margin-top: 3mm;
+              font-size: 11px;
+              font-weight: bold;
+              margin-top: 2mm;
             }
           </style>
         </head>
@@ -656,30 +664,30 @@ export default function PDVPage() {
             ${companyDoc}
             ${companyAddr}
             ${companyPhone}
-            <p style="margin-top: 2mm; color: #666;">CUPOM NAO FISCAL</p>
+            <p style="margin-top: 2mm;">CUPOM NAO FISCAL</p>
           </div>
 
-          <div class="divider"></div>
+          <div class="divider">--------------------------------</div>
           <div class="row"><span>Data:</span><span>${new Date(lastSale.created_at).toLocaleString('pt-BR')}</span></div>
           <div class="row"><span>Recibo:</span><span>${lastSale.receipt_number}</span></div>
           ${customerInfo}
 
-          <div class="divider"></div>
+          <div class="divider">--------------------------------</div>
           ${itemsHtml}
 
-          <div class="divider"></div>
+          <div class="divider">================================</div>
           ${discountHtml}
           <div class="row total">
             <span>TOTAL</span>
             <span>${formatCurrency(lastSale.total)}</span>
           </div>
 
-          <div class="divider"></div>
+          <div class="divider">--------------------------------</div>
           <div class="row"><span>Pagamento:</span><span>${paymentLabels[lastSale.payment_method] || lastSale.payment_method}</span></div>
           ${changeHtml}
 
           <div class="footer">
-            <div class="divider"></div>
+            <div class="divider">--------------------------------</div>
             <p>Obrigado pela preferencia!</p>
             <p>Volte sempre!</p>
           </div>

@@ -267,8 +267,9 @@ export default function VendasPage() {
 
     const customerName = sale.customer?.name || sale.customer_name || '';
     const customerInfo = customerName ? `
-      <div class="divider"></div>
+      <div class="divider">--------------------------------</div>
       <div class="row"><span>Cliente:</span><span>${customerName}</span></div>
+      ${sale.customer?.address ? `<p class="customer-addr">End: ${sale.customer.address}</p>` : ''}
       ${sale.customer?.phone ? `<div class="row"><span>Tel:</span><span>${sale.customer.phone}</span></div>` : ''}
     ` : '';
 
@@ -300,18 +301,19 @@ export default function VendasPage() {
               margin: 0;
               padding: 0;
               box-sizing: border-box;
+              font-weight: bold;
             }
             body {
               font-family: 'Courier New', 'Lucida Console', monospace;
-              font-size: 10px;
-              line-height: 1.3;
+              font-size: 12px;
+              line-height: 1.4;
               width: 72mm;
               max-width: 72mm;
               padding: 3mm;
               color: #000;
+              font-weight: bold;
             }
             .center { text-align: center; }
-            .bold { font-weight: bold; }
             img {
               max-width: 35mm;
               max-height: 12mm;
@@ -319,41 +321,56 @@ export default function VendasPage() {
               margin: 0 auto 2mm;
             }
             h1 {
-              font-size: 12px;
+              font-size: 14px;
               font-weight: bold;
               margin-bottom: 1mm;
             }
             p {
-              font-size: 9px;
-              color: #333;
+              font-size: 11px;
+              color: #000;
               margin: 0;
+              font-weight: bold;
             }
             .divider {
-              border-top: 1px dashed #000;
+              text-align: center;
+              font-size: 12px;
               margin: 2mm 0;
+              letter-spacing: -1px;
+            }
+            .double-divider {
+              text-align: center;
+              font-size: 12px;
+              margin: 2mm 0;
+              letter-spacing: -1px;
             }
             .row {
               display: flex;
               justify-content: space-between;
-              font-size: 10px;
+              font-size: 12px;
               margin: 1mm 0;
+              font-weight: bold;
             }
             .item-name {
-              font-size: 10px;
-              font-weight: 500;
+              font-size: 12px;
+              font-weight: bold;
               margin-top: 1.5mm;
             }
+            .customer-addr {
+              font-size: 11px;
+              margin: 1mm 0;
+            }
             .total {
-              font-size: 12px;
+              font-size: 14px;
               font-weight: bold;
               margin: 2mm 0;
             }
-            .discount { color: #060; }
+            .discount { color: #000; }
             .footer {
               text-align: center;
-              font-size: 9px;
-              color: #666;
+              font-size: 11px;
+              color: #000;
               margin-top: 3mm;
+              font-weight: bold;
             }
           </style>
         </head>
@@ -364,29 +381,29 @@ export default function VendasPage() {
             ${companyDoc}
             ${companyAddr}
             ${companyPhone}
-            <p style="margin-top: 2mm; color: #666;">CUPOM NAO FISCAL</p>
+            <p style="margin-top: 2mm;">CUPOM NAO FISCAL</p>
           </div>
 
-          <div class="divider"></div>
+          <div class="divider">--------------------------------</div>
           <div class="row"><span>Data:</span><span>${formatDateTime(sale.created_at)}</span></div>
           <div class="row"><span>Recibo:</span><span>${sale.receipt_number}</span></div>
           ${customerInfo}
 
-          <div class="divider"></div>
+          <div class="divider">--------------------------------</div>
           ${itemsHtml}
 
-          <div class="divider"></div>
+          <div class="double-divider">================================</div>
           ${discountHtml}
           <div class="row total">
             <span>TOTAL</span>
             <span>${formatCurrency(sale.total)}</span>
           </div>
 
-          <div class="divider"></div>
+          <div class="divider">--------------------------------</div>
           <div class="row"><span>Pagamento:</span><span>${getPaymentMethodLabel(sale.payment_method)}</span></div>
 
           <div class="footer">
-            <div class="divider"></div>
+            <div class="divider">--------------------------------</div>
             <p>Obrigado pela preferencia!</p>
             <p>Volte sempre!</p>
           </div>
