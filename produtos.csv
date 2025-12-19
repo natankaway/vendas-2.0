@@ -1,0 +1,184 @@
+﻿4;Antartica Chopp;Antartica;Cerveja Chopp;Ambev;CX;156;0.00;60.00;2020-04-26;NULL
+5;Brahma Chopp;Brahma;Cerveja Chopp;Ambev;CX;105;0.00;53.00;2020-04-26;NULL
+6;Antartica 600ml;Antartica;Cerveja 600ml;Ambev;CX;1;0.00;142.00;2020-04-26;NULL
+7;Brahma 600ml;Brahma;Cerveja 600ml;Ambev;CX;1;0.00;152.00;2020-04-26;NULL
+8;Antartica 1L;Antartica;Cerveja 1L;Ambev;CX;5;0.00;88.00;2020-04-26;NULL
+9;Brahma 1L;Brahma;Cerveja 1L;Ambev;CX;4;0.00;88.00;2020-04-26;NULL
+10;Itaipava 1L;Itaipava;Cerveja 1L;Grupo Petropolis;CX;0;0.00;75.00;2020-04-26;NULL
+11;Coca-Cola Ret;Coca-Cola;Refri retornável;Coca-Cola;CX;4;0.00;73.50;2020-04-26;NULL
+12;Brahma Latão;Brahma;Cerveja Latão;Ambev;CX;6;0.00;49.00;2020-04-26;NULL
+13;Antartica Latão;Antartica;Cerveja Latão;Ambev;CX;218;0.00;46.00;2020-04-26;NULL
+14;Brahma Brt;Brahma;Cerveja BrT;Ambev;CX;0;0.00;53.00;2020-04-26;NULL
+15;Imperio Gold;Imperio;Cerveja 210ml;Cidade Imperial;CX;2;0.00;66.00;2020-04-26;NULL
+16;Imperio Lager;Imperio;Cerveja 275ml;Cidade Imperial;CX;2;0.00;50.00;2020-04-26;NULL
+17;Imperio Latão;Imperio;Cerveja Latão;Cidade Imperial;CX;1;0.00;45.00;2020-04-26;NULL
+18;Coca-Cola 2L;Coca-Cola;Refri Pet;Coca-Cola;CX;3;0.00;56.00;2020-04-26;NULL
+19;Fanta Laranja 2L;Fanta Laranja;Refri Pet;Coca-Cola;CX;3;0.00;46.00;2020-04-26;NULL
+20;Fanta Uva 2L;Fanta Uva;Refri Pet;Coca-Cola;CX;4;0.00;46.00;2020-04-26;NULL
+21;Sprite 2L;Sprite;Refri Pet;Coca-Cola;CX;1;0.00;46.00;2020-04-26;NULL
+22;Guarana Antartica 2L;Guarana Antartica;Refri Pet;Ambev;CX;7;0.00;46.00;2020-04-26;NULL
+23;Convenção 2L;Convenção;Refri Pet;Convenção;CX;7;0.00;24.50;2020-04-26;NULL
+24;Font Energico 2L;Font Energy;Energéticos;Maravilha;CX;7;0.00;40.00;2020-04-26;NULL
+25;Font Energico 2L U;Font Energy;Energéticos;Maravilha;UN;61;0.00;8.00;2020-04-26;NULL
+26;Coca-Cola Lata;Coca-Cola;Refri Lata;Coca-Cola;CX;3;0.00;40.00;2020-04-26;NULL
+27;Guarana Antartica lata;Guarana Antartica;Refri Lata;Ambev;CX;0;0.00;38.00;2020-04-26;NULL
+28;Fanta Laranja lata;Fanta Laranja;Refri Lata;Coca-Cola;CX;0;0.00;30.00;2020-04-26;NULL
+29;Fanta Uva Lata;Fanta Uva;Refri Lata;Coca-Cola;CX;0;0.00;30.00;2020-04-26;NULL
+30;Coca latinha;Coca-Cola;Refri Lata;Coca-Cola;CX;0;0.00;21.00;2020-04-26;NULL
+31;Agua Mineral;Agua Mineral;Agua;;CX;6;0.00;13.00;2020-04-26;NULL
+32;Vinho 860 ml;"Vinho ";Aguardentes e Destilados;Maravilha;CX;0;0.00;65.00;2020-04-26;NULL
+33;Galão vinho;Vinho;Aguardentes e Destilados;;CX;0;0.00;33.00;2020-04-26;NULL
+34;Ousadia Limão;Ousadia;Aguardentes e Destilados;;CX;1;0.00;42.00;2020-04-26;NULL
+35;Ousadia Banana;Ousadia;Aguardentes e Destilados;;CX;1;0.00;42.00;2020-04-26;NULL
+36;Guaracamp;Guaracamp;Sucos Liquidos;Guaracamp;CX;1;0.00;34.00;2020-04-26;NULL
+37;Coca-Cola 2L U;Coca-Cola;Refri Pet;Coca-Cola;UN;21;0.00;9.00;2020-04-26;NULL
+38;Fanta uva 2L U;Fanta Uva;Refri Pet;Coca-Cola;UN;136;0.00;8.00;2020-04-26;NULL
+39;Fanta Laranja 2L U;Fanta Laranja;Refri Pet;Coca-Cola;UN;124;0.00;6.00;2020-04-26;NULL
+40;Guarana Antartica 2L U;Guarana Antartica;Refri Pet;Ambev;UN;166;0.00;8.00;2020-04-26;NULL
+41;Coca-Cola Ret U;Coca-Cola;Refri retornável;Coca-Cola;UN;313;0.00;6.00;2020-04-26;NULL
+42;Brahma Chopp U;Brahma;Cerveja Chopp;Ambev;UN;10624;0.00;2.50;2020-04-26;NULL
+43;Antartica Chopp U;Antartica;Cerveja Chopp;Ambev;UN;1413;0.00;2.50;2020-04-26;NULL
+44;Brahma Latão U;Brahma;Cerveja Latão;Ambev;UN;2534;0.00;3.50;2020-04-26;NULL
+45;Antartica Latão U;Antartica;Cerveja Latão;Ambev;UN;1180;0.00;4.00;2020-04-26;NULL
+46;Brahma Brt U;Brahma;Cerveja BrT;Ambev;UN;3;0.00;5.00;2020-04-26;NULL
+47;Red Bull lata;Red Bull;Energéticos;Ambev;CX;3;0.00;175.00;2020-04-26;NULL
+48;51;51;Aguardentes e Destilados;;CX;6;0.00;120.00;2020-04-26;NULL
+49;51 U;51;Aguardentes e Destilados;;UN;4;0.00;13.00;2020-04-26;NULL
+50;Pedra 90;Pedra 90;Aguardentes e Destilados;;CX;0;0.00;48.00;2020-04-26;NULL
+51;88;88;Aguardentes e Destilados;;UN;0;0.00;16.00;2020-04-26;NULL
+52;Dreher;Dreher;Aguardentes e Destilados;;UN;2;0.00;20.00;2020-04-26;NULL
+53;Fogo Paulista;Fogo Paulista;Aguardentes e Destilados;;UN;1;0.00;31.00;2020-04-26;NULL
+54;Quinado;Quinado;Aguardentes e Destilados;;UN;0;0.00;24.00;2020-04-26;NULL
+55;Dubar;Dubar;Aguardentes e Destilados;;UN;0;0.00;25.00;2020-04-26;NULL
+56;Genebra;Genebra;Aguardentes e Destilados;;UN;1;0.00;27.00;2020-04-26;NULL
+57;Caninha da Roça;Caninha da Roça;Aguardentes e Destilados;;UN;4;0.00;48.00;2020-04-26;NULL
+58;São joão da barra;São João da Barra;Aguardentes e Destilados;;UN;1;0.00;19.00;2020-04-26;NULL
+59;Vodka Kovak;Kovak;Aguardentes e Destilados;;UN;8;0.00;25.00;2020-04-26;NULL
+60;Ipioca S. Palha;Ipioca;Aguardentes e Destilados;;UN;2;0.00;24.00;2020-04-26;NULL
+61;MEL;MEL;Aguardentes e Destilados;;UN;3;0.00;11.00;2020-04-26;NULL
+62;Aniz;Aniz;Aguardentes e Destilados;;UN;3;0.00;13.00;2020-04-26;NULL
+63;Hortelã;Hortelã;Aguardentes e Destilados;Maravilha;UN;1;0.00;13.00;2020-04-26;NULL
+64;Paratudo;Paratudo;Aguardentes e Destilados;Maravilha;UN;1;0.00;17.00;2020-04-26;NULL
+65;Pessêgo;Pessêgo;Aguardentes e Destilados;Maravilha;UN;2;0.00;15.00;2020-04-26;NULL
+66;Vodka Smirnoff;Smirnoff;Aguardentes e Destilados;;UN;0;0.00;37.00;2020-04-26;NULL
+67;Vodka Leonoff;Leonoff;Aguardentes e Destilados;;UN;7;0.00;19.00;2020-04-26;NULL
+68;Saco Carvão 3k;Carvão;Outros;;UN;0;0.00;0.00;2020-04-26;NULL
+69;Saco Carvão 6kg;Carvão;Outros;;UN;0;0.00;0.00;2020-04-26;NULL
+70;copo desc 200 ml;Copo;Outros;;CX;10;0.00;135.00;2020-04-26;NULL
+71;Heineken;Heineken;Cerveja 330ML;;CX;1;0.00;130.00;2020-04-26;NULL
+72;Catuaba;Catuaba;Aguardentes e Destilados;Maravilha;UN;1;0.00;11.00;2020-04-26;NULL
+73;Fanta Laranja Ret;Fanta Laranja;Refri retornável;;CX;0;0.00;71.00;2020-04-26;NULL
+74;Fazenda Velha;;Aguardentes e Destilados;;UN;0;0.00;10.00;2020-04-26;NULL
+75;Vodka Maravilha;;Cerveja 210ml;;UN;6;0.00;5.00;2020-04-26;NULL
+76;Jurubeba;;Aguardentes e Destilados;;UN;12;0.00;15.50;2020-04-26;NULL
+77;Jurupinga;;Aguardentes e Destilados;;UN;5;0.00;30.00;2020-04-26;NULL
+78;Amendoim;;Aguardentes e Destilados;;UN;1;0.00;15.00;2020-04-26;NULL
+79;Menta;;Aguardentes e Destilados;;UN;1;0.00;13.00;2020-04-26;NULL
+80;Fanta Uva RET;;Refri retornável;;CX;0;0.00;71.00;2020-04-26;NULL
+81;Skol Litrão;;Cerveja 1L;;CX;0;0.00;75.00;2020-04-26;NULL
+82;Água Tônica;;;;;0;0.00;34.00;2020-04-26;NULL
+83;Budweiser;;Cerveja 330ML;;;0;0.00;110.00;2020-04-26;NULL
+84;Corona;;Cerveja 330ML;;CX;0;0.00;135.00;2020-04-26;NULL
+85;Domec;;Aguardentes e Destilados;;UN;5;0.00;40.00;2020-04-26;NULL
+87;Brahma Duplo Malte;;Cerveja 330ML;;CX;1;0.00;37.00;2020-04-26;NULL
+88;Gelo Filtrado;;;;;0;0.00;10.00;2020-04-26;NULL
+89;Gelo;;;;;2;0.00;12.00;2020-04-26;NULL
+90;Jogo de Mesa;;Outros;;UN;2;0.00;7.00;2020-04-26;NULL
+91;Convenção Un.;;Refri Pet;;UN;94;0.00;4.00;2020-04-26;NULL
+92;Energético Dopamina;;Energéticos;;UN;0;0.00;100.00;2020-04-26;NULL
+93;Água com Gás;;Agua;;CX;8;0.00;19.00;2020-04-26;NULL
+95;caninha da roça unidade;;Aguardentes e Destilados;;UN;54;0.00;2.50;2020-04-26;NULL
+1095;Chopp de Vinho;;Outros;;CX;5;0.00;50.00;2020-04-26;NULL
+1096;Red Bull unidade;;;;;52;0.00;8.00;2020-04-26;NULL
+1097;Heineken Un.;;Cerveja 330ML;;UN;61;0.00;6.00;2020-04-26;NULL
+1098;Água 1,5L;;Agua;;UN;2;0.00;14.00;2020-04-26;NULL
+1099;Stella Artois;;Cerveja 330ML;;CX;0;0.00;130.00;2020-04-26;NULL
+1100;Heineken Sem Álcool;;Cerveja 330ML;;CX;0;0.00;130.00;2020-04-26;NULL
+1101;Carvão 3kg;;Outros;;UN;4;0.00;17.00;2020-04-26;NULL
+1102;Carvão 6kg;;Outros;;UN;8;0.00;20.00;2020-04-26;NULL
+1103;Convenção Laranja 2L;;Refri Pet;;CX;0;0.00;21.00;2020-04-26;NULL
+1104;Convenção Limão 2L;;Refri Pet;;CX;4;0.00;21.00;2020-04-26;NULL
+1105;Convenção Uva 2L;;Refri Pet;;CX;0;0.00;21.00;2020-04-26;NULL
+1106;Gatorade Limão;;Outros;;CX;0;0.00;32.00;2020-04-26;NULL
+1107;Gatorade Uva;;Outros;;CX;0;0.00;32.00;2020-04-26;NULL
+1108;Gatorade Morango com Maracujá;;Outros;;CX;0;0.00;30.00;2020-04-26;NULL
+1109;Gatorade Maracujá;;Outros;;CX;0;0.00;25.00;2020-04-26;NULL
+1110;Gatorade Laranja;;Outros;;CX;0;0.00;32.00;2020-04-26;NULL
+1111;Gatorade Frutas Cítricas;;Outros;;CX;0;0.00;25.00;2020-04-26;NULL
+1112;Gatorade Tangerina;;Outros;;CX;0;0.00;32.00;2020-04-26;NULL
+1113;GT LONG NECK;;Outros;;CX;3;0.00;149.00;2020-04-26;NULL
+1114;Corona Unidade;;Cerveja 330ML;;UN;22;0.00;5.50;2020-04-26;NULL
+1115;Água de Coco 200ML;;Sucos Liquidos;;UN;1350;0.00;3.50;2020-04-26;NULL
+1116;Chivas;;Aguardentes e Destilados;;UN;4;0.00;140.00;2020-04-26;NULL
+1117;43;;Aguardentes e Destilados;;UN;0;0.00;160.00;2020-04-26;NULL
+1118;Buchanan´s;;Aguardentes e Destilados;;UN;3;0.00;180.00;2020-04-26;NULL
+1119;Balantines;;Aguardentes e Destilados;;UN;3;0.00;80.00;2020-04-26;NULL
+1120;RedLabel;;Aguardentes e Destilados;;UN;1;0.00;90.00;2020-04-26;NULL
+1121;BlackLabel;;Aguardentes e Destilados;;UN;2;0.00;170.00;2020-04-26;NULL
+1122;OldPar;;Aguardentes e Destilados;;UN;2;0.00;140.00;2020-04-26;NULL
+1123;Casa Perini;;Aguardentes e Destilados;;UN;10;0.00;60.00;2020-04-26;NULL
+1124;Tanqueray;;Aguardentes e Destilados;;UN;5;0.00;110.00;2020-04-26;NULL
+1125;Cavalo Branco;;Aguardentes e Destilados;;UN;5;0.00;80.00;2020-04-26;NULL
+1126;Gordons;;Aguardentes e Destilados;;UN;1;0.00;70.00;2020-04-26;NULL
+1127;Gordons Rosa;;Aguardentes e Destilados;;UN;5;0.00;90.00;2020-04-26;NULL
+1128;Copo Descartável 200ML;;Outros;;UN;17;0.00;6.00;2020-04-26;NULL
+1129;Sminorff Ice;;Outros;;UN;18;0.00;7.00;2020-04-26;NULL
+1130;Sprite Lata;;Refri Lata;;CX;0;0.00;30.00;2020-04-26;NULL
+1131;Smirnoff 600ML;;Aguardentes e Destilados;;UN;5;0.00;25.00;2020-04-26;NULL
+1132;Absolut 1L;;Aguardentes e Destilados;;UN;1;0.00;99.90;2020-04-26;NULL
+1133;Ciroc 750ML;;Aguardentes e Destilados;;UN;1;0.00;173.90;2020-04-26;NULL
+1134;Tônica Fys;;Outros;;UN;5;0.00;2.69;2020-04-26;NULL
+1135;Amstel Latão;;Cerveja Latão;;UN;13;0.00;53.00;2020-04-26;NULL
+1136;stella Artois UN.;;Cerveja 330ML;;UN;212;0.00;5.00;2020-04-26;NULL
+1137;Gin Bombay;;Outros;;UN;2;0.00;110.00;2020-04-26;NULL
+1138;Skol Chopp;;Cerveja Chopp;;CX;0;0.00;42.00;2020-04-26;NULL
+1139;Chopinho de Vinho;;Outros;;CX;1;0.00;34.00;2020-04-26;NULL
+1140;Nosso Chop De Vinho;;Outros;;UN;0;0.00;25.00;2020-04-26;NULL
+1141;GT UNIDADE;;Outros;;UN;23;0.00;7.00;2020-04-26;NULL
+1142;Sprite Un.;;Refri Pet;;UN;16;0.00;7.00;2020-04-26;NULL
+1143;Heineken Zero Un.;;Cerveja 330ML;;UN;1;0.00;6.00;2020-04-26;NULL
+1144;Spaten;;Cerveja 600ml;;CX;0;0.00;165.00;2020-04-26;NULL
+1145;Budwiser Unidade;;Cerveja 330ML;;UN;89;0.00;5.50;2020-04-26;NULL
+1146;1/2 gelo;;Outros;;UN;1;0.00;6.00;2020-04-26;NULL
+1147;Império Gold UN.;;;;;44;0.00;4.00;2020-04-26;NULL
+1148;Tenda Lona;;Outros;;UN;0;0.00;250.00;2020-04-26;NULL
+1149;Spaten Un.;;Cerveja 600ml;;UN;56;0.00;9.00;2020-04-26;NULL
+1150;Ice Kovak;;Outros;;CX;0;0.00;95.00;2020-04-26;NULL
+1151;Amstel 600ml;;Cerveja 600ml;;CX;0;0.00;130.00;2020-04-26;NULL
+1152;51 em lata;;Aguardentes e Destilados;;CX;1;0.00;20.00;2020-04-26;NULL
+1153;Água Galão 20L;;Agua;;UN;0;0.00;10.00;2020-04-26;NULL
+1154;Vinho Bled Un.;;Outros;;UN;111;0.00;9.00;2020-04-26;NULL
+1155;Gold Label;;Aguardentes e Destilados;;UN;1;0.00;230.00;2020-04-26;NULL
+1156;Brahma Chopp Gelada;;Cerveja Chopp;;CX;51;0.00;55.00;2020-04-26;NULL
+1157;Antártica Chopp Gelada;;Cerveja Chopp;;CX;15;0.00;62.00;2020-04-26;NULL
+1158;Jogos de mesa;;Outros;;UN;0;0.00;7.00;2020-04-26;NULL
+1159;Heineken Gelada;;Cerveja 330ML;;CX;0;0.00;135.00;2020-04-26;NULL
+1160;51 600ml;;Aguardentes e Destilados;;CX;0;0.00;5.00;2020-04-26;NULL
+1162;FANTA UVA LATA COM 06 UNIDADES;;Refri Lata;;CX;0;0.00;15.00;2020-04-26;NULL
+1163;Brahma Litrao Gelada;;Cerveja Chopp;;CX;0;0.00;86.00;2020-04-26;NULL
+1164;Antartica Litrao Gelada;;Cerveja Chopp;;CX;2;0.00;90.00;2020-04-26;NULL
+1165;Império Latão Gelada;;Cerveja Latão;;;0;0.00;47.00;2020-04-26;NULL
+1166;Amstel Latão Gelado;;Cerveja Latão;;CX;3;0.00;54.00;2020-04-26;NULL
+1167;BRAHMA LATAO GELADA;;Cerveja Latão;;CX;3;0.00;50.00;2020-04-26;NULL
+1168;ANTARTICA LATAO GELADA;;Cerveja Latão;;CX;15;0.00;47.00;2020-04-26;NULL
+1169;IMPERIO GOLG GELADA;;Cerveja 330ML;;CX;17;0.00;68.00;2020-04-26;NULL
+1170;GUARANÁ ANTÁRTICA 1L;;Refri Pet;;CX;0;0.00;26.00;2020-04-26;NULL
+1171;BANANINHA;;Aguardentes e Destilados;;UN;0;0.00;24.00;2020-04-26;NULL
+1172;IMPÉRIO GOLD GELADA;;Cerveja 330ML;;CX;6;0.00;68.00;2020-04-26;NULL
+1173;COCA RETORNAVEL GELADA;;Refri retornável;;CX;15;0.00;75.00;2020-04-26;NULL
+2095;BUDWISER CHOPINHO;;Cerveja Chopp;;CX;5;0.00;63.00;2020-04-26;
+2096;HEINEKEN LATÃO;;Cerveja Latão;;CX;2;0.00;70.00;2020-04-26;
+3096;ITAIPAVA LATÃO;;Cerveja Latão;;CX;0;0.00;37.00;2020-04-26;
+4096;ANTÁRTICA CHOP 23 QUENTE;;Cerveja Chopp;;CX;18;0.00;63.00;2020-04-26;
+5096;BRAHMA CHOP. 23 QUENTE;;Cerveja Chopp;;CX;50;0.00;56.00;2020-04-26;
+5097;ANTÁRTICA CHOP 23 GELADA;;Cerveja Chopp;;CX;98;0.00;65.00;2020-04-26;
+5099;BRAHMA CHOP. 23 GELADA;;Cerveja Chopp;;CX;22;0.00;58.00;2020-04-26;
+6096;IMPÉRIO CHOP. QUENTE;;Cerveja Chopp;;CX;8;0.00;55.00;2020-04-26;
+6097;IMPÉRIO CHOP. GELADA;;Cerveja Chopp;;CX;0;0.00;57.00;2020-04-26;
+7096;BRAHMA MALZBIER LONG NECK;;Cerveja 330ML;;CX;1;0.00;130.00;2020-04-26;
+7097;CONVENÇÃO ABACAXI;;Refri Pet;;CX;1;0.00;26.00;2020-04-26;
+7098;SPATEN LONG NECK;;Cerveja 330ML;;CX;1;0.00;127.00;2020-04-26;
+7099;ANTÁRTICA CHOP23 QUENTE;;;;CX;2;0.00;54.00;2020-04-26;
+7100;ANTÁRTICA CHOP23 GELADA;;;;CX;81;0.00;56.00;2020-04-26;
+8099;HEINEKEN LATÃO GELADA;;;;CX;3;0.00;72.00;2020-04-26;
+8100;COCA ZERO RETORNÁVEL;;Refri retornável;;CX;29;0.00;73.50;2020-04-26;
