@@ -9,8 +9,6 @@
 
 require('dotenv').config();
 const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
 const https = require('https');
 const http = require('http');
 
@@ -23,7 +21,7 @@ const config = {
   pollInterval: parseInt(process.env.POLL_INTERVAL || '3000'),
   printerId: process.env.PRINTER_ID || 'default',
   paperWidth: parseInt(process.env.PAPER_WIDTH || '48'),
-  printLogo: process.env.PRINT_LOGO !== 'false', // default true
+  printLogo: process.env.PRINT_LOGO !== 'false',
 };
 
 // Estado
@@ -57,6 +55,47 @@ function log(message, type = 'info') {
   console.log(`${colors.cyan}[${timestamp}]${colors.reset} ${prefix[type] || prefix.info} ${message}`);
 }
 
+// ============================================
+// FUNÇÃO PARA REMOVER ACENTOS (ASCII)
+// ============================================
+function removeAccents(str) {
+  if (!str) return str;
+
+  const accentsMap = {
+    'á': 'a', 'à': 'a', 'ã': 'a', 'â': 'a', 'ä': 'a',
+    'é': 'e', 'è': 'e', 'ê': 'e', 'ë': 'e',
+    'í': 'i', 'ì': 'i', 'î': 'i', 'ï': 'i',
+    'ó': 'o', 'ò': 'o', 'õ': 'o', 'ô': 'o', 'ö': 'o',
+    'ú': 'u', 'ù': 'u', 'û': 'u', 'ü': 'u',
+    'ç': 'c',
+    'ñ': 'n',
+    'Á': 'A', 'À': 'A', 'Ã': 'A', 'Â': 'A', 'Ä': 'A',
+    'É': 'E', 'È': 'E', 'Ê': 'E', 'Ë': 'E',
+    'Í': 'I', 'Ì': 'I', 'Î': 'I', 'Ï': 'I',
+    'Ó': 'O', 'Ò': 'O', 'Õ': 'O', 'Ô': 'O', 'Ö': 'O',
+    'Ú': 'U', 'Ù': 'U', 'Û': 'U', 'Ü': 'U',
+    'Ç': 'C',
+    'Ñ': 'N',
+    '°': 'o',
+    '–': '-',
+    '—': '-',
+    '"': '"',
+    '"': '"',
+    ''': "'",
+    ''': "'",
+    '…': '...',
+  };
+
+  let result = '';
+  for (let i = 0; i < str.length; i++) {
+    const char = str[i];
+    result += accentsMap[char] || char;
+  }
+
+  // Remove caracteres não-ASCII restantes
+  return result.replace(/[^\x20-\x7E]/g, '');
+}
+
 // Inicializar impressora
 async function initPrinter() {
   try {
@@ -65,11 +104,11 @@ async function initPrinter() {
     if (config.printerType === 'network') {
       const Network = require('escpos-network');
       device = new Network(config.printerIp, config.printerPort);
-      log(`Conectando à impressora de rede: ${config.printerIp}:${config.printerPort}`);
+      log(`Conectando a impressora de rede: ${config.printerIp}:${config.printerPort}`);
     } else {
       const USB = require('escpos-usb');
       device = new USB();
-      log('Conectando à impressora USB...');
+      log('Conectando a impressora USB...');
     }
 
     printer = new escpos.Printer(device);
@@ -123,6 +162,8 @@ async function markJobCompleted(jobId, success = true, errorMessage = null) {
 
 // Formatar linha com valor à direita
 function formatLine(left, right, width) {
+  left = removeAccents(left);
+  right = removeAccents(right);
   const spaces = Math.max(1, width - left.length - right.length);
   return left + ' '.repeat(spaces) + right;
 }
@@ -144,9 +185,9 @@ function createItemDivider(width) {
   return pattern.repeat(repeats);
 }
 
-// Download e cache da logo
-async function downloadLogo(logoUrl) {
-  return new Promise((resolve, reject) => {
+// Download e cache da logo (retorna Promise)
+function downloadLogo(logoUrl) {
+  return new Promise((resolve) => {
     if (!logoUrl) {
       resolve(null);
       return;
@@ -154,6 +195,7 @@ async function downloadLogo(logoUrl) {
 
     // Usar cache se a URL for a mesma
     if (logoCacheUrl === logoUrl && logoCache) {
+      log('Usando logo do cache');
       resolve(logoCache);
       return;
     }
@@ -165,6 +207,7 @@ async function downloadLogo(logoUrl) {
         const buffer = Buffer.from(base64Data, 'base64');
         logoCache = buffer;
         logoCacheUrl = logoUrl;
+        log('Logo base64 carregada');
         resolve(buffer);
       } catch (error) {
         log(`Erro ao processar logo base64: ${error.message}`, 'warning');
@@ -174,9 +217,10 @@ async function downloadLogo(logoUrl) {
     }
 
     // Download da URL
+    log(`Baixando logo de: ${logoUrl.substring(0, 50)}...`);
     const protocol = logoUrl.startsWith('https') ? https : http;
 
-    protocol.get(logoUrl, (response) => {
+    const request = protocol.get(logoUrl, (response) => {
       if (response.statusCode !== 200) {
         log(`Erro ao baixar logo: HTTP ${response.statusCode}`, 'warning');
         resolve(null);
@@ -189,37 +233,75 @@ async function downloadLogo(logoUrl) {
         const buffer = Buffer.concat(chunks);
         logoCache = buffer;
         logoCacheUrl = logoUrl;
+        log('Logo baixada com sucesso');
         resolve(buffer);
       });
       response.on('error', (err) => {
         log(`Erro ao baixar logo: ${err.message}`, 'warning');
         resolve(null);
       });
-    }).on('error', (err) => {
+    });
+
+    request.on('error', (err) => {
       log(`Erro ao baixar logo: ${err.message}`, 'warning');
+      resolve(null);
+    });
+
+    // Timeout de 5 segundos
+    request.setTimeout(5000, () => {
+      request.destroy();
+      log('Timeout ao baixar logo', 'warning');
       resolve(null);
     });
   });
 }
 
-// Imprimir recibo - Layout igual ao navegador
-async function printReceipt(receiptData) {
-  return new Promise(async (resolve, reject) => {
-    const width = config.paperWidth;
-    const separator = createSeparator(width, '-');
-    const doubleSeparator = createSeparator(width, '=');
-    const itemDivider = createItemDivider(width);
-
-    // Tentar baixar logo se configurado
-    let logoBuffer = null;
-    if (config.printLogo && receiptData.company?.logo) {
-      try {
-        logoBuffer = await downloadLogo(receiptData.company.logo);
-      } catch (e) {
-        log('Falha ao carregar logo, continuando sem ela', 'warning');
-      }
+// Carregar imagem para impressão
+function loadImage(buffer) {
+  return new Promise((resolve) => {
+    if (!buffer || !escpos || !escpos.Image) {
+      resolve(null);
+      return;
     }
 
+    try {
+      escpos.Image.load(buffer, (image) => {
+        if (image) {
+          log('Imagem carregada para impressao');
+          resolve(image);
+        } else {
+          log('Falha ao carregar imagem', 'warning');
+          resolve(null);
+        }
+      });
+    } catch (error) {
+      log(`Erro ao carregar imagem: ${error.message}`, 'warning');
+      resolve(null);
+    }
+  });
+}
+
+// Imprimir recibo - Layout igual ao navegador
+async function printReceipt(receiptData) {
+  const width = config.paperWidth;
+  const separator = createSeparator(width, '-');
+  const doubleSeparator = createSeparator(width, '=');
+  const itemDivider = createItemDivider(width);
+
+  // Tentar baixar e carregar logo se configurado
+  let logoImage = null;
+  if (config.printLogo && receiptData.company?.logo) {
+    try {
+      const logoBuffer = await downloadLogo(receiptData.company.logo);
+      if (logoBuffer) {
+        logoImage = await loadImage(logoBuffer);
+      }
+    } catch (e) {
+      log('Falha ao carregar logo, continuando sem ela', 'warning');
+    }
+  }
+
+  return new Promise((resolve, reject) => {
     device.open((err) => {
       if (err) {
         reject(err);
@@ -227,23 +309,21 @@ async function printReceipt(receiptData) {
       }
 
       try {
-        // Inicializa impressora
+        // Inicializa impressora com encoding
         printer
           .font('a')
-          .align('ct');
+          .align('ct')
+          .style('normal');
 
         // ============================================
         // LOGO (se disponível)
         // ============================================
-        if (logoBuffer && escpos.Image) {
+        if (logoImage) {
           try {
-            escpos.Image.load(logoBuffer, (image) => {
-              if (image) {
-                printer.image(image, 'd24');
-              }
-            });
+            printer.image(logoImage, 'd24');
+            printer.text('');
           } catch (e) {
-            // Ignora erro de logo e continua
+            log('Erro ao imprimir logo: ' + e.message, 'warning');
           }
         }
 
@@ -254,11 +334,8 @@ async function printReceipt(receiptData) {
           .style('b')
           .size(1, 1);
 
-        if (receiptData.company?.name) {
-          printer.text(receiptData.company.name);
-        } else {
-          printer.text('KAWAY POS');
-        }
+        const companyName = removeAccents(receiptData.company?.name || 'KAWAY POS');
+        printer.text(companyName);
 
         // Volta ao tamanho normal
         printer
@@ -267,13 +344,13 @@ async function printReceipt(receiptData) {
 
         // Dados da empresa
         if (receiptData.company?.document) {
-          printer.text(receiptData.company.document);
+          printer.text(removeAccents(receiptData.company.document));
         }
         if (receiptData.company?.address) {
-          printer.text(receiptData.company.address);
+          printer.text(removeAccents(receiptData.company.address));
         }
         if (receiptData.company?.phone) {
-          printer.text(receiptData.company.phone);
+          printer.text(removeAccents(receiptData.company.phone));
         }
 
         printer
@@ -296,13 +373,12 @@ async function printReceipt(receiptData) {
         // ============================================
         if (receiptData.customer?.name) {
           printer.text(separator);
-          printer.text(formatLine('Cliente:', receiptData.customer.name, width));
+          printer.text(formatLine('Cliente:', removeAccents(receiptData.customer.name), width));
 
           if (receiptData.customer.address) {
-            // Endereço pode ser longo, quebrar se necessário
             const addrLabel = 'End: ';
             const maxAddrLen = width - addrLabel.length;
-            let addr = receiptData.customer.address;
+            let addr = removeAccents(receiptData.customer.address);
             if (addr.length > maxAddrLen) {
               addr = addr.substring(0, maxAddrLen - 3) + '...';
             }
@@ -328,12 +404,12 @@ async function printReceipt(receiptData) {
                 .style('b');
             }
 
-            // Nome do produto (bold)
-            const productName = item.name || item.product_name || 'Produto';
+            // Nome do produto (bold) - SEM ACENTOS
+            const productName = removeAccents(item.name || item.product_name || 'Produto');
             printer.text(productName);
 
             // Quantidade x preço = total
-            const unit = item.unit || 'un';
+            const unit = removeAccents(item.unit || 'un');
             const qtyLine = `${item.quantity} ${unit} x ${formatCurrency(item.unit_price)}`;
             const totalLine = formatCurrency(item.total);
             printer.text(formatLine(qtyLine, totalLine, width));
@@ -355,7 +431,9 @@ async function printReceipt(receiptData) {
         printer
           .style('b')
           .size(1, 1)
-          .text(formatLine('TOTAL', formatCurrency(receiptData.total), width - 4))
+          .text('')
+          .text(formatLine('TOTAL', formatCurrency(receiptData.total), width - 8))
+          .text('')
           .style('b')
           .size(0, 0);
 
@@ -363,7 +441,8 @@ async function printReceipt(receiptData) {
         // FORMA DE PAGAMENTO
         // ============================================
         printer.text(separator);
-        printer.text(formatLine('Pagamento:', receiptData.payment_method_label || receiptData.payment_method || '---', width));
+        const paymentLabel = removeAccents(receiptData.payment_method_label || receiptData.payment_method || '---');
+        printer.text(formatLine('Pagamento:', paymentLabel, width));
 
         // Troco (se pagamento em dinheiro)
         if (receiptData.cash_received && receiptData.change !== undefined) {
@@ -380,6 +459,7 @@ async function printReceipt(receiptData) {
           .text('')
           .text('Obrigado pela preferencia!')
           .text('Volte sempre!')
+          .text('')
           .text('')
           .text('')
           .cut()
