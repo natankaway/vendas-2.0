@@ -24,8 +24,6 @@ const config = {
   printerId: process.env.PRINTER_ID || 'default',
   paperWidth: parseInt(process.env.PAPER_WIDTH || '48'),
   printLogo: process.env.PRINT_LOGO !== 'false',
-  // Encoding: PC850 para portugues (suporta acentos)
-  encoding: process.env.PRINTER_ENCODING || 'PC850',
 };
 
 // Estado
@@ -34,8 +32,7 @@ let escpos = null;
 let device = null;
 let printer = null;
 
-// Cache de logo
-let logoImageCache = null;
+// Cache de logo (URL da ultima logo baixada)
 let logoCacheUrl = null;
 
 // Cores para console
@@ -74,9 +71,8 @@ async function initPrinter() {
       log('Conectando a impressora USB...');
     }
 
-    printer = new escpos.Printer(device, { encoding: config.encoding });
+    printer = new escpos.Printer(device);
     log('Impressora configurada com sucesso!', 'success');
-    log(`Encoding: ${config.encoding}`);
     return true;
   } catch (error) {
     log(`Erro ao inicializar impressora: ${error.message}`, 'error');
@@ -147,14 +143,17 @@ function createItemDivider(width) {
   return pattern.repeat(repeats);
 }
 
-// Download da logo e converte para escpos.Image
+// Caminho do arquivo temporario da logo
+const LOGO_TEMP_FILE = path.join(__dirname, 'logo_temp.png');
+
+// Download da logo e salva em arquivo temporario
 async function downloadAndCacheLogo(logoUrl) {
   if (!logoUrl) return null;
 
-  // Se ja tem cache da mesma URL, retorna
-  if (logoCacheUrl === logoUrl && logoImageCache) {
+  // Se ja tem cache da mesma URL, usa o arquivo existente
+  if (logoCacheUrl === logoUrl && fs.existsSync(LOGO_TEMP_FILE)) {
     log('Usando logo do cache');
-    return logoImageCache;
+    return LOGO_TEMP_FILE;
   }
 
   return new Promise((resolve) => {
@@ -166,16 +165,15 @@ async function downloadAndCacheLogo(logoUrl) {
         const base64Data = logoUrl.split(',')[1];
         buffer = Buffer.from(base64Data, 'base64');
         log('Logo base64 decodificada');
+        // Salva em arquivo
+        fs.writeFileSync(LOGO_TEMP_FILE, buffer);
+        logoCacheUrl = logoUrl;
+        log('Logo salva em arquivo temporario');
+        resolve(LOGO_TEMP_FILE);
       } catch (error) {
         log(`Erro ao processar logo base64: ${error.message}`, 'warning');
         resolve(null);
-        return;
       }
-    }
-
-    // Se ja tem buffer (base64), carrega imagem
-    if (buffer) {
-      loadImageFromBuffer(buffer, logoUrl, resolve);
       return;
     }
 
@@ -194,8 +192,16 @@ async function downloadAndCacheLogo(logoUrl) {
       response.on('data', (chunk) => chunks.push(chunk));
       response.on('end', () => {
         buffer = Buffer.concat(chunks);
-        log('Logo baixada');
-        loadImageFromBuffer(buffer, logoUrl, resolve);
+        // Salva em arquivo
+        try {
+          fs.writeFileSync(LOGO_TEMP_FILE, buffer);
+          logoCacheUrl = logoUrl;
+          log('Logo baixada e salva');
+          resolve(LOGO_TEMP_FILE);
+        } catch (err) {
+          log(`Erro ao salvar logo: ${err.message}`, 'warning');
+          resolve(null);
+        }
       });
       response.on('error', (err) => {
         log(`Erro ao baixar logo: ${err.message}`, 'warning');
@@ -216,30 +222,29 @@ async function downloadAndCacheLogo(logoUrl) {
   });
 }
 
-// Carrega buffer como escpos.Image
-function loadImageFromBuffer(buffer, logoUrl, resolve) {
-  if (!escpos || !escpos.Image) {
-    log('escpos.Image nao disponivel', 'warning');
-    resolve(null);
-    return;
-  }
+// Carrega imagem do arquivo para escpos.Image
+function loadLogoImage(filePath) {
+  return new Promise((resolve) => {
+    if (!filePath || !escpos || !escpos.Image) {
+      resolve(null);
+      return;
+    }
 
-  try {
-    escpos.Image.load(buffer, function(image) {
-      if (image) {
-        logoImageCache = image;
-        logoCacheUrl = logoUrl;
-        log('Imagem carregada para impressao', 'success');
-        resolve(image);
-      } else {
-        log('Falha ao carregar imagem', 'warning');
-        resolve(null);
-      }
-    });
-  } catch (error) {
-    log(`Erro ao carregar imagem: ${error.message}`, 'warning');
-    resolve(null);
-  }
+    try {
+      escpos.Image.load(filePath, function(image) {
+        if (image) {
+          log('Imagem carregada para impressao', 'success');
+          resolve(image);
+        } else {
+          log('Falha ao carregar imagem do arquivo', 'warning');
+          resolve(null);
+        }
+      });
+    } catch (error) {
+      log(`Erro ao carregar imagem: ${error.message}`, 'warning');
+      resolve(null);
+    }
+  });
 }
 
 // Imprimir recibo - Layout igual ao navegador
@@ -252,7 +257,10 @@ async function printReceipt(receiptData) {
   // Carregar logo ANTES de abrir conexao com impressora
   let logoImage = null;
   if (config.printLogo && receiptData.company?.logo) {
-    logoImage = await downloadAndCacheLogo(receiptData.company.logo);
+    const logoFilePath = await downloadAndCacheLogo(receiptData.company.logo);
+    if (logoFilePath) {
+      logoImage = await loadLogoImage(logoFilePath);
+    }
   }
 
   return new Promise((resolve, reject) => {
@@ -482,7 +490,6 @@ async function start() {
   log(`Tipo de impressora: ${config.printerType}`);
   log(`IP: ${config.printerIp}:${config.printerPort}`);
   log(`Largura do papel: ${config.paperWidth} caracteres`);
-  log(`Encoding: ${config.encoding}`);
   log(`Imprimir logo: ${config.printLogo ? 'Sim' : 'Nao'}`);
   log(`Intervalo: ${config.pollInterval}ms`);
   console.log('');
