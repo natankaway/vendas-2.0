@@ -1,0 +1,19 @@
+{
+  "name": "kaway-print-agent",
+  "version": "1.0.0",
+  "description": "Agente de Impressão para KAWAY POS - Conecta o sistema à impressora térmica",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js"
+  },
+  "author": "KAWAY POS",
+  "license": "MIT",
+  "dependencies": {
+    "escpos": "^3.0.0-alpha.6",
+    "escpos-network": "^3.0.0-alpha.4",
+    "escpos-usb": "^3.0.0-alpha.4",
+    "node-fetch": "^2.7.0",
+    "dotenv": "^16.3.1"
+  }
+}

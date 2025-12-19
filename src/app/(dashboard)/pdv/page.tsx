@@ -457,6 +457,77 @@ export default function PDVPage() {
     createSaleMutation.mutate(saleData);
   };
 
+  // Função para enviar para impressora térmica
+  const handleThermalPrint = async () => {
+    if (!lastSale) return;
+
+    const paymentLabels: Record<string, string> = {
+      cash: 'Dinheiro',
+      credit_card: 'Cartão Crédito',
+      debit_card: 'Cartão Débito',
+      pix: 'PIX',
+      pay_later: 'Receber Depois',
+    };
+
+    const receiptData = {
+      company: companySettings ? {
+        name: companySettings.name,
+        document: companySettings.document,
+        address: companySettings.address,
+        phone: companySettings.phone,
+      } : null,
+      receipt_number: lastSale.receipt_number,
+      date: new Date(lastSale.created_at).toLocaleString('pt-BR'),
+      customer: lastSale.customer ? {
+        name: lastSale.customer.name,
+        address: lastSale.customer.address,
+        phone: lastSale.customer.phone,
+      } : null,
+      items: lastSale.items?.map((item: any) => ({
+        name: item.product_name,
+        quantity: item.quantity,
+        unit_price: item.unit_price,
+        total: item.total,
+      })) || [],
+      subtotal: lastSale.subtotal,
+      discount_amount: lastSale.discount_amount,
+      total: lastSale.total,
+      payment_method: lastSale.payment_method,
+      payment_method_label: paymentLabels[lastSale.payment_method] || lastSale.payment_method,
+      cash_received: lastSale.payment_details?.amount_received,
+      change: lastSale.payment_details?.change_amount,
+    };
+
+    try {
+      const response = await fetch('/api/print-queue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sale_id: lastSale.id,
+          receipt_data: receiptData,
+          created_by: user?.id,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: 'Enviado para impressora!',
+          description: 'O recibo será impresso em instantes.',
+        });
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      toast({
+        title: 'Erro ao enviar para impressora',
+        description: 'Verifique se o agente de impressão está ativo.',
+        variant: 'destructive',
+      });
+    }
+  };
+
   useEffect(() => {
     if (window.innerWidth >= 1024) {
       searchInputRef.current?.focus();
@@ -944,14 +1015,29 @@ export default function PDVPage() {
               </div>
             </div>
 
-            <div className="flex gap-3 p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex-shrink-0">
-              <button className="flex-1 py-3 bg-blue-600 text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors" onClick={() => window.print()}>
+            <div className="flex flex-col gap-2 p-4 border-t dark:border-gray-700 bg-gray-50 dark:bg-gray-900 flex-shrink-0">
+              <button
+                className="w-full py-3 bg-green-600 text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-green-700 transition-colors"
+                onClick={handleThermalPrint}
+              >
                 <Printer className="h-4 w-4" />
-                Imprimir
+                Imprimir na Térmica
               </button>
-              <button className="flex-1 py-3 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors" onClick={() => setShowReceiptDialog(false)}>
-                Nova Venda
-              </button>
+              <div className="flex gap-2">
+                <button
+                  className="flex-1 py-2.5 bg-blue-600 text-white rounded-xl font-medium flex items-center justify-center gap-2 hover:bg-blue-700 transition-colors text-sm"
+                  onClick={() => window.print()}
+                >
+                  <Printer className="h-4 w-4" />
+                  Navegador
+                </button>
+                <button
+                  className="flex-1 py-2.5 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-xl font-medium hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors text-sm"
+                  onClick={() => setShowReceiptDialog(false)}
+                >
+                  Nova Venda
+                </button>
+              </div>
             </div>
           </div>
         </div>

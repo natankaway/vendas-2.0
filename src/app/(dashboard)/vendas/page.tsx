@@ -364,6 +364,72 @@ export default function VendasPage() {
     printWindow.print();
   };
 
+  // Impressão na impressora térmica
+  const handleThermalPrint = async (sale: Sale) => {
+    const paymentLabels: Record<string, string> = {
+      cash: 'Dinheiro',
+      credit_card: 'Cartão Crédito',
+      debit_card: 'Cartão Débito',
+      pix: 'PIX',
+      pay_later: 'Receber Depois',
+    };
+
+    const receiptData = {
+      company: companySettings ? {
+        name: companySettings.name,
+        document: companySettings.document,
+        address: companySettings.address,
+        phone: companySettings.phone,
+      } : null,
+      receipt_number: sale.receipt_number,
+      date: formatDateTime(sale.created_at),
+      customer: sale.customer ? {
+        name: sale.customer.name,
+        address: sale.customer.address,
+        phone: sale.customer.phone,
+      } : null,
+      items: sale.items?.map((item) => ({
+        name: item.product_name,
+        quantity: item.quantity,
+        unit_price: item.unit_price,
+        total: item.total,
+      })) || [],
+      subtotal: sale.subtotal,
+      discount_amount: sale.discount_amount,
+      total: sale.total,
+      payment_method: sale.payment_method,
+      payment_method_label: paymentLabels[sale.payment_method] || sale.payment_method,
+    };
+
+    try {
+      const response = await fetch('/api/print-queue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          sale_id: sale.id,
+          receipt_data: receiptData,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast({
+          title: 'Enviado para impressora!',
+          description: 'O recibo será impresso em instantes.',
+        });
+      } else {
+        throw new Error(result.error);
+      }
+    } catch (error) {
+      toast({
+        title: 'Erro ao enviar para impressora',
+        description: 'Verifique se o agente de impressão está ativo.',
+        variant: 'destructive',
+      });
+    }
+  };
+
   const clearFilters = () => {
     setFilters({ startDate: '', endDate: '', status: '', paymentMethod: '' });
     setPage(1);
@@ -596,7 +662,7 @@ export default function VendasPage() {
                           <button onClick={() => openReceipt(sale)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg" title="Ver recibo">
                             <Eye className="w-4 h-4" />
                           </button>
-                          <button onClick={() => handleDirectPrint(sale)} className="p-1.5 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg" title="Imprimir direto">
+                          <button onClick={() => handleThermalPrint(sale)} className="p-1.5 text-gray-500 hover:text-green-600 hover:bg-green-50 rounded-lg" title="Imprimir na térmica">
                             <Printer className="w-4 h-4" />
                           </button>
                         </div>
@@ -814,26 +880,35 @@ export default function VendasPage() {
               </div>
             </div>
 
-            <div className="flex gap-2 p-3 border-t bg-gray-50 dark:bg-gray-800 dark:border-gray-700 flex-shrink-0">
+            <div className="flex flex-col gap-2 p-3 border-t bg-gray-50 dark:bg-gray-800 dark:border-gray-700 flex-shrink-0">
               {selectedSale.status === 'pending' && (
                 <button
                   onClick={() => {
                     closeReceipt();
                     openPaymentModal(selectedSale);
                   }}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-green-600 text-white rounded-xl font-medium"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-yellow-500 text-white rounded-xl font-medium"
                 >
                   <DollarSign className="w-4 h-4" />
-                  Receber
+                  Receber Pagamento
                 </button>
               )}
-              <button onClick={handlePrint} className="flex-1 flex items-center justify-center gap-2 py-2.5 bg-blue-600 text-white rounded-xl font-medium">
+              <button
+                onClick={() => handleThermalPrint(selectedSale)}
+                className="w-full flex items-center justify-center gap-2 py-2.5 bg-green-600 text-white rounded-xl font-medium"
+              >
                 <Printer className="w-4 h-4" />
-                Imprimir
+                Imprimir na Térmica
               </button>
-              <button onClick={closeReceipt} className="flex-1 py-2.5 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-white rounded-xl font-medium">
-                Fechar
-              </button>
+              <div className="flex gap-2">
+                <button onClick={handlePrint} className="flex-1 flex items-center justify-center gap-2 py-2 bg-blue-600 text-white rounded-xl font-medium text-sm">
+                  <Printer className="w-4 h-4" />
+                  Navegador
+                </button>
+                <button onClick={closeReceipt} className="flex-1 py-2 bg-gray-200 dark:bg-gray-600 text-gray-700 dark:text-white rounded-xl font-medium text-sm">
+                  Fechar
+                </button>
+              </div>
             </div>
           </div>
         </div>
