@@ -37,6 +37,7 @@ interface SaleItem {
   product_id: string;
   product_name: string;
   quantity: number;
+  unit?: string;
   unit_price: number;
   discount_amount: number;
   total: number;
@@ -273,10 +274,11 @@ export default function VendasPage() {
       ${sale.customer?.phone ? `<div class="row"><span>Tel:</span><span>${sale.customer.phone}</span></div>` : ''}
     ` : '';
 
-    const itemsHtml = sale.items?.map((item) => `
+    const itemsHtml = sale.items?.map((item: any, index: number) => `
+      ${index > 0 ? '<div class="item-divider">· · · · · · · · · · · · · · · · · ·</div>' : ''}
       <div class="item-name">${item.product_name}</div>
       <div class="row">
-        <span>${item.quantity} x ${formatCurrency(item.unit_price)}</span>
+        <span>${item.quantity} ${item.unit || 'un'} x ${formatCurrency(item.unit_price)}</span>
         <span>${formatCurrency(item.total)}</span>
       </div>
     `).join('') || '';
@@ -354,6 +356,13 @@ export default function VendasPage() {
               font-size: 12px;
               font-weight: bold;
               margin-top: 1.5mm;
+            }
+            .item-divider {
+              text-align: center;
+              font-size: 10px;
+              color: #666;
+              margin: 1mm 0;
+              letter-spacing: 1px;
             }
             .customer-addr {
               font-size: 11px;
@@ -438,9 +447,10 @@ export default function VendasPage() {
         address: sale.customer.address,
         phone: sale.customer.phone,
       } : null,
-      items: sale.items?.map((item) => ({
+      items: sale.items?.map((item: any) => ({
         name: item.product_name,
         quantity: item.quantity,
+        unit: item.unit || 'un',
         unit_price: item.unit_price,
         total: item.total,
       })) || [],

@@ -200,9 +200,15 @@ async function printReceipt(receiptData) {
 
         // Itens
         if (receiptData.items && receiptData.items.length > 0) {
-          receiptData.items.forEach((item) => {
+          const itemSeparator = '. '.repeat(Math.floor(width / 2));
+          receiptData.items.forEach((item, index) => {
+            // Linha divisória entre itens (não antes do primeiro)
+            if (index > 0) {
+              printer.text(itemSeparator);
+            }
             printer.text(item.name || item.product_name);
-            const qty = `${item.quantity} x ${formatCurrency(item.unit_price)}`;
+            const unit = item.unit || 'un';
+            const qty = `${item.quantity} ${unit} x ${formatCurrency(item.unit_price)}`;
             const total = formatCurrency(item.total);
             printer.text(formatLine(qty, total, width));
           });

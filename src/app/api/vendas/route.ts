@@ -219,12 +219,12 @@ export async function POST(request: NextRequest) {
 
     // Verifica estoque disponível e busca dados dos produtos
     const stockErrors = [];
-    const productsData: Record<string, { name: string; sku: string; stock_quantity: number }> = {};
+    const productsData: Record<string, { name: string; sku: string; stock_quantity: number; unit: string }> = {};
 
     for (const item of items) {
       const { data: product } = await supabase
         .from('products')
-        .select('id, name, sku, stock_quantity')
+        .select('id, name, sku, stock_quantity, unit')
         .eq('id', item.product_id)
         .single();
 
@@ -235,6 +235,7 @@ export async function POST(request: NextRequest) {
           name: product.name,
           sku: product.sku || 'SEM-SKU',
           stock_quantity: product.stock_quantity,
+          unit: product.unit || 'un',
         };
 
         if (product.stock_quantity < item.quantity) {
@@ -278,8 +279,7 @@ export async function POST(request: NextRequest) {
         discount_percent: item.discount_percent || 0,
         tax_amount: item.tax_amount || 0,
         total: itemTotal - itemDiscount,
-        // unit is not stored in DB, will be added to response
-        _unit: item.unit || 'un',
+        unit: item.unit || productInfo?.unit || 'un',
       });
     }
 
@@ -319,8 +319,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Insere itens da venda (remove _unit que não existe na tabela)
-    const itemsWithSaleId = saleItems.map(({ _unit, ...item }) => ({
+    // Insere itens da venda
+    const itemsWithSaleId = saleItems.map((item) => ({
       ...item,
       sale_id: saleId,
       created_at: new Date().toISOString(),
@@ -374,19 +374,13 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    // Prepara itens para resposta (renomeia _unit para unit)
-    const responseItems = saleItems.map(({ _unit, ...item }) => ({
-      ...item,
-      unit: _unit,
-    }));
-
     return NextResponse.json({
       success: true,
       data: {
         id: saleId,
         receipt_number: receiptNumber,
         total,
-        items: responseItems,
+        items: saleItems,
         created_at: now,
       },
     });

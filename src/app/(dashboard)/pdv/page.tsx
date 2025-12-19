@@ -486,6 +486,7 @@ export default function PDVPage() {
       items: lastSale.items?.map((item: any) => ({
         name: item.product_name,
         quantity: item.quantity,
+        unit: item.unit || 'un',
         unit_price: item.unit_price,
         total: item.total,
       })) || [],
@@ -552,10 +553,11 @@ export default function PDVPage() {
       ${lastSale.customer?.phone ? `<div class="row"><span>Tel:</span><span>${lastSale.customer.phone}</span></div>` : ''}
     ` : '';
 
-    const itemsHtml = lastSale.items?.map((item: any) => `
+    const itemsHtml = lastSale.items?.map((item: any, index: number) => `
+      ${index > 0 ? '<div class="item-divider">· · · · · · · · · · · · · · · · · ·</div>' : ''}
       <div class="item-name">${item.product_name}</div>
       <div class="row">
-        <span>${item.quantity} x ${formatCurrency(item.unit_price)}</span>
+        <span>${item.quantity} ${item.unit || 'un'} x ${formatCurrency(item.unit_price)}</span>
         <span>${formatCurrency(item.total)}</span>
       </div>
     `).join('') || '';
@@ -643,6 +645,13 @@ export default function PDVPage() {
               font-size: 12px;
               font-weight: bold;
               margin-top: 2mm;
+            }
+            .item-divider {
+              text-align: center;
+              font-size: 10px;
+              color: #666;
+              margin: 1mm 0;
+              letter-spacing: 1px;
             }
             .total {
               font-size: 14px;
