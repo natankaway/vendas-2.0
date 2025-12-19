@@ -23,6 +23,7 @@ import {
   MapPin,
   ShoppingBag,
   DollarSign,
+  Filter,
 } from 'lucide-react';
 
 // Tipos
@@ -103,7 +104,15 @@ const formatDate = (dateStr: string | null) => {
 export default function ClientesPage() {
   const queryClient = useQueryClient();
   const [search, setSearch] = useState('');
+  const [searchType, setSearchType] = useState<'name' | 'phone' | 'document' | 'email'>('name');
   const [page, setPage] = useState(1);
+  const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState({
+    city: '',
+    state: '',
+    hasCredit: '',
+    hasPurchases: '',
+  });
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDetailOpen, setIsDetailOpen] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState<Customer | null>(null);
@@ -114,14 +123,28 @@ export default function ClientesPage() {
   const perPage = 20;
 
   const { data: customersData, isLoading } = useQuery({
-    queryKey: ['customers', search, page],
+    queryKey: ['customers', search, searchType, page, filters],
     queryFn: async () => {
       const params = new URLSearchParams({ page: String(page), limit: String(perPage) });
-      if (search) params.append('search', search);
+      if (search) {
+        params.append('search', search);
+        params.append('searchType', searchType);
+      }
+      if (filters.city) params.append('city', filters.city);
+      if (filters.state) params.append('state', filters.state);
+      if (filters.hasCredit) params.append('hasCredit', filters.hasCredit);
+      if (filters.hasPurchases) params.append('hasPurchases', filters.hasPurchases);
       const res = await fetch(`/api/clientes?${params}`);
       return res.json();
     },
   });
+
+  const clearFilters = () => {
+    setFilters({ city: '', state: '', hasCredit: '', hasPurchases: '' });
+    setPage(1);
+  };
+
+  const hasActiveFilters = filters.city || filters.state || filters.hasCredit || filters.hasPurchases;
 
   const customers: Customer[] = customersData?.data || [];
   const totalCustomers = customersData?.total || 0;
@@ -306,18 +329,103 @@ export default function ClientesPage() {
         </div>
       </div>
 
-      {/* Search */}
+      {/* Search and Filters */}
       <div className="bg-white rounded-xl shadow-sm p-3 mb-4 border border-gray-100">
-        <div className="relative">
-          <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-          <input
-            type="text"
-            placeholder="Buscar cliente..."
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="w-full pl-8 pr-2 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          />
+        <div className="flex gap-2">
+          <select
+            value={searchType}
+            onChange={(e) => setSearchType(e.target.value as any)}
+            className="w-24 sm:w-auto px-2 py-2 text-xs sm:text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white"
+          >
+            <option value="name">Nome</option>
+            <option value="phone">Telefone</option>
+            <option value="document">CPF/CNPJ</option>
+            <option value="email">E-mail</option>
+          </select>
+          <div className="flex-1 relative min-w-0">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+            <input
+              type="text"
+              placeholder="Buscar cliente..."
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              className="w-full pl-8 pr-2 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            />
+          </div>
+          <button
+            onClick={() => setShowFilters(!showFilters)}
+            className={`flex items-center justify-center gap-1 px-2.5 py-2 rounded-lg border transition-colors text-sm ${
+              hasActiveFilters
+                ? 'bg-blue-50 border-blue-200 text-blue-700'
+                : 'border-gray-200 text-gray-600 hover:bg-gray-50'
+            }`}
+          >
+            <Filter className="w-4 h-4" />
+            {hasActiveFilters && (
+              <span className="bg-blue-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center">
+                {[filters.city, filters.state, filters.hasCredit, filters.hasPurchases].filter(Boolean).length}
+              </span>
+            )}
+          </button>
         </div>
+
+        {/* Filters Panel */}
+        {showFilters && (
+          <div className="mt-3 pt-3 border-t grid grid-cols-2 gap-2">
+            <div>
+              <label className="block text-[10px] sm:text-xs font-medium text-gray-600 mb-1">Cidade</label>
+              <input
+                type="text"
+                placeholder="Filtrar por cidade"
+                value={filters.city}
+                onChange={(e) => setFilters({ ...filters, city: e.target.value })}
+                className="w-full px-2 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+              />
+            </div>
+            <div>
+              <label className="block text-[10px] sm:text-xs font-medium text-gray-600 mb-1">Estado</label>
+              <select
+                value={filters.state}
+                onChange={(e) => setFilters({ ...filters, state: e.target.value })}
+                className="w-full px-2 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Todos</option>
+                {STATES.map((state) => (<option key={state} value={state}>{state}</option>))}
+              </select>
+            </div>
+            <div>
+              <label className="block text-[10px] sm:text-xs font-medium text-gray-600 mb-1">Crédito</label>
+              <select
+                value={filters.hasCredit}
+                onChange={(e) => setFilters({ ...filters, hasCredit: e.target.value })}
+                className="w-full px-2 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Todos</option>
+                <option value="true">Com crédito</option>
+                <option value="false">Sem crédito</option>
+              </select>
+            </div>
+            <div>
+              <label className="block text-[10px] sm:text-xs font-medium text-gray-600 mb-1">Compras</label>
+              <select
+                value={filters.hasPurchases}
+                onChange={(e) => setFilters({ ...filters, hasPurchases: e.target.value })}
+                className="w-full px-2 py-1.5 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+              >
+                <option value="">Todos</option>
+                <option value="true">Com compras</option>
+                <option value="false">Sem compras</option>
+              </select>
+            </div>
+            {hasActiveFilters && (
+              <div className="col-span-2">
+                <button onClick={clearFilters} className="text-xs text-blue-600 hover:text-blue-800">
+                  Limpar filtros
+                </button>
+              </div>
+            )}
+          </div>
+        )}
       </div>
 
       {/* Customers List */}

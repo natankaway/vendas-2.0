@@ -28,6 +28,11 @@ export async function GET(request: NextRequest) {
     const { searchParams } = new URL(request.url);
 
     const search = searchParams.get('search') || '';
+    const searchType = searchParams.get('searchType') || 'name'; // name, phone, document, email
+    const city = searchParams.get('city') || '';
+    const state = searchParams.get('state') || '';
+    const hasCredit = searchParams.get('hasCredit'); // 'true' or 'false'
+    const hasPurchases = searchParams.get('hasPurchases'); // 'true' or 'false'
     const page = parseInt(searchParams.get('page') || '1');
     const limit = parseInt(searchParams.get('limit') || '10');
     const offset = (page - 1) * limit;
@@ -38,8 +43,44 @@ export async function GET(request: NextRequest) {
       .is('deleted_at', null)
       .order('created_at', { ascending: false });
 
+    // Busca por tipo
     if (search) {
-      query = query.or(`name.ilike.%${search}%,email.ilike.%${search}%,document.ilike.%${search}%`);
+      if (searchType === 'phone') {
+        const digits = search.replace(/\D/g, '');
+        query = query.ilike('phone', `%${digits}%`);
+      } else if (searchType === 'document') {
+        const digits = search.replace(/\D/g, '');
+        query = query.ilike('document', `%${digits}%`);
+      } else if (searchType === 'email') {
+        query = query.ilike('email', `%${search}%`);
+      } else {
+        // Default: busca por nome
+        query = query.ilike('name', `%${search}%`);
+      }
+    }
+
+    // Filtro por cidade
+    if (city) {
+      query = query.ilike('city', `%${city}%`);
+    }
+
+    // Filtro por estado
+    if (state) {
+      query = query.eq('state', state);
+    }
+
+    // Filtro por crédito
+    if (hasCredit === 'true') {
+      query = query.gt('credit_limit', 0);
+    } else if (hasCredit === 'false') {
+      query = query.eq('credit_limit', 0);
+    }
+
+    // Filtro por compras
+    if (hasPurchases === 'true') {
+      query = query.gt('total_purchases', 0);
+    } else if (hasPurchases === 'false') {
+      query = query.eq('total_purchases', 0);
     }
 
     const { data: customers, error, count } = await query
