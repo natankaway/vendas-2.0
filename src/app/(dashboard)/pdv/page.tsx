@@ -472,6 +472,7 @@ export default function PDVPage() {
     const receiptData = {
       company: companySettings ? {
         name: companySettings.name,
+        logo: companySettings.logo,
         document: companySettings.document,
         address: companySettings.address,
         phone: companySettings.phone,

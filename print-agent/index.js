@@ -9,6 +9,10 @@
 
 require('dotenv').config();
 const fetch = require('node-fetch');
+const fs = require('fs');
+const path = require('path');
+const https = require('https');
+const http = require('http');
 
 // Configurações
 const config = {
@@ -19,6 +23,7 @@ const config = {
   pollInterval: parseInt(process.env.POLL_INTERVAL || '3000'),
   printerId: process.env.PRINTER_ID || 'default',
   paperWidth: parseInt(process.env.PAPER_WIDTH || '48'),
+  printLogo: process.env.PRINT_LOGO !== 'false', // default true
 };
 
 // Estado
@@ -26,6 +31,10 @@ let isProcessing = false;
 let escpos = null;
 let device = null;
 let printer = null;
+
+// Cache de logo
+let logoCache = null;
+let logoCacheUrl = null;
 
 // Cores para console
 const colors = {
@@ -112,12 +121,6 @@ async function markJobCompleted(jobId, success = true, errorMessage = null) {
   }
 }
 
-// Formatar linha centralizada
-function centerText(text, width) {
-  const padding = Math.max(0, Math.floor((width - text.length) / 2));
-  return ' '.repeat(padding) + text;
-}
-
 // Formatar linha com valor à direita
 function formatLine(left, right, width) {
   const spaces = Math.max(1, width - left.length - right.length);
@@ -129,12 +132,93 @@ function formatCurrency(cents) {
   return `R$ ${(cents / 100).toFixed(2).replace('.', ',')}`;
 }
 
-// Imprimir recibo
-async function printReceipt(receiptData) {
+// Criar separadores
+function createSeparator(width, char = '-') {
+  return char.repeat(width);
+}
+
+// Criar separador de itens (pontos espaçados)
+function createItemDivider(width) {
+  const pattern = '. ';
+  const repeats = Math.floor(width / pattern.length);
+  return pattern.repeat(repeats);
+}
+
+// Download e cache da logo
+async function downloadLogo(logoUrl) {
   return new Promise((resolve, reject) => {
+    if (!logoUrl) {
+      resolve(null);
+      return;
+    }
+
+    // Usar cache se a URL for a mesma
+    if (logoCacheUrl === logoUrl && logoCache) {
+      resolve(logoCache);
+      return;
+    }
+
+    // Se for base64, converter diretamente
+    if (logoUrl.startsWith('data:image')) {
+      try {
+        const base64Data = logoUrl.split(',')[1];
+        const buffer = Buffer.from(base64Data, 'base64');
+        logoCache = buffer;
+        logoCacheUrl = logoUrl;
+        resolve(buffer);
+      } catch (error) {
+        log(`Erro ao processar logo base64: ${error.message}`, 'warning');
+        resolve(null);
+      }
+      return;
+    }
+
+    // Download da URL
+    const protocol = logoUrl.startsWith('https') ? https : http;
+
+    protocol.get(logoUrl, (response) => {
+      if (response.statusCode !== 200) {
+        log(`Erro ao baixar logo: HTTP ${response.statusCode}`, 'warning');
+        resolve(null);
+        return;
+      }
+
+      const chunks = [];
+      response.on('data', (chunk) => chunks.push(chunk));
+      response.on('end', () => {
+        const buffer = Buffer.concat(chunks);
+        logoCache = buffer;
+        logoCacheUrl = logoUrl;
+        resolve(buffer);
+      });
+      response.on('error', (err) => {
+        log(`Erro ao baixar logo: ${err.message}`, 'warning');
+        resolve(null);
+      });
+    }).on('error', (err) => {
+      log(`Erro ao baixar logo: ${err.message}`, 'warning');
+      resolve(null);
+    });
+  });
+}
+
+// Imprimir recibo - Layout igual ao navegador
+async function printReceipt(receiptData) {
+  return new Promise(async (resolve, reject) => {
     const width = config.paperWidth;
-    const separator = '-'.repeat(width);
-    const doubleSeparator = '='.repeat(width);
+    const separator = createSeparator(width, '-');
+    const doubleSeparator = createSeparator(width, '=');
+    const itemDivider = createItemDivider(width);
+
+    // Tentar baixar logo se configurado
+    let logoBuffer = null;
+    if (config.printLogo && receiptData.company?.logo) {
+      try {
+        logoBuffer = await downloadLogo(receiptData.company.logo);
+      } catch (e) {
+        log('Falha ao carregar logo, continuando sem ela', 'warning');
+      }
+    }
 
     device.open((err) => {
       if (err) {
@@ -143,21 +227,42 @@ async function printReceipt(receiptData) {
       }
 
       try {
+        // Inicializa impressora
         printer
           .font('a')
-          .align('ct')
+          .align('ct');
+
+        // ============================================
+        // LOGO (se disponível)
+        // ============================================
+        if (logoBuffer && escpos.Image) {
+          try {
+            escpos.Image.load(logoBuffer, (image) => {
+              if (image) {
+                printer.image(image, 'd24');
+              }
+            });
+          } catch (e) {
+            // Ignora erro de logo e continua
+          }
+        }
+
+        // ============================================
+        // CABEÇALHO - Nome da empresa (grande e bold)
+        // ============================================
+        printer
           .style('b')
           .size(1, 1);
 
-        // Cabeçalho - Nome da empresa
         if (receiptData.company?.name) {
           printer.text(receiptData.company.name);
         } else {
           printer.text('KAWAY POS');
         }
 
+        // Volta ao tamanho normal
         printer
-          .style('normal')
+          .style('b')
           .size(0, 0);
 
         // Dados da empresa
@@ -173,87 +278,118 @@ async function printReceipt(receiptData) {
 
         printer
           .text('')
-          .text('CUPOM NAO FISCAL')
-          .text(separator);
+          .text('CUPOM NAO FISCAL');
 
-        // Data e número do recibo
+        // ============================================
+        // DATA E RECIBO
+        // ============================================
         printer
+          .text(separator)
           .align('lt')
-          .text(`Data: ${receiptData.date || new Date().toLocaleString('pt-BR')}`)
-          .text(`Recibo: ${receiptData.receipt_number || '---'}`);
+          .style('b');
 
-        // Cliente
+        printer.text(formatLine('Data:', receiptData.date || new Date().toLocaleString('pt-BR'), width));
+        printer.text(formatLine('Recibo:', receiptData.receipt_number || '---', width));
+
+        // ============================================
+        // CLIENTE (se houver)
+        // ============================================
         if (receiptData.customer?.name) {
-          printer
-            .text(separator)
-            .text(`Cliente: ${receiptData.customer.name}`);
+          printer.text(separator);
+          printer.text(formatLine('Cliente:', receiptData.customer.name, width));
 
           if (receiptData.customer.address) {
-            printer.text(`End.: ${receiptData.customer.address}`);
+            // Endereço pode ser longo, quebrar se necessário
+            const addrLabel = 'End: ';
+            const maxAddrLen = width - addrLabel.length;
+            let addr = receiptData.customer.address;
+            if (addr.length > maxAddrLen) {
+              addr = addr.substring(0, maxAddrLen - 3) + '...';
+            }
+            printer.text(addrLabel + addr);
           }
           if (receiptData.customer.phone) {
-            printer.text(`Tel.: ${receiptData.customer.phone}`);
+            printer.text(formatLine('Tel:', receiptData.customer.phone, width));
           }
         }
 
+        // ============================================
+        // ITENS
+        // ============================================
         printer.text(separator);
 
-        // Itens
         if (receiptData.items && receiptData.items.length > 0) {
-          const itemSeparator = '. '.repeat(Math.floor(width / 2));
           receiptData.items.forEach((item, index) => {
-            // Linha divisória entre itens (não antes do primeiro)
+            // Divisor entre itens (não antes do primeiro)
             if (index > 0) {
-              printer.text(itemSeparator);
+              printer
+                .style('normal')
+                .text(itemDivider)
+                .style('b');
             }
-            printer.text(item.name || item.product_name);
+
+            // Nome do produto (bold)
+            const productName = item.name || item.product_name || 'Produto';
+            printer.text(productName);
+
+            // Quantidade x preço = total
             const unit = item.unit || 'un';
-            const qty = `${item.quantity} ${unit} x ${formatCurrency(item.unit_price)}`;
-            const total = formatCurrency(item.total);
-            printer.text(formatLine(qty, total, width));
+            const qtyLine = `${item.quantity} ${unit} x ${formatCurrency(item.unit_price)}`;
+            const totalLine = formatCurrency(item.total);
+            printer.text(formatLine(qtyLine, totalLine, width));
           });
         }
 
+        // ============================================
+        // TOTAIS
+        // ============================================
         printer.text(doubleSeparator);
 
-        // Totais
+        // Subtotal e desconto (se houver desconto)
         if (receiptData.discount_amount && receiptData.discount_amount > 0) {
           printer.text(formatLine('Subtotal:', formatCurrency(receiptData.subtotal), width));
           printer.text(formatLine('Desconto:', `-${formatCurrency(receiptData.discount_amount)}`, width));
         }
 
+        // TOTAL (grande e bold)
         printer
           .style('b')
           .size(1, 1)
-          .text(formatLine('TOTAL:', formatCurrency(receiptData.total), width))
-          .style('normal')
+          .text(formatLine('TOTAL', formatCurrency(receiptData.total), width - 4))
+          .style('b')
           .size(0, 0);
 
-        // Forma de pagamento
-        printer
-          .text(separator)
-          .text(`Pagamento: ${receiptData.payment_method_label || receiptData.payment_method || '---'}`);
+        // ============================================
+        // FORMA DE PAGAMENTO
+        // ============================================
+        printer.text(separator);
+        printer.text(formatLine('Pagamento:', receiptData.payment_method_label || receiptData.payment_method || '---', width));
 
-        // Troco (se dinheiro)
+        // Troco (se pagamento em dinheiro)
         if (receiptData.cash_received && receiptData.change !== undefined) {
-          printer
-            .text(`Recebido: ${formatCurrency(receiptData.cash_received)}`)
-            .text(`Troco: ${formatCurrency(receiptData.change)}`);
+          printer.text(formatLine('Recebido:', formatCurrency(receiptData.cash_received), width));
+          printer.text(formatLine('Troco:', formatCurrency(receiptData.change), width));
         }
 
-        // Rodapé
+        // ============================================
+        // RODAPÉ
+        // ============================================
         printer
-          .text('')
+          .text(separator)
           .align('ct')
+          .text('')
           .text('Obrigado pela preferencia!')
           .text('Volte sempre!')
+          .text('')
           .text('')
           .cut()
           .close();
 
         resolve();
       } catch (error) {
-        printer.close();
+        try {
+          printer.close();
+        } catch (e) {}
         reject(error);
       }
     });
@@ -284,12 +420,12 @@ async function processJobs() {
         for (let i = 0; i < (job.copies || 1); i++) {
           await printReceipt(job.receipt_data);
           if (job.copies > 1) {
-            log(`  Cópia ${i + 1}/${job.copies} impressa`);
+            log(`  Copia ${i + 1}/${job.copies} impressa`);
           }
         }
 
         await markJobCompleted(job.id, true);
-        log(`Job ${job.id.substring(0, 8)} concluído!`, 'success');
+        log(`Job ${job.id.substring(0, 8)} concluido!`, 'success');
       } catch (error) {
         log(`Falha ao imprimir job ${job.id.substring(0, 8)}: ${error.message}`, 'error');
         await markJobCompleted(job.id, false, error.message);
@@ -305,27 +441,29 @@ async function processJobs() {
 // Iniciar agente
 async function start() {
   console.log('');
-  console.log('╔════════════════════════════════════════════╗');
-  console.log('║     KAWAY POS - Agente de Impressão        ║');
-  console.log('╚════════════════════════════════════════════╝');
+  console.log('========================================');
+  console.log('   KAWAY POS - Agente de Impressao');
+  console.log('========================================');
   console.log('');
 
   log(`API URL: ${config.apiUrl}`);
   log(`Tipo de impressora: ${config.printerType}`);
   log(`ID da impressora: ${config.printerId}`);
-  log(`Intervalo de verificação: ${config.pollInterval}ms`);
+  log(`Largura do papel: ${config.paperWidth} caracteres`);
+  log(`Imprimir logo: ${config.printLogo ? 'Sim' : 'Nao'}`);
+  log(`Intervalo de verificacao: ${config.pollInterval}ms`);
   console.log('');
 
   // Inicializar impressora
   const printerReady = await initPrinter();
 
   if (!printerReady) {
-    log('Não foi possível inicializar a impressora. Verifique a conexão.', 'error');
-    log('O agente continuará tentando...', 'warning');
+    log('Nao foi possivel inicializar a impressora. Verifique a conexao.', 'error');
+    log('O agente continuara tentando...', 'warning');
   }
 
   // Iniciar polling
-  log('Aguardando trabalhos de impressão...', 'success');
+  log('Aguardando trabalhos de impressao...', 'success');
   console.log('');
 
   // Verificar imediatamente
@@ -337,7 +475,7 @@ async function start() {
 
 // Tratamento de erros não capturados
 process.on('uncaughtException', (error) => {
-  log(`Erro não tratado: ${error.message}`, 'error');
+  log(`Erro nao tratado: ${error.message}`, 'error');
 });
 
 process.on('unhandledRejection', (error) => {
