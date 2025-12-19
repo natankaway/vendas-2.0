@@ -72,3 +72,5 @@ drizzle/meta/
 # Temporary files
 tmp/
 temp/
+# Migration output (generated files)
+scripts/migration-output/*.sql
