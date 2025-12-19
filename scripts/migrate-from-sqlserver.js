@@ -294,25 +294,25 @@ function migrateProducts() {
 // ============================================================================
 // MIGRAÇÃO DE VENDAS
 // ============================================================================
-function migrateSales() {
-  console.log('Migrando vendas...');
+
+// ID do usuário sistema (fixo para manter consistência entre batches)
+const SYSTEM_USER_ID = '00000000-0000-0000-0000-000000000001';
+
+function migrateSalesBatched() {
   const rows = parseCSV(path.join(__dirname, '..', 'ventas.csv'));
+  const statements = [];
 
-  let sql = '-- Migração de Vendas\n';
-  sql += '-- Total: ' + rows.length + ' registros\n\n';
-
-  // Precisa de um user_id padrão - criar um usuário sistema
-  const systemUserId = uuidv4();
-  sql += `-- Usuário sistema para vendas migradas\n`;
-  sql += `INSERT INTO users (id, email, name, role, is_active, created_at, updated_at) VALUES (\n`;
-  sql += `  '${systemUserId}',\n`;
-  sql += `  'sistema@migrado.local',\n`;
-  sql += `  'Sistema (Migração)',\n`;
-  sql += `  'admin',\n`;
-  sql += `  true,\n`;
-  sql += `  NOW(),\n`;
-  sql += `  NOW()\n`;
-  sql += `) ON CONFLICT (email) DO UPDATE SET id = EXCLUDED.id RETURNING id;\n\n`;
+  // Primeiro statement: criar usuário sistema
+  statements.push(`-- Usuário sistema para vendas migradas
+INSERT INTO users (id, email, name, role, is_active, created_at, updated_at) VALUES (
+  '${SYSTEM_USER_ID}',
+  'sistema@migrado.local',
+  'Sistema (Migração)',
+  'admin',
+  true,
+  NOW(),
+  NOW()
+) ON CONFLICT (email) DO NOTHING;`);
 
   rows.forEach(row => {
     // cod_venda;Nome;Endereco;Data;estado_venda;total;Forma_Pagamento
@@ -335,38 +335,34 @@ function migrateSales() {
     // Gera número de recibo baseado na data
     const receiptNumber = `MIG-${oldId.toString().padStart(6, '0')}`;
 
-    sql += `INSERT INTO sales (id, receipt_number, customer_id, user_id, status, subtotal, discount_amount, discount_percent, tax_amount, total, payment_method, notes, completed_at, created_at, updated_at) VALUES (\n`;
-    sql += `  '${newId}',\n`;
-    sql += `  ${escapeSQL(receiptNumber)},\n`;
-    sql += `  ${customerId},\n`;
-    sql += `  '${systemUserId}',\n`;
-    sql += `  '${status}',\n`;
-    sql += `  ${totalCents},\n`;
-    sql += `  0,\n`;
-    sql += `  0,\n`;
-    sql += `  0,\n`;
-    sql += `  ${totalCents},\n`;
-    sql += `  '${paymentMethod}',\n`;
-    sql += `  ${escapeSQL('Venda migrada do sistema anterior')},\n`;
-    sql += `  ${status === 'completed' ? createdAt : 'NULL'},\n`;
-    sql += `  ${createdAt},\n`;
-    sql += `  ${createdAt}\n`;
-    sql += `) ON CONFLICT (id) DO NOTHING;\n\n`;
+    let stmt = `INSERT INTO sales (id, receipt_number, customer_id, user_id, status, subtotal, discount_amount, discount_percent, tax_amount, total, payment_method, notes, completed_at, created_at, updated_at) VALUES (`;
+    stmt += `'${newId}', `;
+    stmt += `${escapeSQL(receiptNumber)}, `;
+    stmt += `${customerId}, `;
+    stmt += `'${SYSTEM_USER_ID}', `;
+    stmt += `'${status}', `;
+    stmt += `${totalCents}, `;
+    stmt += `0, 0, 0, `;
+    stmt += `${totalCents}, `;
+    stmt += `'${paymentMethod}', `;
+    stmt += `${escapeSQL('Venda migrada do sistema anterior')}, `;
+    stmt += `${status === 'completed' ? createdAt : 'NULL'}, `;
+    stmt += `${createdAt}, `;
+    stmt += `${createdAt}`;
+    stmt += `) ON CONFLICT (id) DO NOTHING;`;
+
+    statements.push(stmt);
   });
 
-  return sql;
+  return statements;
 }
 
 // ============================================================================
 // MIGRAÇÃO DE ITENS DE VENDA
 // ============================================================================
-function migrateSaleItems() {
-  console.log('Migrando itens de venda...');
+function migrateSaleItemsBatched() {
   const rows = parseCSV(path.join(__dirname, '..', 'detalleventa.csv'));
-
-  let sql = '-- Migração de Itens de Venda\n';
-  sql += '-- Total: ' + rows.length + ' registros\n\n';
-
+  const statements = [];
   const now = new Date().toISOString();
 
   rows.forEach(row => {
@@ -388,25 +384,25 @@ function migrateSaleItems() {
     const quantity = parseFloat(quant) || 1;
     const total = toCents(subTotal);
 
-    sql += `INSERT INTO sale_items (id, sale_id, product_id, product_name, product_sku, quantity, unit_price, discount_amount, discount_percent, tax_amount, total, unit, created_at, updated_at) VALUES (\n`;
-    sql += `  '${newId}',\n`;
-    sql += `  '${saleId}',\n`;
-    sql += `  ${productId ? `'${productId}'` : 'NULL'},\n`;
-    sql += `  'Produto ${idProd}',\n`;  // Nome será atualizado depois se necessário
-    sql += `  'PROD-${idProd}',\n`;
-    sql += `  ${quantity},\n`;
-    sql += `  ${unitPrice},\n`;
-    sql += `  0,\n`;
-    sql += `  0,\n`;
-    sql += `  0,\n`;
-    sql += `  ${total},\n`;
-    sql += `  'UN',\n`;
-    sql += `  '${now}',\n`;
-    sql += `  '${now}'\n`;
-    sql += `) ON CONFLICT (id) DO NOTHING;\n\n`;
+    let stmt = `INSERT INTO sale_items (id, sale_id, product_id, product_name, product_sku, quantity, unit_price, discount_amount, discount_percent, tax_amount, total, unit, created_at, updated_at) VALUES (`;
+    stmt += `'${newId}', `;
+    stmt += `'${saleId}', `;
+    stmt += `${productId ? `'${productId}'` : 'NULL'}, `;
+    stmt += `'Produto ${idProd}', `;
+    stmt += `'PROD-${idProd}', `;
+    stmt += `${quantity}, `;
+    stmt += `${unitPrice}, `;
+    stmt += `0, 0, 0, `;
+    stmt += `${total}, `;
+    stmt += `'UN', `;
+    stmt += `'${now}', `;
+    stmt += `'${now}'`;
+    stmt += `) ON CONFLICT (id) DO NOTHING;`;
+
+    statements.push(stmt);
   });
 
-  return sql;
+  return statements;
 }
 
 // ============================================================================
@@ -447,6 +443,17 @@ function generateCustomerTotalsUpdate() {
 }
 
 // ============================================================================
+// HELPER: Divide SQL em batches
+// ============================================================================
+function splitIntoBatches(statements, batchSize = 500) {
+  const batches = [];
+  for (let i = 0; i < statements.length; i += batchSize) {
+    batches.push(statements.slice(i, i + batchSize));
+  }
+  return batches;
+}
+
+// ============================================================================
 // MAIN
 // ============================================================================
 async function main() {
@@ -459,56 +466,90 @@ async function main() {
     fs.mkdirSync(OUTPUT_DIR, { recursive: true });
   }
 
+  // Limpa arquivos antigos
+  const existingFiles = fs.readdirSync(OUTPUT_DIR);
+  existingFiles.forEach(file => {
+    if (file.endsWith('.sql')) {
+      fs.unlinkSync(path.join(OUTPUT_DIR, file));
+    }
+  });
+
+  const BATCH_SIZE = 500; // Registros por arquivo
+
   // Executa migrações na ordem correta
-  const migrations = [
-    { name: '01_categories', fn: migrateCategories },
-    { name: '02_customers', fn: migrateCustomers },
-    { name: '03_products', fn: migrateProducts },
-    { name: '04_sales', fn: migrateSales },
-    { name: '05_sale_items', fn: migrateSaleItems },
-    { name: '06_update_product_names', fn: generateProductNameUpdates },
-    { name: '07_update_customer_totals', fn: generateCustomerTotalsUpdate },
-  ];
+  console.log('\n1. Migrando categorias...');
+  const categoriesSQL = migrateCategories();
+  fs.writeFileSync(path.join(OUTPUT_DIR, '01_categories.sql'), categoriesSQL, 'utf-8');
 
-  let fullSQL = '-- Script de Migração Completo\n';
-  fullSQL += '-- Gerado em: ' + new Date().toISOString() + '\n';
-  fullSQL += '-- IMPORTANTE: Execute a migration 007_add_expiration_date_to_products.sql ANTES deste script!\n\n';
-  fullSQL += 'BEGIN;\n\n';
+  console.log('2. Migrando clientes...');
+  const customersSQL = migrateCustomers();
+  fs.writeFileSync(path.join(OUTPUT_DIR, '02_customers.sql'), customersSQL, 'utf-8');
 
-  for (const migration of migrations) {
-    console.log(`\nExecutando: ${migration.name}...`);
-    const sql = migration.fn();
+  console.log('3. Migrando produtos...');
+  const productsSQL = migrateProducts();
+  fs.writeFileSync(path.join(OUTPUT_DIR, '03_products.sql'), productsSQL, 'utf-8');
 
-    // Salva arquivo individual
-    fs.writeFileSync(
-      path.join(OUTPUT_DIR, `${migration.name}.sql`),
-      sql,
-      'utf-8'
-    );
+  console.log('4. Migrando vendas (dividido em batches)...');
+  const salesStatements = migrateSalesBatched();
+  const salesBatches = splitIntoBatches(salesStatements, BATCH_SIZE);
+  salesBatches.forEach((batch, index) => {
+    const fileName = `04_sales_part${String(index + 1).padStart(2, '0')}.sql`;
+    let sql = `-- Vendas - Parte ${index + 1} de ${salesBatches.length}\n`;
+    sql += `-- Registros: ${batch.length}\n\n`;
+    sql += batch.join('\n');
+    fs.writeFileSync(path.join(OUTPUT_DIR, fileName), sql, 'utf-8');
+  });
+  console.log(`   -> Gerados ${salesBatches.length} arquivos de vendas`);
 
-    fullSQL += `-- ${'='.repeat(70)}\n`;
-    fullSQL += `-- ${migration.name.toUpperCase()}\n`;
-    fullSQL += `-- ${'='.repeat(70)}\n\n`;
-    fullSQL += sql + '\n';
-  }
+  console.log('5. Migrando itens de venda (dividido em batches)...');
+  const itemsStatements = migrateSaleItemsBatched();
+  const itemsBatches = splitIntoBatches(itemsStatements, BATCH_SIZE);
+  itemsBatches.forEach((batch, index) => {
+    const fileName = `05_sale_items_part${String(index + 1).padStart(2, '0')}.sql`;
+    let sql = `-- Itens de Venda - Parte ${index + 1} de ${itemsBatches.length}\n`;
+    sql += `-- Registros: ${batch.length}\n\n`;
+    sql += batch.join('\n');
+    fs.writeFileSync(path.join(OUTPUT_DIR, fileName), sql, 'utf-8');
+  });
+  console.log(`   -> Gerados ${itemsBatches.length} arquivos de itens`);
 
-  fullSQL += '\nCOMMIT;\n';
+  console.log('6. Gerando atualizações de nomes de produtos...');
+  const namesSQL = generateProductNameUpdates();
+  fs.writeFileSync(path.join(OUTPUT_DIR, '06_update_product_names.sql'), namesSQL, 'utf-8');
 
-  // Salva script completo
-  fs.writeFileSync(
-    path.join(OUTPUT_DIR, 'full_migration.sql'),
-    fullSQL,
-    'utf-8'
-  );
+  console.log('7. Gerando atualização de totais de clientes...');
+  const totalsSQL = generateCustomerTotalsUpdate();
+  fs.writeFileSync(path.join(OUTPUT_DIR, '07_update_customer_totals.sql'), totalsSQL, 'utf-8');
+
+  // Gera arquivo de instruções
+  let instructions = `# Instruções de Migração\n\n`;
+  instructions += `Gerado em: ${new Date().toISOString()}\n\n`;
+  instructions += `## IMPORTANTE\n`;
+  instructions += `Execute primeiro: \`scripts/migrations/007_add_expiration_date_to_products.sql\`\n\n`;
+  instructions += `## Ordem de Execução\n\n`;
+  instructions += `Execute os arquivos na ordem numérica:\n\n`;
+  instructions += `1. \`01_categories.sql\` (16 categorias)\n`;
+  instructions += `2. \`02_customers.sql\` (clientes)\n`;
+  instructions += `3. \`03_products.sql\` (produtos)\n`;
+  instructions += `4. \`04_sales_part01.sql\` até \`04_sales_part${String(salesBatches.length).padStart(2, '0')}.sql\` (${salesStatements.length} vendas em ${salesBatches.length} partes)\n`;
+  instructions += `5. \`05_sale_items_part01.sql\` até \`05_sale_items_part${String(itemsBatches.length).padStart(2, '0')}.sql\` (${itemsStatements.length} itens em ${itemsBatches.length} partes)\n`;
+  instructions += `6. \`06_update_product_names.sql\`\n`;
+  instructions += `7. \`07_update_customer_totals.sql\`\n`;
+
+  fs.writeFileSync(path.join(OUTPUT_DIR, 'README.md'), instructions, 'utf-8');
 
   console.log('\n' + '='.repeat(60));
   console.log('Migração concluída!');
   console.log('='.repeat(60));
   console.log(`\nArquivos gerados em: ${OUTPUT_DIR}`);
-  console.log('\nPróximos passos:');
-  console.log('1. Execute no Supabase: scripts/migrations/007_add_expiration_date_to_products.sql');
-  console.log('2. Execute no Supabase: scripts/migration-output/full_migration.sql');
-  console.log('\nOu execute os arquivos individuais na ordem numérica.');
+  console.log(`\nTotal de arquivos:`);
+  console.log(`  - Categorias: 1 arquivo`);
+  console.log(`  - Clientes: 1 arquivo`);
+  console.log(`  - Produtos: 1 arquivo`);
+  console.log(`  - Vendas: ${salesBatches.length} arquivos`);
+  console.log(`  - Itens: ${itemsBatches.length} arquivos`);
+  console.log(`  - Atualizações: 2 arquivos`);
+  console.log(`\nExecute na ordem numérica no Supabase SQL Editor.`);
 }
 
 main().catch(console.error);

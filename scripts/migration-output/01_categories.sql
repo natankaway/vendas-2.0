@@ -2,162 +2,162 @@
 -- Total: 16 registros
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   'Refri Pet',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   'Cerveja Chopp',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '66df53fa-60e7-436c-b560-857b3425a557',
+  '6e9f50d5-861b-4b53-8ad3-04fc99d68640',
   'Cerveja 600ml',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '1371d5f1-df36-48a1-930f-3522b0422ce8',
+  'c55739cf-aa11-4ea3-954b-b99d93e16cfb',
   'Categoria',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   'Cerveja Latão',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  'a9f8d6f0-1d6e-4b17-a1fc-945361624d91',
+  '680f7390-811e-47c3-9fb2-1db6ea2d1b27',
   'Cerveja BrT',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '6dfe79d9-ce5a-416e-9b63-f570fc661122',
+  '7731d0fa-0f7b-43d3-94d5-831845ed8fde',
   'Refri retornável',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '71b856a0-5392-4d4b-ad3d-1a06917c5549',
+  '3ee84df4-9e36-4822-81c2-eac4e53aa10f',
   'Sucos Liquidos',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   'Aguardentes e Destilados',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '6a5790ec-868f-4d6e-bf9d-fec0e5fa76ae',
+  '065149e5-2048-432f-b654-6cf1a078a73e',
   'Cerveja 210ml',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '568fc426-4a36-456a-8b0b-7299455d0604',
+  '903b57d3-4171-499d-90e7-d75f6046b179',
   'Cerveja 275ml',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '9f189928-d871-4ba4-b857-8dfb51556fb9',
+  '563d5cf0-3244-42b8-af5a-72940a7c2d35',
   'Energéticos',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   'Refri Lata',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '55754ee5-a01f-4647-8c50-12e6fdf4f3c9',
+  'b8979d31-c855-4351-93d5-1d04f690c82f',
   'Agua',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   'Outros',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO product_categories (id, name, description, color, sort_order, created_at, updated_at) VALUES (
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   'Cerveja 330ML',
   NULL,
   '#3B82F6',
   0,
-  '2025-12-19T16:08:42.541Z',
-  '2025-12-19T16:08:42.541Z'
+  '2025-12-19T16:13:24.342Z',
+  '2025-12-19T16:13:24.342Z'
 ) ON CONFLICT (id) DO NOTHING;
 

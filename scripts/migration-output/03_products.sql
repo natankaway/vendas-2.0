@@ -2,12 +2,12 @@
 -- Total: 184 registros
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '6905a6c7-483a-4ac5-bf1c-f47967fcac54',
+  '15a53bbe-a238-473a-8ddf-b0fbc24aa22a',
   'Antartica Chopp',
   NULL,
   'PROD-4',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   6000,
   0,
   'CX',
@@ -16,17 +16,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '464b6d4a-4b01-4206-9d9b-9031d0decc7f',
+  '7650073d-b949-4160-bc16-d7052699a2aa',
   'Brahma Chopp',
   NULL,
   'PROD-5',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   5300,
   0,
   'CX',
@@ -35,17 +35,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'cdfa50f5-3216-4bc9-9048-5947835e4a53',
+  '392695df-d266-4306-8a43-984548fda03b',
   'Antartica 600ml',
   NULL,
   'PROD-6',
   NULL,
-  '66df53fa-60e7-436c-b560-857b3425a557',
+  '6e9f50d5-861b-4b53-8ad3-04fc99d68640',
   14200,
   0,
   'CX',
@@ -54,17 +54,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '5b339e6c-c2cc-4618-8ddc-f2ce5a2ce596',
+  '6a4e6228-bdd7-478b-922a-28a2c6371ced',
   'Brahma 600ml',
   NULL,
   'PROD-7',
   NULL,
-  '66df53fa-60e7-436c-b560-857b3425a557',
+  '6e9f50d5-861b-4b53-8ad3-04fc99d68640',
   15200,
   0,
   'CX',
@@ -73,12 +73,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'c38858e4-0f06-44ba-8976-921b376d59c3',
+  '64b96ea5-dd0e-4e82-a3bb-565d07ad6585',
   'Antartica 1L',
   NULL,
   'PROD-8',
@@ -92,12 +92,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a478843b-e389-4e67-b2cd-c74f8ef97305',
+  '80b54671-ff0f-4ad2-825f-27d391891da8',
   'Brahma 1L',
   NULL,
   'PROD-9',
@@ -111,12 +111,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '11f01551-22d4-44f4-95dc-5731aa201812',
+  '98c36fe9-48a8-4c9d-a387-24d0a7de68bb',
   'Itaipava 1L',
   NULL,
   'PROD-10',
@@ -130,17 +130,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'dff34dbf-20e4-430d-9764-38e6b060fe45',
+  '5e708b55-d69e-4e31-b192-c313d9bb0334',
   'Coca-Cola Ret',
   NULL,
   'PROD-11',
   NULL,
-  '6dfe79d9-ce5a-416e-9b63-f570fc661122',
+  '7731d0fa-0f7b-43d3-94d5-831845ed8fde',
   7350,
   0,
   'CX',
@@ -149,17 +149,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b82e0517-3bb0-4398-8faa-24761932aecd',
+  '13bfc4ff-14d8-46f3-9d89-e94387071db0',
   'Brahma Latão',
   NULL,
   'PROD-12',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   4900,
   0,
   'CX',
@@ -168,17 +168,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a22872b1-98ab-4a31-a164-ca399a6ec82c',
+  '65b2446e-6e70-4610-8392-3949c68b7eb6',
   'Antartica Latão',
   NULL,
   'PROD-13',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   4600,
   0,
   'CX',
@@ -187,17 +187,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd0d13f77-ba3d-4589-af98-cb615b1013ec',
+  'e9857814-1e88-469d-959e-c51504aa84a2',
   'Brahma Brt',
   NULL,
   'PROD-14',
   NULL,
-  'a9f8d6f0-1d6e-4b17-a1fc-945361624d91',
+  '680f7390-811e-47c3-9fb2-1db6ea2d1b27',
   5300,
   0,
   'CX',
@@ -206,17 +206,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b0eecf72-eb48-400d-bd26-fd12b742316e',
+  '3bebc07b-10eb-4f59-b96d-d36e4fedc85b',
   'Imperio Gold',
   NULL,
   'PROD-15',
   NULL,
-  '6a5790ec-868f-4d6e-bf9d-fec0e5fa76ae',
+  '065149e5-2048-432f-b654-6cf1a078a73e',
   6600,
   0,
   'CX',
@@ -225,17 +225,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '096eec14-2fe2-4fb2-bc76-071d7c0234bb',
+  '0d3b0881-ad05-49bc-abb2-9281a778f254',
   'Imperio Lager',
   NULL,
   'PROD-16',
   NULL,
-  '568fc426-4a36-456a-8b0b-7299455d0604',
+  '903b57d3-4171-499d-90e7-d75f6046b179',
   5000,
   0,
   'CX',
@@ -244,17 +244,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '680c2302-688a-406d-9c72-b161c7ca1d02',
+  '1542d40b-2ac5-4b6f-a1b4-62fe07982d04',
   'Imperio Latão',
   NULL,
   'PROD-17',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   4500,
   0,
   'CX',
@@ -263,17 +263,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '08fab943-cfae-4b9a-9fe0-e5ac4994b1b5',
+  '90665282-7b6d-4260-a14c-ba9f8ea86100',
   'Coca-Cola 2L',
   NULL,
   'PROD-18',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   5600,
   0,
   'CX',
@@ -282,17 +282,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd55887ac-0137-445a-ba1b-d47261855982',
+  '12295508-386a-4f61-ab6f-590605a0b61a',
   'Fanta Laranja 2L',
   NULL,
   'PROD-19',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   4600,
   0,
   'CX',
@@ -301,17 +301,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '2ede1b89-2ce3-43be-8cae-36af9d6fc389',
+  '893282f1-19a7-43d6-91c7-8c9c86329089',
   'Fanta Uva 2L',
   NULL,
   'PROD-20',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   4600,
   0,
   'CX',
@@ -320,17 +320,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '76afee1c-e1b2-404a-a1a8-e03133aa87ae',
+  '666bfa1a-aaae-42ea-b269-d6d317471b62',
   'Sprite 2L',
   NULL,
   'PROD-21',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   4600,
   0,
   'CX',
@@ -339,17 +339,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '4f5c2be2-aaea-425b-91c8-1d464808c186',
+  'd753a2d0-6103-41b4-b443-d91aa22c1ea6',
   'Guarana Antartica 2L',
   NULL,
   'PROD-22',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   4600,
   0,
   'CX',
@@ -358,17 +358,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '2fa812cd-871e-4a70-b7f9-66956d9075a5',
+  '01f16f62-47ed-4885-9780-b00526d85546',
   'Convenção 2L',
   NULL,
   'PROD-23',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   2450,
   0,
   'CX',
@@ -377,17 +377,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '84213b18-0746-4b72-bbb2-6c75f0be02b0',
+  '7831b3e9-0e5c-4e8d-ab4f-bac01c640c4a',
   'Font Energico 2L',
   NULL,
   'PROD-24',
   NULL,
-  '9f189928-d871-4ba4-b857-8dfb51556fb9',
+  '563d5cf0-3244-42b8-af5a-72940a7c2d35',
   4000,
   0,
   'CX',
@@ -396,17 +396,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '28ad82c5-6829-4ed2-b8d5-c613b28150da',
+  'eca2f24f-80b8-46ac-9bcd-1306d93a24d9',
   'Font Energico 2L U',
   NULL,
   'PROD-25',
   NULL,
-  '9f189928-d871-4ba4-b857-8dfb51556fb9',
+  '563d5cf0-3244-42b8-af5a-72940a7c2d35',
   800,
   0,
   'UN',
@@ -415,17 +415,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9b072371-b831-4efd-974e-3a3a925d483b',
+  '01dcdfec-6975-4fd8-af4b-8b48be219ee7',
   'Coca-Cola Lata',
   NULL,
   'PROD-26',
   NULL,
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   4000,
   0,
   'CX',
@@ -434,17 +434,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9fd5c4a9-7a9b-46a1-810a-81f76e416890',
+  'e2c17f7b-77c6-4462-82f5-5b1391dc0947',
   'Guarana Antartica lata',
   NULL,
   'PROD-27',
   NULL,
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   3800,
   0,
   'CX',
@@ -453,17 +453,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'c5a41c68-1b50-485a-a073-395010d47383',
+  '74631893-f3cd-48fe-bbe6-6ab48f4be747',
   'Fanta Laranja lata',
   NULL,
   'PROD-28',
   NULL,
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   3000,
   0,
   'CX',
@@ -472,17 +472,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '42344b29-ef13-48dc-848d-a88adaf27902',
+  '3e47b55f-807b-48b0-827b-5a3bee1b2d72',
   'Fanta Uva Lata',
   NULL,
   'PROD-29',
   NULL,
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   3000,
   0,
   'CX',
@@ -491,17 +491,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '2165e9e1-fffb-4989-9b63-ff61cdad1b5c',
+  '561f4263-605f-4166-b3dd-fa8ec0d60ef5',
   'Coca latinha',
   NULL,
   'PROD-30',
   NULL,
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   2100,
   0,
   'CX',
@@ -510,17 +510,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '6dc8d927-7467-4029-9a9d-215620992659',
+  '89ac8368-ee46-4487-accc-ffc6ea472cc6',
   'Agua Mineral',
   NULL,
   'PROD-31',
   NULL,
-  '55754ee5-a01f-4647-8c50-12e6fdf4f3c9',
+  'b8979d31-c855-4351-93d5-1d04f690c82f',
   1300,
   0,
   'CX',
@@ -529,17 +529,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '75c29885-dc32-4b71-844f-c66e351faea5',
+  'c21e9d82-eaf6-4026-af49-27c42a9947ff',
   'Vinho 860 ml',
   NULL,
   'PROD-32',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   6500,
   0,
   'CX',
@@ -548,17 +548,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '1232d315-29ef-4a00-94b9-d99a9e2050a7',
+  '4231ccf0-91cc-480a-94f7-c81ca71d124b',
   'Galão vinho',
   NULL,
   'PROD-33',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   3300,
   0,
   'CX',
@@ -567,17 +567,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'f786284a-affb-4afa-bd74-0b43becec1fb',
+  '1396ccd4-50df-4851-8f53-05beb063e3fe',
   'Ousadia Limão',
   NULL,
   'PROD-34',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   4200,
   0,
   'CX',
@@ -586,17 +586,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a0652b23-5bf1-4fcf-8cbe-a6f989c9a333',
+  '677fe6d5-67ec-4a8d-9810-9512648a1cfc',
   'Ousadia Banana',
   NULL,
   'PROD-35',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   4200,
   0,
   'CX',
@@ -605,17 +605,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '929d9a0e-1d69-45d1-9a10-96994ce22fab',
+  '7b9a0ee6-5052-453c-b8fa-1c5b832b876a',
   'Guaracamp',
   NULL,
   'PROD-36',
   NULL,
-  '71b856a0-5392-4d4b-ad3d-1a06917c5549',
+  '3ee84df4-9e36-4822-81c2-eac4e53aa10f',
   3400,
   0,
   'CX',
@@ -624,17 +624,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '5392e437-8179-46a5-9bc2-f62d0a53af25',
+  '5eb7a2f5-96d1-4268-83a8-bec2d9de0723',
   'Coca-Cola 2L U',
   NULL,
   'PROD-37',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   900,
   0,
   'UN',
@@ -643,17 +643,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '40fb43c0-abda-4585-886d-f97111d2d6a1',
+  '4c558d27-1801-4467-8b6c-ba8d0af5ac87',
   'Fanta uva 2L U',
   NULL,
   'PROD-38',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   800,
   0,
   'UN',
@@ -662,17 +662,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '49be2791-b21a-45e7-be63-931923694670',
+  '4c709265-98c2-4239-b20d-4b3b3953971f',
   'Fanta Laranja 2L U',
   NULL,
   'PROD-39',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   600,
   0,
   'UN',
@@ -681,17 +681,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '53b1dc5a-56bc-405c-8d6f-29b7c79f3976',
+  'c5538515-391d-4acb-96c3-a856067f8642',
   'Guarana Antartica 2L U',
   NULL,
   'PROD-40',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   800,
   0,
   'UN',
@@ -700,17 +700,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd425fe60-7641-4e35-92a9-3d6f9f54e30f',
+  'd0c0b91e-3597-4dc6-a8dc-6945bc5fa4db',
   'Coca-Cola Ret U',
   NULL,
   'PROD-41',
   NULL,
-  '6dfe79d9-ce5a-416e-9b63-f570fc661122',
+  '7731d0fa-0f7b-43d3-94d5-831845ed8fde',
   600,
   0,
   'UN',
@@ -719,17 +719,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '5cf35bda-d59f-488e-b671-0e704f8ad57a',
+  'f52a5c14-6db1-4a9f-b79e-2f54da8d9814',
   'Brahma Chopp U',
   NULL,
   'PROD-42',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   250,
   0,
   'UN',
@@ -738,17 +738,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'cd3c219a-ea4e-425f-afe2-06dfc04ecafc',
+  '1e9faed2-aa81-463f-8993-cea313a2af3e',
   'Antartica Chopp U',
   NULL,
   'PROD-43',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   250,
   0,
   'UN',
@@ -757,17 +757,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'c53493cc-7ef7-4473-9e4c-d3c87f1ab0b6',
+  'aa8bc922-6802-4a6f-a3d6-b99c81eb3edf',
   'Brahma Latão U',
   NULL,
   'PROD-44',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   350,
   0,
   'UN',
@@ -776,17 +776,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '99152bf0-f3fc-4a87-8a5c-0135b10e60fd',
+  'f92cb016-a18b-45fa-8d79-a04e3c6f2af6',
   'Antartica Latão U',
   NULL,
   'PROD-45',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   400,
   0,
   'UN',
@@ -795,17 +795,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '5f3e15c7-6a53-4888-8315-b3d11690975a',
+  '4513e5c8-14b7-4cc7-aa68-650ee5c19e93',
   'Brahma Brt U',
   NULL,
   'PROD-46',
   NULL,
-  'a9f8d6f0-1d6e-4b17-a1fc-945361624d91',
+  '680f7390-811e-47c3-9fb2-1db6ea2d1b27',
   500,
   0,
   'UN',
@@ -814,17 +814,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '28b7fc56-755c-4562-a4dc-84b348f8144a',
+  '518ba378-6eb2-4815-8486-df6fea885f66',
   'Red Bull lata',
   NULL,
   'PROD-47',
   NULL,
-  '9f189928-d871-4ba4-b857-8dfb51556fb9',
+  '563d5cf0-3244-42b8-af5a-72940a7c2d35',
   17500,
   0,
   'CX',
@@ -833,17 +833,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'bbce87c2-3123-431a-9e92-6e1f6a900920',
+  '44dd8859-e144-4c53-a53f-e268876b5411',
   '51',
   NULL,
   'PROD-48',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   12000,
   0,
   'CX',
@@ -852,17 +852,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '16520e7e-a8a0-4afe-8705-c81ebbebe894',
+  '584a60e4-b5f3-4cde-8c40-1035649ecca5',
   '51 U',
   NULL,
   'PROD-49',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1300,
   0,
   'UN',
@@ -871,17 +871,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'bcfdedf3-1718-4c5c-a4bc-07d48d39fa00',
+  '61ad92ec-6b32-4b7f-bc6a-5f6d18fef700',
   'Pedra 90',
   NULL,
   'PROD-50',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   4800,
   0,
   'CX',
@@ -890,17 +890,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '55c7abd8-fbde-4788-a7ab-275294051725',
+  'd6d2cfdf-b8d4-43c3-bfa0-bfcd70945fad',
   '88',
   NULL,
   'PROD-51',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1600,
   0,
   'UN',
@@ -909,17 +909,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b65e289b-212c-4de6-bc2f-8b6b90e1d7fc',
+  'd0406e8f-9cb2-41a3-b11a-7b476a0348e2',
   'Dreher',
   NULL,
   'PROD-52',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2000,
   0,
   'UN',
@@ -928,17 +928,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '7e58c019-82d9-4868-8c18-65e02b84be98',
+  'f42bdfba-5d77-4877-9761-4a3a473d55c0',
   'Fogo Paulista',
   NULL,
   'PROD-53',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   3100,
   0,
   'UN',
@@ -947,17 +947,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'ff1cd218-76cb-4697-a602-ab47ac2f2134',
+  'f4fa74da-8970-4d22-bf71-d2d58997e435',
   'Quinado',
   NULL,
   'PROD-54',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2400,
   0,
   'UN',
@@ -966,17 +966,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '8f689cd4-cea2-4949-94a7-010d688fd9f6',
+  '00cfef6e-53d1-4c9f-a81c-5d79d75852fd',
   'Dubar',
   NULL,
   'PROD-55',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2500,
   0,
   'UN',
@@ -985,17 +985,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '153c128c-91ff-4114-85c6-3570731d58b3',
+  'adc9c78c-dae0-483f-b04d-0e3f83e56e82',
   'Genebra',
   NULL,
   'PROD-56',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2700,
   0,
   'UN',
@@ -1004,17 +1004,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '1e4ecc06-d451-46f5-acfd-cbd1e9a93625',
+  'f65f5105-ad15-444c-9114-25edef03f61e',
   'Caninha da Roça',
   NULL,
   'PROD-57',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   4800,
   0,
   'UN',
@@ -1023,17 +1023,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'eb1729e3-0128-408b-adbd-eb3476e39b25',
+  '658a6f92-f305-4cd2-a6ee-0ad625a67916',
   'São joão da barra',
   NULL,
   'PROD-58',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1900,
   0,
   'UN',
@@ -1042,17 +1042,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '42423b9d-b44d-40d8-91bf-a7d015bd152b',
+  '364e2d81-2546-4712-9500-7374db6ebdd4',
   'Vodka Kovak',
   NULL,
   'PROD-59',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2500,
   0,
   'UN',
@@ -1061,17 +1061,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '86fcc81a-28ec-403b-b927-0173ee36ffbb',
+  '47e6971d-f70e-43db-88fc-c6d339f65e06',
   'Ipioca S. Palha',
   NULL,
   'PROD-60',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2400,
   0,
   'UN',
@@ -1080,17 +1080,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b8e9acce-9051-4f6c-ad6e-f472fb8b79f4',
+  'f9530bf6-fcac-4395-a3e9-e75afc1f90a7',
   'MEL',
   NULL,
   'PROD-61',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1100,
   0,
   'UN',
@@ -1099,17 +1099,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '4532b05d-fdd8-4500-a8fb-f4afb0e6b95b',
+  '44214a18-2da5-4fa2-a705-20a1dd12637b',
   'Aniz',
   NULL,
   'PROD-62',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1300,
   0,
   'UN',
@@ -1118,17 +1118,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '4cb547c9-e7e6-4f17-a6ff-edf3ebf5b32e',
+  '8313f594-6f8c-4d4b-af79-9b66729ccadf',
   'Hortelã',
   NULL,
   'PROD-63',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1300,
   0,
   'UN',
@@ -1137,17 +1137,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '06e2e48e-304e-4fbd-a5b4-769ef7faed79',
+  '86174434-0433-4788-97ee-527246c2da10',
   'Paratudo',
   NULL,
   'PROD-64',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1700,
   0,
   'UN',
@@ -1156,17 +1156,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '398b7f2e-2eeb-4b67-ad01-4410915121fa',
+  'ee33df1b-0f96-49e0-a205-3380a913e5ee',
   'Pessêgo',
   NULL,
   'PROD-65',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1500,
   0,
   'UN',
@@ -1175,17 +1175,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '12ef4c2c-49ac-4cf5-92f5-5cb889188ee1',
+  'bd8b3909-6a62-429d-8302-e917e1452a13',
   'Vodka Smirnoff',
   NULL,
   'PROD-66',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   3700,
   0,
   'UN',
@@ -1194,17 +1194,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'ce40d089-7d03-41e5-8e61-ee1fa4ff035a',
+  '763b5947-916f-495d-87d3-a8681ada9b39',
   'Vodka Leonoff',
   NULL,
   'PROD-67',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1900,
   0,
   'UN',
@@ -1213,17 +1213,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '34e4e4fc-ffdc-4b38-944c-5cdbaf2ccd45',
+  '848640a9-e8cc-4224-b03f-d3ffab077269',
   'Saco Carvão 3k',
   NULL,
   'PROD-68',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   0,
   0,
   'UN',
@@ -1232,17 +1232,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'ddb5d8d5-097f-4b06-adc6-9e458d861ee4',
+  '7555ca98-06c1-460f-8ed1-d9872480df69',
   'Saco Carvão 6kg',
   NULL,
   'PROD-69',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   0,
   0,
   'UN',
@@ -1251,17 +1251,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '6e6c33ba-6da5-4dab-b285-f6106bb288fb',
+  '28c4430d-c032-4c7b-857d-03b2331de7f9',
   'copo desc 200 ml',
   NULL,
   'PROD-70',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   13500,
   0,
   'CX',
@@ -1270,17 +1270,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '25579e42-c17b-4488-91e9-6e6da4c5df00',
+  'a7517e01-d6d3-4a84-abec-e8c33b7a82c3',
   'Heineken',
   NULL,
   'PROD-71',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   13000,
   0,
   'CX',
@@ -1289,17 +1289,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '38f7523b-cb62-4136-9f95-ad887aa1f4d5',
+  '3e65e5fe-579b-4689-9d11-c7f63eeb6cfd',
   'Catuaba',
   NULL,
   'PROD-72',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1100,
   0,
   'UN',
@@ -1308,17 +1308,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '989bd77b-4802-40c4-8b04-228e268d2fcf',
+  'fafb6253-e5f9-4cb8-9453-70e4a088ea28',
   'Fanta Laranja Ret',
   NULL,
   'PROD-73',
   NULL,
-  '6dfe79d9-ce5a-416e-9b63-f570fc661122',
+  '7731d0fa-0f7b-43d3-94d5-831845ed8fde',
   7100,
   0,
   'CX',
@@ -1327,17 +1327,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '052665a5-186b-4aa5-be1a-7e7ec7c534b6',
+  'ee40a09e-d547-4e9a-8b35-23621d18fde4',
   'Fazenda Velha',
   NULL,
   'PROD-74',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1000,
   0,
   'UN',
@@ -1346,17 +1346,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd703cf5f-baa9-4017-9fe5-bafcf3e0b9eb',
+  '00401251-2fb3-406d-8f9c-6a38c43b91b9',
   'Vodka Maravilha',
   NULL,
   'PROD-75',
   NULL,
-  '6a5790ec-868f-4d6e-bf9d-fec0e5fa76ae',
+  '065149e5-2048-432f-b654-6cf1a078a73e',
   500,
   0,
   'UN',
@@ -1365,17 +1365,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '8225b1af-df15-4dd2-aeb3-fbad102bc02a',
+  '67b7bb19-74f6-47f5-91b0-81e8253b6757',
   'Jurubeba',
   NULL,
   'PROD-76',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1550,
   0,
   'UN',
@@ -1384,17 +1384,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'f7f91ad5-67d8-4fb8-a781-a908d9990876',
+  'c034ee22-1faa-4e6f-ab35-71d56d436bbe',
   'Jurupinga',
   NULL,
   'PROD-77',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   3000,
   0,
   'UN',
@@ -1403,17 +1403,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'f3dd24fa-1d6e-413a-b25b-a594b2e6e88f',
+  'ddf12e56-6d8d-47d1-b430-17b114633e7f',
   'Amendoim',
   NULL,
   'PROD-78',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1500,
   0,
   'UN',
@@ -1422,17 +1422,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '87389cc2-81de-47fa-bb3e-3ab9f0bed513',
+  '45127d2c-f2de-47a5-bb32-4188048f3bbd',
   'Menta',
   NULL,
   'PROD-79',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   1300,
   0,
   'UN',
@@ -1441,17 +1441,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '22085e72-c2f7-4278-a88d-2390dca7c24f',
+  '23cd5c08-2c93-44be-af9c-e1ee38b6efc8',
   'Fanta Uva RET',
   NULL,
   'PROD-80',
   NULL,
-  '6dfe79d9-ce5a-416e-9b63-f570fc661122',
+  '7731d0fa-0f7b-43d3-94d5-831845ed8fde',
   7100,
   0,
   'CX',
@@ -1460,12 +1460,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'abca666d-16e6-414b-a486-f6cbbdeb896a',
+  '21079cc9-c4ca-4e4c-b68e-f700c9f3c3f3',
   'Skol Litrão',
   NULL,
   'PROD-81',
@@ -1479,12 +1479,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '81599371-07f6-4e38-936c-4eab07ac6080',
+  'e674553d-44a9-4a13-a279-085fc4697ef1',
   'Água Tônica',
   NULL,
   'PROD-82',
@@ -1498,17 +1498,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'aea1aa4f-b7ec-4927-a30f-e855224c5580',
+  '91a78e55-e201-4848-bd9a-b06cb41e9a0f',
   'Budweiser',
   NULL,
   'PROD-83',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   11000,
   0,
   'UN',
@@ -1517,17 +1517,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '05fdd61f-0af2-4d15-8188-028bf00f0c02',
+  '973e3ad9-a305-4a41-9a29-1dbb41c512b0',
   'Corona',
   NULL,
   'PROD-84',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   13500,
   0,
   'CX',
@@ -1536,17 +1536,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'f8e7984b-776c-4f8a-ad69-eb77c3b8394a',
+  '8859fa36-c2b2-42b1-a846-9aadc5dada88',
   'Domec',
   NULL,
   'PROD-85',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   4000,
   0,
   'UN',
@@ -1555,17 +1555,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '514dfccf-8c80-4ce6-ae4f-10c37f72706b',
+  '59b0db08-0d80-4c92-bc29-6de53f4f3eaa',
   'Brahma Duplo Malte',
   NULL,
   'PROD-87',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   3700,
   0,
   'CX',
@@ -1574,12 +1574,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'dce4722c-88ec-4540-8402-3bc67bcaa319',
+  'f501aef8-b1f0-48cc-b103-bb3fc7b2a7cb',
   'Gelo Filtrado',
   NULL,
   'PROD-88',
@@ -1593,12 +1593,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'ba54217a-08d1-4785-a1d3-1cb1b6b16028',
+  '0ad0d63b-633a-4e11-b907-2da726dda959',
   'Gelo',
   NULL,
   'PROD-89',
@@ -1612,17 +1612,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '96c43e54-d5d5-42f4-8d0b-7d0735be2367',
+  '2912da49-204d-4912-b72e-51bec871e7d7',
   'Jogo de Mesa',
   NULL,
   'PROD-90',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   700,
   0,
   'UN',
@@ -1631,17 +1631,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '0aaa417a-2577-49b3-b66c-b644aa0604e3',
+  '5d67f72a-1d43-4a6d-8e76-488a6f0081cf',
   'Convenção Un.',
   NULL,
   'PROD-91',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   400,
   0,
   'UN',
@@ -1650,17 +1650,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd1fef53b-76b1-4bfa-8ff2-e31f3a863819',
+  '2ad55e16-8e6a-46b0-a273-f82ffff457cf',
   'Energético Dopamina',
   NULL,
   'PROD-92',
   NULL,
-  '9f189928-d871-4ba4-b857-8dfb51556fb9',
+  '563d5cf0-3244-42b8-af5a-72940a7c2d35',
   10000,
   0,
   'UN',
@@ -1669,17 +1669,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '79fdab6f-c394-428e-9018-f5ce6210c1f5',
+  '3f512131-aa4f-4e33-86fc-c55054d47a3a',
   'Água com Gás',
   NULL,
   'PROD-93',
   NULL,
-  '55754ee5-a01f-4647-8c50-12e6fdf4f3c9',
+  'b8979d31-c855-4351-93d5-1d04f690c82f',
   1900,
   0,
   'CX',
@@ -1688,17 +1688,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '81a6baf9-5d2e-4cb3-b294-a88a8480a5ff',
+  'd8665e00-d91c-44cc-ac41-c139696afa12',
   'caninha da roça unidade',
   NULL,
   'PROD-95',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   250,
   0,
   'UN',
@@ -1707,17 +1707,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '5a5af92b-e0a5-451f-8491-7838004d3f2c',
+  'a44d1966-6f1d-4c46-8553-348ae36230e9',
   'Chopp de Vinho',
   NULL,
   'PROD-1095',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   5000,
   0,
   'CX',
@@ -1726,12 +1726,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'ace8c538-5eca-46e4-b78b-38a547262665',
+  '478af8a6-730a-4afa-8127-54eab4a62d34',
   'Red Bull unidade',
   NULL,
   'PROD-1096',
@@ -1745,17 +1745,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '2a89ff40-c194-42e9-b248-f70969ff24a1',
+  '61af97a6-d0d1-44c9-b301-16867946f05e',
   'Heineken Un.',
   NULL,
   'PROD-1097',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   600,
   0,
   'UN',
@@ -1764,17 +1764,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '41d1735d-20ea-4f29-9d73-52e65aa75391',
+  'f07aa879-c251-4b89-b226-db994c25b173',
   'Água 1,5L',
   NULL,
   'PROD-1098',
   NULL,
-  '55754ee5-a01f-4647-8c50-12e6fdf4f3c9',
+  'b8979d31-c855-4351-93d5-1d04f690c82f',
   1400,
   0,
   'UN',
@@ -1783,17 +1783,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'f821071a-6e10-4390-b379-fb412ea8ace1',
+  '03fe9b7a-95dc-45b0-b1bf-69856f3f32d2',
   'Stella Artois',
   NULL,
   'PROD-1099',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   13000,
   0,
   'CX',
@@ -1802,17 +1802,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '3f531027-1052-4104-ae42-dc78309f1a15',
+  '82536230-413b-4f78-84ed-7bad430858a1',
   'Heineken Sem Álcool',
   NULL,
   'PROD-1100',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   13000,
   0,
   'CX',
@@ -1821,17 +1821,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'bef0888e-1965-4468-a2fc-d9602b1a3fbc',
+  '9ba53fd8-9f82-464f-a97f-4932608e1835',
   'Carvão 3kg',
   NULL,
   'PROD-1101',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   1700,
   0,
   'UN',
@@ -1840,17 +1840,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '49d116f1-61d8-4abd-9000-315ef60bdb41',
+  '0fe2fcdb-94dc-4d5a-bf9f-9993a390b7bc',
   'Carvão 6kg',
   NULL,
   'PROD-1102',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   2000,
   0,
   'UN',
@@ -1859,17 +1859,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '55684480-2606-4cef-9b26-e0c69900c479',
+  '97812416-893a-4b28-9489-b3ec3b307b21',
   'Convenção Laranja 2L',
   NULL,
   'PROD-1103',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   2100,
   0,
   'CX',
@@ -1878,17 +1878,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '8e6a697a-4d8f-42a3-a02c-791f0b0ee4eb',
+  '9f2b9f52-a156-4432-9b7a-4827cdd8aa9f',
   'Convenção Limão 2L',
   NULL,
   'PROD-1104',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   2100,
   0,
   'CX',
@@ -1897,17 +1897,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '1a07cf99-4a04-45ac-abb4-9cf04f42d626',
+  'ad04d037-dede-4ca1-b620-040032bdfede',
   'Convenção Uva 2L',
   NULL,
   'PROD-1105',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   2100,
   0,
   'CX',
@@ -1916,17 +1916,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9658c339-f062-4323-bb62-b5e9cba98537',
+  'de51e19d-6f1e-4e5a-8ebb-ea6082f771ac',
   'Gatorade Limão',
   NULL,
   'PROD-1106',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   3200,
   0,
   'CX',
@@ -1935,17 +1935,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '8548d7a7-c836-430e-b006-7b289e0622ba',
+  'cfb0d15f-2382-4a0e-8bde-a18ce3e174f8',
   'Gatorade Uva',
   NULL,
   'PROD-1107',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   3200,
   0,
   'CX',
@@ -1954,17 +1954,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd74dd25a-929a-4c45-88ae-31726296b5df',
+  'cf8abdd6-420f-4200-9c6b-a4860cf3661d',
   'Gatorade Morango com Maracujá',
   NULL,
   'PROD-1108',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   3000,
   0,
   'CX',
@@ -1973,17 +1973,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b40cb081-8920-4113-9272-030bf705a2e4',
+  'ab5b28af-0c20-4507-82ff-751599c0f592',
   'Gatorade Maracujá',
   NULL,
   'PROD-1109',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   2500,
   0,
   'CX',
@@ -1992,17 +1992,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd0d427d1-fe02-49be-b097-5896f0c60cd6',
+  '38c302db-c641-43da-a1e0-1906d528e26c',
   'Gatorade Laranja',
   NULL,
   'PROD-1110',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   3200,
   0,
   'CX',
@@ -2011,17 +2011,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '4d3b104f-f519-499f-abe3-5c33ae1f3011',
+  'b48a1677-6379-4621-83d9-742c79b3d9da',
   'Gatorade Frutas Cítricas',
   NULL,
   'PROD-1111',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   2500,
   0,
   'CX',
@@ -2030,17 +2030,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9c6bd18c-1ffb-4e54-bc14-13f7dd60c457',
+  '9c633c41-f7e6-4d6e-9e03-ecdb0f724d69',
   'Gatorade Tangerina',
   NULL,
   'PROD-1112',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   3200,
   0,
   'CX',
@@ -2049,17 +2049,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd42af2b4-05ef-429e-8fc1-b5d218e0e315',
+  '004c091b-3260-47fb-9e7a-e93aae127185',
   'GT LONG NECK',
   NULL,
   'PROD-1113',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   14900,
   0,
   'CX',
@@ -2068,17 +2068,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '6cb94a55-b6ce-4ed8-b442-6d895ae73e32',
+  'df27e1a8-6be4-49e2-9f62-483147be512d',
   'Corona Unidade',
   NULL,
   'PROD-1114',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   550,
   0,
   'UN',
@@ -2087,17 +2087,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd44f7320-101f-4e8a-bd60-01227c1d9641',
+  'cc74ba2e-6db2-47c1-b385-8d0e911c1cba',
   'Água de Coco 200ML',
   NULL,
   'PROD-1115',
   NULL,
-  '71b856a0-5392-4d4b-ad3d-1a06917c5549',
+  '3ee84df4-9e36-4822-81c2-eac4e53aa10f',
   350,
   0,
   'UN',
@@ -2106,17 +2106,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b23ac079-c999-4d29-96b0-c93e116c9423',
+  '6c5f8c9c-1816-465e-9c7c-2bb33f9b5d87',
   'Chivas',
   NULL,
   'PROD-1116',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   14000,
   0,
   'UN',
@@ -2125,17 +2125,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'be17833c-3e26-4e0e-a05b-1329a8568cef',
+  'e6fe2133-caf9-4346-ba2e-ff4170a52622',
   '43',
   NULL,
   'PROD-1117',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   16000,
   0,
   'UN',
@@ -2144,17 +2144,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '26653504-0efe-4979-829b-aa377f00ba6c',
+  '7b680e79-42ff-4502-9e05-cbd9781bb8c5',
   'Buchanan´s',
   NULL,
   'PROD-1118',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   18000,
   0,
   'UN',
@@ -2163,17 +2163,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '451ad72c-3e55-4e83-91e2-a9996202ffa6',
+  '7598a053-5791-494c-96ff-2d4d1f9d42c7',
   'Balantines',
   NULL,
   'PROD-1119',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   8000,
   0,
   'UN',
@@ -2182,17 +2182,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'c1c2a56e-ac48-41c1-8bc9-317db3eb8030',
+  'f83c9b5b-2ddc-45da-81d1-6fd58cf6ad66',
   'RedLabel',
   NULL,
   'PROD-1120',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   9000,
   0,
   'UN',
@@ -2201,17 +2201,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b275ec12-fa34-4987-92ab-c48b9c9fb734',
+  'a4777c1f-d7c7-4d72-b875-94432b09cc21',
   'BlackLabel',
   NULL,
   'PROD-1121',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   17000,
   0,
   'UN',
@@ -2220,17 +2220,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'ff87a92e-2459-4638-9b83-27b7187d5f9d',
+  '7656bf04-d1c6-4680-a15a-44a6304d59e6',
   'OldPar',
   NULL,
   'PROD-1122',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   14000,
   0,
   'UN',
@@ -2239,17 +2239,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'c04c9a41-c764-4a64-9a88-d759decf9c77',
+  '72041cf0-a77c-4119-a9d0-4950e38198de',
   'Casa Perini',
   NULL,
   'PROD-1123',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   6000,
   0,
   'UN',
@@ -2258,17 +2258,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '5642dd94-cc64-44e6-a858-9cc4214fae30',
+  '609bfd44-2179-4166-acef-c0848cb3ccaa',
   'Tanqueray',
   NULL,
   'PROD-1124',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   11000,
   0,
   'UN',
@@ -2277,17 +2277,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'c085a56f-e06f-4c12-9439-ed46c1940542',
+  '824ac13c-ab1a-49ed-ba27-5865246dd8d2',
   'Cavalo Branco',
   NULL,
   'PROD-1125',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   8000,
   0,
   'UN',
@@ -2296,17 +2296,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '0b006976-5f44-4794-b387-2a757208661f',
+  '8acde349-ffdd-4c56-8ed3-fae658cba80c',
   'Gordons',
   NULL,
   'PROD-1126',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   7000,
   0,
   'UN',
@@ -2315,17 +2315,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9e1de653-8fe1-44c5-b189-7aca83d64b0f',
+  '6dd6fa64-8d81-4d8e-a944-acf20d00a668',
   'Gordons Rosa',
   NULL,
   'PROD-1127',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   9000,
   0,
   'UN',
@@ -2334,17 +2334,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9672fde0-21ac-41c2-8afa-c82954e61dbc',
+  'ff28a5f6-1025-40a7-a59f-2653ccfb41b2',
   'Copo Descartável 200ML',
   NULL,
   'PROD-1128',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   600,
   0,
   'UN',
@@ -2353,17 +2353,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '294dcf6d-87f3-4b1e-8b34-8e5c5440cdf2',
+  'a954d1c5-3a24-44ea-9732-14817ad84610',
   'Sminorff Ice',
   NULL,
   'PROD-1129',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   700,
   0,
   'UN',
@@ -2372,17 +2372,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '3ebb6324-4e72-466e-a29b-62ad43bedf49',
+  'c888a0e0-4752-4868-a27e-b9e14cdd98dd',
   'Sprite Lata',
   NULL,
   'PROD-1130',
   NULL,
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   3000,
   0,
   'CX',
@@ -2391,17 +2391,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '8ded132b-dbd1-469e-bafd-ddc5f7a71348',
+  '055bbcd7-9686-403e-aadb-cf18181e4b9d',
   'Smirnoff 600ML',
   NULL,
   'PROD-1131',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2500,
   0,
   'UN',
@@ -2410,17 +2410,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '40940a4a-fda3-4218-8490-4fdb30864586',
+  '711e5db7-e6af-4b78-a161-d009ae9d30d3',
   'Absolut 1L',
   NULL,
   'PROD-1132',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   9990,
   0,
   'UN',
@@ -2429,17 +2429,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '4b508337-e6ea-4746-8710-9662979469fd',
+  '6ca1372f-7699-4706-84b4-eb47b8562477',
   'Ciroc 750ML',
   NULL,
   'PROD-1133',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   17390,
   0,
   'UN',
@@ -2448,17 +2448,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '58c171e7-36aa-4be8-8b72-f44d0f2e12f1',
+  '8b3237b1-c53f-4d7c-abb9-82a72d7ec4b0',
   'Tônica Fys',
   NULL,
   'PROD-1134',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   269,
   0,
   'UN',
@@ -2467,17 +2467,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '1ec47c9e-2ce4-4370-974e-c283d69c4418',
+  'c1016e44-384e-4ee7-a913-28de50080a3a',
   'Amstel Latão',
   NULL,
   'PROD-1135',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   5300,
   0,
   'UN',
@@ -2486,17 +2486,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '65464b90-eda9-4d41-9336-b9f532f849aa',
+  '9f755082-dfdd-4912-8bc8-87125275466b',
   'stella Artois UN.',
   NULL,
   'PROD-1136',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   500,
   0,
   'UN',
@@ -2505,17 +2505,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '61a840c4-74a6-43b0-90b9-123bd29af679',
+  '6a0b7da1-fbd1-47bc-bc33-71930aab27d6',
   'Gin Bombay',
   NULL,
   'PROD-1137',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   11000,
   0,
   'UN',
@@ -2524,17 +2524,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'e1f05be8-c556-4826-9970-b8da6c89e44a',
+  '169749e5-bb38-45ac-b9a6-cfa8ee626cc1',
   'Skol Chopp',
   NULL,
   'PROD-1138',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   4200,
   0,
   'CX',
@@ -2543,17 +2543,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'e3837ddf-647e-4d3d-9e35-01ab17bfba53',
+  '693fd297-4c4e-4df9-bcde-848b08dc31fb',
   'Chopinho de Vinho',
   NULL,
   'PROD-1139',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   3400,
   0,
   'CX',
@@ -2562,17 +2562,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b52cb5dc-0499-4bf3-bca3-38008964f04d',
+  '32fd8f36-0ffe-4e48-ba32-74aebddbc9c8',
   'Nosso Chop De Vinho',
   NULL,
   'PROD-1140',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   2500,
   0,
   'UN',
@@ -2581,17 +2581,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '18e56205-014f-4021-b5d9-c1e3cc42e262',
+  '9a67de79-f2ec-4750-b987-4394f7180bf5',
   'GT UNIDADE',
   NULL,
   'PROD-1141',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   700,
   0,
   'UN',
@@ -2600,17 +2600,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '95f49086-1b86-4ced-8d1e-9ad2b25b7250',
+  '1fd86b22-213a-4064-a95d-3652a61443b5',
   'Sprite Un.',
   NULL,
   'PROD-1142',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   700,
   0,
   'UN',
@@ -2619,17 +2619,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'cb4d85d0-e3ec-4e3c-b1cc-f8efd36bce85',
+  '2e18f135-7cac-48f0-ac1a-7bae7622bf1f',
   'Heineken Zero Un.',
   NULL,
   'PROD-1143',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   600,
   0,
   'UN',
@@ -2638,17 +2638,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'ead45ddf-74fa-4434-8ad1-a11064dc9adb',
+  '7dd85337-0747-499e-83a8-9a5cdf872d31',
   'Spaten',
   NULL,
   'PROD-1144',
   NULL,
-  '66df53fa-60e7-436c-b560-857b3425a557',
+  '6e9f50d5-861b-4b53-8ad3-04fc99d68640',
   16500,
   0,
   'CX',
@@ -2657,17 +2657,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a0915d1d-d121-4a32-85fb-c498c4b9910b',
+  'b377da2a-d2c4-4ba4-8a10-9868c6740d72',
   'Budwiser Unidade',
   NULL,
   'PROD-1145',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   550,
   0,
   'UN',
@@ -2676,17 +2676,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd65398cc-460f-4229-9138-97e345212ec5',
+  '8d1c923e-004a-4c4f-a5f2-bfd4e3dcf100',
   '1/2 gelo',
   NULL,
   'PROD-1146',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   600,
   0,
   'UN',
@@ -2695,12 +2695,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '8118e1bf-cfcd-4c69-9c9c-452b44a2b4d1',
+  '72d80c10-6f22-469e-81bd-61ce1c96de4c',
   'Império Gold UN.',
   NULL,
   'PROD-1147',
@@ -2714,17 +2714,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a38a49de-8b97-496f-bf70-69d648d48a94',
+  'a0a8cebc-63da-4932-b300-8e1f45a1e4ef',
   'Tenda Lona',
   NULL,
   'PROD-1148',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   25000,
   0,
   'UN',
@@ -2733,17 +2733,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '49996e1e-5bf7-4313-8471-194e896bf75b',
+  'ba8ac648-d22d-4751-b3b1-ba58f997c09d',
   'Spaten Un.',
   NULL,
   'PROD-1149',
   NULL,
-  '66df53fa-60e7-436c-b560-857b3425a557',
+  '6e9f50d5-861b-4b53-8ad3-04fc99d68640',
   900,
   0,
   'UN',
@@ -2752,17 +2752,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'd8a75bf2-302c-42e6-b9ff-4866d213649b',
+  '246c3663-8e88-469f-b20b-e0aa25a2019a',
   'Ice Kovak',
   NULL,
   'PROD-1150',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   9500,
   0,
   'CX',
@@ -2771,17 +2771,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '60cac3b5-e8e9-4813-aa2f-1ab3a217e021',
+  '0d17d162-8a76-473c-8ec8-6c455b327b66',
   'Amstel 600ml',
   NULL,
   'PROD-1151',
   NULL,
-  '66df53fa-60e7-436c-b560-857b3425a557',
+  '6e9f50d5-861b-4b53-8ad3-04fc99d68640',
   13000,
   0,
   'CX',
@@ -2790,17 +2790,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9707183e-9455-455c-8143-51bbb9cddd6c',
+  '88d7297c-1db6-445c-bc4e-0e2f26b3c043',
   '51 em lata',
   NULL,
   'PROD-1152',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2000,
   0,
   'CX',
@@ -2809,17 +2809,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'e915ea9c-800e-42e0-beeb-c8a374eaacbc',
+  '773d6087-26cc-4d9b-9008-b28e1df2177a',
   'Água Galão 20L',
   NULL,
   'PROD-1153',
   NULL,
-  '55754ee5-a01f-4647-8c50-12e6fdf4f3c9',
+  'b8979d31-c855-4351-93d5-1d04f690c82f',
   1000,
   0,
   'UN',
@@ -2828,17 +2828,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '804f2c14-755b-40f3-b4af-551b49828e19',
+  '55648db4-d464-4c46-a958-a89c2978014e',
   'Vinho Bled Un.',
   NULL,
   'PROD-1154',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   900,
   0,
   'UN',
@@ -2847,17 +2847,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '0327e94c-c1fb-471d-ac96-570d8a45f767',
+  '1d95d249-a69a-44cd-828a-8b4f1cb956f6',
   'Gold Label',
   NULL,
   'PROD-1155',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   23000,
   0,
   'UN',
@@ -2866,17 +2866,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '355a9865-24c7-41ad-98f4-9f1838447f69',
+  'f262d987-6ffc-40b2-a546-8a9b6859b50e',
   'Brahma Chopp Gelada',
   NULL,
   'PROD-1156',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   5500,
   0,
   'CX',
@@ -2885,17 +2885,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a6cd13f8-c112-4a00-b096-c7b7f4547046',
+  'c3b90ab7-1457-4c7a-98ec-2490108a9869',
   'Antártica Chopp Gelada',
   NULL,
   'PROD-1157',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   6200,
   0,
   'CX',
@@ -2904,17 +2904,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '7206f8ef-c6fc-4dd9-bab5-bab8917568df',
+  '94068f46-fb1f-407f-872e-de6e12206407',
   'Jogos de mesa',
   NULL,
   'PROD-1158',
   NULL,
-  '4f8fd72e-bb6b-4925-b9f6-e10926c51745',
+  'c779d007-520e-44e8-8c03-f7d744fc4fe0',
   700,
   0,
   'UN',
@@ -2923,17 +2923,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '93e68b72-3323-4844-a602-bda47b1e51f7',
+  '70029ba3-eaa5-42a7-879c-294a0ec0efed',
   'Heineken Gelada',
   NULL,
   'PROD-1159',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   13500,
   0,
   'CX',
@@ -2942,17 +2942,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'f5db6c6b-6db2-4a5e-ac77-ba4e6eea60ca',
+  '4c8b757e-f503-4e23-a169-5e1583743f33',
   '51 600ml',
   NULL,
   'PROD-1160',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   500,
   0,
   'CX',
@@ -2961,17 +2961,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9d6e126e-d9cb-4ac8-9519-6a8698f38b1d',
+  'c7f45a1b-5947-4ba9-8319-e8dc64c813af',
   'FANTA UVA LATA COM 06 UNIDADES',
   NULL,
   'PROD-1162',
   NULL,
-  '94fa6ab6-d736-47ce-9483-e1dafbfabe5a',
+  'b85e7d14-e2b9-4a5c-9831-b81cdfb39d4a',
   1500,
   0,
   'CX',
@@ -2980,17 +2980,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '2acd0f03-3616-4228-80ce-bfdcdcd9ef2b',
+  '841039a1-686b-4e8a-8a8c-8c76941d875a',
   'Brahma Litrao Gelada',
   NULL,
   'PROD-1163',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   8600,
   0,
   'CX',
@@ -2999,17 +2999,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'cf8377c7-78e9-4b31-9b28-9d89ea6b0320',
+  'cf4e1fe4-260d-4e65-b69b-cf81228d49c4',
   'Antartica Litrao Gelada',
   NULL,
   'PROD-1164',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   9000,
   0,
   'CX',
@@ -3018,17 +3018,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '10042dae-e931-42c4-857b-0916027164c9',
+  '6d79c967-9d35-439d-8907-7c6d8a1e47dd',
   'Império Latão Gelada',
   NULL,
   'PROD-1165',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   4700,
   0,
   'UN',
@@ -3037,17 +3037,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '89dfb909-85e3-42d2-a6d8-e66d692701d2',
+  'f55b4188-2697-4303-b7f5-8a804e969ae3',
   'Amstel Latão Gelado',
   NULL,
   'PROD-1166',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   5400,
   0,
   'CX',
@@ -3056,17 +3056,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'cfeb8a09-2192-4312-b2ab-8d44f2d1e455',
+  '5deb5ad5-e899-43e2-96da-a8a93288b5b0',
   'BRAHMA LATAO GELADA',
   NULL,
   'PROD-1167',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   5000,
   0,
   'CX',
@@ -3075,17 +3075,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '29a574e1-ae22-4598-b370-268eb7647cda',
+  '6f9a1076-7b0d-404b-bf2b-a12d61730d4f',
   'ANTARTICA LATAO GELADA',
   NULL,
   'PROD-1168',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   4700,
   0,
   'CX',
@@ -3094,17 +3094,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '63ccaf96-34e4-4b09-add0-c49e46540afb',
+  '453989f6-3b23-46af-b35a-d8afb9729b5a',
   'IMPERIO GOLG GELADA',
   NULL,
   'PROD-1169',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   6800,
   0,
   'CX',
@@ -3113,17 +3113,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'fe6b6f5a-2ba1-4aa2-bbda-78c2ef392bcc',
+  '1f7223b3-d24f-46b7-aa77-fae72937bd74',
   'GUARANÁ ANTÁRTICA 1L',
   NULL,
   'PROD-1170',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   2600,
   0,
   'CX',
@@ -3132,17 +3132,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'da535f0c-eedb-4c46-9649-f3f8d15a9593',
+  '17635aa5-7c98-4361-b6fc-e638de883e9a',
   'BANANINHA',
   NULL,
   'PROD-1171',
   NULL,
-  'c5bc224a-67a4-489f-9448-99e793ccc13a',
+  '995ab247-5c98-412e-a8dc-3eb14ee9febb',
   2400,
   0,
   'UN',
@@ -3151,17 +3151,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a313fdbe-be04-4655-80b9-126b6d144088',
+  '7eaef5c0-8abb-41a0-87ae-998264608b03',
   'IMPÉRIO GOLD GELADA',
   NULL,
   'PROD-1172',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   6800,
   0,
   'CX',
@@ -3170,17 +3170,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '8b57480e-f363-420f-8c04-21c2a90d3bb2',
+  'aaeaf9eb-a1d0-4058-a1c2-6e1559bdada5',
   'COCA RETORNAVEL GELADA',
   NULL,
   'PROD-1173',
   NULL,
-  '6dfe79d9-ce5a-416e-9b63-f570fc661122',
+  '7731d0fa-0f7b-43d3-94d5-831845ed8fde',
   7500,
   0,
   'CX',
@@ -3189,17 +3189,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'fd4ba146-3215-4051-8f95-9641116a612c',
+  '90d890f7-03dc-40db-9a1d-442bda3859e1',
   'BUDWISER CHOPINHO',
   NULL,
   'PROD-2095',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   6300,
   0,
   'CX',
@@ -3208,17 +3208,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'e18d7e94-7134-4ecf-9f1b-3095e76d976e',
+  '6bb4a27a-c61e-46fd-8182-d29985a4bafa',
   'HEINEKEN LATÃO',
   NULL,
   'PROD-2096',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   7000,
   0,
   'CX',
@@ -3227,17 +3227,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'c8345692-4b84-40cf-a634-21d12e6f0096',
+  'be055db6-92cb-45c9-9981-07cbe575d43e',
   'ITAIPAVA LATÃO',
   NULL,
   'PROD-3096',
   NULL,
-  'e1e03827-67b8-49c3-9a1d-7e3aa79e6a24',
+  '9bafafa9-99eb-40a8-8425-9ed522cd7436',
   3700,
   0,
   'CX',
@@ -3246,17 +3246,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b0e3c434-e5a6-4338-a4fa-851d38650f77',
+  'ad2a3a10-fda6-4f3e-bb24-90fd11acc3f8',
   'ANTÁRTICA CHOP 23 QUENTE',
   NULL,
   'PROD-4096',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   6300,
   0,
   'CX',
@@ -3265,17 +3265,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '1eb0af1e-544d-42fd-9459-3bcd3b026b16',
+  'd97385bf-390b-4cc0-a867-0e884977c299',
   'BRAHMA CHOP. 23 QUENTE',
   NULL,
   'PROD-5096',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   5600,
   0,
   'CX',
@@ -3284,17 +3284,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '963e3db4-2d8f-4c35-ae1a-15a83b891906',
+  '9b68ad96-8622-457c-bfc7-48a143682411',
   'ANTÁRTICA CHOP 23 GELADA',
   NULL,
   'PROD-5097',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   6500,
   0,
   'CX',
@@ -3303,17 +3303,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '5fb011ef-28f7-4642-ab7f-59e3d75e13c3',
+  'fb79a4f1-fd00-4b57-a9d1-e777a29d5a87',
   'BRAHMA CHOP. 23 GELADA',
   NULL,
   'PROD-5099',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   5800,
   0,
   'CX',
@@ -3322,17 +3322,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '3c708eca-54ca-4910-904e-23b0ce093039',
+  'cbc9f417-3ac0-4dc5-9aca-ee8058a5add2',
   'IMPÉRIO CHOP. QUENTE',
   NULL,
   'PROD-6096',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   5500,
   0,
   'CX',
@@ -3341,17 +3341,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '9086888f-22c4-4562-a84d-54009f651d1c',
+  'fee93cb9-5512-4de7-937c-4abe5f6d9a3e',
   'IMPÉRIO CHOP. GELADA',
   NULL,
   'PROD-6097',
   NULL,
-  '0ca1991b-31c4-4da5-9d4e-45326120f229',
+  'd11dac40-35da-427f-949f-83e48fa20722',
   5700,
   0,
   'CX',
@@ -3360,17 +3360,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '19c0f4ee-04d3-4d07-ad7f-7b7a7e3d4d34',
+  '8ee61d84-430e-4d72-ba12-b064f21a5f22',
   'BRAHMA MALZBIER LONG NECK',
   NULL,
   'PROD-7096',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   13000,
   0,
   'CX',
@@ -3379,17 +3379,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'b254ac82-7d31-46f2-8f55-1eaea69d1ce5',
+  '8dd8c563-1504-4bfa-8dd8-5188f7ff993f',
   'CONVENÇÃO ABACAXI',
   NULL,
   'PROD-7097',
   NULL,
-  'fe3212c1-0c45-4b10-b485-0223984f7940',
+  '6b2af04d-639a-4803-bf65-c330c8867c37',
   2600,
   0,
   'CX',
@@ -3398,17 +3398,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '22643fca-1468-4030-858b-5e1c873243e6',
+  'e54be3f0-e774-482f-885a-37b7831c3677',
   'SPATEN LONG NECK',
   NULL,
   'PROD-7098',
   NULL,
-  'efb0c876-8e4f-4656-8ba4-bfe7b027a1b6',
+  '2ed938d4-337e-4278-bd47-ef7e158a4fa0',
   12700,
   0,
   'CX',
@@ -3417,12 +3417,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'fca798a2-8973-482d-89b4-fda9772700a6',
+  'eeb48033-10c1-4305-a954-8d3efa4a2f88',
   'ANTÁRTICA CHOP23 QUENTE',
   NULL,
   'PROD-7099',
@@ -3436,12 +3436,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  '38a592b6-3a99-4e77-b4c6-02064df02981',
+  '05b12f01-1b6b-4161-a4b9-bd46dc3c02b6',
   'ANTÁRTICA CHOP23 GELADA',
   NULL,
   'PROD-7100',
@@ -3455,12 +3455,12 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'fd6afe98-cdba-4958-aa60-1b2554dee3a3',
+  'bfad4f7d-3a84-482a-bd94-dfb6e7c33620',
   'HEINEKEN LATÃO GELADA',
   NULL,
   'PROD-8099',
@@ -3474,17 +3474,17 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO products (id, name, description, sku, barcode, category_id, price, cost_price, unit, stock_quantity, min_stock_quantity, is_active, is_weighable, expiration_date, created_at, updated_at) VALUES (
-  'a01e8a46-bfe5-41f8-81f6-b1e936ada02d',
+  '5bc4ef92-a3b9-4d21-bb45-6a7f4aad4bcb',
   'COCA ZERO RETORNÁVEL',
   NULL,
   'PROD-8100',
   NULL,
-  '6dfe79d9-ce5a-416e-9b63-f570fc661122',
+  '7731d0fa-0f7b-43d3-94d5-831845ed8fde',
   7350,
   0,
   'CX',
@@ -3493,7 +3493,7 @@ INSERT INTO products (id, name, description, sku, barcode, category_id, price, c
   true,
   false,
   '2020-04-26',
-  '2025-12-19T16:08:42.564Z',
-  '2025-12-19T16:08:42.564Z'
+  '2025-12-19T16:13:24.364Z',
+  '2025-12-19T16:13:24.364Z'
 ) ON CONFLICT (id) DO NOTHING;
 

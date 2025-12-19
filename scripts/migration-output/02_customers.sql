@@ -2,7 +2,7 @@
 -- Total: 1045 registros
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '163406a3-4001-4621-adf3-1009a31dce1d',
+  'f1676a91-407a-41d2-bd3e-dfbd9f0465de',
   'Balcão',
   NULL,
   NULL,
@@ -16,12 +16,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '06c89a2a-521a-4e13-9dae-726ededd2a8b',
+  '938c45a0-9fcf-4f6b-9af4-5972b9f9b321',
   'Figueroa Campestre',
   NULL,
   NULL,
@@ -35,12 +35,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3637d818-eec6-4f22-a19a-5d4532697159',
+  '39c29f97-e3d7-4fda-88f2-6f28f23b85e5',
   'Beto Bar Quebra Galho',
   NULL,
   NULL,
@@ -54,12 +54,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'edcac374-0a70-4b97-b0ee-b3042e0203ba',
+  'f0dd3b85-6baf-423f-a52e-9eb36b6df859',
   'Ivone',
   NULL,
   NULL,
@@ -73,12 +73,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3f79b8a0-fb67-438c-b8e2-2b31d5f0a384',
+  'efb989a9-de22-4230-b18e-76dfd03a5c47',
   'Paulo Trailler',
   NULL,
   NULL,
@@ -92,12 +92,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'baa7e2b7-0280-400e-92a8-e7a5255bca85',
+  'cf1f85dc-73f3-4abd-b875-72e774cf01c0',
   'Bar Safadão',
   NULL,
   NULL,
@@ -111,12 +111,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '73aed38f-4561-4869-93a0-9ed188551373',
+  'a1a75ffe-3339-40c0-a6b9-eb94271d4e8e',
   'Negão Fabiano',
   NULL,
   NULL,
@@ -130,12 +130,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b171967e-87ef-494f-8043-d49e05d48fda',
+  '13bd82ea-e13e-4425-ba86-1dd9f6002883',
   'Bar da Tia',
   NULL,
   NULL,
@@ -149,12 +149,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '49283742-9beb-49f5-aa8b-a86ecea9e0b3',
+  '72e508ac-dd47-42ba-801e-472808c2cd0d',
   'Primo do Ricardinho',
   NULL,
   NULL,
@@ -168,12 +168,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '46ae9b44-11af-464d-9afb-c4a5546f284c',
+  'c06cbac6-5233-44e2-85fc-e94e6953f4b4',
   'Seu Pedro',
   NULL,
   NULL,
@@ -187,12 +187,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd4e66754-6e34-4fb6-afde-c66821883b07',
+  '35cbd20c-2f8e-4a78-92e5-1be07416c549',
   'Bar Laíde',
   NULL,
   NULL,
@@ -206,12 +206,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bfc499d0-49d4-4f5c-b543-44e1076079ce',
+  '2f14058d-d952-4a8c-bd3a-0003f53545a0',
   'Dudu',
   NULL,
   NULL,
@@ -225,12 +225,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '93db1d23-b7cb-4d37-a8d9-8ea454554f89',
+  '144707dd-8fab-4792-a794-1ff6d9a6a6ea',
   'Bar Ao Lado da Peixaria',
   NULL,
   NULL,
@@ -244,12 +244,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e3500158-a5a8-488b-981b-0fbf69e0ed16',
+  'effea376-ee74-46e7-a678-68cfc54780c5',
   'Trailler da Morena',
   NULL,
   NULL,
@@ -263,12 +263,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9dddaf2a-4890-4015-975e-b4bdb56e995a',
+  '0f39df42-5662-4cb1-b733-2c3c35e6f007',
   'Pará Campo Malvina',
   NULL,
   NULL,
@@ -282,12 +282,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '38fd3432-de5b-4911-84c2-859a5410b812',
+  '1c87d477-6ea9-4e6f-9057-29a9217e1e73',
   'Russo',
   NULL,
   NULL,
@@ -301,12 +301,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '52188058-9232-48e2-83ed-36e3e0e1397e',
+  '542b14c0-60f8-459f-9771-e0129e0d908c',
   'Vivi',
   NULL,
   NULL,
@@ -320,12 +320,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '726a3cce-73ce-4ec7-bc4c-73aa6a7d407b',
+  '6c807929-3a0c-41ca-ad94-bf864e45a67c',
   'Rui',
   NULL,
   NULL,
@@ -339,12 +339,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ad3abc74-f42d-4013-9af6-9c3d673a717a',
+  '1de926d7-3d82-4db8-b8c5-489cb7b6232d',
   'Bar Espaguete',
   NULL,
   NULL,
@@ -358,12 +358,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '98d55ca4-c7df-48bf-871c-8dc05871bab1',
+  '856cb16c-fe14-42b0-9776-19452805a4cd',
   'Bar do Alex',
   NULL,
   NULL,
@@ -377,12 +377,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '76604dac-741c-4356-ba83-04b16b31d21d',
+  'a5e824cb-03b0-4675-8ec4-0f47457478bd',
   'Bar da Vanessa',
   NULL,
   NULL,
@@ -396,12 +396,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '006ff8f6-f40c-4fc7-af49-0c35c2c6e6d1',
+  'c04e4d7c-3af9-4d1d-8140-0f61b07d4cb4',
   'Selma',
   NULL,
   NULL,
@@ -415,12 +415,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fd9bd9ee-2bfb-4392-a134-0eadeb136ba0',
+  'db88d038-acc2-43a0-bcc3-871da3d4873c',
   'Negão Depósito Estrada',
   NULL,
   NULL,
@@ -434,12 +434,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3381b0c7-4d8d-4a61-96e3-9c7b3c58eb2c',
+  'cb8f74aa-2e2f-4ed3-b8ff-9b7e84b17eea',
   'Enrique Bar',
   NULL,
   NULL,
@@ -453,12 +453,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9a1dc104-a51f-4da2-bb53-a5f815ec8182',
+  '208374e5-cd21-4568-89f0-8fc8ab706fcd',
   'Claudia Bar Bebedouros',
   NULL,
   NULL,
@@ -472,12 +472,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f99bc561-e80f-4e03-8926-cef277eaab28',
+  '17960f3a-4a90-4c2a-a21f-02c9a6cd5201',
   'Bar Andréia Pochete',
   NULL,
   NULL,
@@ -491,12 +491,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cc8a9bb9-996d-4af4-9261-6c19cbaf5953',
+  '7cf4c09a-6ba8-43ff-a94b-0c9707c5575e',
   'Pensão Eden',
   NULL,
   NULL,
@@ -510,12 +510,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '30c246ce-3315-41a1-9e11-1475dd287b18',
+  '6a4fc04b-abd6-4ed1-a9d6-169c6bd537b7',
   'Delícias da Nanda',
   NULL,
   NULL,
@@ -529,12 +529,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '23393377-2d81-4d4f-a579-df8525929b79',
+  'bcd89cbf-fd34-4cd0-8fab-3ccc85485b2b',
   'Xerem',
   NULL,
   NULL,
@@ -548,12 +548,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1273b85b-882e-4c0e-bd1a-cdcbeacec868',
+  'b8b8b43b-2d84-4620-8e1b-0f3e5abb7677',
   'Trailer alexandra',
   NULL,
   NULL,
@@ -567,12 +567,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c354f895-a4f2-4036-9d98-81d1ce05048c',
+  '5bfaca84-1283-4028-aa88-8222cc425b11',
   'Bar do Raimundinho',
   NULL,
   NULL,
@@ -586,12 +586,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4d30bdfd-27fb-4222-a131-0a53d10f1e64',
+  'a0362097-44e0-4ceb-908a-0babbf7313cc',
   'Bar do Tavinho',
   NULL,
   NULL,
@@ -605,12 +605,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a806ddd2-ee12-4ad5-b138-9c93846f42c6',
+  '79921131-7575-472f-9dde-b2bc1bb3f12c',
   'Neném',
   NULL,
   NULL,
@@ -624,12 +624,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '661749a6-a37b-4af3-94be-1276e9343852',
+  '8794754f-57df-47d8-a45e-16ea2ede089d',
   'Bar do Srº Onofre',
   NULL,
   NULL,
@@ -643,12 +643,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e29663b6-1ff8-455d-8ce6-f4feb9fa67c4',
+  '061d7c0c-a490-4ded-a056-00a2dd2ec705',
   'Keke',
   NULL,
   NULL,
@@ -662,12 +662,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b5d93e7a-4808-4841-b717-a26c5983a547',
+  '51863a98-7a43-4207-a427-50b5aa99df50',
   'Silvio',
   NULL,
   NULL,
@@ -681,12 +681,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '29a02475-b3ca-4291-8053-0222ad3ce60c',
+  '9d52d37c-e0a1-4595-b5f8-b2fe291cccc2',
   'Chiquinho',
   NULL,
   NULL,
@@ -700,12 +700,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '732aa21c-c50c-4e4a-b96f-9d202c630765',
+  'd618690e-4a9c-4d14-b85f-77f0b6e9ddc9',
   'Trailler do Volverine',
   NULL,
   NULL,
@@ -719,12 +719,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a25c1917-5310-4ed9-acb1-b6741e140652',
+  '610ea7bd-9142-4aef-bc85-65d0007bf2b9',
   'Pensão da Verônica',
   NULL,
   NULL,
@@ -738,12 +738,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e385fbb1-8d57-4b63-83cc-de6debc80499',
+  '9b9c1059-6750-45c1-81f1-afb4d819d5ac',
   'Papudo',
   NULL,
   NULL,
@@ -757,12 +757,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f833c11f-6d51-43b0-9a8c-8344dbe33fca',
+  '51618d21-2886-420f-b881-bfdc4e176a5e',
   'Bar Dona Fátima',
   NULL,
   NULL,
@@ -776,12 +776,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '03cc2b40-bf43-41c1-8a15-3cee7992f909',
+  '4eec648d-cef1-4cfc-98a9-937df6441a06',
   'Dimy',
   NULL,
   NULL,
@@ -795,12 +795,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3b328fd2-f705-489a-af9d-f3010a78190d',
+  'a86b28da-d3cb-4f91-ada9-b231ed5400a6',
   'Lula',
   NULL,
   NULL,
@@ -814,12 +814,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '13f0e901-2d33-4300-a4aa-70aeae4598e5',
+  'a327d4fb-7b34-49ea-8460-acb56bc972c8',
   'Trailler da Monique',
   NULL,
   NULL,
@@ -833,12 +833,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9c66f598-add9-474d-bf16-9194c214372c',
+  'f0ec29f0-3252-4f6c-98a0-0d9a554c919f',
   'Bar do Naldo',
   NULL,
   NULL,
@@ -852,12 +852,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b8323bc8-6865-4a2e-8c3f-79be5c12d4ab',
+  'fe3512a3-6a63-4eff-892a-777663742de6',
   'Bira Bar',
   NULL,
   NULL,
@@ -871,12 +871,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '32185b56-5532-49a7-bba7-956b3b4157f4',
+  'e775acbc-768e-4594-9f58-fb8c256e8f8d',
   'Trailler Carlos\Aline',
   NULL,
   NULL,
@@ -890,12 +890,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8c56ee2c-346a-45de-aaaf-d1e8648c814f',
+  'e68eec95-8ac7-41b6-8a3d-04cad40f40fb',
   'Bar Daniele e Maiara',
   NULL,
   NULL,
@@ -909,12 +909,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b30b8ea9-c4b1-4479-806d-315a86f1783e',
+  'ff2538ea-306e-48a2-b0de-5622da6d742e',
   'Lucinha',
   NULL,
   NULL,
@@ -928,12 +928,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e0518174-7ba9-483f-a86a-008f9d09fe5f',
+  'c4e02b58-a437-492a-a70c-a7ab186b19a2',
   'Sogro Branco',
   NULL,
   NULL,
@@ -947,12 +947,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cf1843c9-c873-42ea-98c1-1174abd772a8',
+  'a70dedf6-bda3-4048-8a38-7de32973468e',
   'Bar Av.Brasil',
   NULL,
   NULL,
@@ -966,12 +966,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '798b10e3-0f6e-4619-85ea-2ff88e452c53',
+  '45eef5b4-3bed-45d5-beed-e774bcf2194d',
   'Nainha',
   NULL,
   NULL,
@@ -985,12 +985,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '503b42fb-6275-46d2-9e9d-27c6e801d4e8',
+  'f312475d-93f3-4fa6-b784-b16c8027cd11',
   'Andressa (Filha Andréia Pochete)',
   NULL,
   NULL,
@@ -1004,12 +1004,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e59efa04-9479-4288-bfa7-be9252dd0574',
+  'f4b31ed0-6bb8-401b-bd38-7bde9399ab3a',
   'Adriana\Sandrinho',
   NULL,
   NULL,
@@ -1023,12 +1023,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1b891eee-6951-404a-93ff-c2c7686e0a44',
+  '645644af-b4f5-4c64-82a9-01860eebaa09',
   'Marquinho DJ',
   NULL,
   NULL,
@@ -1042,12 +1042,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cceb4a6e-25ec-4048-a14f-9fe540f2e9b0',
+  '753de0e5-6da7-4e5a-a99a-d7e4ac69ec0b',
   'Trailler Baderna',
   NULL,
   NULL,
@@ -1061,12 +1061,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '95e5ded6-b029-4d23-970a-45d8cae79aa6',
+  '92a6ba40-8503-44ca-a249-ced5a4bbec44',
   'Alan',
   NULL,
   NULL,
@@ -1080,12 +1080,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e89b937e-f361-424e-a587-695e8c4ad846',
+  '205f40b6-b255-44f0-9808-da5ace6d9487',
   'Sargento S/N',
   NULL,
   NULL,
@@ -1099,12 +1099,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2b3c76b5-caac-4d68-85a0-115d659d1db8',
+  '0946df65-6e99-4bf2-8b0d-b51afbd2b30c',
   'Chokito',
   NULL,
   NULL,
@@ -1118,12 +1118,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dda80a32-7a76-4cae-8cdf-c865ff6b73da',
+  '95040bc1-3f2c-45dd-8ddc-330621ad203f',
   'Marreco',
   NULL,
   NULL,
@@ -1137,12 +1137,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b6da0e9e-2048-4ad7-9aa7-90e3722ac9af',
+  '9220c977-9b28-4e52-9f7b-029832dfea46',
   'jimmy',
   NULL,
   NULL,
@@ -1156,12 +1156,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '41470ea8-8a4c-4106-942a-42339f496703',
+  '29204b76-4dfb-48ca-b76a-2f35bb41249a',
   'Bochecha',
   NULL,
   NULL,
@@ -1175,12 +1175,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e85f255c-3b26-4340-9fa0-c609992646c7',
+  '549e5373-6a67-407f-95e4-1769e7eb4455',
   'Sargento 87',
   NULL,
   NULL,
@@ -1194,12 +1194,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6262bf19-5896-48b8-87fd-d6e466da0156',
+  'b3bdb16e-199a-48df-90b3-b96b97bc1ff2',
   'Bar Presídio',
   NULL,
   NULL,
@@ -1213,12 +1213,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '21df3657-c56c-4cc6-97c4-cdfa5e88c11e',
+  '0658542c-3a53-4191-b373-05e930605f6f',
   'Werneck',
   NULL,
   NULL,
@@ -1232,12 +1232,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1466477d-affb-458c-b1cc-a33503cac9cd',
+  '327fc2ac-4935-43b1-96de-345ea5fafb74',
   'Pit Grill',
   NULL,
   NULL,
@@ -1251,12 +1251,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '36422021-2d4b-4c79-bda8-c714d1f348e3',
+  '45752f70-a395-4240-a9fe-7831f9059a4b',
   'Ricardinho',
   NULL,
   NULL,
@@ -1270,12 +1270,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '96308d0d-6d33-4a30-bdf9-90ca5ee74607',
+  '26a29e02-477f-4626-8bf6-10fbfc5042b2',
   'Peladão',
   NULL,
   NULL,
@@ -1289,12 +1289,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '17f7985a-db0b-4dfd-82e6-023e41eaaa38',
+  '0e122823-0722-4a02-966b-915e99b2455f',
   'Teri',
   NULL,
   NULL,
@@ -1308,12 +1308,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '377189d9-ca56-432b-9a5a-723fb53b77bd',
+  '0cfd33bf-9bc8-40ad-983e-f3ab3dbf211a',
   'Festa Peladao',
   NULL,
   NULL,
@@ -1327,12 +1327,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c61ae8ec-09ad-44b5-86fa-6189fd2c1e7f',
+  '3db3be44-90b8-410b-a02f-6983c9d63790',
   'Branco',
   NULL,
   NULL,
@@ -1346,12 +1346,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c4ce0990-5d57-4f37-bc04-c5662c00eff2',
+  'a51317b1-95ea-4877-9168-e8f89825313d',
   'Bira',
   NULL,
   NULL,
@@ -1365,12 +1365,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a7613102-69ce-4736-aba5-d673be140630',
+  '08480ec6-1d7a-4b2a-874c-86aa5339a201',
   'Trailler da Tia',
   NULL,
   NULL,
@@ -1384,12 +1384,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '533ece35-01b7-4a3e-9ec1-fc55bf84ce7a',
+  '68fb6d6e-dcc7-46ac-806f-e34d2748ab7d',
   'Bill',
   NULL,
   NULL,
@@ -1403,12 +1403,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f6ce9b33-cbea-4c13-bc10-b2d2f7e88d25',
+  'bcb5e14b-bb03-4de3-a6ee-a005b16b2080',
   'Luiz Carlos',
   NULL,
   NULL,
@@ -1422,12 +1422,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '253f3a5f-d98b-4848-a233-540607b8c032',
+  'f3f3bf4e-15cb-4b2e-96bd-1b34f5ce9372',
   'Rua 02',
   NULL,
   NULL,
@@ -1441,12 +1441,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4244512e-2d2f-4cf8-980c-67672f90aa86',
+  'fd66ad5c-096d-4994-8379-c724110e902f',
   'Jorge',
   NULL,
   NULL,
@@ -1460,12 +1460,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1b86a90b-53b2-471c-b6ee-cc72f33588f0',
+  '88903a37-578e-40b9-bd99-2f71d09151d0',
   'Sandrinho',
   NULL,
   NULL,
@@ -1479,12 +1479,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ed272efe-b1a2-42c4-a4f5-61ea7953d63d',
+  '61d8e4b0-baa8-4082-b97b-35c29abac134',
   'Leandro',
   NULL,
   NULL,
@@ -1498,12 +1498,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8334da11-ccf7-4b9b-99a6-68d608485785',
+  '41672d75-1107-47c4-9c78-3a51475a74b8',
   'Vigário',
   NULL,
   NULL,
@@ -1517,12 +1517,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '511bb506-037c-4a95-88c5-5186289f0311',
+  'f7ad787b-e309-4327-a466-e51d93f66250',
   'Ana Paula',
   NULL,
   NULL,
@@ -1536,12 +1536,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2d10c50a-9d09-4f21-834b-2a5d3fae4221',
+  '0a9dbc1a-4025-4057-8602-9635c7a567a1',
   'Cris Dalgiza',
   NULL,
   NULL,
@@ -1555,12 +1555,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7a08a492-7913-4298-ab2a-cc1b055fa99a',
+  '8755ce5b-0931-4601-b0dc-237e40dc7e0a',
   'Vera',
   NULL,
   NULL,
@@ -1574,12 +1574,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '65a4add0-8f88-4004-b6c2-649002900386',
+  'f99ec08c-8b29-4c5f-b6b6-07e04b3d6a37',
   'Mão',
   NULL,
   NULL,
@@ -1593,12 +1593,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8ac31b53-fce5-4de5-b683-48903f0652ac',
+  'a0a645dc-495f-4eef-bb0b-76f1383b7623',
   'Paulo José',
   NULL,
   NULL,
@@ -1612,12 +1612,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'afc55101-8112-428d-8a43-2532dd93baf9',
+  '66da8457-f8d3-46b9-9f2b-9f9224552bad',
   'Dudu Jorginho',
   NULL,
   NULL,
@@ -1631,12 +1631,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '54d4ace4-645b-488f-b0b2-753a16a9df03',
+  'c118e70e-f5f1-4df9-ab70-e39b48ea9f46',
   'XD LILIAN',
   NULL,
   NULL,
@@ -1650,12 +1650,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ccbb5304-d849-4ca8-b529-6f20207ba77c',
+  '5cc5c953-668b-45b9-bddd-4a58f398a866',
   'Bruno/Pesão',
   NULL,
   NULL,
@@ -1669,12 +1669,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2a4f047d-a629-4a9c-8c66-8f1cff94b0ed',
+  '46fd453a-e316-4dd1-99fa-ea7f6bc0db02',
   'Moto taxi Upa',
   NULL,
   NULL,
@@ -1688,12 +1688,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'daa44415-a62d-4203-8024-01b87693d559',
+  'e45a34c1-b5b1-431e-ac4e-1aadd587473b',
   'Sem Nome',
   NULL,
   NULL,
@@ -1707,12 +1707,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '81849277-c3e7-4e1e-b0f7-3ab0051593d2',
+  '19870b91-32a7-4e87-94f5-6d953d21fb26',
   'Mão Orelha',
   NULL,
   NULL,
@@ -1726,12 +1726,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '712c9556-699c-41d4-8f4b-071983a3d05a',
+  '2922a637-2f1f-47f8-8f15-10233b4ee21b',
   'Baixinho Bar',
   NULL,
   NULL,
@@ -1745,12 +1745,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3cc8eaff-9f50-4f63-8f3f-a7f2fa6adb92',
+  '48108250-61d5-4138-b559-93421f29f260',
   'Dona Vanda',
   NULL,
   NULL,
@@ -1764,12 +1764,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '27e3965a-8c3c-4212-b908-46fca50617a9',
+  'd1d4a974-41de-4ad8-b9b3-a0a06dc93bad',
   'Gorete',
   NULL,
   NULL,
@@ -1783,12 +1783,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ea850228-b895-4c1e-8332-7b148ed6da93',
+  'a7cd1ec8-0be5-444d-bb10-7befa1d739d1',
   'Luiz',
   NULL,
   NULL,
@@ -1802,12 +1802,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '19e5e7c5-3d06-4b27-88ca-4ad336cdf726',
+  '87f85971-c723-466d-a786-4d532a9a6aea',
   'Viga Cidinha',
   NULL,
   NULL,
@@ -1821,12 +1821,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '23a3aee9-bf41-45fb-8b72-e273a3d81f5a',
+  '2b2dff59-2aeb-4abd-8497-03d05b982461',
   'Manel gesso',
   NULL,
   NULL,
@@ -1840,12 +1840,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a2ac9a96-3274-486b-abb8-56082a92c5c1',
+  'd777baf3-8425-4b66-a64f-63b4c6203beb',
   'Jansen',
   NULL,
   NULL,
@@ -1859,12 +1859,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bfa50831-f3f9-4525-bb51-5fc2a9925ee9',
+  '1f7b4e1f-36f2-4b85-8811-46d40263fb5d',
   'Amigo Lava a Jato',
   NULL,
   NULL,
@@ -1878,12 +1878,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd738c22e-ea25-49ce-8afa-f5eeac33e5cb',
+  '7f51ae94-c834-482c-9a47-79e83af0d57a',
   'Gabriele',
   NULL,
   NULL,
@@ -1897,12 +1897,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5ce1e4dd-0f68-4b36-8f86-810bb7aedfd4',
+  '25e46119-6633-414b-b4f0-549c0857773b',
   'Vinícius',
   NULL,
   NULL,
@@ -1916,12 +1916,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '04a72ac8-880d-4860-9414-1060c046edf8',
+  '606d4328-7565-4cc6-bec0-f27dbaa1d1f4',
   'José Carlos',
   NULL,
   NULL,
@@ -1935,12 +1935,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1e326566-d3f7-41dc-81d4-e9ebe2dc7c32',
+  '2659e1b6-1b46-4f42-b04a-3c4fe20af00b',
   'Fazenda',
   NULL,
   NULL,
@@ -1954,12 +1954,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd151252d-d832-4ad7-aece-8aa9d07495c4',
+  '71659bde-dd22-4898-b626-8cc684d90875',
   'Dalgiza',
   NULL,
   NULL,
@@ -1973,12 +1973,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3e2f7aa8-9d3f-4c56-9e9b-fadc9d8b870f',
+  '593e5626-53ac-45e7-b98c-3aabdfdf8b33',
   'Genro Isaac',
   NULL,
   NULL,
@@ -1992,12 +1992,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6bb8d288-66d6-4f97-ab26-be2d48075b6b',
+  '0c8fab7d-b5bc-489b-84d5-7d1e356b1e8b',
   'Bar da Tia \ Congo',
   NULL,
   NULL,
@@ -2011,12 +2011,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '684ed972-482f-49ce-86e1-03d7d78b26fc',
+  '518e4b5d-0876-4e9e-bc88-7b94bc590450',
   'Buteco',
   NULL,
   NULL,
@@ -2030,12 +2030,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '43322f6b-c4bf-401b-9247-2aacbda604e9',
+  'c6a9eb3e-9814-48b0-9098-08e5e4f65291',
   'Bar Maguila',
   NULL,
   NULL,
@@ -2049,12 +2049,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b73cc211-1ce1-49f0-bca9-ee885f249ed5',
+  'db971f6b-024d-4d97-ae15-3612c33785bf',
   'Bar do Pancho',
   NULL,
   NULL,
@@ -2068,12 +2068,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5f6eef71-9426-4c85-9d2e-fbadc8aa4a4d',
+  '3122def5-df2b-4766-97a3-4f861a1f82ea',
   'Salão do Diogo',
   NULL,
   NULL,
@@ -2087,12 +2087,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8bf4d41a-bfc6-430f-b1b5-28035b3a7b7d',
+  '2fdeaa15-e0f7-4d88-aed9-eeae30091816',
   'Cidinha',
   NULL,
   NULL,
@@ -2106,12 +2106,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5b894b46-3794-4375-a6cf-3f846e5c2a4d',
+  '97b56c58-a431-406d-b7c1-13cd40af5a5b',
   'RUA M Nº 99',
   NULL,
   NULL,
@@ -2125,12 +2125,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8ca8eacf-dc71-47b9-93c7-e88fabc6166e',
+  'd2c0ea1a-d410-4bfe-b8c6-2ff6954ab08b',
   'RUA M Nº 117',
   NULL,
   NULL,
@@ -2144,12 +2144,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '66a75ae5-bba0-49d3-994b-3f12951be5c5',
+  'f07358fc-1eb2-4f1f-bbd2-2b68e7690758',
   'MIMI',
   NULL,
   NULL,
@@ -2163,12 +2163,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1c664c1f-f6b8-43db-ae50-01e714510c1d',
+  'dac5afba-c581-4764-a293-8532631eedde',
   'S/N',
   NULL,
   NULL,
@@ -2182,12 +2182,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '30fb6689-0886-4004-b1d6-99eafb738af1',
+  '711187c0-f9d7-4aaf-a6c6-49d29073713f',
   'Salão do Jorginho',
   NULL,
   NULL,
@@ -2201,12 +2201,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8b55544e-1e7d-4301-9c51-ba3470a6ac5e',
+  '2e99c6cd-1804-443e-b8a3-e6a079984223',
   'Menina do Presídio',
   NULL,
   NULL,
@@ -2220,12 +2220,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7dd1ebd2-a7e7-4753-82fc-2f01fbdbd552',
+  'b0bef452-22dd-4565-9841-6cc27902fc08',
   'Gaguinho',
   NULL,
   NULL,
@@ -2239,12 +2239,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2c14c8a1-57d5-4f7a-8718-b563ba078a09',
+  '56aee6a0-00b8-4d98-ad2d-2f9de5408235',
   'Tabacaria Marracash',
   NULL,
   NULL,
@@ -2258,12 +2258,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e508f644-7c26-4672-ae21-091e9f29daa5',
+  '4ca63c7d-3e11-4683-b684-1a2ce7ee3e7d',
   'Pezão',
   NULL,
   NULL,
@@ -2277,12 +2277,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dc46dd75-3f15-47b9-8adb-ecebf9defc3b',
+  '7e9e116a-a424-495e-b6e3-3a24b2914d3c',
   'Rua Lomé Nº 05',
   NULL,
   NULL,
@@ -2296,12 +2296,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '05d0b8fe-a269-46fa-a44d-52c30b288cf8',
+  '1ae87860-59ce-43b9-ac9a-366b26f49a8e',
   'Rua Lomé Nº 03',
   NULL,
   NULL,
@@ -2315,12 +2315,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '858700b5-7c3b-46dc-bada-2f3842001bc4',
+  '86fb5096-4f47-42d2-a042-5f394cacbf52',
   'Alessandra',
   NULL,
   NULL,
@@ -2334,12 +2334,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6fba7d2c-9a7e-4fc1-92a0-f4a96fd77429',
+  'd097eddc-fad4-4ac1-808c-e732dd46f427',
   'Deise',
   NULL,
   NULL,
@@ -2353,12 +2353,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3a17d203-d833-4b07-ab7a-db17b738cbf6',
+  '518e21c4-14ba-4c70-97fb-f8b436e82a5f',
   'Anderson Moto Táxi',
   NULL,
   NULL,
@@ -2372,12 +2372,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '462bd6a2-e2f1-4457-8048-20d4d23adbcb',
+  '1788b689-4bdd-4dc8-8457-a32564b9d0b9',
   'Tia Presídio',
   NULL,
   NULL,
@@ -2391,12 +2391,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd68bbc4a-1c88-4264-96ee-0ae893d9c28f',
+  'ff72b4d9-67cd-4285-bbcb-dd39d6c23024',
   'Cláudio',
   NULL,
   NULL,
@@ -2410,12 +2410,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1b547f4f-22f9-44dc-a6a6-b6f4b9216b00',
+  '05aa5faf-c216-461a-bd36-149b1024880f',
   'Mateus\ Xande Cantor',
   NULL,
   NULL,
@@ -2429,12 +2429,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd66ad1dc-bd16-4af8-b2cb-72be077deb13',
+  'b509fa50-007f-4e3c-a709-ef21e3157267',
   'Débora Sorveteria',
   NULL,
   NULL,
@@ -2448,12 +2448,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '070aee53-4398-490a-b522-e49f7306643d',
+  '5b39267b-3c12-43d1-8b00-d10e4fab8e78',
   'Orleans',
   NULL,
   NULL,
@@ -2467,12 +2467,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '29cf4495-aaec-4dfd-9255-66a9cd280c0f',
+  'eba3fab0-7ecb-4905-b3e1-14e499cd9ea8',
   'Trailler Leandro\Simone',
   NULL,
   NULL,
@@ -2486,12 +2486,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1b82c17c-d219-4b87-b8cb-aace13c4aebe',
+  '3d799b9f-6347-41dc-a0e6-4935845281c3',
   'China',
   NULL,
   NULL,
@@ -2505,12 +2505,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'aefc724f-4cf4-42da-aa9f-f8ba489e9606',
+  'f277f06d-6674-4d18-b1f3-61f3aeab4e92',
   'Bar do Hamilton',
   NULL,
   NULL,
@@ -2524,12 +2524,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c227a744-de9a-4184-8584-1f5b78a06cfe',
+  'bb1eac9b-5393-4a27-9ed4-98542839850f',
   'pensão do Bruno',
   NULL,
   NULL,
@@ -2543,12 +2543,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c4582b4d-7bb6-48a7-8dd7-ddd51218290e',
+  '6aed756c-f5e8-4d23-80e7-a7888ac2db94',
   'Didi',
   NULL,
   NULL,
@@ -2562,12 +2562,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fc363e39-65cb-4d24-8682-181f5c56e3b3',
+  '44b0db0a-520c-4c42-8989-09c21685db76',
   'Marquinho Mara',
   NULL,
   NULL,
@@ -2581,12 +2581,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e7750cf1-9328-4ae9-9b7a-1c3a54585d38',
+  '85a1b154-71b3-4f09-bb89-87b0c0ae7dd4',
   'Júnior (Gugusto)',
   NULL,
   NULL,
@@ -2600,12 +2600,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fb19bcf7-12ca-4185-8236-6b28bcfb33c2',
+  'f16908e2-d720-4f55-9091-ef9df7206086',
   'Esquerdinha',
   NULL,
   NULL,
@@ -2619,12 +2619,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '59a4d9c7-3fe8-44b4-adc7-f2875a75f2b5',
+  '1aea2546-1b20-40f8-bf4a-0f4e5bfd0fc8',
   'Josué',
   NULL,
   NULL,
@@ -2638,12 +2638,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6e7f9f7b-9a2f-48b3-abf9-ef714be8e19d',
+  '9471c506-d69d-4614-982c-a51731e00934',
   'Fabinho Bar',
   NULL,
   NULL,
@@ -2657,12 +2657,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5a8e6812-ee5e-4979-a6d1-c9e3d0e250ad',
+  '28475db0-a479-406f-a857-0ef7bed503f9',
   'Walace',
   NULL,
   NULL,
@@ -2676,12 +2676,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'caad7102-33b4-48f5-979c-c487a98b26e2',
+  'f97219d4-7b55-42ca-81d8-f8125ece7f4d',
   'Zé Carlos',
   NULL,
   NULL,
@@ -2695,12 +2695,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '47835232-622c-4475-9125-8bed7eaa7f25',
+  'a3f5185b-e88d-47eb-bc21-a3b516a0b1a6',
   'Oscar',
   NULL,
   NULL,
@@ -2714,12 +2714,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '22c69c70-969c-4a46-9b09-f905c3306790',
+  'c1eaeff2-ba61-40b1-8d99-38ed72a2043e',
   'Vascaíno',
   NULL,
   NULL,
@@ -2733,12 +2733,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '98bab0ef-7732-4254-a3b1-625c83946021',
+  'ead377fb-6134-4323-8b7b-ec62ab88ee76',
   'Vila 15 Nº 59',
   NULL,
   NULL,
@@ -2752,12 +2752,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ad500d2c-2b8c-4baa-8356-8b70649e43b7',
+  'a862e962-18db-4ad6-83e9-bd4dfb51cb8f',
   'Rua N',
   NULL,
   NULL,
@@ -2771,12 +2771,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '175bcc6c-afdf-4f42-9293-1dee5b1811f4',
+  '8cc07f53-3ae5-4ba0-a38f-49303f42dff6',
   'Neguinha',
   NULL,
   NULL,
@@ -2790,12 +2790,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a9c917f5-4595-45ad-86fd-8f3bf65637d5',
+  '2cd8fe7c-bc50-456e-a627-e80ca2b70ed4',
   'Artur',
   NULL,
   NULL,
@@ -2809,12 +2809,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1abf3d6e-9735-4130-b0c7-6f365f9139ac',
+  'bd64cbf3-1960-45b0-9edc-35e8ac576dcd',
   'Carla',
   NULL,
   NULL,
@@ -2828,12 +2828,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5a95b001-b525-411e-8a5c-25e789ba418b',
+  '8e2a7e9b-f10b-4ea1-8f95-07f09333af9c',
   'Marcelo',
   NULL,
   NULL,
@@ -2847,12 +2847,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4d89e2b4-c544-4db0-a552-9eaa83b3607e',
+  '588059f7-ecf9-4892-bcbc-5b05fcd92fca',
   'Padaria Dolomitas',
   NULL,
   NULL,
@@ -2866,12 +2866,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c0b1b241-8aa7-4580-995d-9ba55211268a',
+  'eda17642-c5bc-4890-b79f-d44f6c88c131',
   'Fabiana',
   NULL,
   NULL,
@@ -2885,12 +2885,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f9b6ff0a-2e57-4453-bee7-7621877de40b',
+  '6412545c-3fa4-469a-9c4a-ce9f5907d865',
   'Raquel',
   NULL,
   NULL,
@@ -2904,12 +2904,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3b7b8988-9249-4e88-89f4-a8a042c64b85',
+  'c19d70d0-bd41-47d4-b132-e9b40546b894',
   'Loira Praça',
   NULL,
   NULL,
@@ -2923,12 +2923,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd87c8430-61e6-4a1e-a833-d69625fa1f12',
+  'd719dd32-be99-4257-b81f-d1819fba2823',
   'Comida Mineira',
   NULL,
   NULL,
@@ -2942,12 +2942,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6533e679-9c9a-4d71-8116-18548bbc2d95',
+  '2400fcd8-b4a7-45b9-93e9-2a842c9fbb0f',
   'Adriana',
   NULL,
   NULL,
@@ -2961,12 +2961,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '77e1b39e-42d6-45a1-8271-675d0cb0bb72',
+  '37f749be-8789-469d-b20e-f82c27ab6447',
   'Cartoon S\N',
   NULL,
   NULL,
@@ -2980,12 +2980,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b67aedc8-43cc-45dc-b898-37fbd6101d83',
+  '524888a4-6a83-412f-a4ef-146580c668e2',
   'RUA R 371 CASA 02',
   NULL,
   NULL,
@@ -2999,12 +2999,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '79a40530-abd4-4bde-a9dd-10aff6199cbe',
+  'f8d517cb-b063-498a-96ee-d3205ca03ab6',
   'Salão Libreville',
   NULL,
   NULL,
@@ -3018,12 +3018,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3bf12248-7fb3-41f7-889c-e45eba45f717',
+  'ef89686f-e905-48df-b680-d02799cac1d4',
   'DJ Leite',
   NULL,
   NULL,
@@ -3037,12 +3037,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4fcf1be5-4fc2-4253-b73b-364138601a44',
+  '14462d36-82c4-4d6a-9773-cb6106586f13',
   'Jacson',
   NULL,
   NULL,
@@ -3056,12 +3056,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '35c67ea1-c86d-4996-9ef6-3f04868d418d',
+  'aad5cc07-c599-48c1-be7c-caca9c3c4f5d',
   'Rubens\Camila',
   NULL,
   NULL,
@@ -3075,12 +3075,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e2a4069f-ac37-48a7-a4e7-58b66b751ec9',
+  'ffe93317-5b75-4c9b-a0b6-a620ca28aec0',
   'Baralho',
   NULL,
   NULL,
@@ -3094,12 +3094,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6e83e6ad-0dd6-475f-a048-832367bdd1a4',
+  'f7b180cb-fadd-49f1-a1c3-32417af10554',
   'Trailler Sargento',
   NULL,
   NULL,
@@ -3113,12 +3113,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '984713dd-35e9-4f30-9df3-48e7d3a4b6fa',
+  '6baf01e3-27dd-48f7-abfe-a3a6c9b8a3f4',
   'Ilto Negão',
   NULL,
   NULL,
@@ -3132,12 +3132,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '932f6b06-48bf-4a80-af39-c680c4a9d212',
+  'bbb19b12-9d88-4084-bcbf-f7378140f638',
   'RUA P 164 CASA 02',
   NULL,
   NULL,
@@ -3151,12 +3151,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f2019855-338a-4341-9e2e-505fcdfb94e9',
+  '94df5078-ae46-45a4-b109-005bf39cd471',
   'Marco',
   NULL,
   NULL,
@@ -3170,12 +3170,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e01ca431-c2ea-48bf-9ea4-2a3c570eb53d',
+  '2ff06866-0c53-4c59-806f-f6fa75223e07',
   'RUA O 435 CASA 02',
   NULL,
   NULL,
@@ -3189,12 +3189,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8ad9672d-9d4a-47ba-a7c6-2bddf8c2fb7d',
+  '908a53c8-4279-4ada-9f8c-9f9456925398',
   'Irmão do Kaká',
   NULL,
   NULL,
@@ -3208,12 +3208,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f4435b42-d0d9-440b-84ef-2a4524787565',
+  '73e1ed92-a695-4e1c-923c-21b6ab3f42fd',
   'Max Pensão',
   NULL,
   NULL,
@@ -3227,12 +3227,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '845ed9f8-850e-4c5d-b231-f6e3adddf97d',
+  '6ae83a49-112f-4a28-abe0-ae4084ccfbae',
   'Américo (Buteco da Malva)',
   NULL,
   NULL,
@@ -3246,12 +3246,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '305ff4ad-dfeb-437f-842e-543322fa3bd9',
+  'b150fc5b-6830-4957-a9b2-11f0b6962b09',
   'Alexandre',
   NULL,
   NULL,
@@ -3265,12 +3265,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c8cc9fd1-c270-4dba-9f10-5e0870add767',
+  '68db5859-eb53-44c5-bfea-b179dc898995',
   'RUA MARIA QUITÉRIA Nº45',
   NULL,
   NULL,
@@ -3284,12 +3284,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'da649725-cc2a-4f1c-b66f-86785d92740a',
+  '91edb0ac-2fb5-4700-8c1f-e991e500fadf',
   'Ronaldo',
   NULL,
   NULL,
@@ -3303,12 +3303,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1ee65b72-1e6c-442d-804e-2e11acccc2d6',
+  'd3a77a1f-ae75-40f3-927f-f36a4ad6af99',
   'Julia',
   NULL,
   NULL,
@@ -3322,12 +3322,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '09d8bcf4-e29f-4592-96a5-a93b2d5e4fbd',
+  '94a948fa-2f53-4d15-a134-024ba9c20c48',
   'Leonardo',
   NULL,
   NULL,
@@ -3341,12 +3341,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '830b1ea9-1618-47d6-9a66-9268c97cb015',
+  '43f88100-7754-4be3-b033-33641e191f5a',
   'Baixinho Moto Táxi',
   NULL,
   NULL,
@@ -3360,12 +3360,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7721c887-8330-493d-8305-ca898ebc4ef1',
+  '73a8639a-c0e5-4348-8b65-dd4d9215c8a9',
   'RUIVA QUAFÁ',
   NULL,
   NULL,
@@ -3379,12 +3379,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3f89fcfd-5359-422f-80e9-14ad449432ec',
+  'efa831ab-45a2-409b-b42a-dbec46225881',
   'SEU BILL',
   NULL,
   NULL,
@@ -3398,12 +3398,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7487b859-67c5-4f45-8a6a-4d70b0570f6f',
+  '9314ca8a-7e3e-40f4-b341-73c3faed5a29',
   'Pastor',
   NULL,
   NULL,
@@ -3417,12 +3417,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c7979029-36ed-43f2-adb0-832a52d76409',
+  '711900b8-0bce-4ea7-bab7-b300e19bfcba',
   'Zélia',
   NULL,
   NULL,
@@ -3436,12 +3436,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9be5c160-53b4-4f84-bd29-d60cd5bb684f',
+  '6a6ae12a-69d6-448e-a670-d205843a3bb6',
   'Lincon',
   NULL,
   NULL,
@@ -3455,12 +3455,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '401f817a-ce59-4ebd-b4a8-def0c2064c27',
+  '0b960263-0cad-4f4c-8662-a3311af2ea7a',
   'Dina',
   NULL,
   NULL,
@@ -3474,12 +3474,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'eeac8730-1c8a-4657-95f9-7dc43150f744',
+  'cb65dffc-3112-4647-aba1-9b03c9b47751',
   'Jaqueline',
   NULL,
   NULL,
@@ -3493,12 +3493,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4419992c-f9bc-401f-a3ad-bc5f105e705b',
+  '059cd270-fbdd-4407-b912-98d487650d92',
   'Padaria 14',
   NULL,
   NULL,
@@ -3512,12 +3512,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c74b43d8-8f99-456b-b8ea-4e43f634a848',
+  '3e0df5fc-9b12-438e-8d58-42642959146f',
   'Deise; Débora ou Bárbara',
   NULL,
   NULL,
@@ -3531,12 +3531,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1a683527-366f-4202-895e-ad462e081e59',
+  '08811f98-955c-456f-b79f-3916cadaa312',
   'Alex Malvinas',
   NULL,
   NULL,
@@ -3550,12 +3550,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '92db94a5-0f38-4d25-a209-5d9044f7ef24',
+  'a5e35c18-b9e4-40dd-bc00-6efec3b2a539',
   'Lucélia',
   NULL,
   NULL,
@@ -3569,12 +3569,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '86c1fec4-86db-4fe8-b92d-936732b8c2ce',
+  '9707b558-87da-44d6-a2e6-17a78531247a',
   'Sancler',
   NULL,
   NULL,
@@ -3588,12 +3588,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9fbef743-deeb-4c4f-b070-74ae59b7c8ad',
+  '8a0de511-dcb4-430b-b9dc-e46233bd65a7',
   'RUA M',
   NULL,
   NULL,
@@ -3607,12 +3607,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '43dd54bb-3d25-4e3b-a635-01c97c451b02',
+  'c29d2812-8646-4b3e-a1c1-b213f2809aa2',
   'Moreno',
   NULL,
   NULL,
@@ -3626,12 +3626,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4fefdf90-68f9-497c-8fd7-8879fc07de5d',
+  'ecca98fd-5c15-4435-99dc-f28e5f2aa58c',
   'Alex Quafá (Bistrô Maria Jô)',
   NULL,
   NULL,
@@ -3645,12 +3645,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ca7c431f-50e1-4acf-8b5e-1049b8ae5e73',
+  '85182de3-435d-4d64-8af6-7d4d4ef9dd49',
   'Edilton Negão',
   NULL,
   NULL,
@@ -3664,12 +3664,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cef33060-af78-4049-9842-5653566777c5',
+  '4cd0e1e7-e39c-4579-abae-b27399511ecc',
   'Nando Consul',
   NULL,
   NULL,
@@ -3683,12 +3683,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '50fc09d3-791f-46b8-a3d1-f36e23e11343',
+  '020543ee-bae0-4ae2-a2e5-b20cdf72c6a9',
   'Fabiana Irmã Maber',
   NULL,
   NULL,
@@ -3702,12 +3702,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '181ace46-723b-41c0-94b6-0fe6898a4a05',
+  'd32fccce-46d0-4abc-b0ed-a08a50346eb4',
   'Saulo',
   NULL,
   NULL,
@@ -3721,12 +3721,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ae07b129-dcbb-4a16-97f7-f490de73e767',
+  '161f0de4-723f-490d-8a4d-ffe4b7426e6e',
   'Paloma Beto Taxi',
   NULL,
   NULL,
@@ -3740,12 +3740,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd7c740fe-9e6f-4b39-b2e5-8a640b1af0f3',
+  '740ee584-7e88-4f9b-bb35-d05baf0bddac',
   'Jéssica',
   NULL,
   NULL,
@@ -3759,12 +3759,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '403016fc-d6cb-4085-93db-d2d34551a80b',
+  'bf1e808c-368e-4c26-8020-d8ef666e5efc',
   'RUA 05 106 CASA 02',
   NULL,
   NULL,
@@ -3778,12 +3778,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '545c5008-37ec-4683-bc73-a0e5a5c8355e',
+  '60473b13-266b-4c55-b859-e9f60ad4e36b',
   'Danilo',
   NULL,
   NULL,
@@ -3797,12 +3797,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4f7a6547-d2c8-4716-9e00-503578790ddb',
+  'ad92239b-e4b8-41ff-a424-21ef3b3a45df',
   'RUA C 299',
   NULL,
   NULL,
@@ -3816,12 +3816,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '64a58513-8fab-4155-b6d4-197a60b13237',
+  '8c3efccd-2184-4fd2-82bd-8672def03d6d',
   'Beto',
   NULL,
   NULL,
@@ -3835,12 +3835,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '52ca6f13-27aa-4cd8-8435-9b8451943dfe',
+  'd9cee188-5375-4e09-acd3-876c9cb886af',
   'RUA S 87 CASA 02',
   NULL,
   NULL,
@@ -3854,12 +3854,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1817e469-84ff-42fe-ae6e-471902e44710',
+  'ed9da83a-27b5-46e8-9f4a-4334bc197c2c',
   'jailson',
   NULL,
   NULL,
@@ -3873,12 +3873,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7a27a352-7fa2-4173-a517-ed75db38ea69',
+  '9ddba8bc-06d8-4881-a3fe-6b28365baa89',
   'Valério (Bar do Bicão)',
   NULL,
   NULL,
@@ -3892,12 +3892,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e347090d-1b87-4e7f-92cf-6a17da6125a3',
+  'd484c281-e9ba-4ad6-b952-cc48ea1a65de',
   'Tainã',
   NULL,
   NULL,
@@ -3911,12 +3911,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '796e4ac6-71a3-41c4-9206-96bdf1b9c820',
+  '832f60e3-02a1-48f0-b1aa-86396dc4a349',
   'Leonardo (Aroma e Sabor)',
   NULL,
   NULL,
@@ -3930,12 +3930,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f208717e-8e24-4c8a-bf4b-f0776f1455dc',
+  '7193d95d-30d3-425a-948f-d16ea5156a07',
   'Uber Malvina',
   NULL,
   NULL,
@@ -3949,12 +3949,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b9aee018-644e-4c85-b82c-01a76a2abdde',
+  'f774997d-e292-43ec-b936-7d48a4b65316',
   'Natalia',
   NULL,
   NULL,
@@ -3968,12 +3968,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ca383576-f7ee-4f29-bba2-ec61ab037a2a',
+  'd01b612b-3073-476d-a11d-b97cdfd4a47e',
   'Federal',
   NULL,
   NULL,
@@ -3987,12 +3987,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5af89301-a8c8-4f92-b5be-e263d8c9c519',
+  'a82a6f2d-330d-483e-9be4-7a3772e0bc59',
   'Wandinho Trailler Praça',
   NULL,
   NULL,
@@ -4006,12 +4006,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd1a81373-8911-404d-ba4f-bb6aba0b52d1',
+  'ea82c037-6f9a-473e-be97-96ccd4c2334e',
   'Cid',
   NULL,
   NULL,
@@ -4025,12 +4025,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bbc93af1-45e1-4576-be27-5bfd16cc7a57',
+  'fd060328-13db-4098-8a20-5f1d3b1f3e9d',
   'Daniele',
   NULL,
   NULL,
@@ -4044,12 +4044,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '17bf1bc7-b957-45cb-ad1c-7e47ded0196a',
+  '86d22a6c-70db-409d-86cc-06547c74f1fa',
   'Rua Agricultura 49',
   NULL,
   NULL,
@@ -4063,12 +4063,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cf865a62-23f9-4e83-b532-b51c084ae6fd',
+  '8310dfb4-275c-4f59-94a2-c1b368580ab2',
   'Marquinho Gás',
   NULL,
   NULL,
@@ -4082,12 +4082,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3f59e6e4-43d2-4bcd-9c34-aca743135624',
+  'd7979124-3d0f-48c2-9856-7fd2b0d417c3',
   'Camila Tânia',
   NULL,
   NULL,
@@ -4101,12 +4101,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e7973f24-b651-446e-ac2f-9415503147d8',
+  'e50e4246-84e2-4271-9515-3452ef21ae62',
   'Thamires (filha da nega)',
   NULL,
   NULL,
@@ -4120,12 +4120,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c03bfa08-e3ed-421b-b382-141281a8e0cb',
+  '1b717f98-9a7c-48e8-b229-1de4b6485a6b',
   'Profº Pintinha',
   NULL,
   NULL,
@@ -4139,12 +4139,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b587ebbb-f0b6-49d8-9be6-07d601a0d1f9',
+  '42098f7a-cd49-487b-810a-128bef369d52',
   'Weligton/Janaina',
   NULL,
   NULL,
@@ -4158,12 +4158,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '780db7d4-bea3-40ed-ba4f-ee9fa0258c6a',
+  'cba6e37d-0aed-4e0c-8802-2c6049271c8d',
   'Kaká Pica Pau',
   NULL,
   NULL,
@@ -4177,12 +4177,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c00cd813-4ad5-40a1-a2f3-9d469ef1377e',
+  '1990ca15-5bee-4ede-8f4d-5c789a180bbd',
   'Julio Preto Pagode',
   NULL,
   NULL,
@@ -4196,12 +4196,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '358fa46f-1d4a-4e4b-b6b0-bf62a86fb705',
+  '087eb02b-8af3-4227-a7b2-2b5883000a51',
   'Paulo',
   NULL,
   NULL,
@@ -4215,12 +4215,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9dcab12f-5134-4d3e-95c0-b666b4d7b6a7',
+  '921b91b1-7d54-4856-a979-a38dddfd28eb',
   'Marilza',
   NULL,
   NULL,
@@ -4234,12 +4234,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '630f7f20-9f3c-414b-9655-6df3c5a5c25e',
+  '35b42095-c347-4d5a-bb1d-fa38131e5c4b',
   'Fernando',
   NULL,
   NULL,
@@ -4253,12 +4253,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ed4287b9-fe28-4783-a5a9-d4bc36064676',
+  '77a0a983-e635-4b1b-886c-ef934ce6e6ca',
   'valdicléia',
   NULL,
   NULL,
@@ -4272,12 +4272,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '78977f77-fbb3-49bd-996f-840feb311674',
+  '1748f2da-eda9-40c1-9a79-8b08803e5eea',
   'Isabele',
   NULL,
   NULL,
@@ -4291,12 +4291,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ad18e19c-6676-4fee-9402-ca8f82f7d7d6',
+  'fc608e29-2e5c-491e-b7b8-d1f4702d6ed6',
   'Luiz da TV',
   NULL,
   NULL,
@@ -4310,12 +4310,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9d0feb66-1196-421f-bb66-4af5a7ff805d',
+  '4c87116d-a79c-4807-971e-062ebf18f00b',
   'Alex',
   NULL,
   NULL,
@@ -4329,12 +4329,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4b7528fd-7300-4a69-b7cc-46fb0bb41420',
+  '334ae171-bb1b-4d5f-9e7c-95ea04363d66',
   'Jorge Rua P',
   NULL,
   NULL,
@@ -4348,12 +4348,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7614885d-d436-4f49-97f6-2d3681e8768d',
+  'd7d34c50-04f5-4eac-b0a1-4345ca7c4763',
   'Ana Clara',
   NULL,
   NULL,
@@ -4367,12 +4367,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ab474cee-51dd-4679-b92e-0a3272bbf7a6',
+  'c769bfec-bc5a-4d92-b35a-025d7492acc7',
   'Lojas Esquedinha',
   NULL,
   NULL,
@@ -4386,12 +4386,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a121f976-0d66-4f4c-a21b-bef6706ce5e1',
+  '1a73768f-db23-43ca-9921-ce457735c46e',
   'SALÃO DO PEIXE',
   NULL,
   NULL,
@@ -4405,12 +4405,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '81f921e7-09b6-42d9-bb86-11f4ca12739f',
+  '3df2eb19-e165-4537-8e38-2ac36f7aa08a',
   'Juninho Vespa',
   NULL,
   NULL,
@@ -4424,12 +4424,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2943dc79-d613-4ed1-b30e-f1eeb865457a',
+  'facda9de-609c-40a4-ab87-6c6803ebc46a',
   'Fernanda',
   NULL,
   NULL,
@@ -4443,12 +4443,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dfd4a916-d595-45ee-a56c-4a0d505bb4b3',
+  'cc536dbd-b57d-4bb3-a46c-55a8edc33e8a',
   'Chicão',
   NULL,
   NULL,
@@ -4462,12 +4462,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fd0f5475-6cd6-4dde-a9ef-7830a0567470',
+  'aafc6241-a88a-486b-a880-6841f8250fa3',
   'Bar do Vila',
   NULL,
   NULL,
@@ -4481,12 +4481,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b227a5f3-51d2-4935-8636-c8419f47ab66',
+  '8da18806-e2f6-458a-a8be-b70e57dc48ea',
   'Tamires',
   NULL,
   NULL,
@@ -4500,12 +4500,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8dc7f54a-2192-42a1-81fe-20c4e6db29a1',
+  '3abc148a-18f9-450d-bd97-1b01f7064b1b',
   'Bar da Miny',
   NULL,
   NULL,
@@ -4519,12 +4519,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'eecc3b3c-1308-42b0-91d3-2a739a5c616b',
+  '1369619b-610f-4590-a849-ab34de1a0e57',
   'Vivian',
   NULL,
   NULL,
@@ -4538,12 +4538,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4820df73-364d-4e02-8ba0-19d559db677c',
+  '252a8ffc-f17c-405d-b05b-23028547f4c0',
   'Jander',
   NULL,
   NULL,
@@ -4557,12 +4557,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4aa63c27-c961-4f3d-ac3a-e43c1b092da1',
+  '1d09eee9-bcbf-4fb5-acbd-70bb396b1aad',
   'Marquinho',
   NULL,
   NULL,
@@ -4576,12 +4576,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd633f16c-c8c7-450c-9ab1-9c632d62efa6',
+  '656bd092-5bfb-4d58-8faa-ee2721f029c8',
   'Gleice',
   NULL,
   NULL,
@@ -4595,12 +4595,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ce62706f-40ca-439e-9b89-b574be454758',
+  'acc5bf48-293c-4bf7-920f-227519554c2f',
   'Diego',
   NULL,
   NULL,
@@ -4614,12 +4614,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b3b0bd48-1675-402d-abaf-661879f95ff8',
+  '2717a810-e0cd-412b-9cd8-b5152efceea7',
   'Karen',
   NULL,
   NULL,
@@ -4633,12 +4633,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '86bb76f9-82f8-4e24-9d6c-a4ea1ffef7dd',
+  'd9991d3d-c8dd-4903-bff8-c3782114d50b',
   'Maria Helena ou Vera',
   NULL,
   NULL,
@@ -4652,12 +4652,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dadf9554-2672-4a76-b689-a611047726f3',
+  '07c1e5df-9ecb-4705-a68a-bafe6b83c9fd',
   'henrique',
   NULL,
   NULL,
@@ -4671,12 +4671,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0f4de2f2-121b-4eef-b9a8-9accd6e9701d',
+  '8096dce9-dc38-434c-9093-e3986f82bbd5',
   'RUA M 82 CASA 01',
   NULL,
   NULL,
@@ -4690,12 +4690,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0b564c72-1cc8-4509-9f11-8e9be7dd9279',
+  '6670d672-ae4c-48aa-9327-1f274a5a3ce9',
   'Luciana',
   NULL,
   NULL,
@@ -4709,12 +4709,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3bbf10ed-3dab-484a-ab27-570675444bbe',
+  'e34c3e9b-bd22-4922-a8d4-e891177e363c',
   'Luizinho',
   NULL,
   NULL,
@@ -4728,12 +4728,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2302f833-75c2-4d22-b1b2-9136002fc448',
+  'ed62e3a6-c04d-4855-a51e-9403615367af',
   'Berenice',
   NULL,
   NULL,
@@ -4747,12 +4747,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8db1a1d9-447c-48b4-8985-4fcd30da1750',
+  '62a2e0af-2d83-4a34-8676-f113aacc8b43',
   'Trailler Natalia',
   NULL,
   NULL,
@@ -4766,12 +4766,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1dacc1c1-3f15-49a1-9dfa-924b5d460aae',
+  '0004f5b7-5d96-4f43-9163-f43c79db09cf',
   'Paulo Presídio',
   NULL,
   NULL,
@@ -4785,12 +4785,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '70cae528-d6c2-47ca-b02a-c12aae4701b6',
+  'aaef96b2-5770-4747-b013-c20f6a9c38cd',
   'RUA BRAZAVILLE Nª15',
   NULL,
   NULL,
@@ -4804,12 +4804,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b3e31d59-d26b-49b6-b96e-35b5e78f4907',
+  '08f9b852-d1bf-45f4-9ecc-f32167649586',
   'Padaria Seu Ari',
   NULL,
   NULL,
@@ -4823,12 +4823,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd2fb9abe-ff51-4cc1-afc6-9918d372172e',
+  'a70f7054-45b3-4203-9b87-60b158211092',
   'Rose',
   NULL,
   NULL,
@@ -4842,12 +4842,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2a84018c-2839-43f2-9e19-dd2cceff7456',
+  'e4a5fb0e-5451-464d-93d3-50bac3df9f4f',
   'RUA N 22 CASA 02',
   NULL,
   NULL,
@@ -4861,12 +4861,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '447864da-0251-4d5b-89c4-45429afd8889',
+  'c7dcd398-1f5e-49a6-87d1-6934d9df59fd',
   'Geraldo',
   NULL,
   NULL,
@@ -4880,12 +4880,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b6815b5e-34d0-431d-a7d8-7c9b814d9944',
+  '56fb1af9-c0a5-4915-9152-eb18304f81d5',
   'Padaria Seu Ari Beira Rio',
   NULL,
   NULL,
@@ -4899,12 +4899,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '54bd92c5-dfbe-442f-bfe4-3ebbe235a0e3',
+  '441dc829-cce5-4445-9e55-3afdbdc7bd40',
   'Cristiane Denancy',
   NULL,
   NULL,
@@ -4918,12 +4918,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'af380b68-2047-4330-ba24-8f72ef0e85e1',
+  '6c5773e6-0a81-4128-b26f-a078268e1f5e',
   'Catiri',
   NULL,
   NULL,
@@ -4937,12 +4937,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c7c7e3ce-836b-4311-b77d-13d159bd92ea',
+  'cff55eb3-8016-4afa-be42-f616c81065a7',
   'Franciele',
   NULL,
   NULL,
@@ -4956,12 +4956,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2cc9fd9e-d24f-4e19-a7f4-b7526a42cfd4',
+  'affa37f7-19ec-463a-bb22-2470e1d33bce',
   'Maurício',
   NULL,
   NULL,
@@ -4975,12 +4975,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '42243b17-970a-438c-a14e-6cac95ba93c9',
+  '2a0b78ac-00ce-450c-aca9-09cfe022cd07',
   'Carmen',
   NULL,
   NULL,
@@ -4994,12 +4994,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c626586c-65c4-4a02-b1ed-96a9a7b00020',
+  '78e6dad0-99d3-4a18-bfc4-af059d4daa82',
   'RUA O 107 CASA 02',
   NULL,
   NULL,
@@ -5013,12 +5013,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ce752c81-e627-4019-99a6-4db1c6b091bb',
+  'e0a34ce0-7d03-41fe-96c9-e2fad4d90486',
   'Bruno',
   NULL,
   NULL,
@@ -5032,12 +5032,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '795e08ae-4bc4-4cf9-aa3b-63bf6d96f2f4',
+  '8fa8f485-40df-443e-8b63-c58d140dd6bb',
   'Trailler do Bozó',
   NULL,
   NULL,
@@ -5051,12 +5051,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1a9e381d-a4dc-4cd3-86e5-da1c488051cb',
+  '3858add0-c284-4141-a317-7b77fb518138',
   'Padaria Kadosh',
   NULL,
   NULL,
@@ -5070,12 +5070,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6b644701-edc8-48e8-afc5-91ae9ea5c58a',
+  '8c99c5eb-81b3-432f-ad32-4d7aa24d5edf',
   'RUA U 204 CASA 01',
   NULL,
   NULL,
@@ -5089,12 +5089,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5ed1e304-3c4a-45b6-adad-a677e482d418',
+  '56705e5d-a2b1-4c0e-9342-5e44b5a179e8',
   'Mário',
   NULL,
   NULL,
@@ -5108,12 +5108,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b041852b-a20e-4afa-b5f3-7247185f9b0b',
+  '3979a9de-c631-4f6c-893c-3cc264701338',
   'Rodrigo',
   NULL,
   NULL,
@@ -5127,12 +5127,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4e5c583a-0106-4994-a08d-67838b32ddf5',
+  'bb476aff-5c8b-49c9-878c-802ab8db1474',
   'Valdir e Renato',
   NULL,
   NULL,
@@ -5146,12 +5146,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '77a02874-c363-4cf8-8347-f7a78c015edf',
+  'e3df3304-dfd8-4723-ada9-e5fc20d61bd6',
   'Juninho ou Elaine',
   NULL,
   NULL,
@@ -5165,12 +5165,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6f9afe14-fe17-4cf9-9197-7c4577334c9b',
+  '8b87ee01-a8bc-4703-8403-fe576a42fc95',
   'Marcelo RUA Y Nº 61',
   NULL,
   NULL,
@@ -5184,12 +5184,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '56cd16af-7f37-4ec5-ba0e-e5627449e840',
+  '47d6b49a-d111-4849-a49a-9885b3d404d4',
   'Patrícia',
   NULL,
   NULL,
@@ -5203,12 +5203,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'df16ba62-465f-43dc-8479-2a6ea6cce03d',
+  '54943e7b-2426-414e-b283-1cbba6c27d92',
   'Dayse',
   NULL,
   NULL,
@@ -5222,12 +5222,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ce2116d5-ed6a-44b9-ae7e-95ae17e95570',
+  '0ee67011-9562-4b07-8475-e8597d80f242',
   'Trailler Letícia',
   NULL,
   NULL,
@@ -5241,12 +5241,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '37237ab3-6955-42dd-88e8-0bb1b306a7b2',
+  '9b239a18-133a-4d68-9837-61169374492a',
   'Lilian',
   NULL,
   NULL,
@@ -5260,12 +5260,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e0e4b650-aec4-4021-b6a8-467524269cf0',
+  '8061d772-f959-4fda-a6b4-31a4b058a81a',
   'Rafael',
   NULL,
   NULL,
@@ -5279,12 +5279,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2b4f2d79-763f-4943-89c4-acf7789d4bf5',
+  '2df6851c-4bda-4af9-80ec-b4f78643f548',
   'Cabeça Cunhado Fazenda',
   NULL,
   NULL,
@@ -5298,12 +5298,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'db9ccfca-88f3-4593-8780-c9c0d89f0469',
+  '5ea254d7-cb5b-4193-aa3a-60d74434e7db',
   'Renato Sujo',
   NULL,
   NULL,
@@ -5317,12 +5317,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5e0b5c53-c365-4c6d-9125-97be853475ba',
+  '607e63e8-2db5-40f1-b830-b20243c7900d',
   'Bar do Berg',
   NULL,
   NULL,
@@ -5336,12 +5336,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '359e3cdb-bc8c-4d87-910e-b6839823582c',
+  'd93f808a-bfe9-4aa9-9b8d-478126f7c31d',
   'Cléber da Oi',
   NULL,
   NULL,
@@ -5355,12 +5355,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f56f572f-0733-43b7-b187-3cb8da6891f2',
+  '50c274fc-b63c-4812-9260-c6c365ec2d7e',
   'Quiosque da Neném 784',
   NULL,
   NULL,
@@ -5374,12 +5374,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b95a2f2e-e997-4731-92ab-02856a024906',
+  'c297c7a7-a0bc-4927-aefb-c37379d16003',
   'Vanda',
   NULL,
   NULL,
@@ -5393,12 +5393,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ea1c179e-9931-481f-89dd-9e61cde32767',
+  '1ace650b-c5c4-4f4a-b416-cbb5f35ed752',
   'Estrelinha do Saber',
   NULL,
   NULL,
@@ -5412,12 +5412,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6a35a19d-5afb-4413-931b-87d599324267',
+  'cb6e8ff9-ffaf-46af-b4d0-b2b03d940cdb',
   'Tiana Irmã Playboy',
   NULL,
   NULL,
@@ -5431,12 +5431,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '91cb2c11-0040-420a-8c64-8a0b1fc46e1e',
+  '3e905d63-045d-4a27-b2fe-6e1dd9f29830',
   'Laura',
   NULL,
   NULL,
@@ -5450,12 +5450,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3da0273c-8810-4fb7-ad04-467d44e34c3e',
+  '2373d5c0-0a84-4de1-a2e2-f672cc82b295',
   'Crispim',
   NULL,
   NULL,
@@ -5469,12 +5469,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9d7906f7-051d-4911-b67e-c534c5332669',
+  '554b9496-f8d0-42e5-a48a-b616460d1e7f',
   'Alex (salão do peixe)',
   NULL,
   NULL,
@@ -5488,12 +5488,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0835571e-fdd3-412a-a109-ec5617449673',
+  'c42d9d2b-2c72-4c66-a843-c1bcca6d5239',
   'Lava Jato Rafael',
   NULL,
   NULL,
@@ -5507,12 +5507,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'aafcaa67-0a60-49c3-b61f-c7fabfe07a79',
+  '0b44e9e8-bc95-4799-9aca-4693c8a5cc4f',
   'RUA R 429 CASA 02',
   NULL,
   NULL,
@@ -5526,12 +5526,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'af2351bb-905d-40cb-95eb-5c27ffa02d8c',
+  'bedcb608-9e49-44c8-a606-5d97b985b744',
   'RUA I NÚMERO 34',
   NULL,
   NULL,
@@ -5545,12 +5545,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b6e64467-1d7a-4a2c-8921-ccaa0cadd4d1',
+  '04d45aa1-e5e7-47c2-be68-16dcb3fb8f3d',
   'Avenida Sociólogo do Betinho',
   NULL,
   NULL,
@@ -5564,12 +5564,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '22c88dd3-a394-4bf2-bc41-1d8fd61dcd82',
+  'b5e58245-04fe-421e-8a3e-60e04ec3e80b',
   'Russão',
   NULL,
   NULL,
@@ -5583,12 +5583,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0b91ab38-fd5b-473b-bca4-8a07a61e68e3',
+  '4383ce2d-3fb1-41c7-b612-8ef46ddb05f7',
   'César',
   NULL,
   NULL,
@@ -5602,12 +5602,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3715e0e1-9807-4483-9a72-e04becbc2f5c',
+  '8cb4f2de-9c7a-45a9-b5d8-670876bb2358',
   'Kaká',
   NULL,
   NULL,
@@ -5621,12 +5621,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '849e4e84-5b8c-4706-b729-160eae034b17',
+  'b89dac02-2635-4e25-b540-48717e61adfe',
   'Shrek',
   NULL,
   NULL,
@@ -5640,12 +5640,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '49d212c6-a859-43f0-9137-b27a21049416',
+  'd3d45931-c3e0-4f88-b7b9-71ab04ed301c',
   'espaço bella',
   NULL,
   NULL,
@@ -5659,12 +5659,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c6a0f7e4-54bb-401e-90dd-778e39c02c2a',
+  'ea4c1237-3e02-4d07-9c86-4da171452885',
   'Nathália Tabacaria',
   NULL,
   NULL,
@@ -5678,12 +5678,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a418b006-ffbc-43c1-a6f7-8a65cfd158ca',
+  'da242060-226d-4fb5-8e40-9c186edb8c66',
   'Pará do Bar',
   NULL,
   NULL,
@@ -5697,12 +5697,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '85aa8126-9907-47c4-9d3e-5a918e2556f0',
+  'b2fcc6eb-9770-427a-b21c-196738c957ab',
   'Igreja Missão Multiplicada',
   NULL,
   NULL,
@@ -5716,12 +5716,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '87b74486-3aa7-44f2-a1d5-81ac5d18681b',
+  '7a2c9ae0-220f-492d-bd53-93fb04872ebe',
   'Mael',
   NULL,
   NULL,
@@ -5735,12 +5735,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd2a39765-4272-446e-afd8-20dfac9aabc2',
+  '2fe522ce-0616-4668-8dc1-e2d29da6998b',
   'RUA O 325',
   NULL,
   NULL,
@@ -5754,12 +5754,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '624f520f-35a6-4fef-a7f5-4b778622b30b',
+  '5a75c352-1b80-420a-8a03-ed15cec9363d',
   'RUA S 129 CASA 02',
   NULL,
   NULL,
@@ -5773,12 +5773,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4c48a479-2696-4b56-a9af-cc4f76966693',
+  '99bc1f82-ab81-41d4-98da-984d714968e4',
   'Academia O2',
   NULL,
   NULL,
@@ -5792,12 +5792,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '887c1f51-d8c5-456a-a98a-71ec5427fba9',
+  '1595306a-844b-450d-9eb7-c17791845b31',
   'RUA JOAQUIM COUTINHO CAVALCANTE',
   NULL,
   NULL,
@@ -5811,12 +5811,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0de32a0f-3f80-4432-abe1-9e8bb4cc868e',
+  'fc029b90-8028-44d1-ac06-4784044f086f',
   'Simone',
   NULL,
   NULL,
@@ -5830,12 +5830,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7f00b923-ba60-403c-9336-c989b71897f3',
+  'ad86849b-be47-466f-9c9f-8a88d7c31bae',
   'Bárbara',
   NULL,
   NULL,
@@ -5849,12 +5849,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8133a6f3-d819-4aef-8d38-b85da88d72fb',
+  'bfd21fe1-e80c-4584-837a-7421da9a13ba',
   'Ilda',
   NULL,
   NULL,
@@ -5868,12 +5868,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c532e1f0-be99-4287-b082-e21d0e3efb9c',
+  'a4734eb7-32c1-4e61-8e93-d6951e4c20c7',
   'Dione',
   NULL,
   NULL,
@@ -5887,12 +5887,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8d3543c1-2713-4678-93ed-502e0b109a32',
+  'aae17c31-48f3-430d-8ef2-a31fe0e496a0',
   'Oficina do Damião',
   NULL,
   NULL,
@@ -5906,12 +5906,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '61a6ffc8-5c73-4563-89ee-0b9b8c3229ad',
+  'fa814ed8-44cf-40a8-9cec-a89a94997c60',
   'Seu Rica',
   NULL,
   NULL,
@@ -5925,12 +5925,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9f210f01-0110-4943-964e-fde6950642dd',
+  '0690179f-3b8b-4536-b356-baad1df369fa',
   'RUA ESMAEL DE JESUS DA SILVA, 19',
   NULL,
   NULL,
@@ -5944,12 +5944,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e22bf5b6-e89b-415c-9851-02d0e02d65cd',
+  '913d47de-0af6-4c28-97fa-16e88f21ec7a',
   'Cristiane',
   NULL,
   NULL,
@@ -5963,12 +5963,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ba681499-d8ea-466e-aae4-61169f891a0f',
+  '88197ffd-1de5-444f-875f-90a62a911ea5',
   'RUA 27 NÚMERO 66',
   NULL,
   NULL,
@@ -5982,12 +5982,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3d44aad9-6123-4a07-8442-1a2a9a56fb22',
+  'f36ebaf5-fff5-40d3-a1c8-3dd5b3f83ada',
   'Pará',
   NULL,
   NULL,
@@ -6001,12 +6001,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '763cc3de-da3a-40f5-93f5-2f60878b9c4e',
+  'ad9ac09d-6ade-45e0-bfd0-c55a34440c87',
   'AVENIDA SOCIÓLOGO BETINHO, 20',
   NULL,
   NULL,
@@ -6020,12 +6020,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cea46d18-38cf-486d-b321-f2e8f2873f08',
+  '57c9c1d3-d678-4164-92fc-ea091f1a4e52',
   'Chapoca Praça 784',
   NULL,
   NULL,
@@ -6039,12 +6039,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a213598d-c068-4a68-9537-2fe37989e121',
+  'b7562bb2-5788-4885-923c-753e30aa9888',
   'RUA L NÚMERO 14',
   NULL,
   NULL,
@@ -6058,12 +6058,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a18c0caa-7ff7-4ad6-ac9a-9834a0a0084c',
+  '9fa1ceb9-17dc-47ed-a8da-7ace5c2d0ec9',
   'Binho Campestre',
   NULL,
   NULL,
@@ -6077,12 +6077,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0831cd72-6052-4fe5-b784-f45a3fedb977',
+  '0e8798de-9f89-4bdb-96f2-0f518d05da2d',
   'Borracheiro Estrada',
   NULL,
   NULL,
@@ -6096,12 +6096,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '753fbaaf-07e9-479c-8fd2-ae297b08467a',
+  '6503dbdf-0acf-4dd1-ba28-c292e2b586b3',
   'Roger',
   NULL,
   NULL,
@@ -6115,12 +6115,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c89ea4e8-df56-4304-a0b9-663e78c06a68',
+  'a4208acc-3a9e-43bc-ab57-d907f56fd103',
   'Angela',
   NULL,
   NULL,
@@ -6134,12 +6134,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7f471dc7-c52d-4b71-9d85-62f6d86788ae',
+  '12d41f3d-cabf-46c6-8a37-1c26d4cf2759',
   'Jennyfer 784',
   NULL,
   NULL,
@@ -6153,12 +6153,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1bc8c366-63ba-401b-8621-9a2abb3e7a42',
+  'eff8274b-c98b-487d-b7f4-04acdfe4aa78',
   'Schreck',
   NULL,
   NULL,
@@ -6172,12 +6172,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b038e340-6e49-4dc9-b77a-359fb1006ec0',
+  '8ebf5b9a-41db-46d8-98a4-b78b9b6bdb09',
   'RUA C 41 CASA 02',
   NULL,
   NULL,
@@ -6191,12 +6191,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '43d5b1e7-0706-4c29-887f-529946639ff6',
+  '762f2c91-b632-4c3a-89aa-19d600d2f196',
   'Wander',
   NULL,
   NULL,
@@ -6210,12 +6210,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fea92072-673d-43bc-8983-f89866aed59b',
+  '777e175a-088a-4b0a-abe7-887a47b2504f',
   'Simão',
   NULL,
   NULL,
@@ -6229,12 +6229,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd1682a6a-5b78-422b-8c85-5751206a0afb',
+  'b765d89c-624c-43b6-8489-a64a5cc091a4',
   'RUA BURUNDI 40',
   NULL,
   NULL,
@@ -6248,12 +6248,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ef7246f7-f475-4df8-9726-2ab61912b071',
+  '2530e3ef-b543-4bea-b2ef-84eb6c400184',
   'Daniele Ultra Leve',
   NULL,
   NULL,
@@ -6267,12 +6267,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c8b883b8-c8b0-4574-8665-7793b93a12bb',
+  '03cc7d82-6698-4149-81bd-e98053e2c89d',
   'SARGENTO MIGUEL FILHO 93',
   NULL,
   NULL,
@@ -6286,12 +6286,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd1ee9118-87b9-4c82-9d23-7831a8294b68',
+  '1f239b3e-5ac9-4a61-99a1-06c23bd3b219',
   'RUA L NÚMERO 23',
   NULL,
   NULL,
@@ -6305,12 +6305,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ebacb32a-80e5-43d5-abab-88924c6e7bc3',
+  'dd289a4f-f0ce-420e-9d87-36e9036dd3b8',
   'Branca',
   NULL,
   NULL,
@@ -6324,12 +6324,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5dda656a-e2b4-4142-a23a-ad3a8da6b1da',
+  '43deafc8-6cc7-43b4-ace0-7d5ba20423d4',
   'Marcelinho',
   NULL,
   NULL,
@@ -6343,12 +6343,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3746f559-7c47-4a67-8c59-44388df2e3a5',
+  '0cf95f33-2e37-4176-8587-528514fac9fa',
   'Rogério Guandu',
   NULL,
   NULL,
@@ -6362,12 +6362,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd1586ed9-47a3-4bf8-bea5-15479929c9e3',
+  '43e414d5-3514-4017-b3a3-bf09f537989c',
   'RUA R 404 CASA 01',
   NULL,
   NULL,
@@ -6381,12 +6381,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '830aa5d7-1034-4360-b014-30cb5637cdb2',
+  '31f78d8c-59f3-4192-9167-02cd87a71cf3',
   'TRAVESSA POEBLA CASA 07',
   NULL,
   NULL,
@@ -6400,12 +6400,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3167c6e1-661b-48c4-998d-1785b12c98d6',
+  'b0c87a81-6e8b-42bb-9724-0d9f5305de7c',
   'RUA TUNÍSIA 28',
   NULL,
   NULL,
@@ -6419,12 +6419,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e7e4a379-c4b5-4147-ac01-90a17d1c48dc',
+  '014d282a-321f-4d58-ae62-6835f2eb07e9',
   'JORGE RUA 19 NÚMERO 25',
   NULL,
   NULL,
@@ -6438,12 +6438,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '66a9721b-eca2-4d0e-86e9-e6c98595d885',
+  'e6981c4e-d4ff-4402-a11d-cabe1e72c03f',
   'RUA P 153',
   NULL,
   NULL,
@@ -6457,12 +6457,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6cb3a4fd-894c-4123-8ff5-583de7378ec5',
+  'b302d375-968a-4d3b-9cfb-ab6a21f37ebd',
   'MARCINHO RUA D',
   NULL,
   NULL,
@@ -6476,12 +6476,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd9bff4ec-413c-4834-aa94-f6ba8d53e0b5',
+  'f81d7255-3acd-4433-b58f-edf42ad5bd83',
   'LÍDIA',
   NULL,
   NULL,
@@ -6495,12 +6495,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fb7a53b4-edff-4f94-92dd-9c3ac9124dc8',
+  '8087370a-75e7-4362-a545-28fee789fd26',
   'Carlão',
   NULL,
   NULL,
@@ -6514,12 +6514,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '42d1699a-d4f2-4b5e-a5c5-4ee60d1fb971',
+  'fa513dfe-43d3-4dc5-8606-5c86f29479ee',
   'RUA 08 NÚMERO 159',
   NULL,
   NULL,
@@ -6533,12 +6533,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e53680e4-ca0d-4a56-85ab-76446ad10c54',
+  'a377dad9-64b2-4f45-bc90-38631d85006a',
   'Desiré',
   NULL,
   NULL,
@@ -6552,12 +6552,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '312ca510-0c95-4b8d-9e08-9e420464a4d5',
+  '17247279-6f08-420c-b717-cbd7e5822cad',
   'Júlia',
   NULL,
   NULL,
@@ -6571,12 +6571,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd04d7ce1-6fbd-4a19-ad9f-0961ef116e88',
+  'a2df0b4b-89b5-4996-8134-aea7731f818f',
   'José',
   NULL,
   NULL,
@@ -6590,12 +6590,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '765f4a3e-aa93-4f9f-9c14-d0c864f21e2f',
+  '09c686da-165c-47ff-aa2a-a3573ccdea36',
   'ivan',
   NULL,
   NULL,
@@ -6609,12 +6609,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ee174b49-a0d0-450c-bd54-7d836fe432ea',
+  '58ead004-2bcb-410b-99e7-a74e748eb359',
   'Renato Roma',
   NULL,
   NULL,
@@ -6628,12 +6628,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4f23ebd5-b5f1-4556-a9ec-674785701510',
+  '8a23ed66-6764-4ab8-8759-ee0ce0daf6f0',
   'TRAVESSA DA PAZ CASA 10',
   NULL,
   NULL,
@@ -6647,12 +6647,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd9d17aad-9e0a-4926-94e9-aed713cfce9d',
+  'c9894bc7-0d80-4f98-a890-441982ef4278',
   'Raul',
   NULL,
   NULL,
@@ -6666,12 +6666,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd2cd341d-2063-4124-adde-83c8c00674b7',
+  'bb6c072e-8ad8-4619-b9fb-1c2bca22159c',
   'Viviane',
   NULL,
   NULL,
@@ -6685,12 +6685,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '352a9c12-d47e-431f-bb74-d42bcd3c77e7',
+  '3bf6ca20-81ee-4458-ae71-e266965eb52d',
   'ESTRADA GUANDU DO SENNA, 589',
   NULL,
   NULL,
@@ -6704,12 +6704,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dc9decd2-c152-4c9f-96bc-6fca16f61d8e',
+  'c13857d5-6126-49f4-bc7a-6f1a0b88fd71',
   'Leandro do posto de gasolina',
   NULL,
   NULL,
@@ -6723,12 +6723,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c7895850-0862-462b-9fba-b4e7e4e320ec',
+  '7db0f5b7-38ee-4f65-852a-01ab9f483710',
   'RAFAEL SALÃO',
   NULL,
   NULL,
@@ -6742,12 +6742,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a8c0f2e3-1018-4acc-810a-fefb9e23ea85',
+  '77e48811-d305-45a8-907d-3acd7c4b8453',
   'MARCELO MACARRÃO',
   NULL,
   NULL,
@@ -6761,12 +6761,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '80c2e28a-305e-4142-8aef-08e9b61dda4a',
+  'c635474b-ef08-4f17-ae76-b29d72243b7a',
   'THAYNÁ',
   NULL,
   NULL,
@@ -6780,12 +6780,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3bb1a690-8a59-4a07-a804-0408935e0408',
+  'c5bcbcdd-62cc-41cf-9c48-69d8f3297b6b',
   'Leandro RUA S 45 CASA 02',
   NULL,
   NULL,
@@ -6799,12 +6799,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '73532f4c-ea8f-44bf-b927-6dd29c445f56',
+  '7a9e55c7-825e-460a-be8a-a003d8c9c43b',
   'Rodrigo Kaline Modas',
   NULL,
   NULL,
@@ -6818,12 +6818,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '64776561-5b4b-4942-b021-7c5879c7a970',
+  'a70b7f5c-ebf2-4a69-b57d-e59bc4dfae08',
   'Eduardo',
   NULL,
   NULL,
@@ -6837,12 +6837,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3b27f593-3fb2-4c2b-900a-a5983425b3ff',
+  'a5c49f95-bc4b-4980-aff6-2d8479af2da7',
   'RUA C 316 CASA 01',
   NULL,
   NULL,
@@ -6856,12 +6856,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '80a95aad-2b6d-4f7c-bebf-a1e3470931bf',
+  'f9d3fb34-52fb-479a-be35-840f17e91166',
   'Bar do César vila olimpica',
   NULL,
   NULL,
@@ -6875,12 +6875,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bee1209a-e73e-4614-870b-30e911f1de77',
+  'f4b8b640-cde1-4f51-95f3-f9d2879ab21f',
   'Petrônio',
   NULL,
   NULL,
@@ -6894,12 +6894,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f218cf0d-0d4a-421e-a951-043d2c47e235',
+  'bbcd8171-8069-4e6e-aeee-ec2409b59062',
   'RUA P 138 CASA 02',
   NULL,
   NULL,
@@ -6913,12 +6913,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ad6358a4-3b7a-497f-9ff6-81197b0beaef',
+  '1b2435f8-fea3-4596-9b90-66ca70d7e7d7',
   'VALÉRIA',
   NULL,
   NULL,
@@ -6932,12 +6932,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ea4ce676-bc75-4ea0-a485-46fe63b5d528',
+  'cc22b7c2-d911-4083-9b15-043f68bd1262',
   'Carla Ruiva',
   NULL,
   NULL,
@@ -6951,12 +6951,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8341f90e-d618-4c55-9d79-4319e2224fdc',
+  '1532a4b2-4acb-44eb-ba1f-5a1dab57bd0c',
   'Buteco da 10',
   NULL,
   NULL,
@@ -6970,12 +6970,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f6f1c380-f5a9-438b-b6d6-6ec8939c85a7',
+  '6822b44c-d023-423c-8a88-996ed9228d4b',
   'RUA Q NÚMERO 29',
   NULL,
   NULL,
@@ -6989,12 +6989,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ebb73bcf-65e6-416d-98d3-b6be56c56855',
+  '2c69dd7c-594b-4ed3-8c0d-11e01ccb6f6f',
   'Ana Júlia',
   NULL,
   NULL,
@@ -7008,12 +7008,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4d59c36b-477d-48af-a598-940369f890cf',
+  'a2080277-fd0a-4156-bc78-8bdb8bec0d41',
   'ANDERSON',
   NULL,
   NULL,
@@ -7027,12 +7027,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6babd328-d557-46c8-8e4d-5c46deeb0a13',
+  'f128b7be-7e72-4efc-950a-464d4db486f0',
   'SIMÕES',
   NULL,
   NULL,
@@ -7046,12 +7046,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e8ede906-15e9-4c35-b201-b8e6f8bbf472',
+  'e966b758-c32d-4cfb-9610-4b2104784919',
   'RUA F 49 CASA 02',
   NULL,
   NULL,
@@ -7065,12 +7065,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9dacbcc5-845e-47cb-aac0-a832bbac2ebc',
+  'b7500919-0063-4a85-93d8-bca7f1402f43',
   'Verônica Irmã Cícero',
   NULL,
   NULL,
@@ -7084,12 +7084,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7ffef883-52eb-44c7-b091-bb3a43fd65d1',
+  '63fd5e1c-c41d-4c16-9707-5191ee1f3b99',
   'RUA I 218',
   NULL,
   NULL,
@@ -7103,12 +7103,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '77f3351b-4652-444e-ae4d-c358905ef6aa',
+  '175efd1b-9954-4a18-ac6e-e263685f14f4',
   'RISADINHA',
   NULL,
   NULL,
@@ -7122,12 +7122,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c0c1ebf8-dbb2-4b04-899a-00110f869395',
+  '2ad2bc3e-acb0-48aa-a4f7-670850dcd1a6',
   'RUA JÚLIO REIS, 06',
   NULL,
   NULL,
@@ -7141,12 +7141,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '36400e99-8b37-4198-9728-cf00f71ac301',
+  '960049db-27d8-4210-8f50-9dca2b2e52d4',
   'RUA P 156',
   NULL,
   NULL,
@@ -7160,12 +7160,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '07c6c68b-60e9-449e-942c-8537b64f2ca6',
+  'f806404d-7b17-4b33-bf70-bd485ba4657c',
   'CARLINHO',
   NULL,
   NULL,
@@ -7179,12 +7179,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7da20107-993e-4409-b0e5-9f51912dccc0',
+  'a253b94a-03cd-4d8d-9edf-b6adf4ac4445',
   'CONDOMÍNIO ACÁCIAS',
   NULL,
   NULL,
@@ -7198,12 +7198,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a93bbb35-d931-4895-8dca-22e485ac3b7d',
+  'f1d60d36-03bb-4936-bba5-4ac82608b283',
   'MACEDO TRAILLER',
   NULL,
   NULL,
@@ -7217,12 +7217,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '732124dd-399e-4247-a394-c8131af46bd7',
+  '8346da3b-d126-46b2-aec3-079a912c8de5',
   'RUA DELFIM MOREIRA',
   NULL,
   NULL,
@@ -7236,12 +7236,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4b30f0e4-3354-4400-99e6-5320d73f9d7b',
+  '8bbaabb8-aa61-4512-9756-df6ce0666511',
   'Joice',
   NULL,
   NULL,
@@ -7255,12 +7255,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c5ecda75-5f50-4f96-9642-f1c5ac350acb',
+  'e16cc8ce-a67a-43e2-a428-45f769a377a7',
   'Cunhada do Fabiano',
   NULL,
   NULL,
@@ -7274,12 +7274,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5b53565c-9ae6-4b9c-b234-54041b712e8b',
+  '5e2a5dba-b394-4eb1-8be9-9dea2aa14657',
   'RUA IAMAGATA 52',
   NULL,
   NULL,
@@ -7293,12 +7293,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5c7db856-a8f8-4172-b0c5-c2078ab97474',
+  '8585cef9-6907-4334-953d-d5eef35289b2',
   'RUA MARIO PENAFORTE 43',
   NULL,
   NULL,
@@ -7312,12 +7312,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cfb7469a-c2c2-41a8-84b5-394eb9756d87',
+  '8026bfcc-c138-48ef-aaa4-2a4b0b92d1c6',
   'Pamela',
   NULL,
   NULL,
@@ -7331,12 +7331,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4273f90c-4489-4e27-8b87-7c280a3c7223',
+  '7dca84e6-b163-4071-ace6-4e308e929545',
   'RUA K NÚMERO 30',
   NULL,
   NULL,
@@ -7350,12 +7350,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4134230c-36f9-4919-b270-83ccd5b95820',
+  '06c10f85-6e35-43bc-a84f-d8b3cc03cb4e',
   'RUA 16 NÚMERO 206',
   NULL,
   NULL,
@@ -7369,12 +7369,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '816c94cd-9fb7-4a01-abfc-2888cbf5dcdc',
+  'e4969d16-dc45-48ff-9b4f-bfdb92ff3627',
   'Rhaissa',
   NULL,
   NULL,
@@ -7388,12 +7388,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'efc8ba30-ba19-406f-9e52-8573375989ed',
+  '4378a607-05ef-4949-9ad5-0c363034bb40',
   'Romeu',
   NULL,
   NULL,
@@ -7407,12 +7407,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '08fd32e9-2ec3-4673-b117-7ab4074f20ae',
+  'af7f53b0-6586-4961-8d39-745e4eb00e11',
   'RUA JOÃO PERNAMBUCO Nº 13',
   NULL,
   NULL,
@@ -7426,12 +7426,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e139e165-c45e-439e-aece-fd05e45fc6ac',
+  '1e8504e3-c1e8-4c2d-954d-4b1e98bf2f33',
   'Alberto Trailler',
   NULL,
   NULL,
@@ -7445,12 +7445,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bd830a0b-b865-4b33-8a8c-7edfdf04a776',
+  '63bfb3ba-8292-4de0-b2d4-1bd73d0752ae',
   'Pedro Pizza',
   NULL,
   NULL,
@@ -7464,12 +7464,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0ddb4100-f7c5-418c-856c-07b047dcb8b4',
+  '7e8dbe10-00c9-4a0a-8acb-af9006ea4ff3',
   'Beth Mão',
   NULL,
   NULL,
@@ -7483,12 +7483,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4aa3c12d-ca8d-4f01-9b0f-e33fd2eace99',
+  '642e7168-fa7e-4422-88f2-dbe1362450c7',
   'Pezinho',
   NULL,
   NULL,
@@ -7502,12 +7502,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'aa44b94b-db46-459a-88ac-f230b0d4e4e4',
+  '6d64c51c-6d4c-4df2-91e5-dafbadf5a6e1',
   'Moiséis',
   NULL,
   NULL,
@@ -7521,12 +7521,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '035c6eb8-535f-4485-aab3-024f378c2803',
+  '04955e83-c828-4304-8e1d-66f829bd470e',
   'TRAVESSA 84 CASA 17',
   NULL,
   NULL,
@@ -7540,12 +7540,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2c47633a-85d0-4096-aae8-02ac9775f5a1',
+  '39b0b59d-f123-4d69-96f0-2f94c93eb77b',
   'Haras',
   NULL,
   NULL,
@@ -7559,12 +7559,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f3e95a93-a532-4056-b091-5b1a903f34af',
+  '493936bf-2b54-4abb-95b3-d539f91f5013',
   'RUA N, 82',
   NULL,
   NULL,
@@ -7578,12 +7578,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a7ebf305-34be-4bfd-8e0e-e8de8b6edfba',
+  '9067dc92-dd8c-4232-b35e-f6cc1e9fed67',
   'RUA U Nº 26',
   NULL,
   NULL,
@@ -7597,12 +7597,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7fe53d89-b699-4472-9047-01463bc1d969',
+  'd43f6d92-15e6-4436-b933-1d6c3592bdf4',
   'TRAILLER 15',
   NULL,
   NULL,
@@ -7616,12 +7616,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e3a95324-dd90-4329-bb80-8a886a3d0600',
+  '970e21d6-8bac-45c8-bf52-45b053e3b7a5',
   'RUA CARTOON, Nº 64',
   NULL,
   NULL,
@@ -7635,12 +7635,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '865ec8eb-0f72-4ef5-b2a3-00c1d13b2127',
+  '6880539e-6a9e-4eb8-b5e0-98a049c05560',
   'TRAVESSA CEUTA CASA 12',
   NULL,
   NULL,
@@ -7654,12 +7654,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1c83a5f0-8f7a-43be-b683-5ebbef8ba9f3',
+  'f453058d-42d9-49b0-b112-b6e7b70dbb1d',
   'ESTRADA DO QUAFÁ, Nº 560. CASA 02',
   NULL,
   NULL,
@@ -7673,12 +7673,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2a90477b-e537-4dc3-89f2-f6fe0bce2699',
+  'd7ed9b00-949d-4a26-bfb0-0b6b9345cd12',
   'IVANZINHO',
   NULL,
   NULL,
@@ -7692,12 +7692,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '87492db7-d357-49b6-b894-024325ee27a0',
+  '91b7eaac-ff84-43f1-b527-69beeefc9609',
   'Buteco da Deise',
   NULL,
   NULL,
@@ -7711,12 +7711,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e578a11b-bca8-4832-a953-b2b33524b376',
+  '5a3b15ce-cfdc-4efc-88fc-ec14842248c7',
   'Associação Quafá',
   NULL,
   NULL,
@@ -7730,12 +7730,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'faa8f3ad-0d22-4573-90a1-07e86806f502',
+  'c6328b84-a304-4613-bcc6-7d493e20ac83',
   'RUA E, CASA 48',
   NULL,
   NULL,
@@ -7749,12 +7749,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cd004b0c-aa9d-4d63-885f-69519a179c0d',
+  'e25080f2-99fc-4d5a-ab4c-ae62188f1569',
   'Lanchonete da Família',
   NULL,
   NULL,
@@ -7768,12 +7768,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '94e261a1-02bd-48e6-9846-fe9555e3feb9',
+  'e6a7fc91-e1a4-426d-a0a9-aacc7c400513',
   'Sogro Bochecha',
   NULL,
   NULL,
@@ -7787,12 +7787,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '75ff5548-279f-4643-8ffe-e78c8818568d',
+  'ddc5c569-3fa0-4412-9a62-c504a6148597',
   'Leila',
   NULL,
   NULL,
@@ -7806,12 +7806,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'afe8b38a-4c0a-47d8-a878-124eabbb5dd5',
+  '81d98952-e7b4-4658-ae71-14d09b5b8444',
   'Angela ou Mara',
   NULL,
   NULL,
@@ -7825,12 +7825,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c7a9ab66-67e9-400f-a881-9861668c0a15',
+  'f11bf3f1-6acd-4b5a-9eb5-1bee785250d4',
   'Jessica',
   NULL,
   NULL,
@@ -7844,12 +7844,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fd044dbf-b99e-40db-990a-52c4892cbcda',
+  '076793ad-4970-4afe-a58c-29fdb4b3a217',
   'RUA 10 EM FRENTE A 20',
   NULL,
   NULL,
@@ -7863,12 +7863,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5e10cad3-9593-4324-b174-6317c33569a0',
+  'e0f58a72-c503-4491-b398-fd4732a5c6df',
   'Manel Ultra Leve',
   NULL,
   NULL,
@@ -7882,12 +7882,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a8dea352-3c2b-4c0f-8af0-db3b6446f78d',
+  '0cfb9cc7-56a6-4752-b171-87410440838e',
   'RUA ARADO, CASA 16',
   NULL,
   NULL,
@@ -7901,12 +7901,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1622241d-9fa9-4fb7-9afe-afbab75966b1',
+  '5ef3b29e-933c-4800-9c94-22fc812cd4a7',
   'RUA F CASA 66',
   NULL,
   NULL,
@@ -7920,12 +7920,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '949039b0-f678-4430-98c3-a60177203dd3',
+  '5fbbb1d8-6c57-4f18-bbf2-f5bc067da26d',
   'Nem',
   NULL,
   NULL,
@@ -7939,12 +7939,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4a5b162a-5114-456e-80ec-b303f29bfe9f',
+  '84a48004-d4e7-4ee3-9b7c-e16368a1594d',
   'RUA CAMARÕES CASA 40',
   NULL,
   NULL,
@@ -7958,12 +7958,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8170aa4b-3527-4de9-8912-c51ae491ba87',
+  '12900f4b-1045-4689-8070-479d20a70111',
   'Géssica',
   NULL,
   NULL,
@@ -7977,12 +7977,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2ea59546-c8d4-48ac-9fb8-cc63d667a119',
+  '9ff419c1-744d-431e-bba2-caf1b38338b2',
   'EDUARDO METRAL',
   NULL,
   NULL,
@@ -7996,12 +7996,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dd34be4d-9d49-4ee6-866c-5eefd71cf278',
+  'df23170d-033d-4d0d-b5e5-b58b221dbb30',
   'Priscilla',
   NULL,
   NULL,
@@ -8015,12 +8015,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '08eeec1f-cb09-444a-898f-657c231a12b4',
+  'bdd295ed-4647-4371-abaa-463a04bd64b1',
   'RUA E CASA 246',
   NULL,
   NULL,
@@ -8034,12 +8034,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8042e324-228d-417a-8cf1-2e8e6d1b95d5',
+  'f819554e-e8e6-47a2-8596-79a22bee1322',
   'ALAN RUA K CASA 106',
   NULL,
   NULL,
@@ -8053,12 +8053,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fda12406-eaef-4d56-8181-9dd2fbe2b4cd',
+  '9fd4d4fa-b892-4ccf-a03e-14e36849aa3d',
   'RUA R CASA 352',
   NULL,
   NULL,
@@ -8072,12 +8072,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4c78ecaf-0a56-40ba-b1b3-dea90912a665',
+  '4af3c11c-00b6-47ca-91af-5cc78d409241',
   'Salão do Elinho',
   NULL,
   NULL,
@@ -8091,12 +8091,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9d0fefd6-3f81-4be4-98e1-a6578cafec6b',
+  'feb81167-42f9-4bd9-b582-fd6cb0ee37d0',
   'Murilo',
   NULL,
   NULL,
@@ -8110,12 +8110,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f135df29-12f0-4882-a30c-ce99a97ae3d7',
+  '36b3f289-37fc-44c7-96db-d1fe7e695ffa',
   'Pitoco',
   NULL,
   NULL,
@@ -8129,12 +8129,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1d050eb0-3f17-4b28-8d7e-e3f63c3aea37',
+  'd2154c43-0151-49be-81a8-1d8555ac89ea',
   'RUA TUNÍSIA CASA 88',
   NULL,
   NULL,
@@ -8148,12 +8148,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f570d6d1-34af-4487-8642-c0da67398d6f',
+  '922ea0e6-f26d-42be-a094-3605d38be949',
   'SILVIO MARROCOS',
   NULL,
   NULL,
@@ -8167,12 +8167,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '06cc67fd-d233-4773-b4c6-9b83d5a6c582',
+  '80bc3ecb-c5cc-41e2-8e27-240f4dfab0db',
   'MALU',
   NULL,
   NULL,
@@ -8186,12 +8186,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd251ff6e-cca7-494d-8799-7dda055e09c8',
+  '4dff8580-288a-47a1-86b1-07a539c9c813',
   'RUA K, 22. CASA 02',
   NULL,
   NULL,
@@ -8205,12 +8205,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3cd29462-598f-4c1a-a0da-4e3a236ef97c',
+  'ac79ace8-d4bc-4695-8884-6967247f3353',
   'Cleiton cond. Vale Verde',
   NULL,
   NULL,
@@ -8224,12 +8224,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c18e6f66-1c05-487e-a34b-fa8aa5ec2d87',
+  '615d115b-487b-4c47-9f00-4318e6a54b51',
   'Pastor Gilvan Dias da Silva',
   NULL,
   NULL,
@@ -8243,12 +8243,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dd66961a-8249-4c9f-b815-55ce0e128f3e',
+  '280cb91a-6948-405b-a48d-e549117f0de7',
   'SALÃO TOP FEST',
   NULL,
   NULL,
@@ -8262,12 +8262,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7de38661-41e7-401d-a1ca-ceaee4982301',
+  '7c1223c4-7da6-4595-9811-32890bf9f7f0',
   'Benjamin de Oliveira, casa 03',
   NULL,
   NULL,
@@ -8281,12 +8281,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '86dde8e6-0414-4d38-aabc-1ec4e753948d',
+  'c2b5990a-7acf-4cde-83d9-2b32dbf44ede',
   'Cláudia Pensão Acácias',
   NULL,
   NULL,
@@ -8300,12 +8300,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2c10475a-5fb9-4b66-ad57-545cb2b0567a',
+  '2e42796b-e960-4bf1-a5ff-7655f0f9f1ed',
   'RUA TUNÍSIA CASA 11',
   NULL,
   NULL,
@@ -8319,12 +8319,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd584b2f0-437a-43d6-9d17-e1b93746f29c',
+  '5742a740-98fa-4bd2-b22a-fa2c994a84c4',
   'Bar da Pedra',
   NULL,
   NULL,
@@ -8338,12 +8338,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '605e2c04-8fb8-46ef-9a94-3835397cbc27',
+  'f7003812-0d58-4321-9117-50c43fff3442',
   'SALÃO DO FELIPINHO',
   NULL,
   NULL,
@@ -8357,12 +8357,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6bac5695-f332-4633-be4c-1fbe0af26fda',
+  'e4a515b8-2cb3-4d71-ad0c-334d9ecd2f37',
   'Mateus',
   NULL,
   NULL,
@@ -8376,12 +8376,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1f9499b3-02f7-4e06-bd72-b150efcfd141',
+  'c3de84b1-1a86-4d4d-a8c4-26997f90b1ed',
   'Alencar Mesas',
   NULL,
   NULL,
@@ -8395,12 +8395,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f1697bfe-0d2e-488e-a0bf-abf5b03a559c',
+  '73becc40-6eae-4181-9ac2-4c2aa476f6d5',
   'RUA DO SÍTIO DO JOÃOZINHO',
   NULL,
   NULL,
@@ -8414,12 +8414,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bda34d01-5d2c-4ebe-ba51-28ae4393b8ac',
+  'cce734f9-5d22-451a-8ca2-2dec1bf2b5e9',
   'Waldir',
   NULL,
   NULL,
@@ -8433,12 +8433,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '50b684a0-cc6a-4980-9b22-fe47639c6aef',
+  'c90845c9-a3a3-49f2-b73c-2e8aaef4ebb9',
   'RUA 26 CASA 246',
   NULL,
   NULL,
@@ -8452,12 +8452,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'da31e51e-8fd2-437c-b1fb-bdee9aec6a8e',
+  'd05973c9-14eb-489e-bdf8-fc504eb5e679',
   'Léo Moto Táxi',
   NULL,
   NULL,
@@ -8471,12 +8471,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3746ebaa-168b-43e4-9a82-65d343418e6f',
+  '4b2c2790-74e9-42ab-9e2f-c7e554a0c528',
   'Tati Vado',
   NULL,
   NULL,
@@ -8490,12 +8490,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7eedc6b8-63d5-4515-b75a-871aa0355178',
+  'dc590d19-6bfc-451d-a9b1-4a228f8a66be',
   'Danielly Quiabo',
   NULL,
   NULL,
@@ -8509,12 +8509,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e4e3de12-27d7-4f38-8d57-3e188539af0b',
+  '21ca3a2d-8b14-4227-a746-2e606fd802f1',
   'Manuela',
   NULL,
   NULL,
@@ -8528,12 +8528,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f167bebe-3ac3-4b77-91ea-cf122516db44',
+  '327b11f8-68b9-423b-9a49-0a986f9363d4',
   'RUA E CASA 25',
   NULL,
   NULL,
@@ -8547,12 +8547,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b31dd8f1-76ed-4b27-bf3f-8f4aaa2902fb',
+  'ad876e67-79bf-4843-a5c7-09184950ee31',
   'RUA R CASA 147',
   NULL,
   NULL,
@@ -8566,12 +8566,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9c097417-0ee0-44f2-8e64-92fca4126dbc',
+  '99b449b1-8f50-40e9-9d6d-46aae377025e',
   'RUA PEDRO POMAR, 540',
   NULL,
   NULL,
@@ -8585,12 +8585,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2f98c0d4-f743-4434-b4e2-e86bcd0ae5ce',
+  '2f27752f-b776-45dc-9333-2faa0e5ab4af',
   'Lucas',
   NULL,
   NULL,
@@ -8604,12 +8604,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '77112629-2104-4310-9794-9aca7a824a44',
+  'a494b746-26f0-49e6-9509-0aab48702d25',
   'NETO',
   NULL,
   NULL,
@@ -8623,12 +8623,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '82dd12e8-9688-48bd-b045-85b4221d0e36',
+  '729c2719-2c8d-441d-8fe1-081b1374b5df',
   'Brenda',
   NULL,
   NULL,
@@ -8642,12 +8642,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'af15f820-62fa-463c-bfbb-85e66a1b86b5',
+  'd99d4154-75d7-4881-9c94-a1531b4d0799',
   'TOPETE',
   NULL,
   NULL,
@@ -8661,12 +8661,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a5f4a3cf-9a0e-402f-a49a-ce6ed0922500',
+  'c07541fc-e5b0-42b7-9230-147812357beb',
   'Bar do Júlio Amigo Oscar',
   NULL,
   NULL,
@@ -8680,12 +8680,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a3e8ca86-ac12-4a2c-bebf-3126604f971c',
+  'ace12a2f-d963-4ee8-ba8a-b741af4344dc',
   'Larissa Prima Henrique',
   NULL,
   NULL,
@@ -8699,12 +8699,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8c8c7c0a-6f04-4b66-a7a9-2274b20b67b9',
+  '839633bf-f6b4-486f-be56-02322179fca0',
   'RUA T CASA 94',
   NULL,
   NULL,
@@ -8718,12 +8718,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '455237f2-4438-4471-94e5-5ab83d3152a3',
+  'b27acb9c-cb80-435b-9054-7c2aef38066b',
   'EDUARDO - SALÃO LELU FESTA',
   NULL,
   NULL,
@@ -8737,12 +8737,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'aa78058d-90ed-47c4-9b73-03b9a5c8f658',
+  '944af3e1-bc3d-44c7-973d-8e15fe1f6b80',
   'RUA 09 CASA 88',
   NULL,
   NULL,
@@ -8756,12 +8756,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ca615406-6918-4f8c-83c8-28e4c517ff7e',
+  '725a019b-414a-4388-971d-293bb4aea1af',
   'RUA S, 53. CASA 01',
   NULL,
   NULL,
@@ -8775,12 +8775,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4f4ce073-0085-4802-b465-682e6db377da',
+  'd3b402a8-1988-4fb1-88d8-f2d9c20b57ef',
   'JEAN',
   NULL,
   NULL,
@@ -8794,12 +8794,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f61961e0-6d9b-496e-aaa4-80631067cb61',
+  '62987132-9fe1-4804-8ea1-864f29e7ddb2',
   'Esther',
   NULL,
   NULL,
@@ -8813,12 +8813,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3879ce62-7007-4578-9cef-78b78c2c017b',
+  'cec7d86f-7c30-4e0c-9d0f-57e5f25dc71c',
   'LUANA',
   NULL,
   NULL,
@@ -8832,12 +8832,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '509e298b-f21d-4ea7-b4cf-5928c681ffb2',
+  'af63336f-1d3e-4924-880c-5daf54ee693e',
   'RUA X Nº 09 CASA 01',
   NULL,
   NULL,
@@ -8851,12 +8851,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1a5d44a2-c759-4366-9b38-4181fcdad747',
+  '670a7719-70e9-4e96-8b8b-716fe8766d23',
   'Seu Marcos',
   NULL,
   NULL,
@@ -8870,12 +8870,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'be42ce69-f8d9-4d27-8dc3-ca505f1984ff',
+  '71cd66d5-af96-4d48-ab7f-5a0ccf6c5d51',
   'Carla Bar',
   NULL,
   NULL,
@@ -8889,12 +8889,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8db7b769-abaf-41e0-bd84-c3ecaa0d5062',
+  '71c583ed-5fe5-4a41-b3de-1bb184dfa19e',
   'ALINE',
   NULL,
   NULL,
@@ -8908,12 +8908,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd2cb9ca6-6412-4287-b573-52e7f8514952',
+  'cad7cfe6-739f-4339-92c0-2c772f374c53',
   'RUA DA AGRICULTURA, 41',
   NULL,
   NULL,
@@ -8927,12 +8927,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '07bf5549-01d6-48b4-a584-46a2fa6c0621',
+  'ccf3b54b-49a0-41a0-89f9-17bb5957cdb9',
   'Valdir',
   NULL,
   NULL,
@@ -8946,12 +8946,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1e4b8525-21f3-494a-a405-a12eaf6128d5',
+  '014ffbc0-2e12-4e72-82dc-f2d423ac68de',
   'RUA Q NÚMERO 56',
   NULL,
   NULL,
@@ -8965,12 +8965,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1ee2224f-0837-47a6-9548-9a90e5323a1b',
+  '1cbf8a2c-4b14-469d-bd9e-69e731af2092',
   'HELENA',
   NULL,
   NULL,
@@ -8984,12 +8984,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7e54c73b-a676-4d52-b447-934e8afaace8',
+  '63d7ee2e-6b10-439c-a2f2-e1ec6c2c52de',
   'ILANA',
   NULL,
   NULL,
@@ -9003,12 +9003,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '043f7902-1788-43e9-a21f-5c84e7ef22fa',
+  '4b0464e2-c15d-471a-95cd-18c926cae184',
   'ETIÓPIA 41',
   NULL,
   NULL,
@@ -9022,12 +9022,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '95286619-4959-426f-a0b3-4c2f5a3103d6',
+  '1215ec93-4696-4c34-a44b-936c010389ed',
   'ANTIGA 13 CASA 98',
   NULL,
   NULL,
@@ -9041,12 +9041,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3d070959-afa7-4cdc-bf23-81e998e3efd9',
+  '1d17a155-b789-4a60-88a0-70aa56fd040c',
   'SANDRINHA',
   NULL,
   NULL,
@@ -9060,12 +9060,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bfd7b2d3-e4df-48d7-acd5-5f75b9263ca3',
+  '904ce0b1-fb45-43af-8ff2-b4b03b87e74b',
   'ARTHUR PEDRA',
   NULL,
   NULL,
@@ -9079,12 +9079,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4808bb79-7dba-4b25-9313-93a06142e975',
+  '1a44b4b8-dddc-4392-a235-966a9d421d12',
   'RUA L 106 CASA 01',
   NULL,
   NULL,
@@ -9098,12 +9098,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e7c152a9-3954-40c3-80c6-574b05191bca',
+  'dbbd198f-ad08-4b95-a990-e9e1fafe7b7c',
   'RUA O 133 CASA 02',
   NULL,
   NULL,
@@ -9117,12 +9117,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e9846f5b-6583-44dc-8821-e1c8deee0686',
+  'e3bb80fc-1da8-4848-8cfd-d875f81e0bf2',
   'RUA F, 98 CASA 02',
   NULL,
   NULL,
@@ -9136,12 +9136,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'acc44007-e6dd-4886-99c5-74c9ecbb0e5a',
+  'd26c6da3-002c-4909-b2ba-00d3a7558b8b',
   'DAMIÃO',
   NULL,
   NULL,
@@ -9155,12 +9155,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e73a48ce-2f36-427d-8aa5-5741a3d34bb1',
+  '080cf570-f496-4b46-ad38-5b6b8f6b2be5',
   'JOSIAS OU MARINHA',
   NULL,
   NULL,
@@ -9174,12 +9174,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'da3aa4d3-e679-4acc-a8d1-a0bc0d283f56',
+  '3f696c44-1d63-40e6-8f69-ee076c44d8a7',
   'RUA R 326 CASA 01',
   NULL,
   NULL,
@@ -9193,12 +9193,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'af656838-cade-4088-a9d5-ea3a7066aeab',
+  'fd5e9630-26e7-4c8f-9196-3b719d217b23',
   'LUANA',
   NULL,
   NULL,
@@ -9212,12 +9212,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dcb14053-3d80-4484-89c3-851ca2010d65',
+  '4ab58795-2756-40f1-b229-afcdb06aa166',
   'FILHO DO ENRIQUE',
   NULL,
   NULL,
@@ -9231,12 +9231,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '124d8300-edf1-42e3-923c-2ff576a12463',
+  '6ef880a1-935f-4e92-86e6-cd8ad68c44d4',
   'RUA CARTOON CASA 73',
   NULL,
   NULL,
@@ -9250,12 +9250,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '233a0aec-fb97-4bc5-a80c-220a6307ec16',
+  '2e13cd45-41b0-44a3-af72-d6b8dffbbd9a',
   'CAMINHO DOS ORNELLAS',
   NULL,
   NULL,
@@ -9269,12 +9269,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5edf8d2c-abdb-40a1-a73a-f317a300ace5',
+  '002da8ef-edb9-4041-9533-3d45caa93c6d',
   'LAUANNY',
   NULL,
   NULL,
@@ -9288,12 +9288,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f15683cd-897e-44be-96e5-582af86c3873',
+  'aca35afd-fdd7-4503-886d-f4ad55d226ec',
   'RUA 16 CASA 115',
   NULL,
   NULL,
@@ -9307,12 +9307,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3d8b37ba-6a50-4445-a176-dd97351cf2ea',
+  '22b6266d-22ce-44d5-b490-fe65aa0e959e',
   'RUA CARTOON CASA 47',
   NULL,
   NULL,
@@ -9326,12 +9326,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bf89f293-2450-45a8-8c5f-61494a9681ab',
+  '8b31f354-6a60-4754-93fa-bc8426e64d46',
   'Débora Barrão',
   NULL,
   NULL,
@@ -9345,12 +9345,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '073cd2a6-3dd7-453b-a11c-f9d5d9e53c34',
+  '199add0b-3c07-41e1-b63d-1e90737ea167',
   'DONA DINA',
   NULL,
   NULL,
@@ -9364,12 +9364,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e9b0e322-6bcc-4740-9a2d-b73c9e243103',
+  '7e3ab791-9845-4fc1-8b42-5b255e41c0c3',
   'RUA JERÔNIMO CABRAL, CASA 39',
   NULL,
   NULL,
@@ -9383,12 +9383,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '141689a6-0eb8-4156-a60d-da7fca120647',
+  'b5951e91-a6a2-45f5-9842-bd9ce46ab497',
   'VANESSA',
   NULL,
   NULL,
@@ -9402,12 +9402,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cabd037c-d0b4-4ad9-8077-b70bd2a65bf7',
+  '416f841f-be91-4047-bc65-026ee1bd7e7e',
   'RUA X NÚMERO 215 CASA 02',
   NULL,
   NULL,
@@ -9421,12 +9421,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd78117f8-93e2-4a87-944e-7b05799f958a',
+  '702e7c1d-42ca-4c50-9069-eba7c1567ecc',
   'JOÃO',
   NULL,
   NULL,
@@ -9440,12 +9440,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '389255ff-c58d-4561-8a1a-06c3fa328a38',
+  'b0b83c31-b764-4713-b4ff-997a6aba6e59',
   'SALÃO DO FRAZÃO',
   NULL,
   NULL,
@@ -9459,12 +9459,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a1504a27-72e9-4e04-bee4-574892a505dc',
+  '5195d880-6d13-4579-9831-ebb88f74c4aa',
   'FRANCISCA',
   NULL,
   NULL,
@@ -9478,12 +9478,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e012811f-1551-45ce-8fef-d2785c911b42',
+  'f04f8c10-e26f-497f-8a00-72105940d06e',
   'TRANSRETA',
   NULL,
   NULL,
@@ -9497,12 +9497,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '762a1a3d-74d2-461e-9149-2220b72e18c3',
+  '36f37548-3664-4434-bc27-b67cdcb3564c',
   'RUA N CASA 48',
   NULL,
   NULL,
@@ -9516,12 +9516,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '80fb2dd7-dd36-4399-b2f8-c3d5cb665add',
+  '6cd6a5ed-c4e7-43b1-b293-31f7867a90a1',
   'MARCOS',
   NULL,
   NULL,
@@ -9535,12 +9535,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c0d9b124-16ae-4332-b5e1-f8505107c441',
+  '8fa77486-bd8d-482e-84b7-647b810eb0f2',
   'BIANCA CRAZY',
   NULL,
   NULL,
@@ -9554,12 +9554,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '67578df5-51bc-4c93-9255-7dacff691bd2',
+  'a8cd3e8c-6150-41e7-9ebf-14d8db971fb5',
   'FABIANA PAULO',
   NULL,
   NULL,
@@ -9573,12 +9573,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '91370d02-83c4-48f2-9bfb-61674c1a6d28',
+  '41a6f660-9159-4b88-9e10-a3912044e41c',
   'WALACE RUA S',
   NULL,
   NULL,
@@ -9592,12 +9592,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e0b99a94-e51e-424f-be1e-4e06d0a84a57',
+  '73913817-b236-4921-99b9-3ed7ff15bc9e',
   'VARANDÃO DA GANA',
   NULL,
   NULL,
@@ -9611,12 +9611,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '62036341-3128-4ec7-95ac-20fff320b504',
+  '28d2d819-6580-4bf3-ba13-97cb4938bd63',
   'SILAS',
   NULL,
   NULL,
@@ -9630,12 +9630,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3fc31d20-840d-4524-9a16-1a473b0e80a8',
+  'fb8f01b3-754e-4d46-a26d-1e8dd32a4eb4',
   'RUA DANIEL JOSÉ DE CARVALHO LOTE 10 QUADRA L',
   NULL,
   NULL,
@@ -9649,12 +9649,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e86d1387-b90c-41a9-b8d2-4676dd4e5dec',
+  'f8b9d1fa-bf18-43cf-8416-b7f2260f763b',
   'CLÁUDIO MALVINAS',
   NULL,
   NULL,
@@ -9668,12 +9668,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ed1e6e1c-69a7-4932-81ee-9eac7123b8d3',
+  'a89c108d-bbe8-4aab-990b-07b3b5f8f3f7',
   'RUA N CASA 57',
   NULL,
   NULL,
@@ -9687,12 +9687,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fbd0268c-40c8-4b06-96ed-6c8e1d0a254d',
+  '999a73a3-e4d3-409e-972d-ad0ae44e4110',
   'TAO',
   NULL,
   NULL,
@@ -9706,12 +9706,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2908ae1f-fd47-45e8-b20e-bd3266c0b685',
+  'df558f98-489c-42d7-a9f3-cfce8d679a8e',
   'RUA N 83 CASA 01',
   NULL,
   NULL,
@@ -9725,12 +9725,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '393c5118-439f-4fde-beb1-aaa05a2d346b',
+  'a44054d9-c61c-4339-8474-e75739384533',
   'LUCAS THOMPSON',
   NULL,
   NULL,
@@ -9744,12 +9744,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c94f57dd-b0ef-486a-9d2e-f29979d0e090',
+  'be8c9b75-d635-4b74-9323-020505d98f53',
   'RUA ARADO CASA 08',
   NULL,
   NULL,
@@ -9763,12 +9763,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '92d7cbd5-fdd5-4330-ba35-3794f1220052',
+  '292c187d-3593-4368-9d92-e21febf91dea',
   'ROBERTO',
   NULL,
   NULL,
@@ -9782,12 +9782,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '68499c96-cd36-4f18-93c2-06be3f508bed',
+  'f5342d49-c9fc-4ace-a0ed-c3445ea23d39',
   '1ª IGREJA BATISTA QUAFÁ',
   NULL,
   NULL,
@@ -9801,12 +9801,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c48db527-317f-4a17-99d5-b1bfa7e357ed',
+  'ec53bcb9-887b-47c9-a910-854f96b74355',
   'RUA O CASA 65',
   NULL,
   NULL,
@@ -9820,12 +9820,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '35af3d3a-e85d-40c4-a83a-6e0da70558d7',
+  'db81f43b-8ab2-4dd0-9d8c-c2755db04657',
   'LEONEL',
   NULL,
   NULL,
@@ -9839,12 +9839,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2c17c9cf-7860-4d62-8aea-cde898ca6646',
+  '25c751cd-cc31-41d4-a153-b9f1041f798c',
   'DOUGLAS RUA D',
   NULL,
   NULL,
@@ -9858,12 +9858,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8a0010da-09df-4381-b1bb-ea7a9a1dd1bd',
+  '653ef300-1f2f-40bf-9bca-0397a2f334dd',
   'BAR DO GORDÃO',
   NULL,
   NULL,
@@ -9877,12 +9877,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5c0a0411-6253-4d04-b34a-08d364145d50',
+  'cb413929-a922-45f6-93d8-68ad1f0eea46',
   'Seu Geraldo',
   NULL,
   NULL,
@@ -9896,12 +9896,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'aa93920d-f68d-41ff-b73b-1bd519ad0e8e',
+  '20664447-92cd-4aa3-afcc-bf1fd8f4e00e',
   'RUA JÚLIO REIS CASA 128',
   NULL,
   NULL,
@@ -9915,12 +9915,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '206112a0-9298-4005-b3ef-37a56164a6f8',
+  '3016e13b-f665-4aa8-b65d-ec368b7da840',
   'VERA RUA 10',
   NULL,
   NULL,
@@ -9934,12 +9934,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd853050d-90de-488a-bd0f-bba4a8c29a2e',
+  '0f09b88b-b875-4eaa-9d05-8e6e8530f3ea',
   'MARCOS GUANDU',
   NULL,
   NULL,
@@ -9953,12 +9953,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b17c912f-5591-4427-a393-c2391825b3b5',
+  '9a02403c-4e92-40cd-8668-09dbc806c02a',
   'BRUNO HENRIQUE',
   NULL,
   NULL,
@@ -9972,12 +9972,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '11d70768-5c1d-438f-9e8a-6a877bb22de4',
+  'd403540b-4966-4ac2-bb0e-5d3a779b28bc',
   'RUA CLEITONLUIZ VIEIRA  PROJETADA B',
   NULL,
   NULL,
@@ -9991,12 +9991,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bfe668ad-ce15-4f28-b92a-88c2ca64b987',
+  '4519bc15-8be7-468e-9528-d10a003f15ca',
   'RUA CLEITON LUIZ VIEIRA  PROJETADA B',
   NULL,
   NULL,
@@ -10010,12 +10010,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '42e5c58a-a6fd-4abe-9593-8aa7cb8156bd',
+  'ce6cf7bd-5615-4993-bd5b-67a3f7f124c8',
   'SUELI',
   NULL,
   NULL,
@@ -10029,12 +10029,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '545d8669-870e-460c-96f1-ba56840e7b0e',
+  'e5e917ed-2d66-46a4-986d-5d0a9eea3421',
   'RUA EMANUEL BEZERRA DOS SANTOS',
   NULL,
   NULL,
@@ -10048,12 +10048,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '570b1ea3-37d6-474f-a813-4a7260202150',
+  'abe23b0b-2aec-4b00-a1ea-60e4d258fa20',
   'RUA N , 07 CASA 01',
   NULL,
   NULL,
@@ -10067,12 +10067,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ae699a2b-67b3-4519-9244-b8b186f7a996',
+  '431fd52d-eb28-4f7e-bbf9-d7bf0a2e6f77',
   'MICHELE',
   NULL,
   NULL,
@@ -10086,12 +10086,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '52c21ab4-82b1-478f-ac0e-ab3cf1bf41cb',
+  '0f3e5401-3f3e-411c-8715-88e741c845c2',
   'PADARIA RUA 02',
   NULL,
   NULL,
@@ -10105,12 +10105,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'db732f89-dc46-4246-bf89-f7e0a6e9ca37',
+  'f767b407-a612-4111-b33c-77d598a55670',
   'MAURÃO',
   NULL,
   NULL,
@@ -10124,12 +10124,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'abdf2899-b6f9-446c-9a0d-a06a93d057d8',
+  '0c34cc43-fc90-4d12-96c7-10afbd68cd14',
   'BRUNO:',
   NULL,
   NULL,
@@ -10143,12 +10143,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b30bf485-9f76-4c0d-869a-60b383717a66',
+  'a6fcc6cf-c33c-406c-9c8d-db1d91e50f85',
   'ARTHUR',
   NULL,
   NULL,
@@ -10162,12 +10162,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6eab054a-28f4-4329-88c2-122e5c1084f1',
+  'e1530dd0-a475-49ae-9b1d-c247492e7717',
   'JÚLIA:',
   NULL,
   NULL,
@@ -10181,12 +10181,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7780105f-5842-4203-ade0-7cd9860aff21',
+  '8e034aff-49d3-40de-8c08-73b2373bcda8',
   'PRIMA NENÉM',
   NULL,
   NULL,
@@ -10200,12 +10200,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '91c3d934-89e3-4156-bffa-4632dff8ad43',
+  '81dd4bef-206f-42b2-b1c4-46c7b4a51f02',
   'TRAVESSA AMAZONAS Nº07 PROGRESSO',
   NULL,
   NULL,
@@ -10219,12 +10219,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7d264caa-8588-4289-b948-774a16ed6394',
+  '8ee06c16-c982-4841-b3b4-465139c9f086',
   'ACÁCIAS HALL',
   NULL,
   NULL,
@@ -10238,12 +10238,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0265bd9b-f6b4-40a4-b1a8-3c7cd0940df3',
+  '630869e0-65cf-41df-9eb0-32c95a24b913',
   'DADÁ SERRALHEIRO',
   NULL,
   NULL,
@@ -10257,12 +10257,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7c002385-f722-49c2-8ec9-65d6a171a88b',
+  '4ad99c39-d7d0-4617-a95c-9e4271366c5d',
   'PAULA LANCHES',
   NULL,
   NULL,
@@ -10276,12 +10276,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c2424685-700e-435e-a856-42d9930b28fc',
+  'e5f6230b-fa0a-4e36-870a-4b3a670a65f6',
   'GRUPO PELADÃO',
   NULL,
   NULL,
@@ -10295,12 +10295,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '698dc97f-aafb-4e9c-bc50-8439d3b8594b',
+  '13df1f71-d0e9-41ec-8794-216daa89b29b',
   'RITA OU NATÁLIA',
   NULL,
   NULL,
@@ -10314,12 +10314,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ee39e161-63a0-4ad5-9668-6ee2b50223a7',
+  '6a10cc9d-3f00-4ed7-beb4-c8b00bb890a6',
   'TRAVESSA 87 Nº 19',
   NULL,
   NULL,
@@ -10333,12 +10333,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6d7fca5c-114b-40aa-acf5-36fcbb40267d',
+  'f2398b6f-3106-4ce4-a6ba-d84ae607b599',
   'CÉLIA',
   NULL,
   NULL,
@@ -10352,12 +10352,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '87d73cb5-57ff-4054-b07f-e682fd32305c',
+  'd307b77b-3dd0-472c-9f97-6153c7d462aa',
   'RUA IRINEU DE ALMEIDA, Nº 19',
   NULL,
   NULL,
@@ -10371,12 +10371,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4bf80acd-59e0-4032-afcc-81d455a3280a',
+  '612f7a96-003b-425b-984d-621d8e0eae63',
   'RUA N 91 CASA 01',
   NULL,
   NULL,
@@ -10390,12 +10390,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bf8fd350-4356-4e9f-b5e5-ff33a250ee9f',
+  'e33e53bd-6f04-4043-9a46-69ab30379465',
   'DAVID PRACINHA',
   NULL,
   NULL,
@@ -10409,12 +10409,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4de7b563-e089-49df-8ba4-2de23bab891c',
+  '41a55f3a-ce2a-4946-9c18-badc43de1c1f',
   'CASA DO MARD',
   NULL,
   NULL,
@@ -10428,12 +10428,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '645fd17c-041d-41eb-ab70-2f63dc4247a5',
+  '3a9326d6-d647-419e-b0ca-9bcb3168b59a',
   'RUA 27 Nº 48',
   NULL,
   NULL,
@@ -10447,12 +10447,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'affeffb4-1a90-41bf-84bf-649abd7287fb',
+  '4e1282bd-aa6d-44fa-a3b3-1002769dc8dd',
   'SILLAS',
   NULL,
   NULL,
@@ -10466,12 +10466,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e98d4d8b-ae6c-4d68-8abf-c60a119eb940',
+  '05bdf7ad-c2af-45b6-8668-ac891f8e4663',
   'ANTIGA 14 Nº 171',
   NULL,
   NULL,
@@ -10485,12 +10485,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3b46f910-59b5-492e-8eb4-ecc348b7771b',
+  '8db4bd95-9b96-4aa6-b0f5-65d4018566e1',
   'RUA R 318 CASA 02',
   NULL,
   NULL,
@@ -10504,12 +10504,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '97b0fdf8-10dc-48d3-9046-132a42d65bb1',
+  'aee5ab71-dbd6-4055-80ad-01292e507633',
   'TUZA',
   NULL,
   NULL,
@@ -10523,12 +10523,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd71a4da2-36e3-4fc4-8872-ef27aa96b601',
+  '9214773f-2561-45a2-90ee-6255040f50ea',
   'VÂNIA',
   NULL,
   NULL,
@@ -10542,12 +10542,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2ddf8998-d1f4-43b3-a9e7-28e1cb4526ae',
+  '301f66e7-1d8b-4bf1-8169-5a1844592776',
   'Weligton Puk',
   NULL,
   NULL,
@@ -10561,12 +10561,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e00716fa-0619-4a2d-8667-6c05af0e2c21',
+  '45882abf-d375-4398-9f88-deb7754ff49d',
   'RUA M , 22 CASA 02',
   NULL,
   NULL,
@@ -10580,12 +10580,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '024daa08-9b1c-4cad-805f-fa226f3ad19a',
+  '6f6f2728-8f5e-430f-b313-8548959ce0bd',
   'RUA CAMARÕES, 56',
   NULL,
   NULL,
@@ -10599,12 +10599,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '68bb90be-ee6d-4ebc-b175-6da142141bf2',
+  'bf8ae429-5b49-41db-9e53-08924d26f78a',
   'RUA BURUNDI, 22',
   NULL,
   NULL,
@@ -10618,12 +10618,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '93e46938-4ae6-4b15-b4ba-e41eb384a3f8',
+  'dda992a0-29f2-403b-b8fb-160f367b57a2',
   'AVENIDA SOCIÓLOGO BETINHO, 07',
   NULL,
   NULL,
@@ -10637,12 +10637,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7ed6e8cf-cca6-4ec5-9f77-550508ee1f74',
+  'bc33274b-e51c-43cd-a9b7-1fcdde5b6f4c',
   'DONA JÔ',
   NULL,
   NULL,
@@ -10656,12 +10656,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2d74c4ca-abe8-481f-b685-cedd4e7938e8',
+  'b1a991de-8a1b-4da8-aff3-d1afe7f24aa0',
   'RUA JOÃO PERNAMBUCO, 08',
   NULL,
   NULL,
@@ -10675,12 +10675,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3241e667-d655-45f1-9b35-1f207cda5c2b',
+  '3035b723-a8e6-499f-bdff-7e25ec7706c1',
   'SIMONNE',
   NULL,
   NULL,
@@ -10694,12 +10694,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '10c2de81-34ea-41d8-b6ce-03e9814466f7',
+  'd2d3725a-e377-4141-82c5-0a004a3c8803',
   'RUA ARADO, 01',
   NULL,
   NULL,
@@ -10713,12 +10713,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0f2abd8d-057b-4200-9190-cf5ca8aaefe7',
+  '645f3a20-bffe-4671-976c-4533e2592e3f',
   'MATHEUS',
   NULL,
   NULL,
@@ -10732,12 +10732,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '17604484-3342-4218-9586-c95acf9101a2',
+  '43fc29b6-7702-44f0-9f56-fa17281f443f',
   'FRANCISCO',
   NULL,
   NULL,
@@ -10751,12 +10751,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '75e97f59-29d8-401e-b83c-bd13926470ce',
+  'f10dd7cc-0f2e-493d-9cc0-eefa92baf238',
   'GLEDSON',
   NULL,
   NULL,
@@ -10770,12 +10770,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5c045499-7161-495d-9277-1b2b1cf54551',
+  'f3bc9e84-0157-4973-9fc9-e49ab6ad4e17',
   'CARLA RUA O, CASA 177',
   NULL,
   NULL,
@@ -10789,12 +10789,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3aabf63c-df9d-4b93-a150-ba1328841861',
+  '3b2369ac-a466-4c1e-bee0-4d0ee6096666',
   'RUA 26, CASA 26',
   NULL,
   NULL,
@@ -10808,12 +10808,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '02353c70-ea74-4f04-8e3b-97e260697497',
+  '3c521a30-b3d9-4937-b48e-ac9e7dd29964',
   'RODRIGO MALVINA',
   NULL,
   NULL,
@@ -10827,12 +10827,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0100ade1-692b-42d9-81f3-a38db334bf3c',
+  'ce7483cb-d896-421f-a43a-1ba0a182a889',
   'PENSÃO DA JU',
   NULL,
   NULL,
@@ -10846,12 +10846,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '23445e83-ed92-41c3-9f60-3975e73b7b3c',
+  'f15d1adc-1341-45dc-9109-1c3088df48ad',
   'VAGNER',
   NULL,
   NULL,
@@ -10865,12 +10865,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bbd6d8fd-bb6d-4599-99fb-3938d5c77344',
+  '840d2d78-d549-4038-99e5-f0160cc7c770',
   'LARISSA',
   NULL,
   NULL,
@@ -10884,12 +10884,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '21a41e2f-4c38-4254-a3e2-57274b447b2d',
+  'b8606e6a-38eb-4c75-b5ba-40dd53eb85e2',
   'RUA QUÊNIA, 17',
   NULL,
   NULL,
@@ -10903,12 +10903,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e5560de8-8e8e-49c2-8d3b-6719f87c2b39',
+  '8e35c6ef-ea66-4afa-8d68-1428c901d50d',
   'RUA ARTUR NAPOLEÃO, 26',
   NULL,
   NULL,
@@ -10922,12 +10922,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '49d6b59c-439d-4c8f-982f-dc7341c4c152',
+  '69c6d065-ff57-4325-87c3-8d62d248ea1c',
   'ROCHA',
   NULL,
   NULL,
@@ -10941,12 +10941,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '30130666-c719-48d2-aaac-396cec597f46',
+  '32df3a99-a6a6-4763-a9a3-39bfcbf98bec',
   'AVENIDA 01 Nº 233',
   NULL,
   NULL,
@@ -10960,12 +10960,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4def2004-af50-4cc3-a765-a99f4ba74c6a',
+  '04a6e0e6-b82e-4891-86ce-46a8898eec52',
   'MÃE DA IVONE',
   NULL,
   NULL,
@@ -10979,12 +10979,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f538d961-558d-4e6b-a4e5-a3106dd8165a',
+  'a24dde01-f8b0-4ac8-b9ee-92346520b812',
   'RUA HAMBURGO 201 CASA 01',
   NULL,
   NULL,
@@ -10998,12 +10998,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c66fc569-e394-4d76-b82b-e135285a6909',
+  '3e0f4fcc-98d6-4f24-84cf-1d4bb15a304e',
   'RUA L 98 CASA 02',
   NULL,
   NULL,
@@ -11017,12 +11017,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '612d00e0-1e81-4a66-9b19-d9158554f974',
+  'a79c1582-ed35-44e9-9a73-f6765755d8ad',
   'RUA T 54',
   NULL,
   NULL,
@@ -11036,12 +11036,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a64a6fa9-9874-42c8-b28a-5c5609719da3',
+  '26c970ed-0f2d-430d-bfc0-41f70651db70',
   'BAR DO CAPIXABA',
   NULL,
   NULL,
@@ -11055,12 +11055,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a6213337-5e99-4174-a0b3-68533beff79d',
+  '07d0f8e3-f882-41ed-ad89-60eb4c6c2dbb',
   'RUA L CASA 95',
   NULL,
   NULL,
@@ -11074,12 +11074,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '217cd8fc-37ab-4894-8061-eec76faf673e',
+  'd7bd4eb1-2a31-43d9-a1ad-7e9b02af9408',
   'MONICÃO',
   NULL,
   NULL,
@@ -11093,12 +11093,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e5b664a9-c8e3-41b4-8324-2c46398d50b6',
+  '8e41a2f5-039e-48c7-9a79-2bdd3dac3628',
   'BIBI BRONZE',
   NULL,
   NULL,
@@ -11112,12 +11112,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'adede632-9770-47c6-a0af-5be44473a17e',
+  'fab55107-834e-415f-8335-04f2a032d2dd',
   'RODRIGO (IGREJA)',
   NULL,
   NULL,
@@ -11131,12 +11131,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3f5294ff-b082-48ee-b9e9-d61011c55c3b',
+  'd4c167ae-66f4-40ad-b57e-429886e79408',
   'ESPAÇO SOLLAR',
   NULL,
   NULL,
@@ -11150,12 +11150,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8e794970-f6bd-4025-8a4f-01ccf0b4ead8',
+  'ec4a0ffd-b25e-4811-84a0-53be3d06b285',
   'LEANDRA',
   NULL,
   NULL,
@@ -11169,12 +11169,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '426f38b9-921d-46c6-9d74-b310070fdd15',
+  'a57a47bc-d534-434a-a7c5-026814d8b856',
   'ERICK FUNCIONÁRIO',
   NULL,
   NULL,
@@ -11188,12 +11188,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ef61faf8-c054-4d73-8e68-240c292d12d2',
+  'ce39fcc4-50c7-4594-a774-38c3dfe215ae',
   'RUA P CASA 121',
   NULL,
   NULL,
@@ -11207,12 +11207,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e2899915-df2a-4c9f-866b-9e040a59150c',
+  '50e8793c-e33a-442e-a4c5-e2d0dabe3ec1',
   'ESPAÇO SOLLAR AV. BRASIL',
   NULL,
   NULL,
@@ -11226,12 +11226,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9aa636b7-5090-46e6-9e96-d943510303d8',
+  '442b33d2-4a1e-46ea-94cf-71068605a708',
   'MARIA ÍNDIA',
   NULL,
   NULL,
@@ -11245,12 +11245,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cabd606e-a8c4-479d-8c3a-0f7fb7f6f00d',
+  'c85201a3-f488-4c0f-9987-27d4dbbc6bd6',
   'RUA S CASA 95',
   NULL,
   NULL,
@@ -11264,12 +11264,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6a6b5de6-a854-4711-90d0-83ab1f007066',
+  'c7393dc3-1477-4253-a380-aa155e77f5ac',
   'DULCE',
   NULL,
   NULL,
@@ -11283,12 +11283,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0d46ff65-3f5c-488e-b7f2-fc772746d7e8',
+  'c62b8d21-02e0-4661-9fe2-f31c847dbdff',
   'ESTEFANY',
   NULL,
   NULL,
@@ -11302,12 +11302,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd925451c-a18e-4216-bee0-64d4b61018b3',
+  'db53c39d-7c08-4f94-b13c-1a8a96a30bc8',
   'SALÃO DO RAI',
   NULL,
   NULL,
@@ -11321,12 +11321,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '576133d7-9b20-48c4-8909-91d21c74508b',
+  '9d9947a0-240e-49e1-a2a3-97c4a49eb03c',
   'THAIS',
   NULL,
   NULL,
@@ -11340,12 +11340,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b8f8c13c-0078-4265-9a9c-d98940bbc2f3',
+  '0f214b1d-7792-43bd-b239-1b2ef004d40a',
   'ALAN (LOJA)',
   NULL,
   NULL,
@@ -11359,12 +11359,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1fce39cf-dd93-41db-8bbf-a7b61924e4f7',
+  'a1349131-1d5a-4306-bf68-38c1b83b7dba',
   'PAINTBALL',
   NULL,
   NULL,
@@ -11378,12 +11378,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dbea3955-d7c9-4acf-bb40-5d7163ab9789',
+  '6ded24f2-6364-4ed7-a07b-e4af09064570',
   'RUA N CASA 140',
   NULL,
   NULL,
@@ -11397,12 +11397,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fd9741d3-6bb4-4fc7-871b-63375c7cf3ff',
+  '581009e0-038d-4350-ae3b-f416218e011f',
   'SALAO COSTA NETO',
   NULL,
   NULL,
@@ -11416,12 +11416,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '39359300-aad4-4d16-8b80-3764bbc94ddf',
+  '17e70680-3572-40ee-8643-68c9795cb4eb',
   'Marcelly',
   NULL,
   NULL,
@@ -11435,12 +11435,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '78ccd76a-5f5d-46b0-970b-5d8e15ac06cc',
+  'd0a4f9b4-a680-4284-bc10-39652dab6f0b',
   'Yara',
   NULL,
   NULL,
@@ -11454,12 +11454,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c69342c1-c4e0-401f-9bd3-75f63c7dd3d8',
+  '165e0f0d-624a-412a-8da7-e3d8d7f5fa68',
   'LUANY',
   NULL,
   NULL,
@@ -11473,12 +11473,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'db9717d6-9182-472c-933a-406c72b69214',
+  '8d5cfcde-8186-4d96-a968-5eb2a97b589c',
   'VANESSA RUA U',
   NULL,
   NULL,
@@ -11492,12 +11492,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '21db6bb9-f594-4ba0-a884-6f860a89fc95',
+  'b58a12c7-d38a-441c-bc27-75edf5008b57',
   'EDILÉIA',
   NULL,
   NULL,
@@ -11511,12 +11511,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6393315d-e9d3-4e39-901a-41148f5c4330',
+  '9ba24a5d-a4ed-411d-b77f-f676ee6b4fab',
   'RUA JOSÉ GONÇALVES, CASA 84',
   NULL,
   NULL,
@@ -11530,12 +11530,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b8906b65-edf5-4793-ba30-5a062a05dc0f',
+  'f68785c4-f677-41d5-8a95-2f6db05841d9',
   'ROSE RUA O CASA 28',
   NULL,
   NULL,
@@ -11549,12 +11549,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a48b162e-ae2d-4331-b540-9dd8f9d57534',
+  'edc1ca3d-85d3-43be-89f1-be17c3d49221',
   'CONDOMÍNIO YPE AMARELO',
   NULL,
   NULL,
@@ -11568,12 +11568,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a0ec8d56-ee2f-4a9c-9998-6fd1a1a0df4c',
+  'a59e88bf-7b66-402e-b771-adc489b3ee30',
   'FLAVIA',
   NULL,
   NULL,
@@ -11587,12 +11587,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '64f01875-f2a6-4fe1-856e-5eceafb05f29',
+  '675ae5db-4bd1-4afd-8145-0f5aea294950',
   'ESTRADA DO QUAFÁ, 300',
   NULL,
   NULL,
@@ -11606,12 +11606,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bdde71a1-ef13-4090-9af1-20000c3a2a7a',
+  'c86f5ce0-1d60-4117-bca5-5c5ae557d4e0',
   'ANA LUCIA',
   NULL,
   NULL,
@@ -11625,12 +11625,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd6b85fcb-5ccc-48bb-a63d-80d999357d2b',
+  '4f960a41-569a-40f4-bb45-d088b70b767f',
   'RUA PEDRO POMAR, 180',
   NULL,
   NULL,
@@ -11644,12 +11644,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cb64a9d6-95d4-43d0-b6d8-0542b83cb48b',
+  'a3461b9e-ffbe-45dd-ae4b-3c1fad6ca98a',
   'RUA GARCIA DE CRISTO, 07',
   NULL,
   NULL,
@@ -11663,12 +11663,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '537d2893-b8da-471e-b71f-99db51b384eb',
+  '1d44fc3a-2eea-48c4-8bf8-037e0f43bc54',
   'VILMA MARIA',
   NULL,
   NULL,
@@ -11682,12 +11682,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3bfba5b1-db86-428d-869e-ddb77fe55c69',
+  '1ec0101c-2d50-44fd-88e8-17ea79d96477',
   'Marcelo Guandu',
   NULL,
   NULL,
@@ -11701,12 +11701,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '103d87eb-83b5-40d1-9768-07540fb1a8c4',
+  '196fad32-b667-413f-9e40-3ba131ac2947',
   'VINICIUS',
   NULL,
   NULL,
@@ -11720,12 +11720,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9bbdd1ac-5296-48f6-84c1-20f0ff92ba90',
+  'cc089bf2-544c-41dd-815a-591cf0d5538d',
   'RUA TUNÍSIA 58',
   NULL,
   NULL,
@@ -11739,12 +11739,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5b05427b-cbcd-45ab-9e2e-4f9cdac66abd',
+  '3578efb0-fcda-4202-be1e-6d55a7a2e0df',
   'RUA TANGANICA 25',
   NULL,
   NULL,
@@ -11758,12 +11758,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '83fe5991-8fe4-4ec8-947b-05adca8c1330',
+  '16397049-6833-4039-b42e-a2bf4c714cd5',
   'AGUINALDO',
   NULL,
   NULL,
@@ -11777,12 +11777,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e6d6a1f6-292c-4e65-b603-05072f6c4f04',
+  'ff63f9af-bbf3-450c-a185-7d975c1b433a',
   'ESPAÇO BARUK',
   NULL,
   NULL,
@@ -11796,12 +11796,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '68a523f8-3e6a-4771-8c44-f892681e1ca9',
+  'a1a0bafd-793f-4067-a47c-12756099aedb',
   'JEFERSON',
   NULL,
   NULL,
@@ -11815,12 +11815,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '80b32327-6054-4190-9296-705b7daf032e',
+  'f3aee566-44bd-4c4c-b623-974da80594ce',
   'SALAO EM FRENTE AO GAS NA MINISTRO ARY FRANCO',
   NULL,
   NULL,
@@ -11834,12 +11834,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c9841657-c7d6-4674-8b4f-8b0f4461fb7b',
+  '0da06b40-37dc-4a95-943d-cd4b5e138ae3',
   'JANINE',
   NULL,
   NULL,
@@ -11853,12 +11853,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5b01c001-cd92-4722-bf87-184709459f16',
+  '0a06c064-914e-4cb6-90b8-99a28daf6014',
   'BAIACU',
   NULL,
   NULL,
@@ -11872,12 +11872,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fba596e2-aa5c-429a-94fb-0699c0f114b1',
+  'f4ca6ca3-98c8-4084-a37b-5b5e10487ed1',
   'DAYANE',
   NULL,
   NULL,
@@ -11891,12 +11891,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0f351f0c-1ebe-4e6c-a599-f0004957ed8d',
+  '22114327-7430-4d67-b4d2-b422dbc52ef4',
   'RUA HAMBURGO, 142',
   NULL,
   NULL,
@@ -11910,12 +11910,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0d160386-f2ed-43b0-8795-9016a8b44c51',
+  'f6df86e6-f6dc-461c-a22a-0641e3c8fddb',
   'RUA R, CASA 131',
   NULL,
   NULL,
@@ -11929,12 +11929,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '63560fc8-718c-4a6c-9a9a-cafaa237bfaa',
+  'f4d25ab0-22d6-4435-834a-062611158a9a',
   'SEU GUIDO',
   NULL,
   NULL,
@@ -11948,12 +11948,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ec24ff53-036d-4186-9e56-6d97376ea110',
+  '99e8a031-a650-447e-8be7-ae62d84ba686',
   'RUA T CASA 99',
   NULL,
   NULL,
@@ -11967,12 +11967,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5fec0cc3-b552-43e8-b8ea-3c69de9be8e4',
+  '3c896ccd-759b-4945-a289-c9714b6bd85d',
   'MAX BURGUER',
   NULL,
   NULL,
@@ -11986,12 +11986,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd1123047-4dc7-4123-ae8c-f66f45528087',
+  '8af06e01-ecaa-449d-9e79-77afb1c7fbd1',
   'SEVERINO',
   NULL,
   NULL,
@@ -12005,12 +12005,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2363267f-08a9-4490-9f32-22628a2d0c7d',
+  'edc28d2e-c990-48a0-a50f-77d7a5b5fc7b',
   'RUA P CASA 38',
   NULL,
   NULL,
@@ -12024,12 +12024,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '577901da-77bb-4bed-948d-ec1bd0b5be04',
+  'b5f13e83-24c7-41ca-9801-33067120edad',
   'RUA S CASA 19',
   NULL,
   NULL,
@@ -12043,12 +12043,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e73f7e0e-2983-4932-a7f0-d3f89dea1e3c',
+  '89cd9feb-8e1f-4c38-add2-0d8763eb3f0e',
   'RUA Q CASA 157',
   NULL,
   NULL,
@@ -12062,12 +12062,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5d0b0a9e-3154-4994-811d-2f609dfa4879',
+  '5f4d5713-b45e-4fb3-9973-0c96573da910',
   'ZE PRACINHA QUAFA',
   NULL,
   NULL,
@@ -12081,12 +12081,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9bde0cef-5b86-409f-9ad4-bc01ea70aea6',
+  '5c00fac3-3164-45f4-979c-a577755a3332',
   'RUA JUSCELINO KUBITSCHEK, CASA 36',
   NULL,
   NULL,
@@ -12100,12 +12100,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7b8de49a-87ee-4389-a82c-3aab6d705bdb',
+  'f2759422-39d2-423f-90ee-70f4810a6148',
   'HEBERT TRAILLER',
   NULL,
   NULL,
@@ -12119,12 +12119,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1284b524-6804-49ac-86e3-9644224a89a7',
+  'afa967cb-40c8-4836-a1b1-013ec9c5cbf6',
   'GOMES',
   NULL,
   NULL,
@@ -12138,12 +12138,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1f7fb820-bfbe-43f2-8e36-8b00eb47cc59',
+  '80220971-f326-4544-bbc9-51be4fa172c1',
   'BARRÃO',
   NULL,
   NULL,
@@ -12157,12 +12157,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '89559db6-489f-4a0d-ae4d-c2f35206d513',
+  'ad27c0e7-d5d4-4d74-9edc-9ca12187ade9',
   'RUA R 370 CASA 01',
   NULL,
   NULL,
@@ -12176,12 +12176,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5ada15ec-3b30-450a-8818-139e783315c5',
+  '992555ae-515e-4fff-abdc-4ae5cae6758a',
   'RUA LUCY AZEVEDO, CASA 219',
   NULL,
   NULL,
@@ -12195,12 +12195,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dcfb383f-eb74-434a-8220-f0e1d9b78dd0',
+  'c5c9f4d1-f08f-4ced-803b-f4ddd906bd5f',
   'Carlinhos',
   NULL,
   NULL,
@@ -12214,12 +12214,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '043322a7-916f-4cd9-a1d8-19d3cd1e6c62',
+  'e42025c9-92e2-4f0e-9972-f7ab7c40b7f0',
   'RUA M CASA 14',
   NULL,
   NULL,
@@ -12233,12 +12233,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c70912c8-daf4-4159-b7cc-664ae5a077de',
+  'f2a4848f-762a-4382-95c2-0400c93e2923',
   'SANGA',
   NULL,
   NULL,
@@ -12252,12 +12252,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e663e2e9-b129-417a-a858-826459737c1e',
+  '3259e722-7d46-40ee-82b9-81bd87538189',
   'RUA SANTO ANDRE, CASA 05',
   NULL,
   NULL,
@@ -12271,12 +12271,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'db7cd056-c710-443c-9a2b-085420b43153',
+  '7a24debd-128d-4cd3-a060-411a17f047f3',
   'RUA Q, CASA 37',
   NULL,
   NULL,
@@ -12290,12 +12290,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '24a72bb4-1831-4218-a51d-81f6c4245841',
+  'e782feea-f7bd-4d43-9c9e-fde57e2e7d3f',
   'RUA O, CASA 33',
   NULL,
   NULL,
@@ -12309,12 +12309,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7124884e-8c42-44af-9434-90c430b1ce9d',
+  'e85bf5f5-aa71-495e-ab21-6264cc70166c',
   'RUA TUNÍSIA, CASA 02',
   NULL,
   NULL,
@@ -12328,12 +12328,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a170ba07-4c1b-4f20-b1ec-301af65cf994',
+  'ae25ec90-dd1a-4cc6-8b05-5a20ef35a161',
   'RUA Q, 38 CASA 02',
   NULL,
   NULL,
@@ -12347,12 +12347,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'db5a8295-0866-450a-9738-b037607e82ac',
+  '97dbc17b-fbf1-48f2-be83-3cc436028ab3',
   'ESTRADA DO QUAFÁ, 350. CASA 02',
   NULL,
   NULL,
@@ -12366,12 +12366,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9f497241-00a4-4b5b-a135-e546f56d3867',
+  '9dbedf8b-c94d-40df-9b32-93c0e8d1ab3a',
   'OFICINA DO CARECA GUANDU',
   NULL,
   NULL,
@@ -12385,12 +12385,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a0783e7f-cd18-43db-b5c2-7507af607739',
+  'a9bc8328-6f1e-43cd-a1b5-0891dba651c3',
   'ADELMA',
   NULL,
   NULL,
@@ -12404,12 +12404,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c94773fe-9bc4-47aa-9661-8faf891851cd',
+  'f8fcee53-7d9d-42c7-ab9f-680b72ef6d9b',
   'CENTRO COMUNITÁRIO',
   NULL,
   NULL,
@@ -12423,12 +12423,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fb272266-e47d-4ea9-9a9d-e82b895afb51',
+  'fb21cc6c-a16e-4846-b0ba-da698f360302',
   'RUA CASTOR DE ANDRADE, 129',
   NULL,
   NULL,
@@ -12442,12 +12442,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '746ab5c5-ec7a-40ea-aaad-9e9673cda10d',
+  '3e522ee0-9cf1-44e1-9cf5-9a900ae82d8d',
   'SALAO LOUNGE 88',
   NULL,
   NULL,
@@ -12461,12 +12461,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f8e1b29f-e6fa-4447-8245-6d18cd9a8016',
+  'f983df85-31c0-4413-99e9-a82b51ce9fb2',
   'RUA S, CASA 100',
   NULL,
   NULL,
@@ -12480,12 +12480,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '111a2c05-b46e-45d0-b721-d05a940e2a69',
+  '604dfe5b-910c-47ef-ac81-d7bc240fa236',
   'ACAI PRACINHA QUAFÁ',
   NULL,
   NULL,
@@ -12499,12 +12499,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cc2c3fcd-cd7b-4450-bdbd-e168c3da7e94',
+  '0d835340-a8e7-4a92-8880-f5b7e6cc5211',
   'BAR DO ROMARIO',
   NULL,
   NULL,
@@ -12518,12 +12518,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd9b0ad2b-0820-4fe4-a98e-3aec49c6e572',
+  '7ed92f7b-9afe-47fa-a832-ce40d436c68f',
   'COND. ESPLENDOR 01',
   NULL,
   NULL,
@@ -12537,12 +12537,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c4590c73-fbd3-4d91-b764-0b64df92d3ad',
+  'e8dcf9f1-53a8-4d23-9c1a-4bddad335a5a',
   'RUA P CASA 180',
   NULL,
   NULL,
@@ -12556,12 +12556,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3b43fb9a-9bf3-4236-b1ba-504749025814',
+  'c4da0552-9f6f-42aa-83e7-c858cccb4b4d',
   'RUA JÚLIO REIS, CASA 69',
   NULL,
   NULL,
@@ -12575,12 +12575,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c6771ea3-74d6-4d0b-b371-e70b6630ba09',
+  '77528b1d-2b5d-4bde-b084-4426b769dae7',
   'CECILIA',
   NULL,
   NULL,
@@ -12594,12 +12594,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '12cbe84e-d752-44fb-b577-bbd8138bf20f',
+  '7c47a19d-38af-44ff-9cf9-60274b61afac',
   'AVENIDA BRASIL 34.957',
   NULL,
   NULL,
@@ -12613,12 +12613,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c8d88e8b-ef77-4811-ab17-73ca48e9a280',
+  '1e43c18c-82cb-4df8-b884-52f3337c211f',
   'RUA N 183 CASA 02',
   NULL,
   NULL,
@@ -12632,12 +12632,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fb42d23d-6232-4a03-a237-3977e059b1b6',
+  '6e687223-c02f-41f5-9c44-50e1c6ef7832',
   'RUA B, CASA 12',
   NULL,
   NULL,
@@ -12651,12 +12651,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6026e84e-14e5-4155-84ba-723677670bab',
+  '76393676-93cb-4a9e-8bfe-5c160c7d030b',
   'SALAO KAROLYNE FESTAS',
   NULL,
   NULL,
@@ -12670,12 +12670,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f395f5d1-9337-459e-baa9-303cf87a2d2a',
+  '6ebd096c-05aa-4fbc-b0b7-367a4d6a557c',
   'SALAO BRAZAVILLE',
   NULL,
   NULL,
@@ -12689,12 +12689,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7c9628a8-4b5c-4c52-bd98-c85d9f8fb8c0',
+  'b1279c81-5b8e-4126-8330-5fe832dc3516',
   'RUA 09 N179 CASA 02',
   NULL,
   NULL,
@@ -12708,12 +12708,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '131f0e28-d6c5-4070-9352-6773352bf57d',
+  '8bf5df77-56e8-455e-9983-5de84330cfb3',
   'QUADRA VK',
   NULL,
   NULL,
@@ -12727,12 +12727,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3e998ac6-f1bb-4bd4-bae5-5f8122da824e',
+  'ff985917-a878-44f6-9d3f-697162e5971a',
   'TRAVESSA ORIZABA, 32',
   NULL,
   NULL,
@@ -12746,12 +12746,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9243ceef-e334-4430-889f-6988a95a2387',
+  '0b9a3dcb-37da-4037-a73e-4a9d81a9357b',
   'RUA JOSE GONÇALVES, 111',
   NULL,
   NULL,
@@ -12765,12 +12765,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd5fd885b-56e9-4403-a91d-305e6dabc460',
+  '7d84d74a-4ff1-46d6-a034-d90e76791850',
   'TRAVESSA SEVILHA, CASA 18. LIGHT',
   NULL,
   NULL,
@@ -12784,12 +12784,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8d1e1a30-a027-47fb-b7fd-f2058494c5b3',
+  '5e8d0bdc-a6e2-49ed-b576-8d87d4b6d8cb',
   'MeS Bar',
   NULL,
   NULL,
@@ -12803,12 +12803,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd68f33f3-265d-4e7a-8849-fea951371315',
+  '47572341-9bad-4820-8087-02c041940935',
   'DEBORA',
   NULL,
   NULL,
@@ -12822,12 +12822,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '85ca8ffe-1457-4f09-b1da-b13e88e97136',
+  'fdda9bd1-49e4-4ca0-ba89-fe229c344c99',
   'PAULINHO',
   NULL,
   NULL,
@@ -12841,12 +12841,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '744b2114-47de-454a-8b57-4be28f85f3c2',
+  'cee22ab1-e681-4b1a-ace4-f96ef11a5341',
   'RODOLFO RUA i',
   NULL,
   NULL,
@@ -12860,12 +12860,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6ffecbfd-77d5-4928-b667-69e14792f9a9',
+  '62f40542-0749-4ca5-9650-a4bcc4d87f55',
   'PADARIA RUA i',
   NULL,
   NULL,
@@ -12879,12 +12879,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '846e3c0a-0647-4098-9e7b-74610bddcb40',
+  '3051ea4f-2fc9-4656-bb99-fb872325d9ba',
   'RUA L CASA 55',
   NULL,
   NULL,
@@ -12898,12 +12898,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5045a5f3-5e08-44c8-8b9a-d3dcdd3bcca9',
+  '68a86ca5-f886-4926-bfb8-fea99584f889',
   'LA CUNHA',
   NULL,
   NULL,
@@ -12917,12 +12917,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '53e660e0-f551-4005-a88f-9ed447042ca4',
+  '51dfe27c-0307-4f37-9624-16ae1aa6a9ad',
   'ESTRADA DO QUAFA, 620',
   NULL,
   NULL,
@@ -12936,12 +12936,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7905ee9c-7a21-42c3-99fc-216fca6b7ba5',
+  '2266dd99-54cd-4764-a425-a52438467ac0',
   'RUA 16, CASA 188',
   NULL,
   NULL,
@@ -12955,12 +12955,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd57b8bd8-c3f7-44ab-808d-fcc1a317d6d4',
+  'dc7c1dbf-c8d6-47e3-bd7d-4d15153473a3',
   'LEANDRO RUA R, CASA 360',
   NULL,
   NULL,
@@ -12974,12 +12974,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fc158941-7fda-4260-80a5-ca2e95d33f55',
+  '19f95f03-4f6e-4180-b5c6-3295765988e9',
   'Aline ou Patricia',
   NULL,
   NULL,
@@ -12993,12 +12993,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a9853817-f4dd-4523-9569-3c1b12f733ed',
+  'adcb2c98-7889-47bc-93a2-7e3ce616f3e4',
   'NELSON BAR',
   NULL,
   NULL,
@@ -13012,12 +13012,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'afcc93d9-f73b-413d-89c0-67a81deb97cd',
+  '8f0cd633-f53d-4d15-9b3f-9a54a5581337',
   'SARGENTO MIGUEL FILHO, 28',
   NULL,
   NULL,
@@ -13031,12 +13031,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2489aea4-3918-4e90-9ff9-5a3862b65241',
+  '7924101d-33fa-44aa-87de-dacaf021f23a',
   'RUA 02 CASA 75',
   NULL,
   NULL,
@@ -13050,12 +13050,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '851a2c52-7f64-4610-9c35-7ac8cd7f422e',
+  '52cc16e6-a463-4823-8640-66d3493de6ba',
   'VILA OLIMPICA',
   NULL,
   NULL,
@@ -13069,12 +13069,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'abdbc1d0-45e1-4e70-8ca7-8a154f960f6f',
+  '50d8bbbd-3d68-4fec-bcce-b34c14c652dd',
   'RUA CARTOON, CASA 36',
   NULL,
   NULL,
@@ -13088,12 +13088,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '26572ae8-5e5d-4be8-9089-0df7e31948d0',
+  '8037a7b6-29ca-4974-8c95-2356de69df8c',
   'LEO CREMILY',
   NULL,
   NULL,
@@ -13107,12 +13107,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '523538c7-4f5a-4848-8679-60129b9e0008',
+  '8472ea6b-9ac8-4235-be13-3ccbc222a2b3',
   'ANDRE TRAILLER PRACA 784',
   NULL,
   NULL,
@@ -13126,12 +13126,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '86813da5-102b-46ba-80cb-f805e8f0cdac',
+  '22d6d079-f7c4-48de-9aaf-a0f936936192',
   'RUA JOSE TOLEDO DE OLIVEIRA, CASA 21',
   NULL,
   NULL,
@@ -13145,12 +13145,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7650fc02-8db3-44f3-ad8e-f8f069f31c2a',
+  '76853f18-48f2-40c3-aacf-0f7154b1a6a0',
   'SARGENTO MIGUEL FILHO, CASA 73B',
   NULL,
   NULL,
@@ -13164,12 +13164,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9c842686-dad5-41fe-afaf-03e5304d7f4b',
+  '286d7cb7-5644-4f2b-88da-06e0d8ddb9a9',
   'CONDOMINIO ESPLENDOR 1',
   NULL,
   NULL,
@@ -13183,12 +13183,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'abf0506f-5a86-4293-aec5-01a827072e5c',
+  '84c47b08-4282-4bfd-841b-eee76789adbd',
   'RUA M, CASA 90',
   NULL,
   NULL,
@@ -13202,12 +13202,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8017736a-ba98-4753-aeec-9f341631e74d',
+  'bd1bc584-b4fd-4b09-9740-370b372ee3e4',
   'PAULA',
   NULL,
   NULL,
@@ -13221,12 +13221,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '16417552-b49d-453f-9fd6-a95c471e0e4e',
+  '12e5d3cf-5dcf-456f-807a-0844052fd214',
   'DONA ANGELA',
   NULL,
   NULL,
@@ -13240,12 +13240,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '12771669-0745-4339-b7ef-7ddc04346ba3',
+  '5339aabb-8416-488d-9bc9-d5cccfbf20ab',
   'RUA T, CASA 49',
   NULL,
   NULL,
@@ -13259,12 +13259,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a30b1576-60c4-4b90-85ed-9405d6d472ce',
+  '839cf8fe-92ad-4fb3-93bf-6f30f713aa04',
   'RUA JAIME REDONDO, CASA 06',
   NULL,
   NULL,
@@ -13278,12 +13278,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a723dc95-fedc-4a40-a690-7f888411adc4',
+  '58bfacde-2218-4782-9a28-00800fc84436',
   'CARLOS GUANDU',
   NULL,
   NULL,
@@ -13297,12 +13297,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '17f9abe2-2a1c-40bd-9cdb-074ae103a921',
+  'b2767aa9-f945-47b7-8ea3-8f3665a3e67e',
   'RUA DA AGRICULTURA, 13',
   NULL,
   NULL,
@@ -13316,12 +13316,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ab7bf19e-7b78-40b8-a345-48d23917881d',
+  'c198cca8-2a19-4dcc-85b5-0f746d544833',
   'MARLINHO',
   NULL,
   NULL,
@@ -13335,12 +13335,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '59e7bc66-c5eb-4ffe-a3cd-b6ef8e0ad224',
+  '98a20a2a-9d2c-428a-8bd7-96fd26b26e64',
   'SOLANGE',
   NULL,
   NULL,
@@ -13354,12 +13354,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4906a801-28f5-43b4-8cdb-fa3c245d0596',
+  'a9a76bf6-9fd8-4f91-8c0a-c823fdd6366d',
   'PALOMA MANIE',
   NULL,
   NULL,
@@ -13373,12 +13373,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9ee8100a-5230-43d4-aa49-6d855f202c90',
+  '039ffe0f-eca5-467d-af13-e0a2899f9442',
   'RUA N, 14',
   NULL,
   NULL,
@@ -13392,12 +13392,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e6c904ba-5192-49ea-b833-421c89a07964',
+  '1e246465-0872-4610-8898-df84a2bab4f8',
   'RUA L, 119',
   NULL,
   NULL,
@@ -13411,12 +13411,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0b33f325-0021-4907-b157-852389ea2ae5',
+  '30205dd9-e7a7-49b7-9714-b7f9f5c64845',
   'FERNANDO GUANDU',
   NULL,
   NULL,
@@ -13430,12 +13430,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ac4c5443-7537-45f5-aff0-a3e38900aba4',
+  'dd307b59-97ce-4447-8776-832d4c4d55ec',
   'DONA SOLANGE',
   NULL,
   NULL,
@@ -13449,12 +13449,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c0b94651-8efb-4727-a82e-b92d0202ce3b',
+  'a299d46b-2235-47c5-8fdb-1bfaf16ee90f',
   'RUA H, CASA 28',
   NULL,
   NULL,
@@ -13468,12 +13468,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9b68bbdb-d811-4d01-8d7c-90d15a008a78',
+  '29fa87f9-ae59-4b4e-8219-0ac2c9731a32',
   'RUA R, 131',
   NULL,
   NULL,
@@ -13487,12 +13487,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '82255653-4a8c-4135-b262-b707388d2a7e',
+  'eecd2777-01c2-4d52-8a4d-25ae55e3fc86',
   'JOICE JORGE ZARUR',
   NULL,
   NULL,
@@ -13506,12 +13506,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7fddc571-dc95-4466-a5ea-38067dac0e73',
+  '629ae0fd-60ba-4d25-b0f8-3628888a7c5d',
   'DAIANA',
   NULL,
   NULL,
@@ -13525,12 +13525,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ac932c46-693b-4613-9fea-47efad49aea2',
+  'de8c9ab9-795b-46ac-b286-3e983d18b815',
   'CAMPESTRE',
   NULL,
   NULL,
@@ -13544,12 +13544,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'efa7816c-7f21-4bf5-a517-76a04860288d',
+  '98fbb07a-ee45-4765-a32c-22de2071fb8a',
   'RUA PEDRO POMAR, 441',
   NULL,
   NULL,
@@ -13563,12 +13563,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7baba6bd-1880-4d45-8afe-58c38ca6ae9c',
+  '6ad726ce-0444-4d18-8680-12ec561d242f',
   'RUA PROJETADA 12, CASA 03',
   NULL,
   NULL,
@@ -13582,12 +13582,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '15a6a1ec-bbf6-41f0-b617-3c35f5f2a7f5',
+  'c375ca74-556a-4f2c-9ee1-7e5926438f21',
   'TRAVESSA RODRIGUES, CASA 10. CONGO',
   NULL,
   NULL,
@@ -13601,12 +13601,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '61c29c64-116e-4c99-9b40-1a1f2b214938',
+  'e0257157-9dda-47af-85a3-f80af5a8db00',
   'RUA N, CASA 150',
   NULL,
   NULL,
@@ -13620,12 +13620,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ab8369f4-6f2e-4c6b-96fe-691c2b71ff8b',
+  '7f262ed3-0521-4197-819a-51137488cc3c',
   'COND. ESPLENDOR 2 BL.09 AP.502',
   NULL,
   NULL,
@@ -13639,12 +13639,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2ac752ce-a4b7-445b-a067-2f3471dd2d1e',
+  '6b1612d5-939c-4887-971c-6324ce54dc3e',
   'PATRCIA PRIMO',
   NULL,
   NULL,
@@ -13658,12 +13658,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e036eb50-cb2f-464b-a814-f556a3d64bb1',
+  '5be3c324-4f20-4747-b13c-9fd8a6d152b0',
   'ALICE',
   NULL,
   NULL,
@@ -13677,12 +13677,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bb816c52-01bd-42ab-bf2d-2a65a7c0e1d2',
+  '20923c86-d15e-493b-b5d5-6e28d934a65e',
   'IGOR',
   NULL,
   NULL,
@@ -13696,12 +13696,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '634002d3-f323-4358-9fa5-65db9be71909',
+  '4a37f51b-e4b8-4611-8814-6963f42f7629',
   'NATHALIA',
   NULL,
   NULL,
@@ -13715,12 +13715,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'be17e7e2-ad0d-4105-a831-e2f4186b9d6f',
+  'bf0f1963-f572-419e-bf4d-4de0b201aa47',
   'RUA O, CASA 408',
   NULL,
   NULL,
@@ -13734,12 +13734,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c331c374-2ecc-4ca1-9bff-131398a9f7a3',
+  '21a56be3-eb2f-4d85-9b08-b9df4b1ac94f',
   'ROSILENE',
   NULL,
   NULL,
@@ -13753,12 +13753,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e55b365d-ff2e-4109-b906-72501c06cb2c',
+  'c55d34fc-8854-473c-bf4f-8c4e4c88f915',
   'LUCIANA MARA',
   NULL,
   NULL,
@@ -13772,12 +13772,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cc7bf488-56ef-4c6d-94e1-0d09cbf25918',
+  'f516dc6c-b2eb-4818-9067-5faf6040a626',
   'ESTRADA DO QUAFÁ, CASA 50',
   NULL,
   NULL,
@@ -13791,12 +13791,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '88f7e5da-c02f-417a-a99a-f88c748e48a9',
+  'b5906f56-b849-4ddc-b2f5-2bb02be9fc5e',
   'RUA EDUARDO SOLTO, CASA 96',
   NULL,
   NULL,
@@ -13810,12 +13810,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9dffdbe4-0162-46da-bea4-b7251709842e',
+  '1d5dfe9a-d189-469f-a393-8484c460ebd0',
   'ANTIGA RUA 19, CASA 25',
   NULL,
   NULL,
@@ -13829,12 +13829,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5ee7d98f-a21b-4905-a32f-d7ac7060f1ac',
+  '2da9bd40-6d26-489b-bef1-54dfe809cbc9',
   'INES',
   NULL,
   NULL,
@@ -13848,12 +13848,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '90d698c9-de60-4cd8-9d0d-0db16316f239',
+  'eb99e555-1f6d-42a5-9af9-6392537e32be',
   'RUA DANIEL JOSE DE CARVALHO, N.02',
   NULL,
   NULL,
@@ -13867,12 +13867,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a7483e1e-24af-4ce8-b814-5c703687090a',
+  'b442660d-510c-4b59-9ce8-b048fdd636ec',
   'ESTRADA DO QUAFA, 416',
   NULL,
   NULL,
@@ -13886,12 +13886,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5eb12704-1d9d-4e8f-a0f7-9ba744d5974f',
+  '714f58fe-bec5-49e0-9b8f-546462e4486c',
   'MÃE DA AMANDA',
   NULL,
   NULL,
@@ -13905,12 +13905,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9adc156d-fe8d-4c65-929e-3e3c481158d9',
+  '8f3b0955-651a-42d0-9b05-584601a67019',
   'RUA JULIO REIS, CASA 35',
   NULL,
   NULL,
@@ -13924,12 +13924,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1ccd5876-2f82-48c7-9c36-744d723c7fc4',
+  'ba33f060-6862-4671-b3c9-26dadc386176',
   'RITA THOMPSON',
   NULL,
   NULL,
@@ -13943,12 +13943,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a1745d37-5363-4ad7-b0eb-2783c184fad3',
+  '7aaaa56e-2e20-4dc0-adff-8b2f72708b6b',
   'RUA K, CASA 48',
   NULL,
   NULL,
@@ -13962,12 +13962,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3cc40132-fc26-4e79-89d9-6848c9d69049',
+  '8643cf1a-fc26-4f06-b6df-5f108fd569dd',
   'RUA P, CASA 73',
   NULL,
   NULL,
@@ -13981,12 +13981,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '406523a3-f9a7-484f-bc78-b1c872e11c9c',
+  '0cb20232-dfa4-4d32-b650-f2432e613c55',
   'RUA L, 39',
   NULL,
   NULL,
@@ -14000,12 +14000,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '700f3802-5720-47e4-8768-559e9a73571d',
+  '6c1b75a9-cecb-4e19-a612-3e50ef09df00',
   'PARA MORRINHO',
   NULL,
   NULL,
@@ -14019,12 +14019,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0d65d6ca-d50e-442a-950d-9a96fe97a664',
+  '1566754e-24de-4ad9-b519-0b491b879c34',
   'RUA K, CASA 98',
   NULL,
   NULL,
@@ -14038,12 +14038,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3ed98eef-5adf-42ed-84c6-6762b76387ad',
+  'f9496be1-145f-4d53-b539-178206fa43d7',
   'RUA KAMPALA, 103 FUNDOS',
   NULL,
   NULL,
@@ -14057,12 +14057,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '42a2b63c-ed16-4b67-a20c-041581c87661',
+  '9be13e51-5ecd-4030-a921-797d5a89c029',
   'TRAVESSA MICHIGAN, CASA 12',
   NULL,
   NULL,
@@ -14076,12 +14076,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c867b8f6-f7d4-47c1-bb4a-dc8eb52482e4',
+  '20938c4f-2579-4e73-b2c1-f707f7d0f747',
   'RUA SUDÃO, TRAVESSA ISLÂNDIA 7A',
   NULL,
   NULL,
@@ -14095,12 +14095,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'efeba938-c371-4e54-87e9-a2b8f551e5b1',
+  '1d2e567c-d71e-488d-981c-edf4b2aae48a',
   'RUA I, CASA 12',
   NULL,
   NULL,
@@ -14114,12 +14114,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a4ef9baf-ec48-466f-9f29-7d824029108b',
+  'e7f79cc4-058e-498a-b103-55f6b77d35cb',
   'GRAZI PADARIA',
   NULL,
   NULL,
@@ -14133,12 +14133,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '580c0d4a-d8d8-40a4-9299-ad68f2da404b',
+  '873f4d52-193e-4e67-95b9-cc8aab1374ff',
   'SALAO DO PANCHO',
   NULL,
   NULL,
@@ -14152,12 +14152,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e253b1fe-b9ec-424a-96d5-27b484647f10',
+  '6fe8945d-d2ed-4420-9dd7-a5c63a57602d',
   'RUA CUPERTINO MARQUES, 01',
   NULL,
   NULL,
@@ -14171,12 +14171,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b8ffafde-4a7f-41b7-ac80-2817f0b1f9d8',
+  '460f8afe-3cf7-44ec-8618-12ab878383ba',
   'RUA XANGAI, 191',
   NULL,
   NULL,
@@ -14190,12 +14190,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cc28c874-ad2c-45ae-a1bf-13ded45991d7',
+  'a1b783cb-719e-4a85-bdef-591c8833e24d',
   'RUA OTAVIANO ROMEIRO, CASA 92',
   NULL,
   NULL,
@@ -14209,12 +14209,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd521f5a3-9c9a-483d-a750-6dbd409e5487',
+  'a9b242ee-2ab3-427a-b18b-2bf25d375e37',
   'VILA 15, CASA 31. LEAO',
   NULL,
   NULL,
@@ -14228,12 +14228,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ea545b5a-5433-4cae-8cb7-96efb3ba9e26',
+  '7324e301-3ba9-466a-a508-7e640590cf8f',
   'TRAVESSA 90, CASA 27. CAMPO DO VILA',
   NULL,
   NULL,
@@ -14247,12 +14247,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a7cc1c0e-09fe-44b2-8c34-5c3be5cbda30',
+  'b02074a4-5c8b-4eae-b308-706c4218451a',
   'RUA H DO VITALLE, CASA 02',
   NULL,
   NULL,
@@ -14266,12 +14266,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '13b8ad4e-3d6a-4882-a2a9-d2dd74458054',
+  '864895bc-16ff-4443-992f-8dfa25de75cd',
   'TRAVESSA BARCELONA, CASA 12. PICA PAU',
   NULL,
   NULL,
@@ -14285,12 +14285,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '44a3790a-4850-4e8c-accc-64e67bb55ce4',
+  '22795096-394d-4dac-b928-71bb72dbdb36',
   'RUA T, 65. CASA 02',
   NULL,
   NULL,
@@ -14304,12 +14304,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '58f85c0a-7a58-41fc-b48c-4c93459fe67a',
+  'db33473f-2d4e-467e-86bd-4de9f6807a3f',
   'RUA M, CASA 07',
   NULL,
   NULL,
@@ -14323,12 +14323,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0ec43294-7b62-4cc2-8540-b0466018dafb',
+  'a7fb85bd-b2fd-4632-86ae-cf1aad519fa1',
   'RUA 02, CASA 26',
   NULL,
   NULL,
@@ -14342,12 +14342,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '32e7f21a-1ef2-42a8-9681-342c94693bfd',
+  'ea785fcb-8f4b-4ddd-8232-a348636243bb',
   'RUA OTAVIANO ROMERO, CASA 69',
   NULL,
   NULL,
@@ -14361,12 +14361,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3ebcb999-290f-4292-b20e-2ca207cc2dc8',
+  '4e1b3bcd-acb8-4cd0-9745-1d97db002ca0',
   'RUA PEDRO POMAR, 461',
   NULL,
   NULL,
@@ -14380,12 +14380,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '93e774b4-5b37-4186-ac14-d868875bc01b',
+  '15ab18fe-23b7-4b78-9e72-c5d25dc62e00',
   'RUA FELIZ, CASA 01',
   NULL,
   NULL,
@@ -14399,12 +14399,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '83afce74-d2cc-4b51-a6a9-c1691cc5cb24',
+  '8911a578-2c9b-4511-9fb4-31ed4da9a2ca',
   'B.A',
   NULL,
   NULL,
@@ -14418,12 +14418,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'be7c4264-a9ce-4791-9483-e2167e67f405',
+  'ce6f7059-df7d-4c8c-b5fd-95fe8ff6ac18',
   'AVENIDA ALFREDO DE ALBUQUERQUE, CASA 80',
   NULL,
   NULL,
@@ -14437,12 +14437,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '82274ee9-312a-4150-907a-478651154be7',
+  '9f71b946-0019-44a7-89e4-44e527891fec',
   'BARUK FESTAS',
   NULL,
   NULL,
@@ -14456,12 +14456,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'adeb2907-756e-4325-b219-335db38d7fa8',
+  'a34c0771-bf2d-415a-8d3e-7bcee7224dc2',
   'RUA R, CASA 303',
   NULL,
   NULL,
@@ -14475,12 +14475,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3dc10905-7895-469f-9e43-c37fef0bf5c8',
+  '60843561-7add-43f0-9056-ea6b28a797d4',
   'RUA E, CASA 31',
   NULL,
   NULL,
@@ -14494,12 +14494,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fde5bab4-5e21-4cce-aeff-33517657688b',
+  'f5813a7c-0e5d-4051-a141-3770b82e4b0e',
   'RUA COSTA JUNIOR, 18',
   NULL,
   NULL,
@@ -14513,12 +14513,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '12e72d13-f689-4c12-80e8-9d2a511f02df',
+  'd75e948c-b4e8-4767-a0fb-2e84e82862d2',
   'RUA F, 130',
   NULL,
   NULL,
@@ -14532,12 +14532,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '11c9e813-9055-4156-b4d7-88b54e04ce38',
+  'bc05b79d-0f13-437f-aaed-65c059a4de61',
   'RUA MARCELO TUPINAMBA, 56',
   NULL,
   NULL,
@@ -14551,12 +14551,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e487de55-10e7-4b17-9f3a-ea5c80c5e5a2',
+  'b370d1c7-78b8-4137-9f20-67550404d1a0',
   'CAMINHO DA BICA DO PADRE 46',
   NULL,
   NULL,
@@ -14570,12 +14570,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b32ec747-7f90-4864-b55b-c3cc151f3294',
+  'cda838df-8905-4eff-93b3-6ad7b8ad77b7',
   'GUANDU DO SENNA, 1469',
   NULL,
   NULL,
@@ -14589,12 +14589,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '27464a90-579a-4da3-a2e0-80ae90087448',
+  '91d313bd-2ab2-4119-a15d-ed840830b7b8',
   'RUA V, CASA 56',
   NULL,
   NULL,
@@ -14608,12 +14608,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9976ee4c-0cf4-4509-bfb8-55832a6df9f3',
+  'f48737f0-f94b-43ce-a64d-e83a92c75e92',
   'GANDULA',
   NULL,
   NULL,
@@ -14627,12 +14627,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e2b9b5ce-06ac-4af1-b63b-b09b4a1d1dda',
+  '0b90a15b-0ab1-491a-812c-856ed301ae8f',
   'TRAVESSA DELFIM MOREIRA, 119',
   NULL,
   NULL,
@@ -14646,12 +14646,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f6b41a70-21c1-4692-a494-546d98ce4f26',
+  '4a0bb25a-38ed-4534-a4eb-536db171defc',
   'TRAVESSA SORRENTO, 15',
   NULL,
   NULL,
@@ -14665,12 +14665,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fee64e31-23d3-4da8-8db5-a80bc8c87c69',
+  'afcbe7e9-9072-438a-9001-aac60d7c5c1e',
   'RUA ARTHUR NAPOLEAO, CASA 30',
   NULL,
   NULL,
@@ -14684,12 +14684,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b53d0fd3-f218-41b7-9da3-e4291d26c9dc',
+  '09404c1c-6fe0-4a68-a362-ea7488ccf3fe',
   'RUA OSCAR FERREIRA, CASA 35',
   NULL,
   NULL,
@@ -14703,12 +14703,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '053256ee-3e26-4052-9c50-65aa805f10d8',
+  'dc06a1ec-dde0-49a0-a687-d3793028d865',
   'JESSICA GUANDU',
   NULL,
   NULL,
@@ -14722,12 +14722,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '734b6be4-3eda-4c76-b92c-acf399dffa29',
+  '050605d3-cef2-458c-9588-3f1e97f9e06c',
   'RUA N, CASA 99',
   NULL,
   NULL,
@@ -14741,12 +14741,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c9ab6167-c5de-45bf-a457-5f2db849d521',
+  '91ec88c4-aaca-4c2b-be28-151d6bab720d',
   'RUA Q, CASA 141',
   NULL,
   NULL,
@@ -14760,12 +14760,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '898b14bd-c07e-4008-863e-c366950cf96d',
+  'e4f6a304-ba62-4bfd-a761-940543ca1afc',
   'CONDOMINIO 855, CASA 15',
   NULL,
   NULL,
@@ -14779,12 +14779,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '79c7ff81-709b-41ba-9c50-6f5571e5650e',
+  '389f0c81-be99-459e-bd56-42513a148cc3',
   'ESTRADA DO QUAFA, 369',
   NULL,
   NULL,
@@ -14798,12 +14798,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '59e0348b-44bf-4bfb-b06d-5412f694b066',
+  '6eff1bdc-6407-4823-913c-4fa75c18a5c8',
   'TRAVESSA LATANIA, 07. LIGHT',
   NULL,
   NULL,
@@ -14817,12 +14817,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3e3fad09-ebb2-42ad-8b70-fd3a5919d229',
+  'da07406a-549a-4141-afb6-19cb4e4cbde3',
   'TRAVESSA ALELUIA, CASA 17',
   NULL,
   NULL,
@@ -14836,12 +14836,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1e73b0d7-7941-48d3-9d31-d8f8f1d98ae0',
+  '4eebc6af-547d-471d-bc5a-45b35ebb9279',
   'RUA BRAZAVILLE, 47',
   NULL,
   NULL,
@@ -14855,12 +14855,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '02dd6c8c-70a8-47b8-bdd1-53e068d96816',
+  '3dd2366d-e265-4a36-a87d-bfc98ba4b36f',
   'SALAO GABI\RENAN',
   NULL,
   NULL,
@@ -14874,12 +14874,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9c5385a1-ebae-405d-99dd-82b18c8f384e',
+  '3b5fd5e6-289e-4e5f-a99e-772dced1681b',
   'SALAO DUDA',
   NULL,
   NULL,
@@ -14893,12 +14893,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '777484d5-a413-4bdc-b757-597e8c59559b',
+  '46116a55-b5a7-4bbd-ba7b-4411d81f7eb0',
   'LOUNGE 87',
   NULL,
   NULL,
@@ -14912,12 +14912,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2362e36a-6667-459a-b38e-58027427407d',
+  'a67156b5-dd78-4aed-9d6a-f300c73a7ee2',
   'MARROCOS, 73',
   NULL,
   NULL,
@@ -14931,12 +14931,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7ad553c3-e704-436c-ad30-69425bbf4fc8',
+  'e356a941-7eb9-49e5-aa41-e75bcff8cdcb',
   'AVENIDA MARROCOS, 88',
   NULL,
   NULL,
@@ -14950,12 +14950,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ee0441f4-9b9d-4812-81c8-4be18068a540',
+  '2540796e-0e4d-4541-b363-2973725e4efe',
   'TRAVESSA RODES, CASA 59',
   NULL,
   NULL,
@@ -14969,12 +14969,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '99fd8fbc-4102-4630-88d1-8d1c11e3f6bc',
+  'eafe532d-3918-4879-9456-f88201f3131d',
   'SOCIOLOGO BETINHO, 44',
   NULL,
   NULL,
@@ -14988,12 +14988,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '584a9971-6180-4edf-a07e-f3715e21a230',
+  '0f5c89c4-50fc-4c9f-9063-ad325eef44ed',
   'TRAVESSA VACARIA, CASA 06',
   NULL,
   NULL,
@@ -15007,12 +15007,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2f90339c-5369-42f1-81ee-e8018814f76e',
+  '4fde279d-b183-4f04-a217-4f7b0e017630',
   'RUA S, CASA 37',
   NULL,
   NULL,
@@ -15026,12 +15026,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fb8bc218-a753-4f3c-b9cd-5241f6e66f46',
+  'c754cbf7-09db-441a-9be7-aaccfcefb006',
   'RUA K, 16',
   NULL,
   NULL,
@@ -15045,12 +15045,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9c4cdaa2-080b-41c1-a134-f44d1660c451',
+  'b26b8428-753a-400c-8f86-e0e457f0d4dc',
   'RUA Q, CASA 182',
   NULL,
   NULL,
@@ -15064,12 +15064,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '40b73753-9045-4cde-9eb8-26d77ee8ce20',
+  'f9959589-980c-4e06-83e5-e349e20b223d',
   'JEREMIAS',
   NULL,
   NULL,
@@ -15083,12 +15083,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '61d58c7f-815e-4d36-8fb6-0329680e66e6',
+  '9e61d866-9236-4fab-b717-f2791424e8c2',
   'SEU NELSON',
   NULL,
   NULL,
@@ -15102,12 +15102,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bc5e7194-fe5b-43cd-8ff9-8b36ea2d2ff4',
+  '5603b216-9263-4fd1-9e3f-0e9d1f4186f4',
   'RUA O, CASA 28',
   NULL,
   NULL,
@@ -15121,12 +15121,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3ee19b40-c01c-40ee-83f7-53166855f6fc',
+  '466ed9a9-8eb1-40ff-a8ff-fb8cfd8534fa',
   'SITIO SEU ARLINDO',
   NULL,
   NULL,
@@ -15140,12 +15140,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd57ff649-abc3-4e85-ab3d-9397eb7c00d5',
+  '837827f7-bd5e-4383-8278-e1b1da6e64d2',
   'DELAINE',
   NULL,
   NULL,
@@ -15159,12 +15159,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9601f831-55c2-42ae-8a59-1ba54830e292',
+  'e7ae38dc-d3ed-480a-bf41-7c0376125ea6',
   'TRAVESSA SANTA RITA, CASA 02. METRAL',
   NULL,
   NULL,
@@ -15178,12 +15178,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e78d4087-b754-4431-816a-8a50ac8ca123',
+  '277835e2-8900-41be-b5db-263ff2981a35',
   'TRAVESSA BAMACO, CASA 10',
   NULL,
   NULL,
@@ -15197,12 +15197,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ce70a179-6467-4e64-8ffd-7b0fba1ea6f7',
+  '255ed2a4-d393-47dd-b095-6e0bffcbd6b0',
   'BAR DO NEGO, METRAL',
   NULL,
   NULL,
@@ -15216,12 +15216,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ed1cfc3b-b579-4e3a-8181-42d0ad1016d3',
+  '3b129185-dd92-4935-bb40-d27f733e67e5',
   'LEANDRO TRAILLER',
   NULL,
   NULL,
@@ -15235,12 +15235,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'aa7a1a7b-e50b-4fe3-86d2-c45b053bc76e',
+  '3885e2fc-dc0d-4110-a3e5-2b606cdb9312',
   'RUA COSTA JUNIOR, 12',
   NULL,
   NULL,
@@ -15254,12 +15254,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e01a09a2-da10-4ae4-b7f4-de73718fc999',
+  '9aacc1b8-6c79-43c4-a3c5-dc29f4227329',
   'BAR TO EM CASA',
   NULL,
   NULL,
@@ -15273,12 +15273,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '33222c1d-2a94-435d-9ff2-98e169601e7d',
+  'a64ffcd2-bf09-43d7-9760-011592e208bf',
   'RUA PAULINO DO SACRAMENTO, 93',
   NULL,
   NULL,
@@ -15292,12 +15292,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '70bbeeb2-ca0b-4277-9320-c6a2aff05129',
+  '92fa2362-180f-460c-9d33-073c03427545',
   'RUA GALVAO BUENO, 31',
   NULL,
   NULL,
@@ -15311,12 +15311,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '410a4383-f886-41a4-89e3-29d3c799ebb6',
+  '5c7ee9ff-f4aa-4fc0-8e42-98bbaf6668a0',
   'JUSCELINO KUBCHECK, 48',
   NULL,
   NULL,
@@ -15330,12 +15330,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7753572e-701b-4e56-835c-1b270f3c3b5b',
+  '2b42f47d-1c4b-4760-a95d-3ebef129a946',
   'MARLENE',
   NULL,
   NULL,
@@ -15349,12 +15349,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '47513910-2750-4444-b78a-9b6a0c455b7e',
+  '26764a96-607a-49b8-942f-087452d25648',
   'ESPLENDOR 1 BLOCO 09 AP108',
   NULL,
   NULL,
@@ -15368,12 +15368,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fbb8ab74-4c18-410e-99ad-1a302618092f',
+  'ac86ce78-9483-46ee-952e-e117672510e2',
   'RUA N, 174',
   NULL,
   NULL,
@@ -15387,12 +15387,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'af5a1636-0dfd-459c-9ed2-d8c2a777d99c',
+  'ed1f5663-6a4e-4b0b-ab63-b89b3804e5b0',
   'TRAVESSA MAMORANA, 01',
   NULL,
   NULL,
@@ -15406,12 +15406,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '57a8d0c8-5ffa-4b5a-9059-a93b1f30ede2',
+  '3b011c17-ba7b-430d-9c79-f3eb3e9b3dd3',
   'RUA PEDRO POMAR, 390',
   NULL,
   NULL,
@@ -15425,12 +15425,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a37b0089-4c4a-4403-a59d-4da78fdb33a5',
+  'deca5517-e721-446d-806a-1724a59cd46c',
   'SALAO SONHO FELIZ',
   NULL,
   NULL,
@@ -15444,12 +15444,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8b956efb-3aee-4600-b565-0519d0d86c42',
+  '01956aeb-265b-48ad-ad5a-5a331994b114',
   'ULTRALEVE',
   NULL,
   NULL,
@@ -15463,12 +15463,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1a141956-144c-442e-b323-71385ecd98dd',
+  '794834ae-944d-46a4-b7e6-293e937958fa',
   'RUA CHAD, 13',
   NULL,
   NULL,
@@ -15482,12 +15482,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '240be489-d50e-4989-9d3a-3b3973ccc0d3',
+  '815695a3-6557-4090-b752-a0a36e10107a',
   'RUA C, 188',
   NULL,
   NULL,
@@ -15501,12 +15501,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd44285b7-c2d7-46e0-b5a4-82c73c88f71d',
+  'afe882c4-7a05-454c-887f-2bdd7376ed46',
   'RUA 20, CASA 158',
   NULL,
   NULL,
@@ -15520,12 +15520,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b5d89fdc-9ad8-4c58-a1d9-83a9ccb2b993',
+  '62d0ddc2-d37f-4314-97dd-2a856ce3dd91',
   'RUA LINCOLN OESTE, 80',
   NULL,
   NULL,
@@ -15539,12 +15539,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f6513a45-5082-441c-95a1-cc2026b56a9b',
+  '02120b57-ba44-4080-a6d6-e81dc5502ec3',
   'RUA A DO VITALLE CASA 05',
   NULL,
   NULL,
@@ -15558,12 +15558,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3b2a21f2-78b1-4264-a475-9a67510908e2',
+  'ea3af17c-6c9f-4062-aade-d7cdc2d1d2fd',
   'CARLITOS BAR',
   NULL,
   NULL,
@@ -15577,12 +15577,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bc55f5f9-4fe0-41ae-8193-a6dd1368fefb',
+  '9c7ec84c-2f03-4676-b646-989d7ac5bfb7',
   'SUELI MARQUINHO PINTINHA',
   NULL,
   NULL,
@@ -15596,12 +15596,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1a4de953-2a24-4c75-8faa-3cebd3c69caa',
+  'ae3764e8-c543-4779-a2f5-bd36cc740e55',
   'TRAILLER DO BAHIANO',
   NULL,
   NULL,
@@ -15615,12 +15615,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'eefbad02-4b9e-40ad-b599-de2e8e4b4ac5',
+  '74dc137e-f549-4f66-9b84-0d724b25dea0',
   'RUA N, CASA 72',
   NULL,
   NULL,
@@ -15634,12 +15634,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '12674265-6cae-4c1d-9191-41583ada95bf',
+  'e843369f-3806-43c5-8d9e-dc3d3f7a958b',
   'TRAVESSA OTAVIANO ROMEIRO, 24',
   NULL,
   NULL,
@@ -15653,12 +15653,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bd1612dd-a5bf-4ec0-8d67-a1fcd86e4ff0',
+  '1e176af6-8c86-4be5-9a50-06bf311daefe',
   'RUA TANGANICA, 02',
   NULL,
   NULL,
@@ -15672,12 +15672,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b17c1845-cec3-47e9-87ff-84de52cdfbce',
+  '4ace66b1-9408-446c-bced-7e9bf797d3b7',
   'RUA 02, CASA 41',
   NULL,
   NULL,
@@ -15691,12 +15691,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b8f8d2c7-0874-4fd1-8546-32922835c5ec',
+  '90c2dc03-a9d9-4fd4-a63c-93641a59ce29',
   'RUA DA AGRICULTURA, 20',
   NULL,
   NULL,
@@ -15710,12 +15710,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'edc25b2d-f6ea-470e-9d4c-90a74ffec7a9',
+  'f9cf2cae-33fb-4f12-8df5-d963134e9cb9',
   'SALÃO MM',
   NULL,
   NULL,
@@ -15729,12 +15729,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0ddad4ea-ca0a-41ee-98f8-3b16d46df147',
+  '0b505317-e5f1-4294-99a6-46b120f6af87',
   'AVENIDA ETIÓPIA, 72. FUNDOS',
   NULL,
   NULL,
@@ -15748,12 +15748,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8fb07748-0df3-44fc-b577-2c4618f3b8cb',
+  '1fc78d5d-6d74-4034-9d74-46b8515bb12d',
   'RUA CONGO, 160',
   NULL,
   NULL,
@@ -15767,12 +15767,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '209cc421-4e98-47f7-a432-162574a4d8d3',
+  '37cd13c3-21ff-462f-a84a-2b866ced422c',
   'LUDMILA',
   NULL,
   NULL,
@@ -15786,12 +15786,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8b4052d0-01a3-4607-8efd-434022b38630',
+  '8693b99e-9392-4d5c-99ed-2c4b91f635ed',
   'VERONICA CRECHE IRMAS',
   NULL,
   NULL,
@@ -15805,12 +15805,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ae08190d-b76b-4e91-a8a6-4e8865362e25',
+  'fed66dc5-6e48-42af-9ea6-714836f98f76',
   'RUA PAULINO DO SACRAMENTO, 41',
   NULL,
   NULL,
@@ -15824,12 +15824,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3ee9abea-de9b-451d-acfe-390383700676',
+  '2e72b74f-390b-4088-bb62-ffda9a36519e',
   'PADARIA TIA HILDA',
   NULL,
   NULL,
@@ -15843,12 +15843,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'cdaf4fd8-dfa5-4f00-898a-23dcfadfdd69',
+  '0aa41d9a-a59f-4620-bd39-93a26e25ac0a',
   'ONZE UNIDOS',
   NULL,
   NULL,
@@ -15862,12 +15862,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '85589108-7e01-48b5-9bba-cba4a0ade60e',
+  '8cf1e4fa-2276-4b91-ae0e-553408bdcb57',
   'RUA I, CASA 312',
   NULL,
   NULL,
@@ -15881,12 +15881,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b1a0cf2e-8de3-4c49-a566-a163d8536ce5',
+  '9ee00d38-7027-4187-818b-e34eeadd9125',
   'DIOGO GÁS',
   NULL,
   NULL,
@@ -15900,12 +15900,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '291f2c87-c176-4ebd-ac79-99dbdcd66fb2',
+  '64aa3868-f925-4b9b-b9f1-106f5facf5b8',
   'LARA',
   NULL,
   NULL,
@@ -15919,12 +15919,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '82398f30-f32b-491c-a67c-6d5e51e9b169',
+  '7e6c8e13-5132-4f29-9bd4-947cd95a0892',
   'RUA U, CASA 334',
   NULL,
   NULL,
@@ -15938,12 +15938,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0a33cee1-38e5-45b0-80a0-fd92175b26f1',
+  '1b9ffc82-2506-40e1-a9bd-848348abc7d0',
   'VILA 87',
   NULL,
   NULL,
@@ -15957,12 +15957,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5a2d0293-0280-4a32-96f2-0254c8f0ee17',
+  '27ec4417-204b-40d3-82da-bfd0163ae505',
   'SALAO MIRANTE MORRINHO',
   NULL,
   NULL,
@@ -15976,12 +15976,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c6caecb0-5084-4e86-8317-6e5e153ddb90',
+  '2f7700aa-4587-44c4-bcc9-aaf66560fd15',
   'ACACIAS',
   NULL,
   NULL,
@@ -15995,12 +15995,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '03ff73e1-79cd-4fcd-bc2d-cc8404486916',
+  '11f93e74-d17f-4ca7-96f7-5c98cdb13798',
   'RUA 05, CASA 182',
   NULL,
   NULL,
@@ -16014,12 +16014,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2b02ce18-a69a-4340-ac19-257af1b17e13',
+  'c9350158-3b1c-41de-88b7-db1dd5243ccf',
   'RUA N, CASA 151',
   NULL,
   NULL,
@@ -16033,12 +16033,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bcd80d17-67bc-4046-a20d-1487e0b8f34c',
+  '2cf98406-37dd-44cc-922c-9d19463e5ab5',
   'RUA F, CASA 50',
   NULL,
   NULL,
@@ -16052,12 +16052,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd2f28cd4-083f-4f21-9077-8525d2386868',
+  '0f3575e9-3015-446e-bcd9-52c216bc1743',
   'RUA P, CASA 97',
   NULL,
   NULL,
@@ -16071,12 +16071,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '49da5f28-efdc-4874-99f3-7757866ee084',
+  '4930593c-0311-4ace-9a05-c18ba666b249',
   'RUA T CASA 83',
   NULL,
   NULL,
@@ -16090,12 +16090,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2e96cf1e-3133-4ff3-9d67-a0f94cf2abbc',
+  '200951fa-5406-41b4-8a1e-0efc40e7ef4f',
   'BAR DO DIDA',
   NULL,
   NULL,
@@ -16109,12 +16109,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a69b7a54-c706-4af8-b4bc-b34e18827c62',
+  'aeb2c520-0492-4326-a81f-2a398bdbd393',
   'RUA A, CASA 178',
   NULL,
   NULL,
@@ -16128,12 +16128,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e813a6ba-33cd-4e16-8968-358f30a0d666',
+  'b5034a04-aaf6-47a0-9b41-171e0a3794ea',
   'RUA F, CASA 02, DO VITALLE',
   NULL,
   NULL,
@@ -16147,12 +16147,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5581d61a-d68e-4acc-8279-bb903a879075',
+  '715a8e09-6c6d-4ba1-969d-9d840812fcbe',
   'NEM BORRACHEIRO',
   NULL,
   NULL,
@@ -16166,12 +16166,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bdfb7519-6994-4b34-8035-58cf2b5a84dd',
+  'b25568ef-42b6-4887-8292-a05af68bb23f',
   'RUA 10, CASA 137',
   NULL,
   NULL,
@@ -16185,12 +16185,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f9fd5b7b-4861-42e0-8df1-312a7587b3b9',
+  '2fa38bab-1096-4c20-a069-f02e99bd76cb',
   'RUA 05, CASA 235',
   NULL,
   NULL,
@@ -16204,12 +16204,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3d99923a-e38d-4fdb-a770-f7ab61f98aef',
+  '1b4e35af-b73c-42c1-9409-ac124863be04',
   'RUA TUNÍSIA, 08',
   NULL,
   NULL,
@@ -16223,12 +16223,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'eb04466d-e4ec-4134-8905-0afbff2868ba',
+  'ca0a9d56-2bdd-40d1-b012-17b5d0d5e08b',
   'NILTINHO BAR',
   NULL,
   NULL,
@@ -16242,12 +16242,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'abbd7ec4-3fa5-4091-8eb8-1104c1c7829d',
+  '138399e8-5905-46be-aac1-5c74dbbb9012',
   'ALEX MANEL',
   NULL,
   NULL,
@@ -16261,12 +16261,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0dc48deb-40fe-4da3-94b4-e893dcdaa600',
+  '95c28047-9f97-4406-a8ab-bfdb35fc605b',
   'RUA U, CASA 07',
   NULL,
   NULL,
@@ -16280,12 +16280,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0525a910-59e2-46c0-83d9-2fb7b7d35819',
+  '18cdca77-9ffd-4658-9e04-cd0e134f4cdb',
   'PRACINHA DO PRESÍDIO',
   NULL,
   NULL,
@@ -16299,12 +16299,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'db7fc6f5-020a-418d-8ce3-0ec5ddfb5ac0',
+  '929a4ede-bbf9-4eea-92d2-b01d5817c18f',
   'ANDERSON PRACINHA DA 07',
   NULL,
   NULL,
@@ -16318,12 +16318,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a72b1407-f61e-4d5e-9fa8-752b6575f722',
+  'a400713f-fbec-47e2-89b7-c272e2f7ecfb',
   'RUA 05, CASA 142',
   NULL,
   NULL,
@@ -16337,12 +16337,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0219400c-b57a-4eb1-8258-2e54339a9127',
+  '5786d144-1e42-4db4-9d8e-7a259c41390e',
   'JULLY',
   NULL,
   NULL,
@@ -16356,12 +16356,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c34a3f3c-ad5e-419e-9878-5ce90f5c96c3',
+  'f19368d4-268a-44e6-b298-c2efc03c3f85',
   'TRAILLER DO LUIZ',
   NULL,
   NULL,
@@ -16375,12 +16375,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '49461b54-4011-4c66-9b6c-e33eeb9449ff',
+  '8b940121-6767-4b2b-8dca-dfd8516e83ec',
   'RUA Y, 16',
   NULL,
   NULL,
@@ -16394,12 +16394,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '26b6a469-1e39-4f4f-bb21-f67e2906139c',
+  'a1af6c69-7802-4fce-992c-389c77f74107',
   'CONSIGNACAO KAKA',
   NULL,
   NULL,
@@ -16413,12 +16413,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a22d45b8-522c-4d2c-8dd4-ca104e14ef48',
+  '22269b8b-27a1-4e51-908f-c4ca60827dc7',
   'SORAYA PRACINHA DA 07',
   NULL,
   NULL,
@@ -16432,12 +16432,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '90f4c078-a03f-4d16-935b-82215f549852',
+  'f60eab0f-ce2f-45b2-b596-af79c177c393',
   'RUA B, CASA 84',
   NULL,
   NULL,
@@ -16451,12 +16451,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bf8aab81-cf66-40d4-965e-e8881e59336c',
+  '4eb294df-81d0-4813-b5e3-97515f518502',
   'MILTINHO',
   NULL,
   NULL,
@@ -16470,12 +16470,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6b02c803-b143-4d83-b0f8-e78f5f5326f0',
+  'b8c4f790-875b-48db-9eeb-573add1f1212',
   'AVENIDA CENTRAL, 96',
   NULL,
   NULL,
@@ -16489,12 +16489,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd711bbd4-6487-42c4-b00b-89887a98d36c',
+  'be2cc920-4bc3-4b8a-a371-635acf371b99',
   'RUA O, 344',
   NULL,
   NULL,
@@ -16508,12 +16508,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9aabfc6b-4c4e-4d63-b91f-353a7a0c07d2',
+  '5d74fc81-7fcd-4782-900f-da9a77e3fcf6',
   'RUA 23, CASA 110',
   NULL,
   NULL,
@@ -16527,12 +16527,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '14a14bdd-df77-44b2-8a52-4df0cd50edcf',
+  'c653fec4-9724-4163-b011-c3faf6171624',
   'RUA JOAQUIM CALADO, 29',
   NULL,
   NULL,
@@ -16546,12 +16546,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'da62888d-70b3-4eac-ad7f-eed357ca0eb4',
+  '29cc9c9d-dba6-4642-a9d5-feccf8596b35',
   'TRAILLER PRETO BARRÃO',
   NULL,
   NULL,
@@ -16565,12 +16565,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e9b73b94-5e6a-4293-8bbd-e32f1a7f3ee0',
+  '961bf2a6-4a34-46f6-a028-6b0b202b1944',
   'LOJA FLOR DE CEREJEIRA',
   NULL,
   NULL,
@@ -16584,12 +16584,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6ac314db-c315-4eff-b162-71703366a02b',
+  '66185b7c-f1d4-473a-beac-bdcaba9286da',
   'PAPITOS TRAILLER',
   NULL,
   NULL,
@@ -16603,12 +16603,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0075ef76-cf7d-4c73-bb71-406d340d5e6d',
+  '5e67f2a9-8cc3-4f74-8f28-e75a5e0f43b7',
   'GORDINHO TARDEZINHA',
   NULL,
   NULL,
@@ -16622,12 +16622,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4dd597be-84d0-43be-a256-1de95e5e1063',
+  'ef301981-cfaa-4eac-956b-2b47edd60661',
   'RUA 05, CASA 419',
   NULL,
   NULL,
@@ -16641,12 +16641,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9713ca08-43da-4ad0-a1a2-9d210ee23b77',
+  '9eee529b-24ff-4d2a-9c50-9526e4212e15',
   'BAR DO ROQUE',
   NULL,
   NULL,
@@ -16660,12 +16660,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7549ad8b-6bab-47fd-92bf-5091e32da31b',
+  '7374aab6-5aa4-4f3f-84b6-d0b8465fab4c',
   'GUILHERME (BAR DO OSCAR)',
   NULL,
   NULL,
@@ -16679,12 +16679,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '515f784d-f6a1-4438-9bc1-14c0aae69aec',
+  'c17b78cc-a071-4510-9501-9a25320ebb5c',
   'TRAVESSA BARRANQUILA, 58',
   NULL,
   NULL,
@@ -16698,12 +16698,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7572825e-b2a4-4f7b-97e8-68697736a132',
+  '1f4ff48d-3ecb-46f7-a853-4868fbb6c14f',
   'MAURICÉIA',
   NULL,
   NULL,
@@ -16717,12 +16717,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd06d7d2b-ab6e-47b6-88bf-6256b4d55f55',
+  'ceb46408-44a2-47e2-8142-c06d27a6d056',
   'BICHEIRO LEOPOLDIVILLE',
   NULL,
   NULL,
@@ -16736,12 +16736,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd1c73ef1-59ff-4b53-9275-ab28728ab1b5',
+  '8164ec4b-a339-4b7b-a375-0b48a3a70d53',
   'TRAILLER ALTAS HORAS',
   NULL,
   NULL,
@@ -16755,12 +16755,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd86e21ff-6691-4cc2-8ca4-f3059d20e705',
+  '1de117ea-e81f-4960-a4da-3f2aeecf92fd',
   'AVENIDA ETIÓPIA, 25',
   NULL,
   NULL,
@@ -16774,12 +16774,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dfcc1e0e-6e48-47bb-8aa5-c272adc0a154',
+  'c363e322-8f5e-4742-8b05-4a7952138c7b',
   'TRAVESSA RODES, 78',
   NULL,
   NULL,
@@ -16793,12 +16793,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '01f635c0-c8f2-437a-b33f-3ead1be0979d',
+  'd2de3dec-5fbc-4302-b72d-14375c1e2a93',
   'ÍCARO',
   NULL,
   NULL,
@@ -16812,12 +16812,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '701d18e6-bae5-453d-9e68-4c0520821107',
+  'cb96ea5f-59ec-444e-9947-5c216643a3d5',
   'RUA DA AÇÃO, 05',
   NULL,
   NULL,
@@ -16831,12 +16831,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3cfc96b9-415f-4dce-8e67-986ab02da4cc',
+  'c1777e6e-a595-408b-b504-5ac6a28ab8e0',
   'CAMINHO DO ENCANAMENTO, 168',
   NULL,
   NULL,
@@ -16850,12 +16850,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c7425271-100a-4619-ad20-5fc1e4531a58',
+  'ffcd9f82-18d7-4122-a66e-cff8130c3865',
   'RUA 05, CASA 261',
   NULL,
   NULL,
@@ -16869,12 +16869,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '366b9895-9591-4400-bc41-ab7fdcae67b6',
+  '7b473f4e-635d-4a34-96ce-5559a6437fef',
   'RUA SUDÃO, CASA 08',
   NULL,
   NULL,
@@ -16888,12 +16888,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c6996cf0-6c50-4b47-84c5-024bb02e31f1',
+  '9b787e5d-0d9f-4fc2-8154-935257404298',
   'RUA D, 43',
   NULL,
   NULL,
@@ -16907,12 +16907,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '59d0fb81-c281-4412-8de7-28995ad3a15d',
+  '3dacfbc7-a013-4028-9009-d9344bc36686',
   'TRAVESSA PASCOAL',
   NULL,
   NULL,
@@ -16926,12 +16926,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '08587ea9-646e-4348-9def-66dd796f5a97',
+  'eb7c0d56-2936-42fd-bc0e-61e183b265c7',
   'QIOSQUE DOS BRINQUEDOS',
   NULL,
   NULL,
@@ -16945,12 +16945,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dca62106-c04f-428a-acad-df1e78504c60',
+  '8564f4a8-e368-4e49-b0e0-435e9bbb91da',
   'ANALÂNDIA',
   NULL,
   NULL,
@@ -16964,12 +16964,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9007406a-7808-4572-9ee0-492a23c8f157',
+  '45ca057d-98be-4bff-b25d-5505ec562b79',
   'RUA PRETORIA, 59',
   NULL,
   NULL,
@@ -16983,12 +16983,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'db31619b-6bc3-4772-8327-763340dd7d20',
+  'f560ecfb-491a-441e-91d2-cfbcae3353ae',
   'RUA R, 122. CASA 02',
   NULL,
   NULL,
@@ -17002,12 +17002,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '208a8a4a-4272-4813-aa12-bd981d4b6885',
+  '8e79a1f9-e1c0-4860-bd34-c299b3dfacd6',
   'RICARDO',
   NULL,
   NULL,
@@ -17021,12 +17021,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a9acef8d-c753-4c28-9be7-8c78d94fe3e8',
+  '1b008436-ccea-4c3d-bf27-3584358428f0',
   'KAILANY',
   NULL,
   NULL,
@@ -17040,12 +17040,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ffcd194b-1933-4154-83f3-045070f19bb9',
+  'b5bd0cc0-34ca-4214-b5c1-098174f019c7',
   'ALESSANDRA',
   NULL,
   NULL,
@@ -17059,12 +17059,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f23c12c1-84c4-443c-a443-d60cb683f792',
+  '48370369-a14d-4f98-a374-20fdd72ba011',
   'RUA A, 30',
   NULL,
   NULL,
@@ -17078,12 +17078,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '116aa874-de24-436d-b140-2e3390ff1589',
+  '5bbb2368-d3d1-4db4-b07a-907dd9f5756d',
   'TRAVESSA CEFALONIA, 01',
   NULL,
   NULL,
@@ -17097,12 +17097,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '74aab646-73d5-4f65-a11f-cb4ae0581571',
+  '7a2ab500-1b35-4c30-8a2e-068206419b65',
   'SANDÁ, 26',
   NULL,
   NULL,
@@ -17116,12 +17116,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e5a1d551-573d-4c84-ac22-e2cb8a7a6781',
+  '0687679f-813d-453f-8362-44eb9cf19f55',
   'RUA U, 350',
   NULL,
   NULL,
@@ -17135,12 +17135,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '93c5a1b4-2ae4-4479-8d35-9ae4d39ad497',
+  'bf4c7932-1e60-421c-9e75-f05be343613e',
   'ZÂMBIA, 78',
   NULL,
   NULL,
@@ -17154,12 +17154,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '63259d17-f226-4067-b8c0-dbb7d927ee14',
+  '6e8c35f8-af97-42b3-8321-25b5f920a2b1',
   'BAR DO SOUZA',
   NULL,
   NULL,
@@ -17173,12 +17173,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '59eb80e2-b84a-4311-aa8f-3d8440deb5d0',
+  '2cf2e16a-9005-4ba2-a873-86141aada621',
   'MANOEL',
   NULL,
   NULL,
@@ -17192,12 +17192,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b10adfd0-089d-4317-b555-4926a347e759',
+  '7d71df31-1bca-4bf0-8903-56f5a2674210',
   'DECA',
   NULL,
   NULL,
@@ -17211,12 +17211,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a6146f89-b06f-4d18-8ae7-641d998c8490',
+  '2c6b76ef-95d6-471f-ab96-1e2f5d239d08',
   'RUA CHAD, 40',
   NULL,
   NULL,
@@ -17230,12 +17230,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3a6214b7-9b62-4f63-83dd-c81a65d8c7ed',
+  '1b6ae1eb-e8dc-4940-9b67-368ef938060e',
   'RUA 26, CASA 197',
   NULL,
   NULL,
@@ -17249,12 +17249,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '181c672e-868c-4b79-9fad-fcaae86021ab',
+  'd36e07b0-07b2-4ec9-8823-097cedf1f245',
   'TRAILLER LINA',
   NULL,
   NULL,
@@ -17268,12 +17268,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1a27cbd2-25a2-43b8-83e0-4b6aac0ceb75',
+  '12392006-fa07-4e2f-a064-482078666e6c',
   'RUA K, CASA 106',
   NULL,
   NULL,
@@ -17287,12 +17287,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '59a9ea21-70a6-47c4-9622-5d538d5d1d2d',
+  '5032c958-b6ec-4750-ae7a-1a24bd7139a2',
   'RUA BOAVENTURA, 12. METRAL',
   NULL,
   NULL,
@@ -17306,12 +17306,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6ac5eb54-6ad1-46e6-bddf-26e25a4c4efe',
+  '5940faa7-6029-4a5e-931a-78bb1e1fa2d9',
   'AVENIDA CENTRAL, 15',
   NULL,
   NULL,
@@ -17325,12 +17325,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3989ee5b-66be-4154-b2bd-fdcf8cdec7c2',
+  '6daf8b17-7221-471a-a990-1c7a2d719642',
   'RUA CUSTÓDIO DE MESQUITA, 35',
   NULL,
   NULL,
@@ -17344,12 +17344,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7204889d-43ad-4a1d-8382-f1265422a953',
+  'e7f5c968-fe3e-407b-9b7a-4007ddbc0d63',
   'ALFREDO DE ALBUQUERQUE, 51',
   NULL,
   NULL,
@@ -17363,12 +17363,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dc7aec7f-7468-4fb4-b80e-657dfcf011a8',
+  'c882aa67-5f9e-464d-9327-84c8031f679d',
   'MACICLEIDE',
   NULL,
   NULL,
@@ -17382,12 +17382,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b8432777-a13f-4546-ad8c-38bae133d864',
+  'ec204f7b-b48e-4964-9525-0f4d60a615e9',
   'GORDINHO CONSIGNADO',
   NULL,
   NULL,
@@ -17401,12 +17401,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8d29a908-a48e-4124-a755-f421d5dfb5cc',
+  '6be25158-2e42-4cad-8625-e5409d531ae7',
   'SÍTIO BOB',
   NULL,
   NULL,
@@ -17420,12 +17420,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd2bf88d9-ef4e-4004-a104-49b727a7821f',
+  '50047043-c0e9-4a70-8901-a707cc664274',
   'RUA 10, Nº 165',
   NULL,
   NULL,
@@ -17439,12 +17439,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5b1177b3-0e87-49ea-ba9f-2a0679440edb',
+  '1a658dbd-2c53-4df2-9741-4274cb4f1bca',
   'TRAILLER RUIVA SKATE',
   NULL,
   NULL,
@@ -17458,12 +17458,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9fed991e-7355-4069-9b18-bf8ed8ef3706',
+  'c32c115b-0168-4c62-a93d-8f39a4cb61f8',
   'SALÃO GARDEN LOUNGE',
   NULL,
   NULL,
@@ -17477,12 +17477,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0972fba6-53ed-4e93-8c6d-8a4df69aa9b1',
+  'dff44f5d-c723-4ecb-b439-d5d297f4f904',
   'ESPLENDOR 2 BLOCO 02 APTO 504',
   NULL,
   NULL,
@@ -17496,12 +17496,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '83d725ab-bde1-4aa4-8585-3a827af94a8f',
+  'cd89a130-ae2e-460f-83d6-c07b9fb1763f',
   'RUA 05, CASA 347',
   NULL,
   NULL,
@@ -17515,12 +17515,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '24414238-efdc-482a-9699-2f244de5a686',
+  '4b9624eb-3875-4845-b57d-3d54fe83701c',
   'ACADEMIA GORILAS',
   NULL,
   NULL,
@@ -17534,12 +17534,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '607bf6f1-eaf8-4bff-91be-b2cd65df04b7',
+  'c45e10e5-f936-4dc4-b4b6-eef58ab8e8b1',
   'BAR 05 ESTRELAS',
   NULL,
   NULL,
@@ -17553,12 +17553,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '12d0d866-75ab-4b3a-b416-ea5b58d61d68',
+  '89262c90-df4d-4de6-83f1-b55f46777b05',
   'RUA U, CASA 450',
   NULL,
   NULL,
@@ -17572,12 +17572,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e1d6a1f1-dfa3-4917-a4f6-3201484c531e',
+  'e64d1b19-073c-4543-a216-15622b8b56cb',
   'JACSON GUANDU',
   NULL,
   NULL,
@@ -17591,12 +17591,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9e552038-482f-49f8-915c-dd34ec003200',
+  '13cdb4e6-7efb-4e48-8264-1b36eb8d9aca',
   'QUIOSQUE Nº 15',
   NULL,
   NULL,
@@ -17610,12 +17610,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6b38e7e1-a052-44f5-ad76-47e6d3ba5333',
+  '3f652bb9-8d9e-4083-84fe-bdcbfed76307',
   'RUA VIÚVA GUERREIRO, 08',
   NULL,
   NULL,
@@ -17629,12 +17629,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ae899a4a-53e2-4cd8-aa3c-76cc9f6ffe70',
+  '3b8b2b65-0243-4cb3-892d-a1b8a5550684',
   'TRAILLER DA LOIRA',
   NULL,
   NULL,
@@ -17648,12 +17648,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ccd9328c-c41f-4e0f-b67a-ed8500d18028',
+  '6db29c1a-a77e-4390-8777-92a6ae378cd9',
   'MICHELE ANDRADE',
   NULL,
   NULL,
@@ -17667,12 +17667,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '621a8df3-f9bd-4e61-9b4b-e404e8839bd6',
+  '12ff50b5-7ddc-49d3-96de-cf07cf9cbb9e',
   'RUA 21, CASA 123',
   NULL,
   NULL,
@@ -17686,12 +17686,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c40b8918-ca30-4872-b05b-6fef58ebdd0e',
+  'cd29a10b-ddee-48f8-95ab-c8e60c6f609d',
   'RUA 10 EM FRENTE A RUA 30',
   NULL,
   NULL,
@@ -17705,12 +17705,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2fb435b6-9efc-4a1c-aa14-cfb3439610f2',
+  '050db349-5045-493d-921a-48226d0b1d8a',
   'ESTRADA DO QUAFÁ, 93',
   NULL,
   NULL,
@@ -17724,12 +17724,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '19ff25b5-68b0-4973-ba2d-5314e94095c7',
+  '3b80377d-4616-4e0e-8482-b2e81093324a',
   'RUA TUNIS, 59',
   NULL,
   NULL,
@@ -17743,12 +17743,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e0524da7-6e6a-4632-ae04-5b650f5441d7',
+  '06bf8af5-bd3a-4f93-8b0f-a283df66ab35',
   'CARLINHO BAR',
   NULL,
   NULL,
@@ -17762,12 +17762,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'de6f7e3e-7711-4ff4-933c-70dc618cabaf',
+  'af97782f-2142-47d7-b5ba-1003cc38b579',
   'ESFIRRARIA DO PAULISTA',
   NULL,
   NULL,
@@ -17781,12 +17781,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd9bb2e63-1325-42ea-bce3-ee88bb1347cf',
+  '5c272592-8891-4e19-ab2f-c38d880fa4f2',
   'RUA DA FRATERNIDADE, 26',
   NULL,
   NULL,
@@ -17800,12 +17800,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '23fe50fc-997e-473e-9ce5-52c903f5cb18',
+  '8b98722b-8ab1-4c3f-89a9-1fc28f4d35ac',
   'RUA U, CASA 504',
   NULL,
   NULL,
@@ -17819,12 +17819,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd2f8a0b2-98c6-471e-8f38-b9bfa111f8a0',
+  'b298fc7f-f252-4166-8a9f-f21d7067b058',
   'AVENIDA ALFREDO DE ALBUQUERQUE, CASA 69',
   NULL,
   NULL,
@@ -17838,12 +17838,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3f73721a-5234-4985-829f-de363991067e',
+  '92be1c93-976d-4bf8-b3cc-c169291eb913',
   'RUA C, DO VITALLE. CASA 16',
   NULL,
   NULL,
@@ -17857,12 +17857,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1bbb891e-18f3-4229-8d28-ed2e28af6ae5',
+  'ead16dff-6c4f-49e3-a9d1-b08bc8cdaad0',
   'ÂNGELA',
   NULL,
   NULL,
@@ -17876,12 +17876,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5f38054c-0a45-49d5-bf1f-427b0ae9a476',
+  '241e123a-9d95-4037-a77e-cc9c65af64d6',
   'AVENIDA ALFREDO DE ALBUQUERQUE, 51',
   NULL,
   NULL,
@@ -17895,12 +17895,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2b5b135d-2cbb-4656-8ddc-5ec49a807b0d',
+  '9d8e055f-0139-4e61-b41f-ac4ac7e9f353',
   'TRAILLER VELHA GUARDA',
   NULL,
   NULL,
@@ -17914,12 +17914,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f43fdc3f-d49c-4905-8034-02a6e8345837',
+  'a5c3f95c-5d52-4d7d-8191-55a6321b6d2d',
   'ANTONIO TENDA',
   NULL,
   NULL,
@@ -17933,12 +17933,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd45d2927-4acc-4638-9d64-bcea40f995ba',
+  '9aa73f75-f214-4d34-bbe8-3c8ff4173341',
   'DANIEL FUNCIONÁRIO',
   NULL,
   NULL,
@@ -17952,12 +17952,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fd6ea3f9-5bc0-49bf-8432-520d6bf14740',
+  '850fc295-ae60-43ac-b91b-bc11d605d54b',
   'LÉO OFICINA',
   NULL,
   NULL,
@@ -17971,12 +17971,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b6ba4aa5-3afa-4de8-8321-4eb18b4c8d7b',
+  'e97f0370-b9f2-4ba6-b13f-0874a359ff2e',
   'RUIVA PRAÇA SKATE',
   NULL,
   NULL,
@@ -17990,12 +17990,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '667c6482-83e4-4b8a-b689-73dc90112228',
+  'd1383db1-4071-4305-9155-97a63d842cb7',
   'RUA J, 107. CASA 02',
   NULL,
   NULL,
@@ -18009,12 +18009,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '35925ac4-b066-421f-81f4-5619a152de95',
+  'a27323f7-ded7-4907-b937-e2f1e4d1dd45',
   'CRECHE LEÃO 13',
   NULL,
   NULL,
@@ -18028,12 +18028,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3e1cdd3a-29a4-48c3-885e-39bc9977ac35',
+  '456c91f5-935c-4aa3-a75a-8d6390d364b7',
   'RUA T, 65.CASA 02',
   NULL,
   NULL,
@@ -18047,12 +18047,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '21860217-0a9d-4f3b-8403-0aa4a1f014d0',
+  'e785f4c5-7491-4e47-b308-ea5519b10854',
   'PAULINHA',
   NULL,
   NULL,
@@ -18066,12 +18066,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '331e5853-88ad-42d3-a890-a07726959984',
+  'b23d68b2-e262-4fdf-8ad6-3bc208d1aa86',
   'ESPAÇO ORNELAS',
   NULL,
   NULL,
@@ -18085,12 +18085,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b3e044e3-ccc6-4680-b8c7-453949881eb0',
+  'ed5a840c-dba6-4cba-a243-1d9530f7e1c7',
   'ML COMBOS',
   NULL,
   NULL,
@@ -18104,12 +18104,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4982a699-21d3-4fdf-a612-41e4cfabf4e9',
+  '3afbad9b-c355-40db-a913-dfb1befa6734',
   'RUA COSTA JUNIOR, 103',
   NULL,
   NULL,
@@ -18123,12 +18123,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b053c1c1-e595-4b9c-a5d6-fdfb558f8b2c',
+  '77fbfba4-0983-4391-84e8-22d61cff4e8c',
   'RUA AMSTERDÃ, 37',
   NULL,
   NULL,
@@ -18142,12 +18142,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3e246e0e-8789-4491-a8e0-096308a8c61d',
+  '9a4a45a3-0f04-4229-b32b-b2c469703707',
   'ROGÉRIA',
   NULL,
   NULL,
@@ -18161,12 +18161,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e03a1d9a-62d2-4e77-afa5-e4083ed2a7c4',
+  '1ede2ca1-71e6-4958-9b59-3d0235a11ef0',
   'Trailler Kinder',
   NULL,
   NULL,
@@ -18180,12 +18180,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3f19dc54-b28b-44ec-87e0-e36daf501be8',
+  '48c6e982-7231-4be7-901a-b426c964b08e',
   'ESCOLA CETIVA',
   NULL,
   NULL,
@@ -18199,12 +18199,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8515cf45-b331-48c8-a56d-7e3eb463b0a3',
+  '535b36e9-f6db-464e-be56-e4b2ef96a0e5',
   'RUA JOSÉ GONÇALVES, 19',
   NULL,
   NULL,
@@ -18218,12 +18218,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e0a52b67-1d94-4bd5-9934-7fa0b9eeb50b',
+  '06682534-6918-409b-ac0f-a6b59dc98912',
   'SOPHIA LANCHES PRAÇA ESTÁTUA',
   NULL,
   NULL,
@@ -18237,12 +18237,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1312a4ae-013c-4811-8202-7b132c4cfafd',
+  'd36edead-82ba-43a8-954e-dd5ea4cd4ab8',
   'FRANGO QUAFÁ',
   NULL,
   NULL,
@@ -18256,12 +18256,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '51700b26-644c-4508-ae63-0cef6dc2d7b1',
+  '881cb443-1096-4390-bf11-b1b9b36a0021',
   'ESTRADA DO QUAFÁ, 161',
   NULL,
   NULL,
@@ -18275,12 +18275,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '63d3de3a-8482-4028-b70a-fd1b7f640b10',
+  '3bbb9eb6-f497-4f3b-894c-0caa9f5f914a',
   'RUA DA FRATERNIDADE, 30',
   NULL,
   NULL,
@@ -18294,12 +18294,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '61239aa8-891a-40a5-aed6-fde82724d270',
+  'fa9414cd-860d-4cad-aec3-0e03e1900470',
   'Trailler Tidé',
   NULL,
   NULL,
@@ -18313,12 +18313,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '9dad93cd-57e0-4510-8989-148666d99cc2',
+  '5d5c5231-6f14-439e-a6dc-ef0c9b14e0ff',
   'LARISSA - SARGENTO',
   NULL,
   NULL,
@@ -18332,12 +18332,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5e8cedb1-a6a3-402e-a3ca-b89fe5639547',
+  '5fc29699-5e85-4b30-a006-a180f7523203',
   'KINHA TRAILLER',
   NULL,
   NULL,
@@ -18351,12 +18351,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f7ba26c7-3a82-42b8-9491-6a00467f8f2b',
+  'bb6cf5a2-90bd-4327-a9a0-c901eeccd722',
   'EDNALVA',
   NULL,
   NULL,
@@ -18370,12 +18370,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '371c2473-e440-4bf6-a424-56109af7f1ef',
+  '481193a6-6e13-4147-96b5-f3b8b4cb8618',
   'RUA PROJETADA B, CASA 07. CONGO',
   NULL,
   NULL,
@@ -18389,12 +18389,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'af3eb55b-5d03-4276-af30-b3c59eca7944',
+  '00e65505-e189-42fb-9a91-ce3b42920f2f',
   'EVENTO MOTO CLUBE 17/11',
   NULL,
   NULL,
@@ -18408,12 +18408,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ddf3889e-c817-4fbb-9e53-c2dd49f03f2c',
+  '043da61a-cb84-40ee-9dfd-cc948d3b8535',
   'TRAVESSA SANDÁ, 07',
   NULL,
   NULL,
@@ -18427,12 +18427,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7aa7b620-c065-488f-970e-13b09310ff4d',
+  '213fc83d-5f1b-4d38-8112-f96cb84f5322',
   'PADARIA ART PAO',
   NULL,
   NULL,
@@ -18446,12 +18446,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '89c7a2cc-d76e-496e-9ff8-47b25a1dd82d',
+  '5a7db145-f3be-4f03-8316-90747e6c30be',
   'RUA 10 Nº25A',
   NULL,
   NULL,
@@ -18465,12 +18465,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5ab78534-44f8-4077-80f9-077e70b9dcff',
+  '77f2aaf8-2907-4529-ad97-3f4d387dfa3d',
   'RUA F, CASA 327',
   NULL,
   NULL,
@@ -18484,12 +18484,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2ba83a9c-ca85-4203-9048-883703aa23e9',
+  'a75c752f-0b7f-465a-abf0-f8a470dd3e27',
   'ROBERTA FILHA ESPAGUETE',
   NULL,
   NULL,
@@ -18503,12 +18503,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e5808772-d179-493f-8906-98735c8fdb8e',
+  '99a615d7-2e8e-44b6-9a60-0daacb5a6b31',
   'RUA BAMAKO, 41',
   NULL,
   NULL,
@@ -18522,12 +18522,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '52258f60-622d-43c0-beb2-f4e08de6303c',
+  '8e772bcc-5ece-451a-93e1-e7ddaa044678',
   'CARLOS/ALINE EVENTO MERCK',
   NULL,
   NULL,
@@ -18541,12 +18541,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '8e50f055-57a1-40fb-ae13-e9150c862828',
+  '89265a3e-f475-4c08-8a7a-696a2619504c',
   'TRAILLER DA NENÉM',
   NULL,
   NULL,
@@ -18560,12 +18560,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3b9481f5-b8f5-4e37-aba2-e8453cfb1294',
+  '6427b168-ac22-44ec-b99f-36c5ba172efd',
   'RUA PAULINO DO SACRAMENTO, 65',
   NULL,
   NULL,
@@ -18579,12 +18579,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dd62030d-9744-4519-ae3a-0c6f85bc76e6',
+  '9f3a4544-da2a-4eff-9f56-c36f3518ae50',
   'CABELO',
   NULL,
   NULL,
@@ -18598,12 +18598,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ac7a384e-403f-44a2-9cee-c20066d6f019',
+  '9846cccb-35c1-4a5b-8d48-5067e8d142f7',
   'NATHALIA TENDA',
   NULL,
   NULL,
@@ -18617,12 +18617,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '53d3ff6d-1cbc-40d9-85d1-df5e43105e4c',
+  '016ff519-c879-4458-a1b3-5568f7f95d6d',
   'RUA C, 186',
   NULL,
   NULL,
@@ -18636,12 +18636,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '66d47d10-ef7a-4b3b-83c6-971f3c01ef03',
+  '44a549f7-a494-433a-8414-c9f1a2ee7af6',
   'RUA DA AGRICULTURA, 37',
   NULL,
   NULL,
@@ -18655,12 +18655,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '34ac3bb9-e17d-42e6-972e-03593e368995',
+  '7568cf2e-1d50-4031-a1f5-77efe9f67319',
   'PALMEIRAS GREEN',
   NULL,
   NULL,
@@ -18674,12 +18674,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'dd379e9b-6b90-42a9-8082-fd072d9c1cec',
+  'e4fd63ae-7c33-46f2-95bb-87792d8e0820',
   'SEU JONAS',
   NULL,
   NULL,
@@ -18693,12 +18693,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '225819ce-f265-40b7-bcb6-6c978ebea854',
+  'c8f4b4ec-b620-4d16-8c9b-e86f28cddf66',
   'RUA LUIZ AMERICANO, 23',
   NULL,
   NULL,
@@ -18712,12 +18712,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3c7de517-c373-450e-b54a-78cb625bd226',
+  'd5f434f3-4d7f-40ef-b9c3-1922c4a8aa2a',
   'Rua 2 41 cs2',
   NULL,
   NULL,
@@ -18731,12 +18731,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ff46715e-a332-4de3-bf6b-ec38c1af7f33',
+  'f4b951c8-ed19-4267-b255-aeadcca35036',
   'MARD',
   NULL,
   NULL,
@@ -18750,12 +18750,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4503d86d-ffbb-45be-981d-31cd95a75ac7',
+  'fbec5c2d-5aa3-4b37-8c86-729f080394b3',
   'DÃO',
   NULL,
   NULL,
@@ -18769,12 +18769,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'e092d653-df74-42cb-8253-88a6b4f549a9',
+  'a2e1fddd-be5b-47a6-9a70-21af7c17392b',
   'Cristiano Ultraleve',
   NULL,
   NULL,
@@ -18788,12 +18788,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a3d06812-d119-47e1-ac83-26af5729cdea',
+  '64a617ac-7963-4c04-8fa1-50c87dc18ca8',
   'RUA 10, CASA 247',
   NULL,
   NULL,
@@ -18807,12 +18807,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'eca6a32d-fc0a-47a1-851e-b02445b3be0e',
+  'b2d270f1-c48d-4d9d-8c23-1ca5bac1d83b',
   'RUA 02, CASA 391',
   NULL,
   NULL,
@@ -18826,12 +18826,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b4fa0cdb-3e3d-4083-9d6b-12b80e0d82a7',
+  'f55b4091-b573-40ef-a6f3-f6b154a73e39',
   'ESPAÇO MRIO',
   NULL,
   NULL,
@@ -18845,12 +18845,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3684fd28-1a24-443a-b9de-b4355728898c',
+  'baff4c3a-bd52-4ee5-9e2d-740aeacee63c',
   'TRAILLER KAROL',
   NULL,
   NULL,
@@ -18864,12 +18864,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '1d552a1d-c3fb-443b-a24b-6b9ba1d06ce2',
+  '80a95c12-92d8-4b24-813b-f0e7ee78f3de',
   'RUA L, 103',
   NULL,
   NULL,
@@ -18883,12 +18883,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3c4d99be-d386-42ea-af96-a8dd19d20893',
+  '042efa4d-cac0-45ca-a49f-8f031c07b2e7',
   'RUA HAMBURGO, 82. CASA 02',
   NULL,
   NULL,
@@ -18902,12 +18902,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a51af464-ae3e-4c2a-85ac-f26d1b48cc2c',
+  'c501f3d2-0240-497e-9f8f-ca1baa2e48d9',
   'ANDERSON QUAFÁ',
   NULL,
   NULL,
@@ -18921,12 +18921,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '54c19a14-2a92-4b4b-a5e7-ce8b26eaa128',
+  '4d1610a1-8d1b-4326-b5b8-e812ff891aee',
   'KAROL QUAFÁ',
   NULL,
   NULL,
@@ -18940,12 +18940,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '07dbee0e-c5c6-4e49-a494-8e1359b5c31d',
+  '1d5bb37e-977a-4176-9d08-0c4e9929217b',
   'RUA F, 31',
   NULL,
   NULL,
@@ -18959,12 +18959,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '899d2f2f-8be9-4e2b-a7b5-1f34e55d9ebb',
+  '38c3ed82-00e3-468c-8d10-5a30cabead7c',
   'RUA 15, CASA 73',
   NULL,
   NULL,
@@ -18978,12 +18978,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'df3482e3-e6ef-42fe-8e5c-c901b3ecce1a',
+  '87f3f3f3-b5b3-4b44-960d-a47eecd782df',
   'LUCAS TRAILLER PRETO',
   NULL,
   NULL,
@@ -18997,12 +18997,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'a7f9875e-d94b-4515-af02-dfb9b06bc91a',
+  'cd8fa686-984f-472b-abcb-92275b28577f',
   'AVENIDA 01, CASA 1328',
   NULL,
   NULL,
@@ -19016,12 +19016,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f6212a6a-866b-49f8-8e2a-575c18ab0381',
+  '0a9c9184-17ab-42b4-8484-d2a9b257d8e5',
   'MANGUINHA',
   NULL,
   NULL,
@@ -19035,12 +19035,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'bd986f25-e82a-4c08-9aa0-b5e812944d1d',
+  'e44cfdb3-0b76-496e-b62e-28d6e8af4da2',
   'RUA M, CASA 15',
   NULL,
   NULL,
@@ -19054,12 +19054,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0154dca1-a9b7-4756-8ef5-a6ff4082d2d2',
+  '2e13385e-0224-4f3c-9f4f-689cce802475',
   'TRAILLER DO DAVID',
   NULL,
   NULL,
@@ -19073,12 +19073,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'b57ddf22-125e-49cd-ac32-c21a020b2591',
+  'f3ad29bd-e165-4fce-a316-04d212906ef5',
   'RUA 22, CASA 206',
   NULL,
   NULL,
@@ -19092,12 +19092,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'ecce0c70-99ec-47b3-82dc-0156ed95b5d3',
+  '0d6d18aa-1355-42f6-a84c-12c21ffe1664',
   'RUA ENFIL, CASA 16',
   NULL,
   NULL,
@@ -19111,12 +19111,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '08f5bafa-5109-4aff-8a76-3ec92c25aa01',
+  'e7b264cf-fc8f-4b46-83a4-9067ab567471',
   'MARCINHO BAIXINHO',
   NULL,
   NULL,
@@ -19130,12 +19130,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '4a1d9351-b3d6-493f-b51d-11284bb23309',
+  'ad0c1450-257e-4c8c-bf57-8f211c6a817d',
   'RUA JOSÉ GONÇALVES, 38',
   NULL,
   NULL,
@@ -19149,12 +19149,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '08f4d845-9fbd-4479-a5fb-4c540fd721bb',
+  '03d69cd4-5fc2-4081-914b-1995f7b28d95',
   'RUA 22, CASA 81',
   NULL,
   NULL,
@@ -19168,12 +19168,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6909d551-704d-4180-b6e9-9c05da79c334',
+  '16fb1f10-4a37-44e6-9d65-707b51fb3a43',
   'GUANDU DO SENNA, 1449',
   NULL,
   NULL,
@@ -19187,12 +19187,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '824cbff5-9a9b-4fa3-bc4a-18db278ee549',
+  'ce2c0b15-77ed-4843-9465-148db95e17a3',
   'NANE QUAFÁ',
   NULL,
   NULL,
@@ -19206,12 +19206,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '085f415e-c708-4a1a-b26c-68d2447556e8',
+  '6eb01c35-16a7-4a47-b827-7b472bb64608',
   'TATIANE QUAFÁ',
   NULL,
   NULL,
@@ -19225,12 +19225,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '95ce3354-b4d7-4509-8d30-0f8347a84029',
+  '19db3d45-8c6b-4b34-9ef8-f6fc38771063',
   'PAGODE QUAFÁ',
   NULL,
   NULL,
@@ -19244,12 +19244,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '423923b2-5201-4afb-8372-86fd4fb8c742',
+  '06f01eba-18ac-47cb-8ebb-16ea5e8116d6',
   'AVENIDA CENTRAL, 52',
   NULL,
   NULL,
@@ -19263,12 +19263,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '80da6d33-d486-47ec-b6e6-45de9f9753ba',
+  'c25edacf-7bbe-42e6-b111-34614e7f0b57',
   'SORVETERIA GUANDU',
   NULL,
   NULL,
@@ -19282,12 +19282,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6d79d0c3-6c35-4fb5-9611-5a8682b120e6',
+  'd051c947-1b98-42f4-b24c-7ff0af965b6e',
   'AV SOCIOLOGO BETINHO, 41',
   NULL,
   NULL,
@@ -19301,12 +19301,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '7a172444-22d9-42b8-81f4-1af185d164ab',
+  'a3c0811f-6943-44d1-b29d-6545e698d406',
   'TRAVESSA OTAVIANO ROMERO, 41',
   NULL,
   NULL,
@@ -19320,12 +19320,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f43655fc-2d45-4bb6-8f7e-f0e8281ddc03',
+  '659f7951-a9e5-42e9-babf-91d49c76e8e2',
   'RUA V, CASA 31',
   NULL,
   NULL,
@@ -19339,12 +19339,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '2c44161e-e712-43b6-b457-05303cb87d57',
+  '8bb5cf00-3623-46e0-90d4-aedbf40e9fc1',
   'FELIPE DÉIA',
   NULL,
   NULL,
@@ -19358,12 +19358,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fca9506b-f154-401d-93cb-705993500c1e',
+  '4509f042-2cee-497b-b20b-af0894c388b9',
   'BARRACA DA DAIANA',
   NULL,
   NULL,
@@ -19377,12 +19377,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '504cbbc6-c4a9-46a3-b28c-f796b8d48235',
+  '501750d0-16e9-44a2-ab49-e40e8d70d65c',
   'RUA ADSABEBA, 03',
   NULL,
   NULL,
@@ -19396,12 +19396,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '13ff614b-0111-4e02-a968-e9f4e3d23ca5',
+  'c444181b-39c4-4788-a173-05debce9107f',
   'RUA MARIA FONSECA, CASA 06B',
   NULL,
   NULL,
@@ -19415,12 +19415,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'c5a6d508-113f-4a35-a665-215a3f407d11',
+  '8b4a1a5d-33ac-4719-a019-72f8189f2ac2',
   'RUA DA AMIZADE, 20',
   NULL,
   NULL,
@@ -19434,12 +19434,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '3af477ac-6e4c-472c-998c-7a0139e3a708',
+  '3aa3e91a-2d77-4036-ab0e-d4f5149c0c5d',
   'RUA R, CASA 113',
   NULL,
   NULL,
@@ -19453,12 +19453,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0cb8d3c9-044e-4554-8f33-885c2c19fb1a',
+  'dbcf9e2d-6222-4fc0-8ca0-52bf670779a4',
   'CHILE',
   NULL,
   NULL,
@@ -19472,12 +19472,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6858366b-9a0b-496f-bab1-df5414ee344e',
+  'df784756-d0c8-4621-a000-8d4d78223501',
   'RUA CONGO, 118',
   NULL,
   NULL,
@@ -19491,12 +19491,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '82cdf842-35a5-4a02-b495-8c8da9621677',
+  '591b4fc0-b9b3-49fe-9fd9-a6debd1e6206',
   'PARÁ TRAILLER ABÓBORA',
   NULL,
   NULL,
@@ -19510,12 +19510,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '83a2c7a7-cbbb-4956-8a20-7eacf923de7a',
+  '38cf8d26-9c52-4504-8b8e-78c2be39f494',
   'ESTRADA GUANDU DO SENNA, 213. CASA 56',
   NULL,
   NULL,
@@ -19529,12 +19529,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd65f63f8-2020-4bab-95d8-5296d42bf679',
+  '119ec7a2-3fc6-4fd9-98c8-67cccfee92ff',
   'RUA G, CASA 72',
   NULL,
   NULL,
@@ -19548,12 +19548,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6ceeca05-71f3-483b-9186-305645e7026d',
+  '5b34d478-8bf4-4722-82d5-84d1b0092398',
   'TRAVESSA CATALUNHA, 21. LEÃO.',
   NULL,
   NULL,
@@ -19567,12 +19567,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5e6aa1ca-098f-4466-954d-c9ed57786fc8',
+  '4d8f98ee-795c-4c4e-9512-e58cc8bff8ab',
   'PADARIA 26',
   NULL,
   NULL,
@@ -19586,12 +19586,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6e90388c-744b-44ed-aed2-19a5c5729114',
+  '4144ec79-50c0-4279-8854-62f3424f58cc',
   'AVENIDA ETIÓPIA, 78',
   NULL,
   NULL,
@@ -19605,12 +19605,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0bffb020-3f9e-46b7-aa4a-c8682c5bad92',
+  'd130f46e-4fc6-463c-9f17-3c34bcc0f9f3',
   'CRECHE NINO',
   NULL,
   NULL,
@@ -19624,12 +19624,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0d7e95eb-c3f5-4aeb-b0f2-9861a635c229',
+  'e94c8bc8-2cf4-474f-8c0e-048fc569ccd9',
   'AMIGA BINHA',
   NULL,
   NULL,
@@ -19643,12 +19643,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '00090dff-a156-4f6f-a879-0908d25c1b7a',
+  'fa0adb11-c674-4de8-b42c-04fc9422acb3',
   'AVENIDA BRASIL 34.967',
   NULL,
   NULL,
@@ -19662,12 +19662,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '5a073d36-c67e-4202-885e-93e9b3560e18',
+  '2c42b752-1bc0-43b4-9938-69ffa74cc8d6',
   'LL CELL',
   NULL,
   NULL,
@@ -19681,12 +19681,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'f2784440-d336-47a2-bed6-260d3fe041cb',
+  '31cc5bd6-4600-47b1-ac5f-2929036bd04a',
   'CHURRASCO PRACINHA',
   NULL,
   NULL,
@@ -19700,12 +19700,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '77669f3b-0a56-4704-89c5-d4096af0ea23',
+  'a1e45eb8-9b82-4c78-9506-6123c3251425',
   'RUA E, CASA 63',
   NULL,
   NULL,
@@ -19719,12 +19719,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'd187377c-d1b2-430a-8f08-f286d7b1050a',
+  'c1ca722a-7fa6-42f4-a895-0ad7144560fc',
   'DUNGA',
   NULL,
   NULL,
@@ -19738,12 +19738,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '6eaae694-70fb-4279-a5cf-37bd0395f54a',
+  '2388fa99-2669-4679-bc6c-11e9ac90199f',
   'BARO',
   NULL,
   NULL,
@@ -19757,12 +19757,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '290af3bd-a861-4721-a00c-c46d2865edd3',
+  '9b135865-1fe6-4dbd-ba1c-609d7a2427a8',
   'SALÃO ORNELLAS',
   NULL,
   NULL,
@@ -19776,12 +19776,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0b46f66c-6de2-4f1f-b4b6-901c060638ac',
+  '1b62be18-bab0-4320-b4e2-5847794d9a12',
   'DORMITÓRIO DA DAI',
   NULL,
   NULL,
@@ -19795,12 +19795,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '16bbd4a6-65fc-4819-9b50-050a0eb32ff1',
+  'b540d787-2546-443e-947b-b8d21a54751d',
   'DIONÍSIO',
   NULL,
   NULL,
@@ -19814,12 +19814,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  'fb2d8a2b-4ca4-4951-9ad7-4508574e08a7',
+  'e685f12d-7208-4a8f-a02b-bacd9caccca5',
   'ROBERTINHO',
   NULL,
   NULL,
@@ -19833,12 +19833,12 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
 INSERT INTO customers (id, name, email, phone, document, document_type, address, city, state, zip_code, notes, credit_limit, current_balance, total_purchases, created_at, updated_at) VALUES (
-  '0a5af0ca-188e-4dfa-96d6-a09a80835366',
+  'faafe3c1-b6af-45c6-846d-326a4fea7add',
   'RONALD GENRO NENEM',
   NULL,
   NULL,
@@ -19852,7 +19852,7 @@ INSERT INTO customers (id, name, email, phone, document, document_type, address,
   0,
   0,
   0,
-  '2025-12-19T16:08:42.551Z',
-  '2025-12-19T16:08:42.551Z'
+  '2025-12-19T16:13:24.352Z',
+  '2025-12-19T16:13:24.352Z'
 ) ON CONFLICT (id) DO NOTHING;
 
