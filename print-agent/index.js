@@ -404,12 +404,10 @@ async function printReceipt(receiptData) {
     buffers.push(textLine(formatLine('Desconto:', '-' + formatCurrency(receiptData.discount_amount), width)));
   }
 
-  // TOTAL grande
-  buffers.push(CMD_SIZE_DOUBLE);
-  buffers.push(CMD_LF);
-  buffers.push(textLine(formatLine('TOTAL', formatCurrency(receiptData.total), width - 8)));
-  buffers.push(CMD_LF);
-  buffers.push(CMD_SIZE_NORMAL);
+  // TOTAL - negrito, alinhado a direita
+  buffers.push(CMD_BOLD_ON);
+  buffers.push(textLine(formatLine('TOTAL:', formatCurrency(receiptData.total), width)));
+  buffers.push(CMD_BOLD_OFF);
 
   // Pagamento
   buffers.push(textLine(separator));
