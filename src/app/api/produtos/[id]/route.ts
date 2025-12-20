@@ -78,6 +78,7 @@ export async function PUT(
       is_weighable,
       allow_decimal_quantity,
       tax_rate,
+      expiration_date,
     } = body;
 
     // Verifica se SKU já existe (excluindo o produto atual)
@@ -117,6 +118,7 @@ export async function PUT(
     if (is_weighable !== undefined) updates.is_weighable = is_weighable;
     if (allow_decimal_quantity !== undefined) updates.allow_decimal_quantity = allow_decimal_quantity;
     if (tax_rate !== undefined) updates.tax_rate = tax_rate;
+    if (expiration_date !== undefined) updates.expiration_date = expiration_date || null;
 
     const { data, error } = await supabase
       .from('products')

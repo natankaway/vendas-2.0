@@ -78,27 +78,32 @@ export async function GET(request: NextRequest) {
 
     const allSales = sales || [];
 
-    // Calculate summary
+    // Calculate summary - include both completed and pending (pay_later) sales
+    // Pending sales are legitimate sales waiting for payment
+    const activeSales = allSales.filter(s => s.status === 'completed' || s.status === 'pending');
     const completedSales = allSales.filter(s => s.status === 'completed');
+    const pendingSales = allSales.filter(s => s.status === 'pending');
     const cancelledSales = allSales.filter(s => s.status === 'cancelled');
 
-    const totalRevenue = completedSales.reduce((sum, s) => sum + (s.total || 0), 0);
-    const avgTicket = completedSales.length > 0
-      ? Math.round(totalRevenue / completedSales.length)
+    // Total revenue includes all active sales (completed + pending)
+    const totalRevenue = activeSales.reduce((sum, s) => sum + (s.total || 0), 0);
+    const avgTicket = activeSales.length > 0
+      ? Math.round(totalRevenue / activeSales.length)
       : 0;
 
     const summary = {
       totalSales: allSales.length,
       totalRevenue,
       avgTicket,
-      completedSales: completedSales.length,
+      completedSales: activeSales.length, // Changed to include pending
       cancelledSales: cancelledSales.length,
+      pendingSales: pendingSales.length,
     };
 
-    // Calculate daily sales
+    // Calculate daily sales - include both completed and pending
     const dailySalesMap = new Map<string, { sales: number; revenue: number }>();
 
-    completedSales.forEach(sale => {
+    activeSales.forEach(sale => {
       const date = new Date(sale.completed_at || sale.created_at).toISOString().split('T')[0];
       const existing = dailySalesMap.get(date) || { sales: 0, revenue: 0 };
       dailySalesMap.set(date, {
@@ -111,10 +116,10 @@ export async function GET(request: NextRequest) {
       .map(([date, data]) => ({ date, ...data }))
       .sort((a, b) => a.date.localeCompare(b.date));
 
-    // Calculate payment method stats
+    // Calculate payment method stats - include active sales
     const paymentMethodMap = new Map<string, { count: number; total: number }>();
 
-    completedSales.forEach(sale => {
+    activeSales.forEach(sale => {
       if (sale.payment_method) {
         const existing = paymentMethodMap.get(sale.payment_method) || { count: 0, total: 0 };
         paymentMethodMap.set(sale.payment_method, {
@@ -128,10 +133,10 @@ export async function GET(request: NextRequest) {
       .map(([method, data]) => ({ method, ...data }))
       .sort((a, b) => b.total - a.total);
 
-    // Get top products from sale items
+    // Get top products from sale items - include active sales
     const productSalesMap = new Map<string, { id: string; name: string; quantity: number; revenue: number }>();
 
-    for (const sale of completedSales) {
+    for (const sale of activeSales) {
       if (sale.sale_items) {
         for (const item of sale.sale_items) {
           const existing = productSalesMap.get(item.product_id) || {
@@ -153,10 +158,10 @@ export async function GET(request: NextRequest) {
       .sort((a, b) => b.revenue - a.revenue)
       .slice(0, 10);
 
-    // Get top customers
+    // Get top customers - include active sales
     const customerSalesMap = new Map<string, { id: string; name: string; purchases: number; totalSpent: number }>();
 
-    completedSales.forEach(sale => {
+    activeSales.forEach(sale => {
       if (sale.customer_id && sale.customer) {
         const existing = customerSalesMap.get(sale.customer_id) || {
           id: sale.customer_id,
@@ -176,14 +181,14 @@ export async function GET(request: NextRequest) {
       .sort((a, b) => b.totalSpent - a.totalSpent)
       .slice(0, 10);
 
-    // Distribuição por hora do dia
+    // Distribuição por hora do dia - include active sales
     const hourlyDistribution = Array(24).fill(0).map((_, hour) => ({
       hour,
       sales: 0,
       revenue: 0,
     }));
 
-    completedSales.forEach(sale => {
+    activeSales.forEach(sale => {
       const hour = new Date(sale.created_at).getHours();
       hourlyDistribution[hour].sales += 1;
       hourlyDistribution[hour].revenue += sale.total || 0;
@@ -200,9 +205,10 @@ export async function GET(request: NextRequest) {
       .gte('created_at', previousStart.toISOString())
       .lte('created_at', previousEnd.toISOString());
 
-    const previousCompletedSales = (previousSales || []).filter(s => s.status === 'completed');
-    const previousRevenue = previousCompletedSales.reduce((sum, s) => sum + (s.total || 0), 0);
-    const previousCount = previousCompletedSales.length;
+    // Include both completed and pending in comparison
+    const previousActiveSales = (previousSales || []).filter(s => s.status === 'completed' || s.status === 'pending');
+    const previousRevenue = previousActiveSales.reduce((sum, s) => sum + (s.total || 0), 0);
+    const previousCount = previousActiveSales.length;
 
     const comparison = {
       previousRevenue,
@@ -215,9 +221,9 @@ export async function GET(request: NextRequest) {
         : summary.completedSales > 0 ? 100 : 0,
     };
 
-    // Vendas sem cliente (balcão)
-    const balcaoSales = completedSales.filter(s => !s.customer_id).length;
-    const balcaoRevenue = completedSales.filter(s => !s.customer_id).reduce((sum, s) => sum + (s.total || 0), 0);
+    // Vendas sem cliente (balcão) - include active sales
+    const balcaoSales = activeSales.filter(s => !s.customer_id).length;
+    const balcaoRevenue = activeSales.filter(s => !s.customer_id).reduce((sum, s) => sum + (s.total || 0), 0);
 
     return NextResponse.json({
       success: true,

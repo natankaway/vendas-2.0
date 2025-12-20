@@ -42,6 +42,7 @@ interface Product {
   allow_decimal_quantity: boolean;
   tax_rate: number;
   image_url: string | null;
+  expiration_date: string | null;
   created_at: string;
   updated_at: string;
 }
@@ -68,6 +69,7 @@ interface ProductFormData {
   is_weighable: boolean;
   allow_decimal_quantity: boolean;
   tax_rate: string;
+  expiration_date: string;
 }
 
 const initialFormData: ProductFormData = {
@@ -86,6 +88,7 @@ const initialFormData: ProductFormData = {
   is_weighable: false,
   allow_decimal_quantity: false,
   tax_rate: '0',
+  expiration_date: '',
 };
 
 const UNITS = ['UN', 'KG', 'G', 'L', 'ML', 'M', 'CM', 'CX', 'PCT', 'DZ'];
@@ -145,13 +148,8 @@ export default function ProdutosPage() {
     return result;
   }, [products, stockFilter, activeFilter]);
 
-  const stats = useMemo(() => {
-    const allProducts = products;
-    const lowStock = allProducts.filter(p => p.stock_quantity <= p.min_stock_quantity && p.stock_quantity > 0).length;
-    const outOfStock = allProducts.filter(p => p.stock_quantity <= 0).length;
-    const totalValue = allProducts.reduce((sum, p) => sum + (p.price * p.stock_quantity), 0);
-    return { total: allProducts.length, lowStock, outOfStock, totalValue };
-  }, [products]);
+  // Use stats from API (calculated from ALL products, not just current page)
+  const stats = productsData?.stats || { total: 0, lowStock: 0, outOfStock: 0, totalValue: 0 };
 
   const saveMutation = useMutation({
     mutationFn: async (data: ProductFormData) => {
@@ -171,6 +169,7 @@ export default function ProdutosPage() {
         is_weighable: data.is_weighable,
         allow_decimal_quantity: data.allow_decimal_quantity,
         tax_rate: parseFloat(data.tax_rate || '0'),
+        expiration_date: data.expiration_date || null,
       };
       const url = editingProduct ? `/api/produtos/${editingProduct.id}` : '/api/produtos';
       const method = editingProduct ? 'PUT' : 'POST';
@@ -217,6 +216,7 @@ export default function ProdutosPage() {
         is_weighable: product.is_weighable,
         allow_decimal_quantity: product.allow_decimal_quantity,
         tax_rate: String(product.tax_rate),
+        expiration_date: product.expiration_date || '',
       });
     } else {
       setEditingProduct(null);
@@ -687,6 +687,16 @@ export default function ProdutosPage() {
                     placeholder="-"
                   />
                 </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-medium text-gray-700 mb-1">Data de Validade</label>
+                <input
+                  type="date"
+                  value={formData.expiration_date}
+                  onChange={(e) => setFormData({ ...formData, expiration_date: e.target.value })}
+                  className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+                />
               </div>
 
               <div className="space-y-2 pt-2">

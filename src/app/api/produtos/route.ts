@@ -109,12 +109,26 @@ export async function GET(request: NextRequest) {
       );
     }
 
+    // Busca estatísticas de TODOS os produtos (não paginado)
+    const { data: allProducts } = await supabase
+      .from('products')
+      .select('price, stock_quantity, min_stock_quantity, is_active')
+      .is('deleted_at', null);
+
+    const stats = {
+      total: allProducts?.length || 0,
+      lowStock: allProducts?.filter(p => p.stock_quantity <= p.min_stock_quantity && p.stock_quantity > 0).length || 0,
+      outOfStock: allProducts?.filter(p => p.stock_quantity <= 0).length || 0,
+      totalValue: allProducts?.reduce((sum, p) => sum + (p.price * p.stock_quantity), 0) || 0,
+    };
+
     return NextResponse.json({
       data: products || [],
       total: count || 0,
       page,
       limit,
       totalPages: Math.ceil((count || 0) / limit),
+      stats,
     });
   } catch (error) {
     console.error('Erro na API de produtos:', error);
@@ -146,6 +160,7 @@ export async function POST(request: NextRequest) {
       is_weighable,
       allow_decimal_quantity,
       tax_rate,
+      expiration_date,
     } = body;
 
     if (!name || !sku || price === undefined) {
@@ -187,6 +202,7 @@ export async function POST(request: NextRequest) {
       is_weighable: is_weighable || false,
       allow_decimal_quantity: allow_decimal_quantity || false,
       tax_rate: tax_rate || 0,
+      expiration_date: expiration_date || null,
       created_at: new Date().toISOString(),
       updated_at: new Date().toISOString(),
     };
