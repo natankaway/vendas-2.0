@@ -215,63 +215,61 @@ async function imageToEscPos(imageBuffer) {
   if (!imageBuffer) return null;
 
   try {
-    // Tenta usar a biblioteca escpos para converter a imagem
-    const escpos = require('escpos');
+    const Jimp = require('jimp');
 
-    return new Promise((resolve) => {
-      // Salva em arquivo temporario
-      const tempFile = path.join(__dirname, 'logo_temp.png');
-      fs.writeFileSync(tempFile, imageBuffer);
+    // Carrega a imagem do buffer
+    const image = await Jimp.read(imageBuffer);
 
-      escpos.Image.load(tempFile, function(image) {
-        if (!image) {
-          resolve(null);
-          return;
-        }
+    // Redimensiona para largura maxima de 384 pixels (impressora 80mm)
+    // e converte para preto e branco
+    const maxWidth = 384;
+    if (image.getWidth() > maxWidth) {
+      image.resize(maxWidth, Jimp.AUTO);
+    }
 
-        // Gera os bytes da imagem
-        const width = image.width;
-        const height = image.height;
+    // Converte para escala de cinza e depois para preto/branco
+    image.greyscale();
 
-        // Comando para imprimir imagem raster
-        // GS v 0 m xL xH yL yH d1...dk
-        const xL = (Math.ceil(width / 8)) & 0xFF;
-        const xH = ((Math.ceil(width / 8)) >> 8) & 0xFF;
-        const yL = height & 0xFF;
-        const yH = (height >> 8) & 0xFF;
+    const width = image.getWidth();
+    const height = image.getHeight();
 
-        const header = Buffer.from([GS, 0x76, 0x30, 0x00, xL, xH, yL, yH]);
+    log(`Logo: ${width}x${height} pixels`);
 
-        // Converte pixels para bytes
-        const bytesPerLine = Math.ceil(width / 8);
-        const imageData = [];
+    // Comando GS v 0 - Print raster bit image
+    // GS v 0 m xL xH yL yH d1...dk
+    // m = 0 (normal), 1 (double width), 2 (double height), 3 (quadruple)
+    const bytesPerLine = Math.ceil(width / 8);
+    const xL = bytesPerLine & 0xFF;
+    const xH = (bytesPerLine >> 8) & 0xFF;
+    const yL = height & 0xFF;
+    const yH = (height >> 8) & 0xFF;
 
-        for (let y = 0; y < height; y++) {
-          for (let x = 0; x < bytesPerLine; x++) {
-            let byte = 0;
-            for (let bit = 0; bit < 8; bit++) {
-              const px = x * 8 + bit;
-              if (px < width) {
-                const idx = (y * width + px) * 4;
-                const pixels = image.data || image.pixels;
-                if (pixels) {
-                  const r = pixels[idx] || 0;
-                  const g = pixels[idx + 1] || 0;
-                  const b = pixels[idx + 2] || 0;
-                  // Se pixel escuro, marca o bit
-                  if ((r + g + b) / 3 < 128) {
-                    byte |= (0x80 >> bit);
-                  }
-                }
-              }
+    const header = Buffer.from([GS, 0x76, 0x30, 0x00, xL, xH, yL, yH]);
+
+    // Converte pixels para bytes (1 bit por pixel)
+    const imageData = [];
+
+    for (let y = 0; y < height; y++) {
+      for (let xByte = 0; xByte < bytesPerLine; xByte++) {
+        let byte = 0;
+        for (let bit = 0; bit < 8; bit++) {
+          const x = xByte * 8 + bit;
+          if (x < width) {
+            // Pega a cor do pixel (ja em escala de cinza)
+            const color = Jimp.intToRGBA(image.getPixelColor(x, y));
+            // Se pixel escuro (< 128), marca o bit
+            if (color.r < 128) {
+              byte |= (0x80 >> bit);
             }
-            imageData.push(byte);
           }
         }
+        imageData.push(byte);
+      }
+    }
 
-        resolve(Buffer.concat([header, Buffer.from(imageData)]));
-      });
-    });
+    log('Logo convertida para ESC/POS', 'success');
+    return Buffer.concat([header, Buffer.from(imageData)]);
+
   } catch (error) {
     log(`Erro ao converter imagem: ${error.message}`, 'warning');
     return null;
