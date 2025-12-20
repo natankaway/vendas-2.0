@@ -61,6 +61,10 @@ export async function GET(request: NextRequest) {
         .eq('is_active', true)
         .order('name');
 
+      if (search) {
+        pdvQuery = pdvQuery.or(`name.ilike.%${search}%,sku.ilike.%${search}%,barcode.ilike.%${search}%`);
+      }
+
       if (category) {
         pdvQuery = pdvQuery.eq('category_id', category);
       }
