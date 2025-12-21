@@ -163,33 +163,35 @@ export async function POST(request: NextRequest) {
       expiration_date,
     } = body;
 
-    if (!name || !sku || price === undefined) {
+    if (!name || price === undefined) {
       return NextResponse.json(
-        { success: false, error: 'Nome, SKU e preço são obrigatórios' },
+        { success: false, error: 'Nome e preço são obrigatórios' },
         { status: 400 }
       );
     }
 
-    // Verifica se SKU já existe
-    const { data: existingSku } = await supabase
-      .from('products')
-      .select('id')
-      .eq('sku', sku)
-      .is('deleted_at', null)
-      .single();
+    // Verifica se SKU já existe (apenas se SKU foi fornecido)
+    if (sku) {
+      const { data: existingSku } = await supabase
+        .from('products')
+        .select('id')
+        .eq('sku', sku)
+        .is('deleted_at', null)
+        .single();
 
-    if (existingSku) {
-      return NextResponse.json(
-        { success: false, error: 'SKU já existe' },
-        { status: 400 }
-      );
+      if (existingSku) {
+        return NextResponse.json(
+          { success: false, error: 'SKU já existe' },
+          { status: 400 }
+        );
+      }
     }
 
     const newProduct = {
       id: uuidv4(),
       name,
       description: description || null,
-      sku,
+      sku: sku || null,
       barcode: barcode || null,
       category_id: category_id || null,
       price: price || 0,

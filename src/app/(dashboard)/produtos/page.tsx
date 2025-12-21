@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useCallback } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import {
   Plus,
@@ -21,6 +21,8 @@ import {
   ChevronRight,
   BarChart3,
   Filter,
+  CheckCircle,
+  XCircle,
 } from 'lucide-react';
 
 // Tipos
@@ -106,8 +108,52 @@ export default function ProdutosPage() {
   const [editingProduct, setEditingProduct] = useState<Product | null>(null);
   const [formData, setFormData] = useState<ProductFormData>(initialFormData);
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
+  const [toast, setToast] = useState<{ type: 'success' | 'error'; message: string } | null>(null);
 
   const perPage = 20;
+
+  // Função para mostrar notificação
+  const showToast = useCallback((type: 'success' | 'error', message: string) => {
+    setToast({ type, message });
+    setTimeout(() => setToast(null), 4000);
+  }, []);
+
+  // Formata valor para moeda brasileira (entrada)
+  const formatCurrencyInput = useCallback((value: string): string => {
+    // Remove tudo que não é número
+    const numbers = value.replace(/\D/g, '');
+    if (!numbers) return '';
+    // Converte para número e divide por 100 para ter 2 casas decimais
+    const amount = parseInt(numbers, 10) / 100;
+    return amount.toFixed(2);
+  }, []);
+
+  // Handler para campos de dinheiro
+  const handleMoneyChange = useCallback((field: 'price' | 'cost_price', value: string) => {
+    // Permite apenas números e ponto
+    const cleanValue = value.replace(/[^\d.]/g, '');
+    // Garante apenas um ponto decimal
+    const parts = cleanValue.split('.');
+    let formatted = parts[0];
+    if (parts.length > 1) {
+      formatted += '.' + parts[1].slice(0, 2);
+    }
+    setFormData(prev => ({ ...prev, [field]: formatted }));
+  }, []);
+
+  // Handler para campos numéricos (estoque)
+  const handleNumberChange = useCallback((field: string, value: string, allowDecimal: boolean) => {
+    // Remove letras, permite apenas números e ponto (se decimal permitido)
+    let cleanValue = allowDecimal
+      ? value.replace(/[^\d.]/g, '')
+      : value.replace(/\D/g, '');
+    // Garante apenas um ponto decimal
+    if (allowDecimal) {
+      const parts = cleanValue.split('.');
+      cleanValue = parts[0] + (parts.length > 1 ? '.' + parts[1] : '');
+    }
+    setFormData(prev => ({ ...prev, [field]: cleanValue }));
+  }, []);
 
   const { data: productsData, isLoading: loadingProducts } = useQuery({
     queryKey: ['products', search, categoryFilter, page],
@@ -156,10 +202,10 @@ export default function ProdutosPage() {
       const payload = {
         name: data.name,
         description: data.description || null,
-        sku: data.sku,
+        sku: data.sku || null,
         barcode: data.barcode || null,
         category_id: data.category_id || null,
-        price: Math.round(parseFloat(data.price) * 100),
+        price: Math.round(parseFloat(data.price || '0') * 100),
         cost_price: Math.round(parseFloat(data.cost_price || '0') * 100),
         stock_quantity: parseFloat(data.stock_quantity || '0'),
         min_stock_quantity: parseFloat(data.min_stock_quantity || '0'),
@@ -182,7 +228,11 @@ export default function ProdutosPage() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['products'] });
+      showToast('success', editingProduct ? 'Produto atualizado com sucesso!' : 'Produto cadastrado com sucesso!');
       closeModal();
+    },
+    onError: (error: Error) => {
+      showToast('error', error.message || 'Erro ao salvar produto');
     },
   });
 
@@ -194,6 +244,10 @@ export default function ProdutosPage() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['products'] });
+      showToast('success', 'Produto excluído com sucesso!');
+    },
+    onError: () => {
+      showToast('error', 'Erro ao excluir produto');
     },
   });
 
@@ -236,7 +290,6 @@ export default function ProdutosPage() {
   const validateForm = (): boolean => {
     const errors: Record<string, string> = {};
     if (!formData.name.trim()) errors.name = 'Nome é obrigatório';
-    if (!formData.sku.trim()) errors.sku = 'SKU é obrigatório';
     if (!formData.price || parseFloat(formData.price) <= 0) errors.price = 'Preço deve ser maior que zero';
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
@@ -540,6 +593,20 @@ export default function ProdutosPage() {
         <Plus className="w-5 h-5" />
       </button>
 
+      {/* Toast Notification */}
+      {toast && (
+        <div className={`fixed bottom-24 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 px-4 py-3 rounded-xl shadow-lg transition-all duration-300 ${
+          toast.type === 'success' ? 'bg-green-600 text-white' : 'bg-red-600 text-white'
+        }`}>
+          {toast.type === 'success' ? (
+            <CheckCircle className="w-5 h-5 flex-shrink-0" />
+          ) : (
+            <XCircle className="w-5 h-5 flex-shrink-0" />
+          )}
+          <span className="text-sm font-medium">{toast.message}</span>
+        </div>
+      )}
+
       {/* Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-black/60 flex items-end sm:items-center justify-center z-50 p-0 sm:p-4">
@@ -575,12 +642,13 @@ export default function ProdutosPage() {
 
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">SKU *</label>
+                  <label className="block text-xs font-medium text-gray-700 mb-1">SKU</label>
                   <input
                     type="text"
                     value={formData.sku}
                     onChange={(e) => setFormData({ ...formData, sku: e.target.value })}
-                    className={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 ${formErrors.sku ? 'border-red-500' : 'border-gray-200'}`}
+                    className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    placeholder="Opcional"
                   />
                 </div>
                 <div>
@@ -625,27 +693,38 @@ export default function ProdutosPage() {
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Preço Venda *</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    inputMode="decimal"
-                    value={formData.price}
-                    onChange={(e) => setFormData({ ...formData, price: e.target.value })}
-                    className={`w-full px-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 ${formErrors.price ? 'border-red-500' : 'border-gray-200'}`}
-                  />
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">R$</span>
+                    <input
+                      type="text"
+                      inputMode="decimal"
+                      value={formData.price}
+                      onChange={(e) => handleMoneyChange('price', e.target.value)}
+                      onKeyPress={(e) => {
+                        if (!/[\d.]/.test(e.key)) e.preventDefault();
+                      }}
+                      placeholder="0.00"
+                      className={`w-full pl-10 pr-3 py-2 text-sm border rounded-lg focus:ring-2 focus:ring-blue-500 ${formErrors.price ? 'border-red-500' : 'border-gray-200'}`}
+                    />
+                  </div>
+                  {formErrors.price && <p className="text-red-500 text-[10px] mt-0.5">{formErrors.price}</p>}
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Preço Custo</label>
-                  <input
-                    type="number"
-                    step="0.01"
-                    min="0"
-                    inputMode="decimal"
-                    value={formData.cost_price}
-                    onChange={(e) => setFormData({ ...formData, cost_price: e.target.value })}
-                    className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
-                  />
+                  <div className="relative">
+                    <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500 text-sm">R$</span>
+                    <input
+                      type="text"
+                      inputMode="decimal"
+                      value={formData.cost_price}
+                      onChange={(e) => handleMoneyChange('cost_price', e.target.value)}
+                      onKeyPress={(e) => {
+                        if (!/[\d.]/.test(e.key)) e.preventDefault();
+                      }}
+                      placeholder="0.00"
+                      className="w-full pl-10 pr-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
+                    />
+                  </div>
                 </div>
               </div>
 
@@ -653,36 +732,42 @@ export default function ProdutosPage() {
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Estoque</label>
                   <input
-                    type="number"
-                    step={formData.allow_decimal_quantity ? '0.001' : '1'}
-                    min="0"
+                    type="text"
                     inputMode="numeric"
                     value={formData.stock_quantity}
-                    onChange={(e) => setFormData({ ...formData, stock_quantity: e.target.value })}
+                    onChange={(e) => handleNumberChange('stock_quantity', e.target.value, formData.allow_decimal_quantity)}
+                    onKeyPress={(e) => {
+                      const allowedChars = formData.allow_decimal_quantity ? /[\d.]/ : /\d/;
+                      if (!allowedChars.test(e.key)) e.preventDefault();
+                    }}
                     className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Mínimo</label>
                   <input
-                    type="number"
-                    step={formData.allow_decimal_quantity ? '0.001' : '1'}
-                    min="0"
+                    type="text"
                     inputMode="numeric"
                     value={formData.min_stock_quantity}
-                    onChange={(e) => setFormData({ ...formData, min_stock_quantity: e.target.value })}
+                    onChange={(e) => handleNumberChange('min_stock_quantity', e.target.value, formData.allow_decimal_quantity)}
+                    onKeyPress={(e) => {
+                      const allowedChars = formData.allow_decimal_quantity ? /[\d.]/ : /\d/;
+                      if (!allowedChars.test(e.key)) e.preventDefault();
+                    }}
                     className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-medium text-gray-700 mb-1">Máximo</label>
                   <input
-                    type="number"
-                    step={formData.allow_decimal_quantity ? '0.001' : '1'}
-                    min="0"
+                    type="text"
                     inputMode="numeric"
                     value={formData.max_stock_quantity}
-                    onChange={(e) => setFormData({ ...formData, max_stock_quantity: e.target.value })}
+                    onChange={(e) => handleNumberChange('max_stock_quantity', e.target.value, formData.allow_decimal_quantity)}
+                    onKeyPress={(e) => {
+                      const allowedChars = formData.allow_decimal_quantity ? /[\d.]/ : /\d/;
+                      if (!allowedChars.test(e.key)) e.preventDefault();
+                    }}
                     className="w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500"
                     placeholder="-"
                   />
