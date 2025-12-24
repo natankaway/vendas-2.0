@@ -2,11 +2,12 @@
  * Hook de Status Online/Offline
  *
  * Detecta mudanças de conectividade e verifica conexão real com o servidor.
+ * Usa refs para evitar loops de dependência no useEffect.
  */
 
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 import { useConnectionStore } from '../stores/connection-store';
 
 interface UseOnlineStatusOptions {
@@ -19,6 +20,11 @@ interface UseOnlineStatusOptions {
    */
   healthCheckUrl?: string;
 }
+
+// Singleton para evitar múltiplas instâncias fazendo verificações
+let globalCheckInProgress = false;
+let lastCheckTime = 0;
+const MIN_CHECK_INTERVAL = 5000; // Mínimo 5s entre checks
 
 export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
   const {
@@ -38,19 +44,25 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
     setSupabaseConnected,
   } = useConnectionStore();
 
-  const [isChecking, setIsChecking] = useState(false);
+  // Refs para evitar dependências instáveis
+  const mountedRef = useRef(true);
+  const initialCheckDoneRef = useRef(false);
 
   /**
    * Verifica conectividade real com o servidor
-   * Não muda para 'checking' durante verificações periódicas para evitar flicker
    */
   const checkConnection = useCallback(async (isInitial = false): Promise<boolean> => {
-    if (isChecking) return status === 'online';
+    // Evita checks muito frequentes ou paralelos
+    const now = Date.now();
+    if (globalCheckInProgress || (now - lastCheckTime < MIN_CHECK_INTERVAL && !isInitial)) {
+      return status === 'online';
+    }
 
-    setIsChecking(true);
+    globalCheckInProgress = true;
+    lastCheckTime = now;
 
     // Só muda para 'checking' na verificação inicial
-    if (isInitial) {
+    if (isInitial && !initialCheckDoneRef.current) {
       setChecking();
     }
 
@@ -66,72 +78,86 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
 
       clearTimeout(timeoutId);
 
+      if (!mountedRef.current) return false;
+
       if (response.ok) {
         const data = await response.json();
         setOnline();
         setSupabaseConnected(data.supabase === 'connected');
+        initialCheckDoneRef.current = true;
         return true;
       } else {
         setOffline();
         setSupabaseConnected(false);
         return false;
       }
-    } catch {
+    } catch (error) {
+      if (!mountedRef.current) return false;
+
+      // Só marca offline se realmente não conseguiu conectar
+      // AbortError significa timeout, não necessariamente offline
+      if (error instanceof Error && error.name === 'AbortError') {
+        console.warn('[Connection] Health check timeout');
+      }
       setOffline();
       setSupabaseConnected(false);
       return false;
     } finally {
-      setIsChecking(false);
+      globalCheckInProgress = false;
     }
-  }, [healthCheckUrl, isChecking, status, setChecking, setOnline, setOffline, setSupabaseConnected]);
-
-  /**
-   * Handler para evento online do browser
-   */
-  const handleOnline = useCallback(() => {
-    // Browser detectou conexão, verifica se servidor está acessível
-    checkConnection();
-  }, [checkConnection]);
-
-  /**
-   * Handler para evento offline do browser
-   */
-  const handleOffline = useCallback(() => {
-    setOffline();
-    setSupabaseConnected(false);
-  }, [setOffline, setSupabaseConnected]);
+  }, [healthCheckUrl, status, setChecking, setOnline, setOffline, setSupabaseConnected]);
 
   // Setup event listeners e verificação periódica
   useEffect(() => {
-    let mounted = true;
+    mountedRef.current = true;
 
-    // Verifica status inicial (com flag isInitial = true)
-    if (typeof navigator !== 'undefined') {
+    const handleOnline = () => {
+      // Browser detectou conexão, verifica se servidor está acessível
+      checkConnection(false);
+    };
+
+    const handleOffline = () => {
+      setOffline();
+      setSupabaseConnected(false);
+    };
+
+    // Verifica status inicial
+    if (typeof navigator !== 'undefined' && typeof window !== 'undefined') {
       if (navigator.onLine) {
-        checkConnection(true);
+        // Pequeno delay para garantir que o app carregou
+        const initialTimeout = setTimeout(() => {
+          if (mountedRef.current) {
+            checkConnection(true);
+          }
+        }, 100);
+
+        // Event listeners do browser
+        window.addEventListener('online', handleOnline);
+        window.addEventListener('offline', handleOffline);
+
+        // Verificação periódica
+        const intervalId = setInterval(() => {
+          if (mountedRef.current && navigator.onLine) {
+            checkConnection(false);
+          }
+        }, checkInterval);
+
+        return () => {
+          mountedRef.current = false;
+          clearTimeout(initialTimeout);
+          clearInterval(intervalId);
+          window.removeEventListener('online', handleOnline);
+          window.removeEventListener('offline', handleOffline);
+        };
       } else {
         setOffline();
       }
     }
 
-    // Event listeners do browser
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    // Verificação periódica (sem flag isInitial = false por padrão)
-    const intervalId = setInterval(() => {
-      if (mounted && navigator.onLine) {
-        checkConnection(false);
-      }
-    }, checkInterval);
-
     return () => {
-      mounted = false;
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-      clearInterval(intervalId);
+      mountedRef.current = false;
     };
-  }, [checkConnection, handleOnline, handleOffline, checkInterval, setOffline]);
+  }, [checkInterval, checkConnection, setOffline, setSupabaseConnected]);
 
   return {
     /**

@@ -57,14 +57,22 @@ interface ConnectionState {
   reset: () => void;
 }
 
+// Verifica se está no browser e se navigator.onLine
+const getInitialStatus = (): ConnectionStatus => {
+  if (typeof window !== 'undefined' && typeof navigator !== 'undefined') {
+    return navigator.onLine ? 'checking' : 'offline';
+  }
+  return 'checking';
+};
+
 const initialState = {
-  status: 'checking' as ConnectionStatus,
+  status: getInitialStatus(),
   isSupabaseConnected: false,
-  lastCheckedAt: null,
+  lastCheckedAt: null as Date | null,
   pendingSyncCount: 0,
   isSyncing: false,
-  lastSyncAt: null,
-  lastSyncError: null,
+  lastSyncAt: null as Date | null,
+  lastSyncError: null as string | null,
 };
 
 export const useConnectionStore = create<ConnectionState>()(
