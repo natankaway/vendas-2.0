@@ -2,7 +2,7 @@
  * Hook de Status Online/Offline
  *
  * Detecta mudanças de conectividade e verifica conexão real com o servidor.
- * Usa refs para evitar loops de dependência no useEffect.
+ * Usa navigator.onLine como primeira verificação rápida.
  */
 
 'use client';
@@ -21,10 +21,8 @@ interface UseOnlineStatusOptions {
   healthCheckUrl?: string;
 }
 
-// Singleton para evitar múltiplas instâncias fazendo verificações
+// Controle global para evitar múltiplas verificações
 let globalCheckInProgress = false;
-let lastCheckTime = 0;
-const MIN_CHECK_INTERVAL = 5000; // Mínimo 5s entre checks
 
 export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
   const {
@@ -44,7 +42,6 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
     setSupabaseConnected,
   } = useConnectionStore();
 
-  // Refs para evitar dependências instáveis
   const mountedRef = useRef(true);
   const initialCheckDoneRef = useRef(false);
 
@@ -52,14 +49,19 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
    * Verifica conectividade real com o servidor
    */
   const checkConnection = useCallback(async (isInitial = false): Promise<boolean> => {
-    // Evita checks muito frequentes ou paralelos
-    const now = Date.now();
-    if (globalCheckInProgress || (now - lastCheckTime < MIN_CHECK_INTERVAL && !isInitial)) {
+    // Verifica navigator.onLine primeiro (rápido)
+    if (typeof navigator !== 'undefined' && !navigator.onLine) {
+      setOffline();
+      setSupabaseConnected(false);
+      return false;
+    }
+
+    // Evita checks paralelos
+    if (globalCheckInProgress) {
       return status === 'online';
     }
 
     globalCheckInProgress = true;
-    lastCheckTime = now;
 
     // Só muda para 'checking' na verificação inicial
     if (isInitial && !initialCheckDoneRef.current) {
@@ -68,7 +70,7 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
 
     try {
       const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      const timeoutId = setTimeout(() => controller.abort(), 3000); // Reduzido para 3s
 
       const response = await fetch(healthCheckUrl, {
         method: 'GET',
@@ -78,80 +80,84 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
 
       clearTimeout(timeoutId);
 
-      if (!mountedRef.current) return false;
+      if (!mountedRef.current) {
+        globalCheckInProgress = false;
+        return false;
+      }
 
       if (response.ok) {
         const data = await response.json();
         setOnline();
         setSupabaseConnected(data.supabase === 'connected');
         initialCheckDoneRef.current = true;
+        globalCheckInProgress = false;
         return true;
       } else {
         setOffline();
         setSupabaseConnected(false);
+        globalCheckInProgress = false;
         return false;
       }
     } catch (error) {
+      globalCheckInProgress = false;
+
       if (!mountedRef.current) return false;
 
-      // Só marca offline se realmente não conseguiu conectar
-      // AbortError significa timeout, não necessariamente offline
-      if (error instanceof Error && error.name === 'AbortError') {
-        console.warn('[Connection] Health check timeout');
-      }
+      // Qualquer erro = offline
+      console.warn('[Connection] Offline detectado:', error instanceof Error ? error.message : 'Erro de conexão');
       setOffline();
       setSupabaseConnected(false);
       return false;
-    } finally {
-      globalCheckInProgress = false;
     }
   }, [healthCheckUrl, status, setChecking, setOnline, setOffline, setSupabaseConnected]);
 
-  // Setup event listeners e verificação periódica
+  // Setup event listeners
   useEffect(() => {
     mountedRef.current = true;
 
     const handleOnline = () => {
-      // Browser detectou conexão, verifica se servidor está acessível
+      console.log('[Connection] Browser detectou conexão');
       checkConnection(false);
     };
 
     const handleOffline = () => {
+      console.log('[Connection] Browser detectou desconexão');
       setOffline();
       setSupabaseConnected(false);
     };
 
-    // Verifica status inicial
+    // Verifica status inicial baseado em navigator.onLine
     if (typeof navigator !== 'undefined' && typeof window !== 'undefined') {
-      if (navigator.onLine) {
-        // Pequeno delay para garantir que o app carregou
-        const initialTimeout = setTimeout(() => {
-          if (mountedRef.current) {
-            checkConnection(true);
-          }
-        }, 100);
-
-        // Event listeners do browser
-        window.addEventListener('online', handleOnline);
-        window.addEventListener('offline', handleOffline);
-
-        // Verificação periódica
-        const intervalId = setInterval(() => {
-          if (mountedRef.current && navigator.onLine) {
-            checkConnection(false);
-          }
-        }, checkInterval);
-
-        return () => {
-          mountedRef.current = false;
-          clearTimeout(initialTimeout);
-          clearInterval(intervalId);
-          window.removeEventListener('online', handleOnline);
-          window.removeEventListener('offline', handleOffline);
-        };
-      } else {
+      if (!navigator.onLine) {
+        // Offline imediatamente
         setOffline();
+        setSupabaseConnected(false);
+      } else {
+        // Online, verifica servidor
+        checkConnection(true);
       }
+
+      // Event listeners do browser
+      window.addEventListener('online', handleOnline);
+      window.addEventListener('offline', handleOffline);
+
+      // Verificação periódica apenas se online
+      const intervalId = setInterval(() => {
+        if (mountedRef.current && navigator.onLine) {
+          checkConnection(false);
+        } else if (mountedRef.current && !navigator.onLine) {
+          // Marca offline se navigator diz que está offline
+          setOffline();
+          setSupabaseConnected(false);
+        }
+      }, checkInterval);
+
+      return () => {
+        mountedRef.current = false;
+        clearInterval(intervalId);
+        window.removeEventListener('online', handleOnline);
+        window.removeEventListener('offline', handleOffline);
+      };
     }
 
     return () => {
@@ -160,41 +166,14 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
   }, [checkInterval, checkConnection, setOffline, setSupabaseConnected]);
 
   return {
-    /**
-     * Se está online (conectado ao servidor)
-     */
     isOnline: status === 'online',
-    /**
-     * Se está offline
-     */
     isOffline: status === 'offline',
-    /**
-     * Se está verificando conexão
-     */
     isChecking: status === 'checking',
-    /**
-     * Se o Supabase está acessível
-     */
     isSupabaseConnected,
-    /**
-     * Quantidade de itens pendentes de sincronização
-     */
     pendingSyncCount,
-    /**
-     * Se uma sincronização está em andamento
-     */
     isSyncing,
-    /**
-     * Data da última sincronização
-     */
     lastSyncAt,
-    /**
-     * Força verificação de conexão
-     */
     checkConnection,
-    /**
-     * Status atual (online, offline, checking)
-     */
     status,
   };
 }

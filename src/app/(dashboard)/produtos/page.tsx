@@ -3,6 +3,7 @@
  *
  * CRUD completo de produtos com categorias e controle de estoque.
  * Layout responsivo: cards em mobile, tabela em desktop.
+ * Suporte offline com IndexedDB.
  */
 
 'use client';
@@ -23,7 +24,10 @@ import {
   Filter,
   CheckCircle,
   XCircle,
+  WifiOff,
 } from 'lucide-react';
+import { fetchProducts, fetchCategories } from '@/lib/services/offline-data-service';
+import { useConnectionStore } from '@/lib/stores/connection-store';
 
 // Tipos
 interface Product {
@@ -97,6 +101,8 @@ const UNITS = ['UN', 'KG', 'G', 'L', 'ML', 'M', 'CM', 'CX', 'PCT', 'DZ'];
 
 export default function ProdutosPage() {
   const queryClient = useQueryClient();
+  const { status: connectionStatus } = useConnectionStore();
+  const isOffline = connectionStatus === 'offline';
 
   const [search, setSearch] = useState('');
   const [categoryFilter, setCategoryFilter] = useState('');
@@ -155,23 +161,21 @@ export default function ProdutosPage() {
     setFormData(prev => ({ ...prev, [field]: cleanValue }));
   }, []);
 
+  // Busca produtos - usa IndexedDB quando offline
   const { data: productsData, isLoading: loadingProducts } = useQuery({
-    queryKey: ['products', search, categoryFilter, page],
-    queryFn: async () => {
-      const params = new URLSearchParams({ page: String(page), limit: String(perPage) });
-      if (search) params.append('search', search);
-      if (categoryFilter) params.append('category', categoryFilter);
-      const res = await fetch(`/api/produtos?${params}`);
-      return res.json();
-    },
+    queryKey: ['products', search, categoryFilter, page, connectionStatus],
+    queryFn: () => fetchProducts({
+      search: search || undefined,
+      category: categoryFilter || undefined,
+      page,
+      limit: perPage,
+    }),
   });
 
+  // Busca categorias - usa IndexedDB quando offline
   const { data: categoriesData } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const res = await fetch('/api/categorias');
-      return res.json();
-    },
+    queryKey: ['categories', connectionStatus],
+    queryFn: () => fetchCategories(),
   });
 
   const products: Product[] = productsData?.data || [];
@@ -319,15 +323,26 @@ export default function ProdutosPage() {
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
+      {/* Offline Banner */}
+      {isOffline && (
+        <div className="mb-4 p-3 bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800 rounded-xl flex items-center gap-2">
+          <WifiOff className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+          <span className="text-sm text-orange-700 dark:text-orange-300">
+            Modo offline - Exibindo dados salvos localmente
+          </span>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Produtos</h1>
-          <p className="text-sm text-gray-500">Gerencie seu catálogo</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Produtos</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Gerencie seu catálogo</p>
         </div>
         <button
           onClick={() => openModal()}
-          className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium text-sm"
+          disabled={isOffline}
+          className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="w-4 h-4" />
           Novo

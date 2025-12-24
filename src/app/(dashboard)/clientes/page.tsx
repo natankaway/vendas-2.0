@@ -3,6 +3,7 @@
  *
  * CRUD completo de clientes com histórico de compras.
  * Layout responsivo: cards em mobile, tabela em desktop.
+ * Suporte offline com IndexedDB.
  */
 
 'use client';
@@ -24,7 +25,10 @@ import {
   ShoppingBag,
   DollarSign,
   Filter,
+  WifiOff,
 } from 'lucide-react';
+import { fetchCustomers } from '@/lib/services/offline-data-service';
+import { useConnectionStore } from '@/lib/stores/connection-store';
 
 // Tipos
 interface Customer {
@@ -103,6 +107,9 @@ const formatDate = (dateStr: string | null) => {
 
 export default function ClientesPage() {
   const queryClient = useQueryClient();
+  const { status: connectionStatus } = useConnectionStore();
+  const isOffline = connectionStatus === 'offline';
+
   const [search, setSearch] = useState('');
   const [searchType, setSearchType] = useState<'name' | 'phone' | 'document' | 'email'>('name');
   const [page, setPage] = useState(1);
@@ -122,21 +129,15 @@ export default function ClientesPage() {
 
   const perPage = 20;
 
+  // Busca clientes - usa IndexedDB quando offline
   const { data: customersData, isLoading } = useQuery({
-    queryKey: ['customers', search, searchType, page, filters],
-    queryFn: async () => {
-      const params = new URLSearchParams({ page: String(page), limit: String(perPage) });
-      if (search) {
-        params.append('search', search);
-        params.append('searchType', searchType);
-      }
-      if (filters.city) params.append('city', filters.city);
-      if (filters.state) params.append('state', filters.state);
-      if (filters.hasCredit) params.append('hasCredit', filters.hasCredit);
-      if (filters.hasPurchases) params.append('hasPurchases', filters.hasPurchases);
-      const res = await fetch(`/api/clientes?${params}`);
-      return res.json();
-    },
+    queryKey: ['customers', search, searchType, page, filters, connectionStatus],
+    queryFn: () => fetchCustomers({
+      search: search || undefined,
+      searchType: searchType || undefined,
+      page,
+      limit: perPage,
+    }),
   });
 
   const clearFilters = () => {
@@ -266,15 +267,26 @@ export default function ClientesPage() {
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
+      {/* Offline Banner */}
+      {isOffline && (
+        <div className="mb-4 p-3 bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800 rounded-xl flex items-center gap-2">
+          <WifiOff className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+          <span className="text-sm text-orange-700 dark:text-orange-300">
+            Modo offline - Exibindo dados salvos localmente
+          </span>
+        </div>
+      )}
+
       {/* Header */}
       <div className="flex items-center justify-between mb-4">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Clientes</h1>
-          <p className="text-sm text-gray-500">Gerencie sua base</p>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">Clientes</h1>
+          <p className="text-sm text-gray-500 dark:text-gray-400">Gerencie sua base</p>
         </div>
         <button
           onClick={() => openModal()}
-          className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium text-sm"
+          disabled={isOffline}
+          className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="w-4 h-4" />
           Novo
