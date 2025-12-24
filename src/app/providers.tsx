@@ -41,35 +41,44 @@ function QueryProvider({ children }: { children: React.ReactNode }) {
  * Provider de Conexão
  *
  * Monitora o estado de conexão e exibe notificações.
+ * Usa o status diretamente para ignorar estado intermediário 'checking'.
  */
 function ConnectionProvider({ children }: { children: React.ReactNode }) {
-  const { isOnline, isOffline } = useOnlineStatus();
-  const prevOnline = useRef<boolean | null>(null);
+  const { status } = useOnlineStatus();
+  const prevStatus = useRef<string | null>(null);
+  const hasShownInitialStatus = useRef(false);
 
   useEffect(() => {
-    // Só mostra toast após a primeira verificação
-    if (prevOnline.current === null) {
-      prevOnline.current = isOnline;
+    // Ignora estado 'checking' - é transitório
+    if (status === 'checking') {
       return;
     }
 
-    // Detecta mudança de status
-    if (isOnline && prevOnline.current === false) {
-      toast({
-        title: 'Conexão restaurada',
-        description: 'Sincronizando dados com o servidor...',
-        variant: 'default',
-      });
-    } else if (isOffline && prevOnline.current === true) {
-      toast({
-        title: 'Modo offline',
-        description: 'Os dados serão sincronizados quando a conexão for restaurada.',
-        variant: 'destructive',
-      });
+    // Ignora a primeira verificação
+    if (!hasShownInitialStatus.current) {
+      hasShownInitialStatus.current = true;
+      prevStatus.current = status;
+      return;
     }
 
-    prevOnline.current = isOnline;
-  }, [isOnline, isOffline]);
+    // Só mostra toast se realmente mudou de online para offline ou vice-versa
+    if (status !== prevStatus.current) {
+      if (status === 'online' && prevStatus.current === 'offline') {
+        toast({
+          title: 'Conexão restaurada',
+          description: 'Sincronizando dados com o servidor...',
+          variant: 'default',
+        });
+      } else if (status === 'offline' && prevStatus.current === 'online') {
+        toast({
+          title: 'Modo offline',
+          description: 'Os dados serão sincronizados quando a conexão for restaurada.',
+          variant: 'destructive',
+        });
+      }
+      prevStatus.current = status;
+    }
+  }, [status]);
 
   return <>{children}</>;
 }

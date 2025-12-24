@@ -42,12 +42,17 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
 
   /**
    * Verifica conectividade real com o servidor
+   * Não muda para 'checking' durante verificações periódicas para evitar flicker
    */
-  const checkConnection = useCallback(async (): Promise<boolean> => {
+  const checkConnection = useCallback(async (isInitial = false): Promise<boolean> => {
     if (isChecking) return status === 'online';
 
     setIsChecking(true);
-    setChecking();
+
+    // Só muda para 'checking' na verificação inicial
+    if (isInitial) {
+      setChecking();
+    }
 
     try {
       const controller = new AbortController();
@@ -98,10 +103,12 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
 
   // Setup event listeners e verificação periódica
   useEffect(() => {
-    // Verifica status inicial
+    let mounted = true;
+
+    // Verifica status inicial (com flag isInitial = true)
     if (typeof navigator !== 'undefined') {
       if (navigator.onLine) {
-        checkConnection();
+        checkConnection(true);
       } else {
         setOffline();
       }
@@ -111,14 +118,15 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
     window.addEventListener('online', handleOnline);
     window.addEventListener('offline', handleOffline);
 
-    // Verificação periódica
+    // Verificação periódica (sem flag isInitial = false por padrão)
     const intervalId = setInterval(() => {
-      if (navigator.onLine) {
-        checkConnection();
+      if (mounted && navigator.onLine) {
+        checkConnection(false);
       }
     }, checkInterval);
 
     return () => {
+      mounted = false;
       window.removeEventListener('online', handleOnline);
       window.removeEventListener('offline', handleOffline);
       clearInterval(intervalId);

@@ -46,7 +46,6 @@ import { authService } from '@/lib/services/auth-service';
 import { cn, formatRelativeTime } from '@/lib/utils';
 import { StockAlertsButton } from '@/components/stock-alerts';
 import { fullSync, initOfflineData } from '@/lib/services/sync-service';
-import { useOnlineStatus } from '@/lib/hooks/use-online-status';
 
 /**
  * Links de navegação
@@ -135,16 +134,15 @@ export default function DashboardLayout({
     lastSyncAt,
   } = useConnectionStore();
   const { theme, toggleTheme } = useTheme();
-  const { isOnline } = useOnlineStatus();
   const offlineInitialized = useRef(false);
 
   // Inicializa dados offline apenas uma vez quando online
   useEffect(() => {
-    if (isOnline && !offlineInitialized.current) {
+    if (connectionStatus === 'online' && !offlineInitialized.current) {
       offlineInitialized.current = true;
       initOfflineData().catch(console.error);
     }
-  }, [isOnline]);
+  }, [connectionStatus]);
 
   // Estado do sidebar - usa store global
   const { isCollapsed: sidebarCollapsed, isMobileOpen: sidebarOpen, setCollapsed: setSidebarCollapsed, setMobileOpen: setSidebarOpen, toggleCollapsed } = useSidebarStore();
@@ -169,7 +167,7 @@ export default function DashboardLayout({
   };
 
   const handleSync = async () => {
-    if (!isOnline || isSyncing) return;
+    if (connectionStatus !== 'online' || isSyncing) return;
     try {
       await fullSync();
     } catch (error) {
