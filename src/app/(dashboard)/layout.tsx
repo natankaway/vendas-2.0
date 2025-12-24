@@ -45,6 +45,8 @@ import { useSidebarStore } from '@/lib/stores/sidebar-store';
 import { authService } from '@/lib/services/auth-service';
 import { cn, formatRelativeTime } from '@/lib/utils';
 import { StockAlertsButton } from '@/components/stock-alerts';
+import { fullSync, initOfflineData } from '@/lib/services/sync-service';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
 
 /**
  * Links de navegação
@@ -133,6 +135,14 @@ export default function DashboardLayout({
     lastSyncAt,
   } = useConnectionStore();
   const { theme, toggleTheme } = useTheme();
+  const { isOnline } = useOnlineStatus();
+
+  // Inicializa dados offline na primeira carga
+  useEffect(() => {
+    if (isOnline) {
+      initOfflineData().catch(console.error);
+    }
+  }, [isOnline]);
 
   // Estado do sidebar - usa store global
   const { isCollapsed: sidebarCollapsed, isMobileOpen: sidebarOpen, setCollapsed: setSidebarCollapsed, setMobileOpen: setSidebarOpen, toggleCollapsed } = useSidebarStore();
@@ -157,7 +167,12 @@ export default function DashboardLayout({
   };
 
   const handleSync = async () => {
-    console.log('Sincronização manual não necessária com Supabase');
+    if (!isOnline || isSyncing) return;
+    try {
+      await fullSync();
+    } catch (error) {
+      console.error('Erro na sincronização:', error);
+    }
   };
 
   // Filtra links baseado em permissões
