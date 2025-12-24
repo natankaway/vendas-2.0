@@ -151,6 +151,11 @@ export default function ClientesPage() {
   const totalCustomers = customersData?.total || 0;
   const totalPages = Math.ceil(totalCustomers / perPage);
 
+  // Detecta se os dados vieram do IndexedDB
+  const isDataOffline = customersData?._offline === true;
+  // Considera offline se a conexão está offline OU se os dados vieram do IndexedDB
+  const showOfflineBanner = isOffline || isDataOffline;
+
   const stats = useMemo(() => {
     const total = customers.length;
     const withCredit = customers.filter(c => c.credit_limit > 0).length;
@@ -268,7 +273,7 @@ export default function ClientesPage() {
   return (
     <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
       {/* Offline Banner */}
-      {isOffline && (
+      {showOfflineBanner && (
         <div className="mb-4 p-3 bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800 rounded-xl flex items-center gap-2">
           <WifiOff className="w-4 h-4 text-orange-600 dark:text-orange-400" />
           <span className="text-sm text-orange-700 dark:text-orange-300">
@@ -285,7 +290,7 @@ export default function ClientesPage() {
         </div>
         <button
           onClick={() => openModal()}
-          disabled={isOffline}
+          disabled={showOfflineBanner}
           className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="w-4 h-4" />
