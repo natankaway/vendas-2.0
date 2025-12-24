@@ -31,13 +31,9 @@ import {
   X,
   Loader2,
 } from 'lucide-react';
-
-interface SyncStatus {
-  isOnline: boolean;
-  lastSync: string | null;
-  pendingItems: number;
-  syncInProgress: boolean;
-}
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
+import { useConnectionStore } from '@/lib/stores/connection-store';
+import { fullSync } from '@/lib/services/sync-service';
 
 interface StorageInfo {
   used: number;
@@ -58,12 +54,9 @@ interface CompanySettings {
 export default function ConfiguracoesPage() {
   const queryClient = useQueryClient();
 
-  const [syncStatus, setSyncStatus] = useState<SyncStatus>({
-    isOnline: true,
-    lastSync: null,
-    pendingItems: 0,
-    syncInProgress: false,
-  });
+  // Usa o hook global de status de conexão
+  const { isOnline, pendingSyncCount, isSyncing, lastSyncAt } = useOnlineStatus();
+  const { lastSyncError } = useConnectionStore();
 
   const [storageInfo, setStorageInfo] = useState<StorageInfo>({
     used: 0,
@@ -83,7 +76,6 @@ export default function ConfiguracoesPage() {
     soundEffects: true,
   });
 
-  const [isSyncing, setIsSyncing] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
 
   // Company settings from database
@@ -137,21 +129,7 @@ export default function ConfiguracoesPage() {
     },
   });
 
-  // Check online status
-  useEffect(() => {
-    const handleOnline = () => setSyncStatus(prev => ({ ...prev, isOnline: true }));
-    const handleOffline = () => setSyncStatus(prev => ({ ...prev, isOnline: false }));
-
-    window.addEventListener('online', handleOnline);
-    window.addEventListener('offline', handleOffline);
-
-    setSyncStatus(prev => ({ ...prev, isOnline: navigator.onLine }));
-
-    return () => {
-      window.removeEventListener('online', handleOnline);
-      window.removeEventListener('offline', handleOffline);
-    };
-  }, []);
+  // Status de conexão agora vem do hook useOnlineStatus
 
   // Load storage info
   useEffect(() => {
@@ -192,26 +170,7 @@ export default function ConfiguracoesPage() {
     loadStorageInfo();
   }, []);
 
-  // Load sync queue info
-  useEffect(() => {
-    const loadSyncInfo = async () => {
-      try {
-        const res = await fetch('/api/sync/status');
-        const data = await res.json();
-        if (data.success) {
-          setSyncStatus(prev => ({
-            ...prev,
-            lastSync: data.lastSync,
-            pendingItems: data.pendingItems || 0,
-          }));
-        }
-      } catch {
-        // Sync status endpoint may not exist yet
-      }
-    };
-
-    loadSyncInfo();
-  }, []);
+  // Info de sincronização agora vem do hook useOnlineStatus
 
   // Company settings handlers
   const handleLogoUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -262,28 +221,19 @@ export default function ConfiguracoesPage() {
 
   // Handlers
   const handleSync = async () => {
-    setIsSyncing(true);
-    setSyncStatus(prev => ({ ...prev, syncInProgress: true }));
+    if (!isOnline || isSyncing) return;
 
     try {
-      const res = await fetch('/api/sync', { method: 'POST' });
-      const data = await res.json();
+      const result = await fullSync();
 
-      if (data.success) {
+      if (result.download.success && result.upload.success) {
         setMessage({ type: 'success', text: 'Sincronização concluída com sucesso!' });
-        setSyncStatus(prev => ({
-          ...prev,
-          lastSync: new Date().toISOString(),
-          pendingItems: 0,
-        }));
       } else {
-        throw new Error(data.error);
+        const errors = [...result.download.errors, ...result.upload.errors];
+        throw new Error(errors.join(', ') || 'Erro na sincronização');
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'Erro ao sincronizar. Tente novamente.' });
-    } finally {
-      setIsSyncing(false);
-      setSyncStatus(prev => ({ ...prev, syncInProgress: false }));
+      setMessage({ type: 'error', text: error instanceof Error ? error.message : 'Erro ao sincronizar. Tente novamente.' });
     }
 
     // Clear message after 3 seconds
@@ -347,9 +297,10 @@ export default function ConfiguracoesPage() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(1)) + ' ' + sizes[i];
   };
 
-  const formatDate = (dateStr: string | null) => {
-    if (!dateStr) return 'Nunca';
-    return new Date(dateStr).toLocaleString('pt-BR');
+  const formatDate = (date: Date | string | null) => {
+    if (!date) return 'Nunca';
+    const dateObj = typeof date === 'string' ? new Date(date) : date;
+    return dateObj.toLocaleString('pt-BR');
   };
 
   const storagePercentage = storageInfo.total > 0
@@ -387,8 +338,8 @@ export default function ConfiguracoesPage() {
         {/* Connection Status */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-3 sm:p-4">
           <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg ${syncStatus.isOnline ? 'bg-green-100 dark:bg-green-900/30' : 'bg-red-100 dark:bg-red-900/30'}`}>
-              {syncStatus.isOnline ? (
+            <div className={`p-2 rounded-lg ${isOnline ? 'bg-green-100 dark:bg-green-900/30' : 'bg-red-100 dark:bg-red-900/30'}`}>
+              {isOnline ? (
                 <Wifi className="w-5 h-5 sm:w-6 sm:h-6 text-green-600 dark:text-green-400" />
               ) : (
                 <WifiOff className="w-5 h-5 sm:w-6 sm:h-6 text-red-600 dark:text-red-400" />
@@ -396,8 +347,8 @@ export default function ConfiguracoesPage() {
             </div>
             <div>
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Conexão</p>
-              <p className={`text-sm sm:text-base font-bold ${syncStatus.isOnline ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
-                {syncStatus.isOnline ? 'Online' : 'Offline'}
+              <p className={`text-sm sm:text-base font-bold ${isOnline ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'}`}>
+                {isOnline ? 'Online' : 'Offline'}
               </p>
             </div>
           </div>
@@ -412,7 +363,7 @@ export default function ConfiguracoesPage() {
             <div className="min-w-0">
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Última Sincronização</p>
               <p className="text-xs sm:text-sm font-bold text-gray-900 dark:text-white truncate">
-                {formatDate(syncStatus.lastSync)}
+                {formatDate(lastSyncAt)}
               </p>
             </div>
           </div>
@@ -421,13 +372,13 @@ export default function ConfiguracoesPage() {
         {/* Pending Items */}
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-3 sm:p-4">
           <div className="flex items-center gap-3">
-            <div className={`p-2 rounded-lg ${syncStatus.pendingItems > 0 ? 'bg-yellow-100 dark:bg-yellow-900/30' : 'bg-green-100 dark:bg-green-900/30'}`}>
-              <Cloud className={`w-5 h-5 sm:w-6 sm:h-6 ${syncStatus.pendingItems > 0 ? 'text-yellow-600 dark:text-yellow-400' : 'text-green-600 dark:text-green-400'}`} />
+            <div className={`p-2 rounded-lg ${pendingSyncCount > 0 ? 'bg-yellow-100 dark:bg-yellow-900/30' : 'bg-green-100 dark:bg-green-900/30'}`}>
+              <Cloud className={`w-5 h-5 sm:w-6 sm:h-6 ${pendingSyncCount > 0 ? 'text-yellow-600 dark:text-yellow-400' : 'text-green-600 dark:text-green-400'}`} />
             </div>
             <div>
               <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400">Pendente de Sync</p>
-              <p className={`text-sm sm:text-base font-bold ${syncStatus.pendingItems > 0 ? 'text-yellow-600 dark:text-yellow-400' : 'text-green-600 dark:text-green-400'}`}>
-                {syncStatus.pendingItems} {syncStatus.pendingItems === 1 ? 'item' : 'itens'}
+              <p className={`text-sm sm:text-base font-bold ${pendingSyncCount > 0 ? 'text-yellow-600 dark:text-yellow-400' : 'text-green-600 dark:text-green-400'}`}>
+                {pendingSyncCount} {pendingSyncCount === 1 ? 'item' : 'itens'}
               </p>
             </div>
           </div>
@@ -616,7 +567,7 @@ export default function ConfiguracoesPage() {
           {/* Manual Sync Button */}
           <button
             onClick={handleSync}
-            disabled={isSyncing || !syncStatus.isOnline}
+            disabled={isSyncing || !isOnline}
             className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <RefreshCw className={`w-5 h-5 ${isSyncing ? 'animate-spin' : ''}`} />
