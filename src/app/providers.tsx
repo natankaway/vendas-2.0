@@ -7,9 +7,8 @@
 'use client';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useState, useEffect } from 'react';
-import { useConnection } from '@/lib/hooks/use-connection';
-import { useConnectionStore } from '@/lib/stores/connection-store';
+import { useState, useEffect, useRef } from 'react';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
 import { toast } from '@/components/ui/use-toast';
 
 /**
@@ -44,22 +43,33 @@ function QueryProvider({ children }: { children: React.ReactNode }) {
  * Monitora o estado de conexão e exibe notificações.
  */
 function ConnectionProvider({ children }: { children: React.ReactNode }) {
-  const { isOnline, isOffline } = useConnection({
-    onOnline: () => {
+  const { isOnline, isOffline } = useOnlineStatus();
+  const prevOnline = useRef<boolean | null>(null);
+
+  useEffect(() => {
+    // Só mostra toast após a primeira verificação
+    if (prevOnline.current === null) {
+      prevOnline.current = isOnline;
+      return;
+    }
+
+    // Detecta mudança de status
+    if (isOnline && prevOnline.current === false) {
       toast({
         title: 'Conexão restaurada',
         description: 'Sincronizando dados com o servidor...',
         variant: 'default',
       });
-    },
-    onOffline: () => {
+    } else if (isOffline && prevOnline.current === true) {
       toast({
         title: 'Modo offline',
-        description: 'Você está trabalhando sem conexão. Os dados serão sincronizados quando a conexão for restaurada.',
+        description: 'Os dados serão sincronizados quando a conexão for restaurada.',
         variant: 'destructive',
       });
-    },
-  });
+    }
+
+    prevOnline.current = isOnline;
+  }, [isOnline, isOffline]);
 
   return <>{children}</>;
 }

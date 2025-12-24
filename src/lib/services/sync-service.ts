@@ -265,7 +265,6 @@ export async function initOfflineData(): Promise<boolean> {
   if (!db) return false;
 
   if (store.status !== 'online') {
-    console.log('[Sync] Offline, usando dados em cache');
     return await db.isPopulated();
   }
 

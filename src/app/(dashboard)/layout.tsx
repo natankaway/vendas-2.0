@@ -7,7 +7,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -136,10 +136,12 @@ export default function DashboardLayout({
   } = useConnectionStore();
   const { theme, toggleTheme } = useTheme();
   const { isOnline } = useOnlineStatus();
+  const offlineInitialized = useRef(false);
 
-  // Inicializa dados offline na primeira carga
+  // Inicializa dados offline apenas uma vez quando online
   useEffect(() => {
-    if (isOnline) {
+    if (isOnline && !offlineInitialized.current) {
+      offlineInitialized.current = true;
       initOfflineData().catch(console.error);
     }
   }, [isOnline]);
