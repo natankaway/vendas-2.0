@@ -87,11 +87,17 @@ export function useOnlineStatus(options: UseOnlineStatusOptions = {}) {
 
       if (response.ok) {
         const data = await response.json();
-        setOnline();
-        setSupabaseConnected(data.supabase === 'connected');
+        // Verifica se o Supabase está conectado - se não, considera offline
+        const isSupabaseOk = data.supabase === 'connected';
+        if (isSupabaseOk) {
+          setOnline();
+        } else {
+          setOffline();
+        }
+        setSupabaseConnected(isSupabaseOk);
         initialCheckDoneRef.current = true;
         globalCheckInProgress = false;
-        return true;
+        return isSupabaseOk;
       } else {
         setOffline();
         setSupabaseConnected(false);
