@@ -38,12 +38,13 @@ interface Category {
   id: string;
   name: string;
   description: string | null;
-  color: string;
+  color: string | null;
   icon: string | null;
   parent_id: string | null;
+  is_active?: boolean;
   sort_order: number;
-  created_at: string;
-  updated_at: string;
+  created_at?: string;
+  updated_at?: string;
 }
 
 interface CategoryFormData {
@@ -359,9 +360,9 @@ export default function CategoriasPage() {
                       <div className="flex items-center gap-3">
                         <div
                           className="w-10 h-10 rounded-lg flex items-center justify-center flex-shrink-0"
-                          style={{ backgroundColor: category.color + '20' }}
+                          style={{ backgroundColor: (category.color ?? '#3B82F6') + '20' }}
                         >
-                          <FolderTree className="w-5 h-5" style={{ color: category.color }} />
+                          <FolderTree className="w-5 h-5" style={{ color: category.color ?? '#3B82F6' }} />
                         </div>
                         <span className="font-medium text-gray-900">{category.name}</span>
                       </div>
@@ -373,7 +374,7 @@ export default function CategoriasPage() {
                       <div className="flex justify-center">
                         <div
                           className="w-8 h-8 rounded-full border-2 border-white shadow"
-                          style={{ backgroundColor: category.color }}
+                          style={{ backgroundColor: category.color ?? '#3B82F6' }}
                         />
                       </div>
                     </td>
@@ -428,9 +429,9 @@ export default function CategoriasPage() {
                 <div className="flex items-start gap-3">
                   <div
                     className="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ backgroundColor: category.color + '20' }}
+                    style={{ backgroundColor: (category.color ?? '#3B82F6') + '20' }}
                   >
-                    <FolderTree className="w-6 h-6" style={{ color: category.color }} />
+                    <FolderTree className="w-6 h-6" style={{ color: category.color ?? '#3B82F6' }} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <div className="flex items-start justify-between gap-2">
@@ -456,7 +457,7 @@ export default function CategoriasPage() {
                     <div className="flex items-center gap-3 mt-2">
                       <div
                         className="w-5 h-5 rounded-full border border-gray-200"
-                        style={{ backgroundColor: category.color }}
+                        style={{ backgroundColor: category.color ?? '#3B82F6' }}
                       />
                       {getParentName(category.parent_id) && (
                         <span className="text-xs text-gray-500">
@@ -489,9 +490,9 @@ export default function CategoriasPage() {
                 <div className="flex items-center gap-3">
                   <div
                     className="w-12 h-12 rounded-lg flex items-center justify-center"
-                    style={{ backgroundColor: selectedCategory.color + '20' }}
+                    style={{ backgroundColor: (selectedCategory.color ?? '#3B82F6') + '20' }}
                   >
-                    <FolderTree className="w-6 h-6" style={{ color: selectedCategory.color }} />
+                    <FolderTree className="w-6 h-6" style={{ color: selectedCategory.color ?? '#3B82F6' }} />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-gray-900 truncate">{selectedCategory.name}</h3>

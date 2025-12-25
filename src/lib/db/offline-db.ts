@@ -103,7 +103,7 @@ export interface SyncQueueItem {
   id?: number;
   entity_type: 'products' | 'categories' | 'customers' | 'sales' | 'sale_items';
   entity_id: string;
-  operation: 'create' | 'update' | 'delete';
+  operation: 'create' | 'update' | 'delete' | 'stock_movement';
   data: Record<string, unknown>;
   created_at: string;
   attempts: number;

@@ -3,6 +3,8 @@ const withPWA = require('next-pwa')({
   register: true,
   skipWaiting: true,
   disable: process.env.NODE_ENV === 'development',
+  fallbacks: false, // Desabilita páginas de fallback problemáticas
+  buildExcludes: [/app-build-manifest\.json$/], // Exclui manifesto do build
   runtimeCaching: [
     {
       urlPattern: /^https:\/\/.*\.supabase\.co\/.*/i,

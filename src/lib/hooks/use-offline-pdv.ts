@@ -86,14 +86,18 @@ export function useOfflinePDV(options: UsePDVOfflineOptions = {}) {
 
       try {
         setIsLoading(true);
-        const hasData = await initOfflineData();
-        setIsInitialized(hasData);
+        await initOfflineData();
 
         // Carrega dados locais
         await loadProducts();
         await loadCategories();
 
-        if (!hasData && isOffline) {
+        // Verifica se há dados carregados
+        const db = await getOfflineDb();
+        const hasProducts = db ? await db.products.count() > 0 : false;
+        setIsInitialized(hasProducts);
+
+        if (!hasProducts && isOffline) {
           setError('Sem dados offline disponíveis. Conecte-se à internet para sincronizar.');
         }
       } catch (err) {

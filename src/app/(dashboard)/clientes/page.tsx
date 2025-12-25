@@ -42,16 +42,17 @@ interface Customer {
   email: string | null;
   phone: string | null;
   document: string | null;
-  document_type: 'cpf' | 'cnpj' | null;
+  document_type?: 'cpf' | 'cnpj' | null;
   address: string | null;
   city: string | null;
   state: string | null;
   zip_code: string | null;
   notes: string | null;
-  credit_limit: number;
-  current_balance: number;
-  total_purchases: number;
-  last_purchase_at: string | null;
+  credit_limit?: number;
+  current_balance?: number;
+  total_purchases?: number;
+  last_purchase_at?: string | null;
+  is_active?: boolean;
   created_at: string;
   updated_at: string;
 }
@@ -163,9 +164,9 @@ export default function ClientesPage() {
 
   const stats = useMemo(() => {
     const total = customers.length;
-    const withCredit = customers.filter(c => c.credit_limit > 0).length;
-    const totalCredit = customers.reduce((sum, c) => sum + c.credit_limit, 0);
-    const totalPurchases = customers.reduce((sum, c) => sum + c.total_purchases, 0);
+    const withCredit = customers.filter(c => (c.credit_limit ?? 0) > 0).length;
+    const totalCredit = customers.reduce((sum, c) => sum + (c.credit_limit ?? 0), 0);
+    const totalPurchases = customers.reduce((sum, c) => sum + (c.total_purchases ?? 0), 0);
     return { total, withCredit, totalCredit, totalPurchases };
   }, [customers]);
 
@@ -248,7 +249,7 @@ export default function ClientesPage() {
         state: customer.state || '',
         zip_code: customer.zip_code ? formatZipCode(customer.zip_code) : '',
         notes: customer.notes || '',
-        credit_limit: (customer.credit_limit / 100).toFixed(2),
+        credit_limit: ((customer.credit_limit ?? 0) / 100).toFixed(2),
       });
     } else {
       setEditingCustomer(null);
@@ -510,8 +511,8 @@ export default function ClientesPage() {
                     <td className="px-3 py-3 text-sm text-gray-600">
                       {customer.document ? (customer.document_type === 'cpf' ? formatCPF(customer.document) : formatCNPJ(customer.document)) : '-'}
                     </td>
-                    <td className="px-3 py-3 text-right font-medium text-sm">{formatCurrency(customer.credit_limit)}</td>
-                    <td className="px-3 py-3 text-right font-medium text-sm text-green-600">{formatCurrency(customer.total_purchases)}</td>
+                    <td className="px-3 py-3 text-right font-medium text-sm">{formatCurrency(customer.credit_limit ?? 0)}</td>
+                    <td className="px-3 py-3 text-right font-medium text-sm text-green-600">{formatCurrency(customer.total_purchases ?? 0)}</td>
                     <td className="px-3 py-3" onClick={(e) => e.stopPropagation()}>
                       <div className="flex items-center justify-center gap-1">
                         <button onClick={() => openModal(customer)} className="p-1.5 text-gray-500 hover:text-blue-600 hover:bg-blue-50 rounded-lg"><Edit className="w-4 h-4" /></button>
@@ -539,7 +540,7 @@ export default function ClientesPage() {
                     <p className="font-medium text-gray-900 text-sm truncate">{customer.name}</p>
                     {customer.phone && <p className="text-[10px] text-gray-500">{formatPhone(customer.phone)}</p>}
                   </div>
-                  <p className="text-base font-bold text-green-600 flex-shrink-0">{formatCurrency(customer.total_purchases)}</p>
+                  <p className="text-base font-bold text-green-600 flex-shrink-0">{formatCurrency(customer.total_purchases ?? 0)}</p>
                 </div>
                 <div className="flex items-center justify-between">
                   <span className="text-[10px] text-gray-400 truncate">
@@ -681,11 +682,11 @@ export default function ClientesPage() {
               <div className="grid grid-cols-2 gap-2">
                 <div className="bg-green-50 p-2.5 rounded-xl">
                   <p className="text-[10px] text-green-600">Total Compras</p>
-                  <p className="text-base font-bold text-green-700">{formatCurrency(selectedCustomer.total_purchases)}</p>
+                  <p className="text-base font-bold text-green-700">{formatCurrency(selectedCustomer.total_purchases ?? 0)}</p>
                 </div>
                 <div className="bg-blue-50 p-2.5 rounded-xl">
                   <p className="text-[10px] text-blue-600">Limite Crédito</p>
-                  <p className="text-base font-bold text-blue-700">{formatCurrency(selectedCustomer.credit_limit)}</p>
+                  <p className="text-base font-bold text-blue-700">{formatCurrency(selectedCustomer.credit_limit ?? 0)}</p>
                 </div>
               </div>
 
@@ -704,7 +705,7 @@ export default function ClientesPage() {
 
               <div className="text-[10px] text-gray-400 pt-3 border-t">
                 <p>Cliente desde: {formatDate(selectedCustomer.created_at)}</p>
-                <p>Última compra: {formatDate(selectedCustomer.last_purchase_at)}</p>
+                <p>Última compra: {formatDate(selectedCustomer.last_purchase_at ?? null)}</p>
               </div>
             </div>
 

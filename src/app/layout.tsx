@@ -10,6 +10,9 @@ import { Providers } from './providers';
 import { Toaster } from '@/components/ui/toaster';
 import { ThemeProvider } from '@/lib/contexts/theme-context';
 
+// Força renderização dinâmica para evitar erros de hidratação com providers
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: {
     default: 'KAWAY POS',

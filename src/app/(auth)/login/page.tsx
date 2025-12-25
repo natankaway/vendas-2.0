@@ -42,7 +42,7 @@ type LoginForm = z.infer<typeof loginSchema>;
 export default function LoginPage() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const redirect = searchParams.get('redirect') || '/pdv';
+  const redirect = searchParams?.get('redirect') || '/pdv';
 
   const [isLoading, setIsLoading] = useState(false);
   const { setUser } = useAuthStore();

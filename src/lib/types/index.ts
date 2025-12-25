@@ -12,15 +12,16 @@
 /**
  * Tipo base para todas as entidades do sistema
  * Todos os registros têm esses campos para controle de sincronização
+ * Campos de sincronização são opcionais pois podem não existir em dados da API
  */
 export interface BaseEntity {
   id: string; // UUID v4 - gerado no cliente para evitar conflitos
   created_at: string; // ISO timestamp
   updated_at: string; // ISO timestamp
-  deleted_at: string | null; // Soft delete para sincronização
-  version: number; // Versão para controle de conflitos
-  synced_at: string | null; // Última sincronização com Supabase
-  local_only: boolean; // True se ainda não foi sincronizado
+  deleted_at?: string | null; // Soft delete para sincronização
+  version?: number; // Versão para controle de conflitos
+  synced_at?: string | null; // Última sincronização com Supabase
+  local_only?: boolean; // True se ainda não foi sincronizado
 }
 
 // =============================================================================
@@ -99,16 +100,17 @@ export interface Customer extends BaseEntity {
   email: string | null;
   phone: string | null;
   document: string | null; // CPF/CNPJ
-  document_type: 'cpf' | 'cnpj' | null;
+  document_type?: 'cpf' | 'cnpj' | null;
   address: string | null;
   city: string | null;
   state: string | null;
   zip_code: string | null;
   notes: string | null;
-  credit_limit: number;
-  current_balance: number; // Saldo devedor
-  total_purchases: number; // Total de compras realizadas
-  last_purchase_at: string | null;
+  credit_limit?: number;
+  current_balance?: number; // Saldo devedor
+  total_purchases?: number; // Total de compras realizadas
+  last_purchase_at?: string | null;
+  is_active?: boolean;
 }
 
 /**

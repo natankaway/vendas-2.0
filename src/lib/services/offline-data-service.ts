@@ -610,7 +610,19 @@ async function createOfflineSale(saleData: OfflineSaleData): Promise<OfflineSale
 
     // Calcula totais
     let subtotal = 0;
-    const saleItems = [];
+    const saleItems: Array<{
+      id: string;
+      sale_id: string;
+      product_id: string;
+      product_name: string;
+      quantity: number;
+      unit_price: number;
+      discount: number;
+      total: number;
+      unit: string;
+      created_at: string;
+      _synced: boolean;
+    }> = [];
 
     for (const item of saleData.items) {
       const itemTotal = item.quantity * item.unit_price;

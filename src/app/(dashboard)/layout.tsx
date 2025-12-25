@@ -228,7 +228,7 @@ export default function DashboardLayout({
         {/* Navigation */}
         <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
           {visibleLinks.map((link) => {
-            const isActive = pathname === link.href || pathname.startsWith(`${link.href}/`);
+            const isActive = pathname === link.href || (pathname?.startsWith(`${link.href}/`) ?? false);
             const Icon = link.icon;
 
             return (
@@ -428,7 +428,7 @@ export default function DashboardLayout({
 
             <div className="hidden sm:block">
               <h1 className="text-lg font-semibold text-gray-800 dark:text-white">
-                {visibleLinks.find((l) => pathname.startsWith(l.href))?.label || 'Dashboard'}
+                {visibleLinks.find((l) => pathname?.startsWith(l.href))?.label || 'Dashboard'}
               </h1>
             </div>
           </div>
