@@ -220,13 +220,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Se é uma venda offline sendo sincronizada, verifica se já existe
-    if (offline_id) {
-      // Verifica se já foi sincronizada anteriormente
+    // Se é uma venda offline sendo sincronizada, verifica se já existe pelo recibo
+    if (offline_id && offline_receipt) {
+      // Verifica se já foi sincronizada anteriormente pelo número do recibo
       const { data: existingSale } = await supabase
         .from('sales')
         .select('id')
-        .eq('offline_id', offline_id)
+        .eq('receipt_number', offline_receipt)
         .single();
 
       if (existingSale) {
@@ -333,11 +333,10 @@ export async function POST(request: NextRequest) {
         tax_amount: 0,
         total,
         payment_method,
-        notes: notes || null,
+        notes: offline_id ? `[OFFLINE:${offline_id}] ${notes || ''}`.trim() : (notes || null),
         completed_at: isPending ? null : now,
         created_at: now,
         updated_at: now,
-        offline_id: offline_id || null,
       });
 
     if (saleError) {

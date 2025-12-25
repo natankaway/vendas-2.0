@@ -64,8 +64,11 @@ function ProductCard({
   product: Product;
   onAdd: (product: Product) => void;
 }) {
-  const isOutOfStock = product.stock_quantity <= 0;
-  const isLowStock = product.stock_quantity <= product.min_stock_quantity;
+  // Garante que stock_quantity seja um número válido (defensivo para dados offline)
+  const stockQty = typeof product.stock_quantity === 'number' ? product.stock_quantity : 0;
+  const minStockQty = typeof product.min_stock_quantity === 'number' ? product.min_stock_quantity : 0;
+  const isOutOfStock = stockQty <= 0;
+  const isLowStock = stockQty > 0 && stockQty <= minStockQty;
 
   return (
     <button

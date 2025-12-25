@@ -55,12 +55,16 @@ export interface LocalCustomer {
   email: string | null;
   phone: string | null;
   document: string | null;
+  document_type?: 'cpf' | 'cnpj' | null;
   address: string | null;
   city: string | null;
   state: string | null;
   zip_code: string | null;
   notes: string | null;
   is_active: boolean;
+  credit_limit: number;
+  total_purchases: number;
+  last_purchase_at: string | null;
   created_at: string;
   updated_at: string;
   _synced: boolean;
@@ -218,8 +222,17 @@ class OfflineDatabase extends Dexie {
   async syncProductsFromServer(products: LocalProduct[]): Promise<void> {
     await this.transaction('rw', this.products, async () => {
       for (const product of products) {
+        // Garante que campos numéricos tenham valores válidos
+        const stockQuantity = typeof product.stock_quantity === 'number' ? product.stock_quantity :
+                             (product.stock_quantity != null ? Number(product.stock_quantity) : 0);
+        const minStockQuantity = typeof product.min_stock_quantity === 'number' ? product.min_stock_quantity :
+                                 (product.min_stock_quantity != null ? Number(product.min_stock_quantity) : 0);
+
         await this.products.put({
           ...product,
+          stock_quantity: isNaN(stockQuantity) ? 0 : stockQuantity,
+          min_stock_quantity: isNaN(minStockQuantity) ? 0 : minStockQuantity,
+          is_active: product.is_active !== false,
           _synced: true,
           _last_sync: new Date().toISOString(),
         });
@@ -250,8 +263,18 @@ class OfflineDatabase extends Dexie {
   async syncCustomersFromServer(customers: LocalCustomer[]): Promise<void> {
     await this.transaction('rw', this.customers, async () => {
       for (const customer of customers) {
+        // Verifica se existe cliente local com total_purchases maior (vendas offline)
+        const existingCustomer = await this.customers.get(customer.id);
+        const serverPurchases = typeof customer.total_purchases === 'number' ? customer.total_purchases : 0;
+        const localPurchases = existingCustomer?.total_purchases ?? 0;
+
+        // Preserva o maior valor de total_purchases
+        const totalPurchases = Math.max(serverPurchases, localPurchases);
+
         await this.customers.put({
           ...customer,
+          total_purchases: totalPurchases,
+          credit_limit: typeof customer.credit_limit === 'number' ? customer.credit_limit : 0,
           _synced: true,
           _last_sync: new Date().toISOString(),
         });

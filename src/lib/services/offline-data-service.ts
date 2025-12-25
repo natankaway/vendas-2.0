@@ -258,6 +258,10 @@ async function getProductsFromIndexedDB(params?: {
       data: paginatedProducts.map(p => ({
         ...p,
         sku: p.sku || '',
+        // Garante que stock_quantity seja sempre um número válido
+        stock_quantity: typeof p.stock_quantity === 'number' ? p.stock_quantity : 0,
+        min_stock_quantity: typeof p.min_stock_quantity === 'number' ? p.min_stock_quantity : 0,
+        price: typeof p.price === 'number' ? p.price : 0,
       })),
       total: products.length,
       page,
@@ -365,8 +369,23 @@ async function saveProductsToIndexedDB(products: Array<Record<string, unknown>>)
   try {
     await db.transaction('rw', db.products, async () => {
       for (const product of products) {
+        // Garante que campos numéricos tenham valores válidos
+        const stockQuantity = typeof product.stock_quantity === 'number' ? product.stock_quantity :
+                             (product.stock_quantity != null ? Number(product.stock_quantity) : 0);
+        const minStockQuantity = typeof product.min_stock_quantity === 'number' ? product.min_stock_quantity :
+                                 (product.min_stock_quantity != null ? Number(product.min_stock_quantity) : 0);
+        const price = typeof product.price === 'number' ? product.price :
+                     (product.price != null ? Number(product.price) : 0);
+        const costPrice = typeof product.cost_price === 'number' ? product.cost_price :
+                         (product.cost_price != null ? Number(product.cost_price) : 0);
+
         await db.products.put({
           ...product,
+          stock_quantity: isNaN(stockQuantity) ? 0 : stockQuantity,
+          min_stock_quantity: isNaN(minStockQuantity) ? 0 : minStockQuantity,
+          price: isNaN(price) ? 0 : price,
+          cost_price: isNaN(costPrice) ? 0 : costPrice,
+          is_active: product.is_active !== false && product.is_active !== 0,
           _synced: true,
           _last_sync: new Date().toISOString(),
         } as any);
@@ -409,8 +428,20 @@ async function saveCustomersToIndexedDB(customers: Array<Record<string, unknown>
   try {
     await db.transaction('rw', db.customers, async () => {
       for (const customer of customers) {
+        // Verifica se existe cliente local com total_purchases maior (vendas offline)
+        const existingCustomer = await db.customers.get(customer.id as string);
+        const serverPurchases = typeof customer.total_purchases === 'number' ? customer.total_purchases : 0;
+        const localPurchases = existingCustomer?.total_purchases ?? 0;
+
+        // Preserva o maior valor de total_purchases
+        // (pode ter vendas offline não sincronizadas)
+        const totalPurchases = Math.max(serverPurchases, localPurchases);
+
         await db.customers.put({
           ...customer,
+          total_purchases: totalPurchases,
+          credit_limit: typeof customer.credit_limit === 'number' ? customer.credit_limit : 0,
+          is_active: customer.is_active !== false && customer.is_active !== 0,
           _synced: true,
           _last_sync: new Date().toISOString(),
         } as any);
@@ -678,6 +709,19 @@ async function createOfflineSale(saleData: OfflineSaleData): Promise<OfflineSale
         if (product) {
           await db.products.update(item.product_id, {
             stock_quantity: Math.max(0, product.stock_quantity - item.quantity),
+            _synced: false,
+          });
+        }
+      }
+
+      // Atualiza total_purchases do cliente se existir
+      if (saleData.customer_id) {
+        const customer = await db.customers.get(saleData.customer_id);
+        if (customer) {
+          const currentPurchases = (customer as any).total_purchases ?? 0;
+          await db.customers.update(saleData.customer_id, {
+            total_purchases: currentPurchases + total,
+            last_purchase_at: now,
             _synced: false,
           });
         }
@@ -1083,6 +1127,7 @@ export interface CustomerData {
   email?: string | null;
   phone?: string | null;
   document?: string | null;
+  document_type?: 'cpf' | 'cnpj' | null;
   address?: string | null;
   city?: string | null;
   state?: string | null;
@@ -1139,12 +1184,16 @@ async function createCustomerOffline(customerData: CustomerData): Promise<Custom
       email: customerData.email || null,
       phone: customerData.phone || null,
       document: customerData.document || null,
+      document_type: customerData.document_type || null,
       address: customerData.address || null,
       city: customerData.city || null,
       state: customerData.state || null,
       zip_code: customerData.zip_code || null,
       notes: customerData.notes || null,
       is_active: true,
+      credit_limit: 0,
+      total_purchases: 0,
+      last_purchase_at: null,
       created_at: now,
       updated_at: now,
       _synced: false,
@@ -1684,6 +1733,183 @@ export async function deleteProduct(id: string): Promise<{ success: boolean; err
     });
   } catch (error) {
     return { success: false, error: 'Erro ao deletar produto offline' };
+  }
+}
+
+// ============ Contas a Receber Offline ============
+
+export interface AccountReceivableSummary {
+  total_receivable: number;
+  total_overdue: number;
+  accounts_count: number;
+  overdue_count: number;
+  by_customer: any[];
+}
+
+export interface AccountReceivableItem {
+  id: string;
+  receipt_number: string;
+  customer_id: string;
+  customer_name: string;
+  customer_phone: string | null;
+  customer_credit_limit: number;
+  total: number;
+  total_paid: number;
+  remaining_balance: number;
+  days_overdue: number;
+  is_paid: boolean;
+  payments: any[];
+  created_at: string;
+  items: Array<{
+    product_name: string;
+    quantity: number;
+    total: number;
+  }>;
+}
+
+export interface AccountsReceivableResponse {
+  data: AccountReceivableItem[] | AccountReceivableSummary;
+  _offline?: boolean;
+}
+
+/**
+ * Busca contas a receber - tenta API primeiro, fallback para IndexedDB
+ */
+export async function fetchAccountsReceivable(params?: {
+  summary?: boolean;
+  status?: string;
+  limit?: number;
+}): Promise<AccountsReceivableResponse> {
+  // Tenta API primeiro
+  try {
+    const searchParams = new URLSearchParams();
+    if (params?.summary) searchParams.append('summary', 'true');
+    if (params?.status) searchParams.append('status', params.status);
+    if (params?.limit) searchParams.append('limit', String(params.limit));
+
+    const response = await fetchWithTimeout(`/api/contas-receber?${searchParams}`, {}, 8000);
+
+    if (response.ok) {
+      return await response.json();
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, buscando contas a receber do IndexedDB:', error);
+  }
+
+  // Fallback para IndexedDB
+  return getAccountsReceivableFromIndexedDB(params);
+}
+
+async function getAccountsReceivableFromIndexedDB(params?: {
+  summary?: boolean;
+  status?: string;
+  limit?: number;
+}): Promise<AccountsReceivableResponse> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { data: [], _offline: true };
+  }
+
+  console.log('[OfflineData] Buscando contas a receber do IndexedDB');
+
+  try {
+    // Busca vendas com payment_method = 'pay_later'
+    let sales = await db.sales
+      .filter(s => s.payment_method === 'pay_later')
+      .toArray();
+
+    // Filtra por status se especificado
+    if (params?.status === 'pending') {
+      sales = sales.filter(s => s.status === 'pending');
+    }
+
+    // Ordena por data (mais recentes primeiro)
+    sales.sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+
+    // Limita resultados
+    if (params?.limit) {
+      sales = sales.slice(0, params.limit);
+    }
+
+    // Converte para o formato esperado
+    const accounts = await Promise.all(
+      sales.map(async (sale) => {
+        const items = await db.saleItems.where('sale_id').equals(sale.id).toArray();
+        let customerData = null;
+        if (sale.customer_id) {
+          customerData = await db.customers.get(sale.customer_id);
+        }
+
+        const createdDate = new Date(sale.created_at);
+        const now = new Date();
+        const diffTime = Math.abs(now.getTime() - createdDate.getTime());
+        const daysOverdue = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        return {
+          id: sale.id,
+          receipt_number: (sale as any).receipt_number || sale.id.slice(0, 8).toUpperCase(),
+          customer_id: sale.customer_id || '',
+          customer_name: customerData?.name || 'Cliente não identificado',
+          customer_phone: customerData?.phone || null,
+          customer_credit_limit: (customerData as any)?.credit_limit || 0,
+          total: sale.total,
+          total_paid: 0,
+          remaining_balance: sale.total,
+          days_overdue: daysOverdue,
+          is_paid: sale.status !== 'pending',
+          payments: [],
+          created_at: sale.created_at,
+          items: items.map(item => ({
+            product_name: item.product_name,
+            quantity: item.quantity,
+            total: item.total,
+          })),
+        };
+      })
+    );
+
+    // Calcula resumo se solicitado
+    if (params?.summary) {
+      const totalReceivable = accounts.reduce((sum, a) => sum + a.remaining_balance, 0);
+      const overdueAccounts = accounts.filter(a => a.days_overdue > 30);
+
+      // Agrupa por cliente
+      const byCustomerMap = new Map<string, { customer: any; total_debt: number; sales_count: number }>();
+      for (const account of accounts) {
+        const existing = byCustomerMap.get(account.customer_id);
+        if (existing) {
+          existing.total_debt += account.remaining_balance;
+          existing.sales_count++;
+        } else {
+          byCustomerMap.set(account.customer_id, {
+            customer: {
+              id: account.customer_id,
+              name: account.customer_name,
+              phone: account.customer_phone,
+            },
+            total_debt: account.remaining_balance,
+            sales_count: 1,
+          });
+        }
+      }
+
+      // Retorna no formato que a página espera (data contém o resumo)
+      return {
+        data: {
+          total_receivable: totalReceivable,
+          total_overdue: overdueAccounts.reduce((sum, a) => sum + a.remaining_balance, 0),
+          accounts_count: accounts.length,
+          overdue_count: overdueAccounts.length,
+          by_customer: Array.from(byCustomerMap.values()),
+        },
+        _offline: true,
+      };
+    }
+
+    return { data: accounts, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao buscar contas a receber do IndexedDB:', error);
+    return { data: [], _offline: true };
   }
 }
 

@@ -27,7 +27,10 @@ import {
   Phone,
   User,
   Plus,
+  WifiOff,
 } from 'lucide-react';
+import { fetchAccountsReceivable } from '@/lib/services/offline-data-service';
+import { useConnectionStore } from '@/lib/stores/connection-store';
 
 interface PaymentRecord {
   id: string;
@@ -93,6 +96,8 @@ const paymentMethodIcons: Record<string, React.ReactNode> = {
 
 export default function ContasReceberPage() {
   const queryClient = useQueryClient();
+  const { status: connectionStatus } = useConnectionStore();
+  const isOffline = connectionStatus === 'offline';
   const [userId] = useState('admin-001'); // TODO: Get from auth context
   const [searchQuery, setSearchQuery] = useState('');
   const [expandedAccounts, setExpandedAccounts] = useState<Set<string>>(new Set());
@@ -103,23 +108,21 @@ export default function ContasReceberPage() {
   const [paymentMethod, setPaymentMethod] = useState('cash');
   const [paymentNotes, setPaymentNotes] = useState('');
 
-  // Fetch summary
+  // Fetch summary - com suporte offline
   const { data: summaryData } = useQuery({
-    queryKey: ['accounts-receivable-summary'],
-    queryFn: async () => {
-      const res = await fetch('/api/contas-receber?summary=true');
-      return res.json();
-    },
+    queryKey: ['accounts-receivable-summary', connectionStatus],
+    queryFn: () => fetchAccountsReceivable({ summary: true }),
   });
 
-  // Fetch accounts
+  // Fetch accounts - com suporte offline
   const { data: accountsData, isLoading } = useQuery({
-    queryKey: ['accounts-receivable'],
-    queryFn: async () => {
-      const res = await fetch('/api/contas-receber?status=pending&limit=100');
-      return res.json();
-    },
+    queryKey: ['accounts-receivable', connectionStatus],
+    queryFn: () => fetchAccountsReceivable({ status: 'pending', limit: 100 }),
   });
+
+  // Detecta se dados vieram do IndexedDB
+  const isDataOffline = accountsData?._offline === true || summaryData?._offline === true;
+  const showOfflineBanner = isOffline || isDataOffline;
 
   // Register payment mutation
   const paymentMutation = useMutation({
@@ -145,15 +148,21 @@ export default function ContasReceberPage() {
     },
   });
 
-  const summary: Summary = summaryData?.data || {
-    total_receivable: 0,
-    total_overdue: 0,
-    accounts_count: 0,
-    overdue_count: 0,
-    by_customer: [],
-  };
+  // Extract summary (quando summary: true, data contém o resumo)
+  const summary: Summary = (summaryData?.data && !Array.isArray(summaryData.data))
+    ? summaryData.data as unknown as Summary
+    : {
+      total_receivable: 0,
+      total_overdue: 0,
+      accounts_count: 0,
+      overdue_count: 0,
+      by_customer: [],
+    };
 
-  const accounts: AccountReceivable[] = accountsData?.data || [];
+  // Extract accounts (quando não é summary, data é array)
+  const accounts: AccountReceivable[] = (accountsData?.data && Array.isArray(accountsData.data))
+    ? accountsData.data as unknown as AccountReceivable[]
+    : [];
 
   // Filter accounts by search
   const filteredAccounts = accounts.filter(account =>
@@ -207,6 +216,16 @@ export default function ContasReceberPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-6">
       <div className="max-w-7xl mx-auto">
+        {/* Offline Banner */}
+        {showOfflineBanner && (
+          <div className="mb-4 p-3 bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800 rounded-xl flex items-center gap-2">
+            <WifiOff className="w-4 h-4 text-orange-600 dark:text-orange-400" />
+            <span className="text-sm text-orange-700 dark:text-orange-300">
+              Modo offline - Exibindo dados salvos localmente
+            </span>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
           <div>

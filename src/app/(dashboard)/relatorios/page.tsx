@@ -31,7 +31,11 @@ import {
   WifiOff,
 } from 'lucide-react';
 import { useOnlineStatus } from '@/lib/hooks/use-online-status';
-import { generateOfflineReport } from '@/lib/services/offline-data-service';
+import {
+  generateOfflineReport,
+  fetchProducts,
+  fetchCustomers,
+} from '@/lib/services/offline-data-service';
 
 interface SalesSummary {
   totalSales: number;
@@ -219,29 +223,26 @@ export default function RelatoriosPage() {
     staleTime: 30000,
   });
 
-  // Verificar se dados são offline
-  const isDataOffline = (reportData as any)?._offline === true;
-  const showOfflineBanner = isOffline || isDataOffline;
-
-  // Fetch products stats
+  // Fetch products stats - com fallback para offline
   const { data: productsData } = useQuery({
-    queryKey: ['products-stats'],
-    queryFn: async () => {
-      const res = await fetch('/api/produtos?limit=1000');
-      return res.json();
-    },
+    queryKey: ['products-stats', connectionStatus],
+    queryFn: () => fetchProducts({ limit: 1000 }),
     staleTime: 60000,
   });
 
-  // Fetch customers stats
+  // Fetch customers stats - com fallback para offline
   const { data: customersData } = useQuery({
-    queryKey: ['customers-stats'],
-    queryFn: async () => {
-      const res = await fetch('/api/clientes?limit=1000');
-      return res.json();
-    },
+    queryKey: ['customers-stats', connectionStatus],
+    queryFn: () => fetchCustomers({ limit: 1000 }),
     staleTime: 60000,
   });
+
+  // Verificar se dados são offline
+  const isReportOffline = (reportData as any)?._offline === true;
+  const isProductsOffline = (productsData as any)?._offline === true;
+  const isCustomersOffline = (customersData as any)?._offline === true;
+  const isDataOffline = isReportOffline || isProductsOffline || isCustomersOffline;
+  const showOfflineBanner = isOffline || isDataOffline;
 
   // Process data
   const summary: SalesSummary = reportData?.summary || {
