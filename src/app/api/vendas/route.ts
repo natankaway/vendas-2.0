@@ -194,6 +194,9 @@ export async function POST(request: NextRequest) {
       payment_method,
       discount,
       notes,
+      offline_id,
+      offline_receipt,
+      skip_stock_check,
     } = body;
 
     if (!items || items.length === 0) {
@@ -217,9 +220,32 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Se é uma venda offline sendo sincronizada, verifica se já existe
+    if (offline_id) {
+      // Verifica se já foi sincronizada anteriormente
+      const { data: existingSale } = await supabase
+        .from('sales')
+        .select('id')
+        .eq('offline_id', offline_id)
+        .single();
+
+      if (existingSale) {
+        // Venda já sincronizada anteriormente, retorna sucesso
+        return NextResponse.json({
+          success: true,
+          data: {
+            id: existingSale.id,
+            already_synced: true,
+          },
+        });
+      }
+    }
+
     // Verifica estoque disponível e busca dados dos produtos
+    // Skip stock check para vendas offline (estoque já foi atualizado localmente)
     const stockErrors = [];
     const productsData: Record<string, { name: string; sku: string; stock_quantity: number; unit: string }> = {};
+    const isOfflineSync = !!offline_id;
 
     for (const item of items) {
       const { data: product } = await supabase
@@ -238,7 +264,8 @@ export async function POST(request: NextRequest) {
           unit: product.unit || 'un',
         };
 
-        if (product.stock_quantity < item.quantity) {
+        // Só valida estoque se NÃO for sync offline
+        if (!isOfflineSync && product.stock_quantity < item.quantity) {
           stockErrors.push(
             `${product.name}: estoque insuficiente (disponível: ${product.stock_quantity}, solicitado: ${item.quantity})`
           );
@@ -285,7 +312,8 @@ export async function POST(request: NextRequest) {
 
     const total = subtotal - (discount || 0);
     const saleId = uuidv4();
-    const receiptNumber = generateReceiptNumber();
+    // Usa o recibo offline se existir, senão gera novo
+    const receiptNumber = offline_receipt || generateReceiptNumber();
 
     // Cria a venda
     // Se for "Receber Depois", status é pending, senão é completed
@@ -309,6 +337,7 @@ export async function POST(request: NextRequest) {
         completed_at: isPending ? null : now,
         created_at: now,
         updated_at: now,
+        offline_id: offline_id || null,
       });
 
     if (saleError) {
@@ -335,22 +364,25 @@ export async function POST(request: NextRequest) {
       console.error('Erro ao criar itens da venda:', itemsError);
     }
 
-    // Atualiza estoque dos produtos
-    for (const item of items) {
-      const { data: product } = await supabase
-        .from('products')
-        .select('stock_quantity')
-        .eq('id', item.product_id)
-        .single();
-
-      if (product) {
-        await supabase
+    // Atualiza estoque dos produtos (somente se NÃO for sync offline)
+    // Para vendas offline, o estoque já foi atualizado quando a venda foi criada localmente
+    if (!isOfflineSync) {
+      for (const item of items) {
+        const { data: product } = await supabase
           .from('products')
-          .update({
-            stock_quantity: product.stock_quantity - item.quantity,
-            updated_at: new Date().toISOString(),
-          })
-          .eq('id', item.product_id);
+          .select('stock_quantity')
+          .eq('id', item.product_id)
+          .single();
+
+        if (product) {
+          await supabase
+            .from('products')
+            .update({
+              stock_quantity: product.stock_quantity - item.quantity,
+              updated_at: new Date().toISOString(),
+            })
+            .eq('id', item.product_id);
+        }
       }
     }
 

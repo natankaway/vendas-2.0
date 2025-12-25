@@ -338,9 +338,9 @@ async function getCustomersFromIndexedDB(params?: {
     return {
       data: paginatedCustomers.map(c => ({
         ...c,
-        credit_limit: 0,
-        total_purchases: 0,
-        is_active: true,
+        credit_limit: (c as any).credit_limit ?? 0,
+        total_purchases: (c as any).total_purchases ?? 0,
+        is_active: (c as any).is_active ?? true,
       })),
       total: customers.length,
       page,
@@ -829,6 +829,81 @@ export async function fetchSales(params?: {
       const data = await response.json();
       // Salva dados no IndexedDB para uso offline
       saveSalesToIndexedDB(data.data);
+
+      // Busca vendas offline não sincronizadas e adiciona ao resultado
+      const db = await getOfflineDb();
+      if (db) {
+        const unsyncedSales = await db.sales
+          .filter(s => (s as any)._synced === false)
+          .toArray();
+
+        if (unsyncedSales.length > 0) {
+          console.log('[OfflineData] ' + unsyncedSales.length + ' vendas não sincronizadas encontradas');
+
+          // Converte vendas offline para o formato esperado
+          const offlineSalesFormatted: Sale[] = await Promise.all(
+            unsyncedSales.map(async (sale) => {
+              const items = await db.saleItems.where('sale_id').equals(sale.id).toArray();
+              let customer = null;
+              if (sale.customer_id) {
+                const customerData = await db.customers.get(sale.customer_id);
+                if (customerData) {
+                  customer = {
+                    id: customerData.id,
+                    name: customerData.name,
+                    address: customerData.address || undefined,
+                    phone: customerData.phone || undefined,
+                  };
+                }
+              }
+              return {
+                id: sale.id,
+                receipt_number: (sale as any).receipt_number || sale.id.slice(0, 8).toUpperCase(),
+                customer_id: sale.customer_id,
+                customer_name: customer?.name || null,
+                customer,
+                user_id: sale.user_id || '',
+                user_name: null,
+                status: sale.status as 'pending' | 'completed' | 'cancelled',
+                subtotal: sale.subtotal,
+                discount_amount: sale.discount || 0,
+                tax_amount: 0,
+                total: sale.total,
+                payment_method: sale.payment_method,
+                notes: sale.notes,
+                created_at: sale.created_at,
+                completed_at: sale.updated_at,
+                items: items.map(item => ({
+                  id: item.id,
+                  product_id: item.product_id,
+                  product_name: item.product_name,
+                  quantity: item.quantity,
+                  unit: (item as any).unit || 'un',
+                  unit_price: item.unit_price,
+                  discount_amount: item.discount || 0,
+                  total: item.total,
+                })),
+                _offline: true,
+              };
+            })
+          );
+
+          // Mescla vendas da API com vendas offline (offline primeiro, mais recentes)
+          const apiSaleIds = new Set(data.data.map((s: Sale) => s.id));
+          const uniqueOfflineSales = offlineSalesFormatted.filter(s => !apiSaleIds.has(s.id));
+
+          // Ordena por data de criação (mais recentes primeiro)
+          const mergedSales = [...uniqueOfflineSales, ...data.data]
+            .sort((a, b) => new Date(b.created_at).getTime() - new Date(a.created_at).getTime());
+
+          return {
+            ...data,
+            data: mergedSales.slice(0, limit),
+            total: data.total + uniqueOfflineSales.length,
+          };
+        }
+      }
+
       return data;
     }
   } catch (error) {
@@ -1359,6 +1434,29 @@ export async function deleteCategory(id: string): Promise<{ success: boolean; er
   }
 }
 
+// ============ Helper para retry de operações IndexedDB ============
+
+async function withRetry<T>(
+  operation: () => Promise<T>,
+  maxRetries: number = 2,
+  delay: number = 100
+): Promise<T> {
+  let lastError: unknown;
+  for (let attempt = 0; attempt <= maxRetries; attempt++) {
+    try {
+      return await operation();
+    } catch (error) {
+      lastError = error;
+      if (attempt < maxRetries) {
+        console.log('[OfflineData] Tentativa ' + (attempt + 1) + ' falhou, retentando em ' + delay + 'ms...');
+        await new Promise(resolve => setTimeout(resolve, delay));
+        delay *= 2; // Backoff exponencial
+      }
+    }
+  }
+  throw lastError;
+}
+
 // ============ Operações Offline de Produtos ============
 
 export interface ProductData {
@@ -1415,49 +1513,51 @@ export async function createProduct(productData: ProductData): Promise<ProductRe
 }
 
 async function createProductOffline(productData: ProductData): Promise<ProductResult> {
-  const db = await getOfflineDb();
-  if (!db) {
-    return { success: false, error: 'Banco de dados offline não disponível' };
-  }
-
   try {
-    const { v4: uuidv4 } = await import('uuid');
-    const id = uuidv4();
-    const now = new Date().toISOString();
+    return await withRetry(async () => {
+      const db = await getOfflineDb();
+      if (!db) {
+        throw new Error('Banco de dados offline não disponível');
+      }
 
-    // Gera SKU único se não fornecido
-    const sku = productData.sku ?? ('OFF-' + Date.now().toString(36).toUpperCase());
+      const { v4: uuidv4 } = await import('uuid');
+      const id = uuidv4();
+      const now = new Date().toISOString();
 
-    const product = {
-      id,
-      name: productData.name,
-      description: productData.description ?? null,
-      sku,
-      barcode: productData.barcode ?? null,
-      category_id: productData.category_id ?? null,
-      price: productData.price,
-      cost_price: productData.cost_price ?? 0,
-      stock_quantity: productData.stock_quantity ?? 0,
-      min_stock_quantity: productData.min_stock_quantity ?? 0,
-      max_stock_quantity: productData.max_stock_quantity ?? null,
-      unit: productData.unit ?? 'un',
-      is_active: productData.is_active !== false && productData.is_active !== null,
-      is_weighable: productData.is_weighable ?? false,
-      allow_decimal_quantity: productData.allow_decimal_quantity ?? false,
-      tax_rate: productData.tax_rate ?? 0,
-      image_url: productData.image_url ?? null,
-      expiration_date: productData.expiration_date ?? null,
-      created_at: now,
-      updated_at: now,
-      _synced: false,
-      _last_sync: null,
-    };
+      // Gera SKU único se não fornecido
+      const sku = productData.sku ?? ('OFF-' + Date.now().toString(36).toUpperCase());
 
-    await db.products.add(product);
-    await db.addToSyncQueue('products', id, 'create', product);
+      const product = {
+        id,
+        name: productData.name,
+        description: productData.description ?? null,
+        sku,
+        barcode: productData.barcode ?? null,
+        category_id: productData.category_id ?? null,
+        price: productData.price,
+        cost_price: productData.cost_price ?? 0,
+        stock_quantity: productData.stock_quantity ?? 0,
+        min_stock_quantity: productData.min_stock_quantity ?? 0,
+        max_stock_quantity: productData.max_stock_quantity ?? null,
+        unit: productData.unit ?? 'un',
+        is_active: productData.is_active !== false && productData.is_active !== null,
+        is_weighable: productData.is_weighable ?? false,
+        allow_decimal_quantity: productData.allow_decimal_quantity ?? false,
+        tax_rate: productData.tax_rate ?? 0,
+        image_url: productData.image_url ?? null,
+        expiration_date: productData.expiration_date ?? null,
+        created_at: now,
+        updated_at: now,
+        _synced: false,
+        _last_sync: null,
+      };
 
-    console.log('[OfflineData] Produto criado offline: ' + id);
-    return { success: true, data: { ...product, id }, _offline: true };
+      await db.products.add(product);
+      await db.addToSyncQueue('products', id, 'create', product);
+
+      console.log('[OfflineData] Produto criado offline: ' + id);
+      return { success: true, data: { ...product, id }, _offline: true };
+    });
   } catch (error) {
     console.error('[OfflineData] Erro ao criar produto offline:', error);
     return { success: false, error: 'Erro ao criar produto offline' };
@@ -1490,46 +1590,48 @@ export async function updateProduct(id: string, productData: Partial<ProductData
 }
 
 async function updateProductOffline(id: string, productData: Partial<ProductData>): Promise<ProductResult> {
-  const db = await getOfflineDb();
-  if (!db) {
-    return { success: false, error: 'Banco de dados offline não disponível' };
-  }
-
   try {
-    const existing = await db.products.get(id);
-    if (!existing) {
-      return { success: false, error: 'Produto não encontrado' };
-    }
+    return await withRetry(async () => {
+      const db = await getOfflineDb();
+      if (!db) {
+        throw new Error('Banco de dados offline não disponível');
+      }
 
-    // Garante que campos numéricos não sejam null
-    const updated = {
-      ...existing,
-      name: productData.name ?? existing.name,
-      description: productData.description ?? existing.description,
-      sku: productData.sku ?? existing.sku,
-      barcode: productData.barcode ?? existing.barcode,
-      category_id: productData.category_id ?? existing.category_id,
-      price: productData.price ?? existing.price,
-      cost_price: productData.cost_price ?? existing.cost_price ?? 0,
-      stock_quantity: productData.stock_quantity ?? existing.stock_quantity ?? 0,
-      min_stock_quantity: productData.min_stock_quantity ?? existing.min_stock_quantity ?? 0,
-      max_stock_quantity: productData.max_stock_quantity ?? existing.max_stock_quantity,
-      unit: productData.unit ?? existing.unit ?? 'un',
-      is_active: productData.is_active ?? existing.is_active ?? true,
-      is_weighable: productData.is_weighable ?? existing.is_weighable ?? false,
-      allow_decimal_quantity: productData.allow_decimal_quantity ?? existing.allow_decimal_quantity ?? false,
-      tax_rate: productData.tax_rate ?? existing.tax_rate ?? 0,
-      image_url: productData.image_url ?? existing.image_url,
-      expiration_date: productData.expiration_date ?? existing.expiration_date,
-      updated_at: new Date().toISOString(),
-      _synced: false,
-    };
+      const existing = await db.products.get(id);
+      if (!existing) {
+        return { success: false, error: 'Produto não encontrado' };
+      }
 
-    await db.products.update(id, updated);
-    await db.addToSyncQueue('products', id, 'update', updated);
+      // Garante que campos numéricos não sejam null
+      const updated = {
+        ...existing,
+        name: productData.name ?? existing.name,
+        description: productData.description ?? existing.description,
+        sku: productData.sku ?? existing.sku,
+        barcode: productData.barcode ?? existing.barcode,
+        category_id: productData.category_id ?? existing.category_id,
+        price: productData.price ?? existing.price,
+        cost_price: productData.cost_price ?? existing.cost_price ?? 0,
+        stock_quantity: productData.stock_quantity ?? existing.stock_quantity ?? 0,
+        min_stock_quantity: productData.min_stock_quantity ?? existing.min_stock_quantity ?? 0,
+        max_stock_quantity: productData.max_stock_quantity ?? existing.max_stock_quantity,
+        unit: productData.unit ?? existing.unit ?? 'un',
+        is_active: productData.is_active ?? existing.is_active ?? true,
+        is_weighable: productData.is_weighable ?? existing.is_weighable ?? false,
+        allow_decimal_quantity: productData.allow_decimal_quantity ?? existing.allow_decimal_quantity ?? false,
+        tax_rate: productData.tax_rate ?? existing.tax_rate ?? 0,
+        image_url: productData.image_url ?? existing.image_url,
+        expiration_date: productData.expiration_date ?? existing.expiration_date,
+        updated_at: new Date().toISOString(),
+        _synced: false,
+      };
 
-    console.log('[OfflineData] Produto atualizado offline: ' + id);
-    return { success: true, data: updated as any, _offline: true };
+      await db.products.update(id, updated);
+      await db.addToSyncQueue('products', id, 'update', updated);
+
+      console.log('[OfflineData] Produto atualizado offline: ' + id);
+      return { success: true, data: updated as any, _offline: true };
+    });
   } catch (error) {
     console.error('[OfflineData] Erro ao atualizar produto offline:', error);
     return { success: false, error: 'Erro ao atualizar produto offline' };
@@ -1561,23 +1663,25 @@ export async function deleteProduct(id: string): Promise<{ success: boolean; err
     console.warn('[OfflineData] API falhou, deletando produto offline:', error);
   }
 
-  const db = await getOfflineDb();
-  if (!db) {
-    return { success: false, error: 'Banco de dados offline não disponível' };
-  }
-
   try {
-    // Marca como deletado em vez de remover (soft delete para sincronização)
-    const existing = await db.products.get(id);
-    if (existing) {
-      await db.products.update(id, {
-        is_active: false,
-        _synced: false,
-      });
-    }
-    await db.addToSyncQueue('products', id, 'delete', { id });
-    console.log('[OfflineData] Produto deletado offline: ' + id);
-    return { success: true, _offline: true };
+    return await withRetry(async () => {
+      const db = await getOfflineDb();
+      if (!db) {
+        throw new Error('Banco de dados offline não disponível');
+      }
+
+      // Marca como deletado em vez de remover (soft delete para sincronização)
+      const existing = await db.products.get(id);
+      if (existing) {
+        await db.products.update(id, {
+          is_active: false,
+          _synced: false,
+        });
+      }
+      await db.addToSyncQueue('products', id, 'delete', { id });
+      console.log('[OfflineData] Produto deletado offline: ' + id);
+      return { success: true, _offline: true };
+    });
   } catch (error) {
     return { success: false, error: 'Erro ao deletar produto offline' };
   }
