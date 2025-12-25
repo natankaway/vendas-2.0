@@ -1142,6 +1142,53 @@ async function updateCustomerOffline(id: string, customerData: Partial<CustomerD
   }
 }
 
+/**
+ * Deleta cliente - tenta API primeiro, fallback para offline
+ */
+export async function deleteCustomer(id: string): Promise<{ success: boolean; error?: string; _offline?: boolean }> {
+  try {
+    const response = await fetchWithTimeout('/api/clientes/' + id, {
+      method: 'DELETE',
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      // Remove do IndexedDB também
+      const db = await getOfflineDb();
+      if (db) {
+        await db.customers.delete(id);
+      }
+      return { success: true };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, deletando cliente offline:', error);
+  }
+
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    // Marca como inativo em vez de remover (soft delete para sincronização)
+    const existing = await db.customers.get(id);
+    if (existing) {
+      await db.customers.update(id, {
+        is_active: false,
+        _synced: false,
+      });
+    }
+    await db.addToSyncQueue('customers', id, 'delete', { id });
+    console.log('[OfflineData] Cliente deletado offline: ' + id);
+    return { success: true, _offline: true };
+  } catch (error) {
+    return { success: false, error: 'Erro ao deletar cliente offline' };
+  }
+}
+
 // ============ Operações Offline de Categorias ============
 
 export interface CategoryData {
@@ -1309,6 +1356,230 @@ export async function deleteCategory(id: string): Promise<{ success: boolean; er
     return { success: true, _offline: true };
   } catch (error) {
     return { success: false, error: 'Erro ao deletar categoria offline' };
+  }
+}
+
+// ============ Operações Offline de Produtos ============
+
+export interface ProductData {
+  id?: string;
+  name: string;
+  description?: string | null;
+  sku?: string | null;
+  barcode?: string | null;
+  category_id?: string | null;
+  price: number;
+  cost_price?: number | null;
+  stock_quantity?: number | null;
+  min_stock_quantity?: number | null;
+  max_stock_quantity?: number | null;
+  unit?: string | null;
+  is_active?: boolean | null;
+  is_weighable?: boolean | null;
+  allow_decimal_quantity?: boolean | null;
+  tax_rate?: number | null;
+  image_url?: string | null;
+  expiration_date?: string | null;
+}
+
+export interface ProductResult {
+  success: boolean;
+  data?: ProductData & { id: string };
+  error?: string;
+  _offline?: boolean;
+}
+
+/**
+ * Cria produto - tenta API primeiro, fallback para offline
+ */
+export async function createProduct(productData: ProductData): Promise<ProductResult> {
+  try {
+    const response = await fetchWithTimeout('/api/produtos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(productData),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, criando produto offline:', error);
+  }
+
+  return createProductOffline(productData);
+}
+
+async function createProductOffline(productData: ProductData): Promise<ProductResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const { v4: uuidv4 } = await import('uuid');
+    const id = uuidv4();
+    const now = new Date().toISOString();
+
+    // Gera SKU único se não fornecido
+    const sku = productData.sku ?? ('OFF-' + Date.now().toString(36).toUpperCase());
+
+    const product = {
+      id,
+      name: productData.name,
+      description: productData.description ?? null,
+      sku,
+      barcode: productData.barcode ?? null,
+      category_id: productData.category_id ?? null,
+      price: productData.price,
+      cost_price: productData.cost_price ?? 0,
+      stock_quantity: productData.stock_quantity ?? 0,
+      min_stock_quantity: productData.min_stock_quantity ?? 0,
+      max_stock_quantity: productData.max_stock_quantity ?? null,
+      unit: productData.unit ?? 'un',
+      is_active: productData.is_active !== false && productData.is_active !== null,
+      is_weighable: productData.is_weighable ?? false,
+      allow_decimal_quantity: productData.allow_decimal_quantity ?? false,
+      tax_rate: productData.tax_rate ?? 0,
+      image_url: productData.image_url ?? null,
+      expiration_date: productData.expiration_date ?? null,
+      created_at: now,
+      updated_at: now,
+      _synced: false,
+      _last_sync: null,
+    };
+
+    await db.products.add(product);
+    await db.addToSyncQueue('products', id, 'create', product);
+
+    console.log('[OfflineData] Produto criado offline: ' + id);
+    return { success: true, data: { ...product, id }, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao criar produto offline:', error);
+    return { success: false, error: 'Erro ao criar produto offline' };
+  }
+}
+
+/**
+ * Atualiza produto - tenta API primeiro, fallback para offline
+ */
+export async function updateProduct(id: string, productData: Partial<ProductData>): Promise<ProductResult> {
+  try {
+    const response = await fetchWithTimeout('/api/produtos/' + id, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(productData),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, atualizando produto offline:', error);
+  }
+
+  return updateProductOffline(id, productData);
+}
+
+async function updateProductOffline(id: string, productData: Partial<ProductData>): Promise<ProductResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const existing = await db.products.get(id);
+    if (!existing) {
+      return { success: false, error: 'Produto não encontrado' };
+    }
+
+    // Garante que campos numéricos não sejam null
+    const updated = {
+      ...existing,
+      name: productData.name ?? existing.name,
+      description: productData.description ?? existing.description,
+      sku: productData.sku ?? existing.sku,
+      barcode: productData.barcode ?? existing.barcode,
+      category_id: productData.category_id ?? existing.category_id,
+      price: productData.price ?? existing.price,
+      cost_price: productData.cost_price ?? existing.cost_price ?? 0,
+      stock_quantity: productData.stock_quantity ?? existing.stock_quantity ?? 0,
+      min_stock_quantity: productData.min_stock_quantity ?? existing.min_stock_quantity ?? 0,
+      max_stock_quantity: productData.max_stock_quantity ?? existing.max_stock_quantity,
+      unit: productData.unit ?? existing.unit ?? 'un',
+      is_active: productData.is_active ?? existing.is_active ?? true,
+      is_weighable: productData.is_weighable ?? existing.is_weighable ?? false,
+      allow_decimal_quantity: productData.allow_decimal_quantity ?? existing.allow_decimal_quantity ?? false,
+      tax_rate: productData.tax_rate ?? existing.tax_rate ?? 0,
+      image_url: productData.image_url ?? existing.image_url,
+      expiration_date: productData.expiration_date ?? existing.expiration_date,
+      updated_at: new Date().toISOString(),
+      _synced: false,
+    };
+
+    await db.products.update(id, updated);
+    await db.addToSyncQueue('products', id, 'update', updated);
+
+    console.log('[OfflineData] Produto atualizado offline: ' + id);
+    return { success: true, data: updated as any, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao atualizar produto offline:', error);
+    return { success: false, error: 'Erro ao atualizar produto offline' };
+  }
+}
+
+/**
+ * Deleta produto - tenta API primeiro, fallback para offline
+ */
+export async function deleteProduct(id: string): Promise<{ success: boolean; error?: string; _offline?: boolean }> {
+  try {
+    const response = await fetchWithTimeout('/api/produtos/' + id, {
+      method: 'DELETE',
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      // Remove do IndexedDB também
+      const db = await getOfflineDb();
+      if (db) {
+        await db.products.delete(id);
+      }
+      return { success: true };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, deletando produto offline:', error);
+  }
+
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    // Marca como deletado em vez de remover (soft delete para sincronização)
+    const existing = await db.products.get(id);
+    if (existing) {
+      await db.products.update(id, {
+        is_active: false,
+        _synced: false,
+      });
+    }
+    await db.addToSyncQueue('products', id, 'delete', { id });
+    console.log('[OfflineData] Produto deletado offline: ' + id);
+    return { success: true, _offline: true };
+  } catch (error) {
+    return { success: false, error: 'Erro ao deletar produto offline' };
   }
 }
 

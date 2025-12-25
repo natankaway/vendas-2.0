@@ -26,7 +26,7 @@ import {
   XCircle,
   WifiOff,
 } from 'lucide-react';
-import { fetchProducts, fetchCategories } from '@/lib/services/offline-data-service';
+import { fetchProducts, fetchCategories, createProduct, updateProduct, deleteProduct } from '@/lib/services/offline-data-service';
 import { useConnectionStore } from '@/lib/stores/connection-store';
 
 // Tipos
@@ -226,18 +226,25 @@ export default function ProdutosPage() {
         tax_rate: parseFloat(data.tax_rate || '0'),
         expiration_date: data.expiration_date || null,
       };
-      const url = editingProduct ? `/api/produtos/${editingProduct.id}` : '/api/produtos';
-      const method = editingProduct ? 'PUT' : 'POST';
-      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-      if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.error || 'Erro ao salvar produto');
+
+      // Usa funções com suporte offline
+      let result;
+      if (editingProduct) {
+        result = await updateProduct(editingProduct.id, payload);
+      } else {
+        result = await createProduct(payload);
       }
-      return res.json();
+
+      if (!result.success) {
+        throw new Error(result.error || 'Erro ao salvar produto');
+      }
+
+      return result;
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['products'] });
-      showToast('success', editingProduct ? 'Produto atualizado com sucesso!' : 'Produto cadastrado com sucesso!');
+      const offlineMsg = result._offline ? ' (salvo offline)' : '';
+      showToast('success', editingProduct ? `Produto atualizado${offlineMsg}!` : `Produto cadastrado${offlineMsg}!`);
       closeModal();
     },
     onError: (error: Error) => {
@@ -247,16 +254,19 @@ export default function ProdutosPage() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const res = await fetch(`/api/produtos/${id}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error('Erro ao excluir produto');
-      return res.json();
+      const result = await deleteProduct(id);
+      if (!result.success) {
+        throw new Error(result.error || 'Erro ao excluir produto');
+      }
+      return result;
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['products'] });
-      showToast('success', 'Produto excluído com sucesso!');
+      const offlineMsg = result._offline ? ' (será sincronizado)' : '';
+      showToast('success', `Produto excluído${offlineMsg}!`);
     },
-    onError: () => {
-      showToast('error', 'Erro ao excluir produto');
+    onError: (error: Error) => {
+      showToast('error', error.message || 'Erro ao excluir produto');
     },
   });
 
@@ -346,8 +356,7 @@ export default function ProdutosPage() {
         </div>
         <button
           onClick={() => openModal()}
-          disabled={showOfflineBanner}
-          className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium text-sm disabled:opacity-50 disabled:cursor-not-allowed"
+          className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl hover:bg-blue-700 transition-colors font-medium text-sm"
         >
           <Plus className="w-4 h-4" />
           Novo

@@ -31,6 +31,7 @@ import {
   fetchCustomers,
   createCustomer as createCustomerOffline,
   updateCustomer as updateCustomerOffline,
+  deleteCustomer as deleteCustomerOffline,
 } from '@/lib/services/offline-data-service';
 import { useConnectionStore } from '@/lib/stores/connection-store';
 import { toast } from '@/components/ui/use-toast';
@@ -222,15 +223,26 @@ export default function ClientesPage() {
 
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const res = await fetch(`/api/clientes/${id}`, { method: 'DELETE' });
-      if (!res.ok) throw new Error('Erro ao excluir cliente');
-      return res.json();
+      const result = await deleteCustomerOffline(id);
+      if (!result.success) {
+        throw new Error(result.error || 'Erro ao excluir cliente');
+      }
+      return result;
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['customers'] });
       toast({
-        title: 'Cliente excluído',
-        description: 'O cliente foi removido com sucesso.',
+        title: result._offline ? 'Exclusão salva offline' : 'Cliente excluído',
+        description: result._offline
+          ? 'Será sincronizado quando a conexão voltar.'
+          : 'O cliente foi removido com sucesso.',
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: 'Erro',
+        description: error.message,
+        variant: 'destructive',
       });
     },
   });

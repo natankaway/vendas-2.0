@@ -275,7 +275,7 @@ async function syncCategory(operation: string, data: Record<string, unknown>): P
 }
 
 /**
- * Sincroniza produto (movimentação de estoque)
+ * Sincroniza produto (CRUD e movimentação de estoque)
  */
 async function syncProduct(operation: string, data: Record<string, unknown>): Promise<void> {
   if (operation === 'stock_movement') {
@@ -288,6 +288,52 @@ async function syncProduct(operation: string, data: Record<string, unknown>): Pr
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.error || 'Erro ao sincronizar movimentação');
+    }
+  } else if (operation === 'create') {
+    const response = await fetch('/api/produtos', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Erro ao criar produto');
+    }
+
+    const db = await getOfflineDb();
+    if (db && data.id) {
+      await db.products.update(data.id as string, { _synced: true, _last_sync: new Date().toISOString() });
+    }
+  } else if (operation === 'update') {
+    const response = await fetch('/api/produtos/' + data.id, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Erro ao atualizar produto');
+    }
+
+    const db = await getOfflineDb();
+    if (db && data.id) {
+      await db.products.update(data.id as string, { _synced: true, _last_sync: new Date().toISOString() });
+    }
+  } else if (operation === 'delete') {
+    const response = await fetch('/api/produtos/' + data.id, {
+      method: 'DELETE',
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Erro ao deletar produto');
+    }
+
+    const db = await getOfflineDb();
+    if (db && data.id) {
+      await db.products.delete(data.id as string);
     }
   }
 }
