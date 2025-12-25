@@ -2,6 +2,7 @@
  * Página de Gestão de Estoque
  *
  * Visualização de estoque, alertas e movimentações.
+ * Suporte offline para visualização de dados.
  */
 
 'use client';
@@ -25,7 +26,10 @@ import {
   ArrowDownCircle,
   RotateCcw,
   Trash2,
+  WifiOff,
 } from 'lucide-react';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
+import { fetchProducts } from '@/lib/services/offline-data-service';
 
 interface Product {
   id: string;
@@ -71,32 +75,38 @@ export default function EstoquePage() {
   const [movementQuantity, setMovementQuantity] = useState('');
   const [movementReason, setMovementReason] = useState('');
 
+  // Hook de status de conexão
+  const { isOnline, isOffline, status: connectionStatus } = useOnlineStatus();
+
   // Fetch low stock alerts
   const { data: alertsData } = useQuery({
-    queryKey: ['stock-alerts'],
+    queryKey: ['stock-alerts', connectionStatus],
     queryFn: async () => {
       const res = await fetch('/api/estoque/movimentacoes?low_stock=true');
       const data = await res.json();
       return data.data as LowStockData;
     },
+    enabled: isOnline,
   });
 
-  // Fetch all products
+  // Fetch all products - usando serviço offline
   const { data: productsData, isLoading: loadingProducts } = useQuery({
-    queryKey: ['products-stock'],
-    queryFn: async () => {
-      const res = await fetch('/api/produtos?limit=500');
-      return res.json();
-    },
+    queryKey: ['products-stock', connectionStatus],
+    queryFn: () => fetchProducts({ limit: 500 }),
   });
 
-  // Fetch recent movements
+  // Verificar se os dados são offline
+  const isProductsOffline = productsData?._offline === true;
+  const showOfflineBanner = isOffline || isProductsOffline;
+
+  // Fetch recent movements (apenas online)
   const { data: movementsData } = useQuery({
-    queryKey: ['stock-movements'],
+    queryKey: ['stock-movements', connectionStatus],
     queryFn: async () => {
       const res = await fetch('/api/estoque/movimentacoes?limit=20');
       return res.json();
     },
+    enabled: isOnline,
   });
 
   // Create movement mutation
@@ -151,6 +161,14 @@ export default function EstoquePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-6">
       <div className="max-w-7xl mx-auto">
+        {/* Offline Banner */}
+        {showOfflineBanner && (
+          <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
+            <WifiOff className="h-4 w-4" />
+            <span>Modo Offline - Visualização de estoque disponível, movimentações requerem conexão</span>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
           <div>
@@ -263,8 +281,9 @@ export default function EstoquePage() {
 
                           <button
                             onClick={() => setShowMovementModal(product)}
-                            className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
-                            title="Ajustar estoque"
+                            disabled={isOffline}
+                            className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                            title={isOffline ? "Requer conexão" : "Ajustar estoque"}
                           >
                             <RefreshCw className="w-4 h-4" />
                           </button>

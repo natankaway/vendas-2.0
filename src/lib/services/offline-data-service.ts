@@ -430,3 +430,305 @@ export async function hasOfflineData(): Promise<boolean> {
   if (!db) return false;
   return await db.isPopulated();
 }
+
+// ============ Configurações da Empresa ============
+
+export interface CompanySettingsResponse {
+  data: {
+    name: string;
+    logo: string | null;
+    address: string;
+    phone: string;
+    document: string;
+  };
+  _offline?: boolean;
+}
+
+/**
+ * Busca configurações da empresa - tenta API primeiro, fallback para IndexedDB
+ */
+export async function fetchCompanySettings(): Promise<CompanySettingsResponse> {
+  // Sempre tenta API primeiro
+  try {
+    const response = await fetchWithTimeout('/api/configuracoes/empresa', {}, 5000);
+
+    if (response.ok) {
+      const result = await response.json();
+      // Salva dados no IndexedDB para uso offline
+      saveCompanySettingsToIndexedDB(result.data);
+      return { data: result.data };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, usando IndexedDB:', error);
+  }
+
+  // Fallback para IndexedDB
+  return getCompanySettingsFromIndexedDB();
+}
+
+async function getCompanySettingsFromIndexedDB(): Promise<CompanySettingsResponse> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return {
+      data: { name: '', logo: null, address: '', phone: '', document: '' },
+      _offline: true,
+    };
+  }
+
+  console.log('[OfflineData] Buscando configurações do IndexedDB');
+
+  try {
+    const settings = await db.config.get('company_settings');
+    if (settings?.value) {
+      return {
+        data: settings.value as CompanySettingsResponse['data'],
+        _offline: true,
+      };
+    }
+  } catch (error) {
+    console.error('[OfflineData] Erro ao buscar configurações do IndexedDB:', error);
+  }
+
+  return {
+    data: { name: '', logo: null, address: '', phone: '', document: '' },
+    _offline: true,
+  };
+}
+
+async function saveCompanySettingsToIndexedDB(settings: CompanySettingsResponse['data']): Promise<void> {
+  if (!settings) return;
+
+  const db = await getOfflineDb();
+  if (!db) return;
+
+  try {
+    await db.setConfig('company_settings', settings);
+    console.log('[OfflineData] Configurações da empresa salvas no IndexedDB');
+  } catch (error) {
+    console.error('[OfflineData] Erro ao salvar configurações no IndexedDB:', error);
+  }
+}
+
+// ============ Vendas Offline ============
+
+export interface OfflineSaleData {
+  customer_id: string | null;
+  user_id: string | null;
+  items: Array<{
+    product_id: string;
+    product_name: string;
+    quantity: number;
+    unit_price: number;
+    unit: string;
+    discount_amount: number;
+    discount_percent: number;
+    notes: string | null;
+  }>;
+  discount_amount: number;
+  payment_method: string;
+  payment_details: Record<string, unknown>;
+}
+
+export interface OfflineSaleResult {
+  success: boolean;
+  data?: {
+    id: string;
+    receipt_number: string;
+    total: number;
+    subtotal: number;
+    discount_amount: number;
+    items: Array<{
+      id: string;
+      product_id: string;
+      product_name: string;
+      quantity: number;
+      unit_price: number;
+      unit: string;
+      total: number;
+    }>;
+    created_at: string;
+    _offline: boolean;
+  };
+  error?: string;
+}
+
+/**
+ * Gera número de recibo único para vendas offline
+ */
+function generateOfflineReceiptNumber(): string {
+  const date = new Date();
+  const year = date.getFullYear().toString().slice(-2);
+  const month = (date.getMonth() + 1).toString().padStart(2, '0');
+  const day = date.getDate().toString().padStart(2, '0');
+  const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+  return `OFF-${year}${month}${day}-${random}`;
+}
+
+/**
+ * Cria venda - tenta API primeiro, fallback para criação offline
+ */
+export async function createSale(saleData: OfflineSaleData): Promise<OfflineSaleResult> {
+  // Sempre tenta API primeiro
+  try {
+    const response = await fetchWithTimeout('/api/vendas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(saleData),
+    }, 10000);
+
+    const result = await response.json();
+
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+
+    // Se a API retornou erro de validação, retorna o erro
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, criando venda offline:', error);
+  }
+
+  // Fallback para criação offline
+  return createOfflineSale(saleData);
+}
+
+async function createOfflineSale(saleData: OfflineSaleData): Promise<OfflineSaleResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  console.log('[OfflineData] Criando venda offline');
+
+  try {
+    const { v4: uuidv4 } = await import('uuid');
+    const saleId = uuidv4();
+    const receiptNumber = generateOfflineReceiptNumber();
+    const now = new Date().toISOString();
+
+    // Calcula totais
+    let subtotal = 0;
+    const saleItems = [];
+
+    for (const item of saleData.items) {
+      const itemTotal = item.quantity * item.unit_price;
+      const itemDiscount = item.discount_amount || 0;
+      subtotal += itemTotal - itemDiscount;
+
+      saleItems.push({
+        id: uuidv4(),
+        sale_id: saleId,
+        product_id: item.product_id,
+        product_name: item.product_name,
+        quantity: item.quantity,
+        unit_price: item.unit_price,
+        discount: itemDiscount,
+        total: itemTotal - itemDiscount,
+        unit: item.unit,
+        created_at: now,
+        _synced: false,
+      });
+    }
+
+    const total = subtotal - (saleData.discount_amount || 0);
+
+    // Salva a venda no IndexedDB
+    await db.transaction('rw', [db.sales, db.saleItems, db.products, db.syncQueue], async () => {
+      // Salva a venda
+      await db.sales.add({
+        id: saleId,
+        customer_id: saleData.customer_id,
+        user_id: saleData.user_id,
+        subtotal,
+        discount: saleData.discount_amount || 0,
+        total,
+        payment_method: saleData.payment_method,
+        payment_status: saleData.payment_method === 'pay_later' ? 'pending' : 'paid',
+        status: saleData.payment_method === 'pay_later' ? 'pending' : 'completed',
+        notes: null,
+        cash_register_id: null,
+        created_at: now,
+        updated_at: now,
+        _synced: false,
+        _last_sync: null,
+        _local_id: saleId,
+        receipt_number: receiptNumber,
+      } as any);
+
+      // Salva os itens
+      for (const item of saleItems) {
+        await db.saleItems.add(item as any);
+
+        // Atualiza estoque local
+        const product = await db.products.get(item.product_id);
+        if (product) {
+          await db.products.update(item.product_id, {
+            stock_quantity: Math.max(0, product.stock_quantity - item.quantity),
+            _synced: false,
+          });
+        }
+      }
+
+      // Adiciona à fila de sincronização
+      await db.addToSyncQueue('sales', saleId, 'create', {
+        sale: {
+          ...saleData,
+          id: saleId,
+          receipt_number: receiptNumber,
+          subtotal,
+          discount: saleData.discount_amount || 0,
+          total,
+          created_at: now,
+        },
+        items: saleItems,
+      });
+    });
+
+    console.log(`[OfflineData] Venda offline criada: ${receiptNumber}`);
+
+    return {
+      success: true,
+      data: {
+        id: saleId,
+        receipt_number: receiptNumber,
+        total,
+        subtotal,
+        discount_amount: saleData.discount_amount || 0,
+        items: saleItems.map(item => ({
+          id: item.id,
+          product_id: item.product_id,
+          product_name: item.product_name,
+          quantity: item.quantity,
+          unit_price: item.unit_price,
+          unit: item.unit,
+          total: item.total,
+        })),
+        created_at: now,
+        _offline: true,
+      },
+    };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao criar venda offline:', error);
+    return { success: false, error: 'Erro ao criar venda offline' };
+  }
+}
+
+/**
+ * Obtém contagem de vendas pendentes de sincronização
+ */
+export async function getPendingSalesCount(): Promise<number> {
+  const db = await getOfflineDb();
+  if (!db) return 0;
+
+  try {
+    return await db.syncQueue
+      .where('entity_type')
+      .equals('sales')
+      .and(item => item.status === 'pending')
+      .count();
+  } catch (error) {
+    return 0;
+  }
+}

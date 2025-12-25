@@ -28,8 +28,11 @@ import {
   Smartphone,
   Clock,
   Check,
+  WifiOff,
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
+import { fetchCompanySettings } from '@/lib/services/offline-data-service';
 
 // Tipos
 interface SaleItem {
@@ -124,25 +127,20 @@ export default function VendasPage() {
   });
   const perPage = 20;
 
-  // Load company settings from database
-  const { data: companySettings } = useQuery({
-    queryKey: ['company-settings'],
-    queryFn: async () => {
-      const res = await fetch('/api/configuracoes/empresa');
-      const data = await res.json();
-      return data.data as {
-        name: string;
-        logo: string | null;
-        address: string;
-        phone: string;
-        document: string;
-      };
-    },
+  // Hook de status de conexão
+  const { isOnline, isOffline, status: connectionStatus } = useOnlineStatus();
+
+  // Load company settings from database - usando serviço offline
+  const { data: companySettingsData } = useQuery({
+    queryKey: ['company-settings', connectionStatus],
+    queryFn: fetchCompanySettings,
     staleTime: 60000,
   });
 
+  const companySettings = companySettingsData?.data;
+
   const { data: salesData, isLoading } = useQuery({
-    queryKey: ['sales', search, searchType, page, filters],
+    queryKey: ['sales', search, searchType, page, filters, connectionStatus],
     queryFn: async () => {
       const params = new URLSearchParams({
         page: String(page),
@@ -162,6 +160,7 @@ export default function VendasPage() {
     },
     staleTime: 0,
     refetchOnWindowFocus: true,
+    enabled: isOnline,
   });
 
   // Mutation para registrar pagamento
@@ -500,6 +499,14 @@ export default function VendasPage() {
 
   return (
     <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
+      {/* Offline Banner */}
+      {isOffline && (
+        <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
+          <WifiOff className="h-4 w-4" />
+          <span>Modo Offline - Histórico de vendas requer conexão</span>
+        </div>
+      )}
+
       {/* Header */}
       <div className="mb-4">
         <h1 className="text-xl sm:text-2xl font-bold text-gray-900">Vendas</h1>
@@ -714,8 +721,9 @@ export default function VendasPage() {
                           {isPending && (
                             <button
                               onClick={() => openPaymentModal(sale)}
-                              className="p-1.5 text-white bg-green-600 hover:bg-green-700 rounded-lg"
-                              title="Receber Pagamento"
+                              disabled={isOffline}
+                              className="p-1.5 text-white bg-green-600 hover:bg-green-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                              title={isOffline ? "Requer conexão" : "Receber Pagamento"}
                             >
                               <DollarSign className="w-4 h-4" />
                             </button>
@@ -780,10 +788,11 @@ export default function VendasPage() {
                     {isPending && (
                       <button
                         onClick={() => openPaymentModal(sale)}
-                        className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg"
+                        disabled={isOffline}
+                        className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
                       >
                         <DollarSign className="w-3 h-3" />
-                        Receber
+                        {isOffline ? 'Offline' : 'Receber'}
                       </button>
                     )}
                   </div>
@@ -948,10 +957,11 @@ export default function VendasPage() {
                     closeReceipt();
                     openPaymentModal(selectedSale);
                   }}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-yellow-500 text-white rounded-xl font-medium"
+                  disabled={isOffline}
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-yellow-500 text-white rounded-xl font-medium disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <DollarSign className="w-4 h-4" />
-                  Receber Pagamento
+                  {isOffline ? 'Requer Conexão' : 'Receber Pagamento'}
                 </button>
               )}
               <button

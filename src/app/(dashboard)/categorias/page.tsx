@@ -22,8 +22,11 @@ import {
   Tag,
   MoreVertical,
   Hash,
+  WifiOff,
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
+import { fetchCategories } from '@/lib/services/offline-data-service';
 
 // Tipos
 interface Category {
@@ -78,14 +81,18 @@ export default function CategoriasPage() {
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(null);
 
-  // Fetch categories
+  // Hook de status de conexão
+  const { isOnline, isOffline, status: connectionStatus } = useOnlineStatus();
+
+  // Fetch categories - usando serviço offline
   const { data: categoriesData, isLoading } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const res = await fetch('/api/categorias');
-      return res.json();
-    },
+    queryKey: ['categories', connectionStatus],
+    queryFn: fetchCategories,
   });
+
+  // Verificar se os dados são offline
+  const isCategoriesOffline = categoriesData?._offline === true;
+  const showOfflineBanner = isOffline || isCategoriesOffline;
 
   const categories: Category[] = categoriesData?.data || [];
   const filteredCategories = categories.filter(
@@ -226,6 +233,14 @@ export default function CategoriasPage() {
   return (
     <div className="min-h-screen bg-gray-50 overflow-x-hidden">
       <div className="p-3 sm:p-6 max-w-7xl mx-auto">
+        {/* Offline Banner */}
+        {showOfflineBanner && (
+          <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
+            <WifiOff className="h-4 w-4" />
+            <span>Modo Offline - Visualização disponível, alterações requerem conexão</span>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6">
           <div className="min-w-0">
@@ -235,7 +250,8 @@ export default function CategoriasPage() {
           {/* Desktop Button */}
           <button
             onClick={() => openModal()}
-            className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex-shrink-0"
+            disabled={isOffline}
+            className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <Plus className="w-5 h-5" />
             Nova Categoria
@@ -358,15 +374,17 @@ export default function CategoriasPage() {
                       <div className="flex items-center justify-center gap-2">
                         <button
                           onClick={() => openModal(category)}
-                          className="p-1 text-blue-600 hover:bg-blue-50 rounded"
-                          title="Editar"
+                          disabled={isOffline}
+                          className="p-1 text-blue-600 hover:bg-blue-50 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                          title={isOffline ? "Requer conexão" : "Editar"}
                         >
                           <Edit className="w-5 h-5" />
                         </button>
                         <button
                           onClick={() => handleDelete(category)}
-                          className="p-1 text-red-600 hover:bg-red-50 rounded"
-                          title="Excluir"
+                          disabled={isOffline}
+                          className="p-1 text-red-600 hover:bg-red-50 rounded disabled:opacity-50 disabled:cursor-not-allowed"
+                          title={isOffline ? "Requer conexão" : "Excluir"}
                         >
                           <Trash2 className="w-5 h-5" />
                         </button>
@@ -448,7 +466,8 @@ export default function CategoriasPage() {
         {/* FAB - Mobile */}
         <button
           onClick={() => openModal()}
-          className="sm:hidden fixed bottom-4 right-4 z-30 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center"
+          disabled={isOffline}
+          className="sm:hidden fixed bottom-4 right-4 z-30 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
         >
           <Plus className="w-6 h-6" />
         </button>
@@ -484,27 +503,29 @@ export default function CategoriasPage() {
               <div className="p-2">
                 <button
                   onClick={() => openModal(selectedCategory)}
-                  className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg text-left"
+                  disabled={isOffline}
+                  className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="p-2 bg-blue-100 rounded-lg">
                     <Edit className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">Editar categoria</p>
-                    <p className="text-sm text-gray-500">Alterar nome, cor e descrição</p>
+                    <p className="text-sm text-gray-500">{isOffline ? 'Requer conexão' : 'Alterar nome, cor e descrição'}</p>
                   </div>
                 </button>
 
                 <button
                   onClick={() => handleDelete(selectedCategory)}
-                  className="w-full flex items-center gap-3 p-3 hover:bg-red-50 rounded-lg text-left"
+                  disabled={isOffline}
+                  className="w-full flex items-center gap-3 p-3 hover:bg-red-50 rounded-lg text-left disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <div className="p-2 bg-red-100 rounded-lg">
                     <Trash2 className="w-5 h-5 text-red-600" />
                   </div>
                   <div>
                     <p className="font-medium text-red-600">Excluir categoria</p>
-                    <p className="text-sm text-gray-500">Remover permanentemente</p>
+                    <p className="text-sm text-gray-500">{isOffline ? 'Requer conexão' : 'Remover permanentemente'}</p>
                   </div>
                 </button>
               </div>

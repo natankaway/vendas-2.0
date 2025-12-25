@@ -2,6 +2,7 @@
  * Página de Gestão de Caixa
  *
  * Permite abertura, fechamento, sangria e suprimento de caixa.
+ * Suporte offline para visualização de dados.
  */
 
 'use client';
@@ -27,8 +28,10 @@ import {
   Minus,
   RefreshCw,
   Receipt,
+  WifiOff,
 } from 'lucide-react';
 import { CashRegister, CashMovement } from '@/lib/types';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
 
 interface CashRegisterWithSummary extends CashRegister {
   user_name?: string;
@@ -42,6 +45,7 @@ interface CashRegisterWithSummary extends CashRegister {
 
 export default function CaixaPage() {
   const queryClient = useQueryClient();
+  const { isOnline, isOffline, status: connectionStatus } = useOnlineStatus();
   const [userId] = useState('admin-001'); // TODO: Get from auth context
 
   // Modal states
@@ -183,6 +187,14 @@ export default function CaixaPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-3 sm:p-6">
       <div className="max-w-6xl mx-auto">
+        {/* Banner Offline */}
+        {isOffline && (
+          <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
+            <WifiOff className="h-4 w-4" />
+            <span>Modo Offline - Operações de caixa requerem conexão</span>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-6">
           <div>
@@ -194,7 +206,8 @@ export default function CaixaPage() {
 
           <button
             onClick={() => refetch()}
-            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 rounded-xl transition-colors"
+            disabled={isOffline}
+            className="flex items-center gap-2 px-3 py-2 text-sm text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-gray-800 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <RefreshCw className="w-4 h-4" />
             Atualizar
@@ -217,7 +230,8 @@ export default function CaixaPage() {
             </p>
             <button
               onClick={() => setShowOpenModal(true)}
-              className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg font-medium text-sm sm:text-base"
+              disabled={isOffline}
+              className="inline-flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:from-green-700 hover:to-emerald-700 transition-all shadow-lg font-medium text-sm sm:text-base disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Unlock className="w-5 h-5" />
               Abrir Caixa
@@ -248,7 +262,8 @@ export default function CaixaPage() {
                 <div className="grid grid-cols-3 gap-2 sm:flex sm:flex-wrap sm:gap-3">
                   <button
                     onClick={() => setShowMovementModal('supply')}
-                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors text-xs sm:text-sm"
+                    disabled={isOffline}
+                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors text-xs sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Plus className="w-4 h-4" />
                     <span className="hidden xs:inline">Suprimento</span>
@@ -256,7 +271,8 @@ export default function CaixaPage() {
                   </button>
                   <button
                     onClick={() => setShowMovementModal('withdrawal')}
-                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors text-xs sm:text-sm"
+                    disabled={isOffline}
+                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl transition-colors text-xs sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Minus className="w-4 h-4" />
                     <span className="hidden xs:inline">Sangria</span>
@@ -264,7 +280,8 @@ export default function CaixaPage() {
                   </button>
                   <button
                     onClick={() => setShowCloseModal(true)}
-                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-red-500 hover:bg-red-600 rounded-xl transition-colors text-xs sm:text-sm"
+                    disabled={isOffline}
+                    className="flex items-center justify-center gap-1 sm:gap-2 px-2 sm:px-4 py-2 bg-red-500 hover:bg-red-600 rounded-xl transition-colors text-xs sm:text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     <Lock className="w-4 h-4" />
                     <span className="hidden xs:inline">Fechar Caixa</span>

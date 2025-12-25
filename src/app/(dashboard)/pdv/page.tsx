@@ -3,6 +3,7 @@
  *
  * Esta é a interface principal de vendas do sistema.
  * Layout totalmente responsivo para desktop, tablet e mobile.
+ * Funciona offline usando IndexedDB para dados e fila de sincronização.
  */
 
 'use client';
@@ -23,6 +24,8 @@ import {
   Printer,
   ShoppingBag,
   Clock,
+  WifiOff,
+  CloudOff,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -40,6 +43,15 @@ import { useAuthStore } from '@/lib/stores/auth-store';
 import { useSidebarStore } from '@/lib/stores/sidebar-store';
 import { formatCurrency, cn, debounce } from '@/lib/utils';
 import type { Product, Customer } from '@/lib/types';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
+import {
+  fetchProducts,
+  fetchCategories,
+  fetchCustomers,
+  fetchCompanySettings,
+  createSale,
+  type OfflineSaleData,
+} from '@/lib/services/offline-data-service';
 
 // =============================================================================
 // COMPONENTES AUXILIARES
@@ -213,6 +225,7 @@ export default function PDVPage() {
   const queryClient = useQueryClient();
   const { user } = useAuthStore();
   const { isCollapsed: sidebarCollapsed } = useSidebarStore();
+  const { isOnline, isOffline, status: connectionStatus } = useOnlineStatus();
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   const [searchQuery, setSearchQuery] = useState('');
@@ -225,22 +238,14 @@ export default function PDVPage() {
   const [lastSale, setLastSale] = useState<any>(null);
   const [cashReceived, setCashReceived] = useState('');
 
-  // Load company settings from database
-  const { data: companySettings } = useQuery({
-    queryKey: ['company-settings'],
-    queryFn: async () => {
-      const res = await fetch('/api/configuracoes/empresa');
-      const data = await res.json();
-      return data.data as {
-        name: string;
-        logo: string | null;
-        address: string;
-        phone: string;
-        document: string;
-      };
-    },
+  // Load company settings from database (with offline support)
+  const { data: companySettingsData } = useQuery({
+    queryKey: ['company-settings', connectionStatus],
+    queryFn: () => fetchCompanySettings(),
     staleTime: 60000,
   });
+
+  const companySettings = companySettingsData?.data;
 
   const {
     items,
@@ -258,67 +263,57 @@ export default function PDVPage() {
     clearCart,
   } = useCartStore();
 
+  // Fetch products with offline support
   const { data: productsData, isLoading: loadingProducts } = useQuery({
-    queryKey: ['products', 'pdv', searchQuery, selectedCategory],
-    queryFn: async () => {
-      const params = new URLSearchParams();
-      if (searchQuery) params.set('search', searchQuery);
-      if (selectedCategory) params.set('category', selectedCategory);
-      params.set('active', 'true');
-
-      const response = await fetch(`/api/produtos?${params}`);
-      if (!response.ok) throw new Error('Erro ao buscar produtos');
-      return response.json();
-    },
+    queryKey: ['products', 'pdv', searchQuery, selectedCategory, connectionStatus],
+    queryFn: () => fetchProducts({
+      search: searchQuery,
+      category: selectedCategory || undefined,
+      limit: 100,
+    }),
     staleTime: 1000 * 60,
   });
 
+  // Fetch categories with offline support
   const { data: categoriesData } = useQuery({
-    queryKey: ['categories'],
-    queryFn: async () => {
-      const response = await fetch('/api/categorias');
-      if (!response.ok) throw new Error('Erro ao buscar categorias');
-      return response.json();
-    },
+    queryKey: ['categories', connectionStatus],
+    queryFn: () => fetchCategories(),
     staleTime: 1000 * 60 * 5,
   });
 
+  // Fetch customers with offline support
   const { data: customersData, isLoading: loadingCustomers } = useQuery({
-    queryKey: ['customers', 'pdv', customerSearch],
-    queryFn: async () => {
-      const params = new URLSearchParams();
-      if (customerSearch) params.set('search', customerSearch);
-      params.set('limit', '20');
-      const response = await fetch(`/api/clientes?${params}`);
-      if (!response.ok) throw new Error('Erro ao buscar clientes');
-      return response.json();
-    },
+    queryKey: ['customers', 'pdv', customerSearch, connectionStatus],
+    queryFn: () => fetchCustomers({
+      search: customerSearch,
+      limit: 20,
+    }),
     enabled: showCustomerDialog,
     staleTime: 1000 * 30,
   });
 
+  // Check if data is from offline cache
+  const isProductsOffline = productsData?._offline === true;
+  const isCategoriesOffline = categoriesData?._offline === true;
+  const isCustomersOffline = customersData?._offline === true;
+  const isDataOffline = isProductsOffline || isCategoriesOffline;
+  const showOfflineBanner = isOffline || isDataOffline;
+
+  // Create sale mutation with offline support
   const createSaleMutation = useMutation({
-    mutationFn: async (saleData: any) => {
-      const response = await fetch('/api/vendas', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(saleData),
-      });
+    mutationFn: async (saleData: OfflineSaleData) => {
+      const result = await createSale(saleData);
 
-      const result = await response.json();
-
-      if (!response.ok) {
-        let errorMessage = result.error || 'Erro ao criar venda';
-        if (result.details && Array.isArray(result.details)) {
-          errorMessage = result.details.join('\n');
-        }
-        throw new Error(errorMessage);
+      if (!result.success) {
+        throw new Error(result.error || 'Erro ao criar venda');
       }
 
       return result;
     },
     onSuccess: (response) => {
-      const saleData = response.data;
+      const saleData = response.data!;
+      const isOfflineSale = saleData._offline === true;
+
       // Include customer and payment info in lastSale for receipt
       setLastSale({
         ...saleData,
@@ -328,6 +323,7 @@ export default function PDVPage() {
           amount_received: parseFloat(cashReceived.replace(',', '.') || '0') * 100,
           change_amount: parseFloat(cashReceived.replace(',', '.') || '0') * 100 - saleData.total,
         } : null,
+        _offline: isOfflineSale,
       });
       setShowPaymentDialog(false);
       setShowCartDrawer(false);
@@ -340,8 +336,10 @@ export default function PDVPage() {
       queryClient.invalidateQueries({ queryKey: ['accounts-receivable-summary'] });
 
       toast({
-        title: 'Venda realizada!',
-        description: `Recibo: ${saleData.receipt_number}`,
+        title: isOfflineSale ? 'Venda salva offline!' : 'Venda realizada!',
+        description: isOfflineSale
+          ? `Recibo: ${saleData.receipt_number} (Será sincronizado quando online)`
+          : `Recibo: ${saleData.receipt_number}`,
       });
     },
     onError: (error: Error) => {
@@ -436,9 +434,9 @@ export default function PDVPage() {
       };
     }
 
-    const saleData = {
-      customer_id: customer?.id,
-      user_id: user?.id,
+    const saleData: OfflineSaleData = {
+      customer_id: customer?.id || null,
+      user_id: user?.id || null,
       items: items.map((item) => ({
         product_id: item.product.id,
         product_name: item.product.name,
@@ -765,6 +763,14 @@ export default function PDVPage() {
     )}>
       {/* Área de Produtos */}
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        {/* Banner Offline */}
+        {showOfflineBanner && (
+          <div className="bg-amber-500 text-white px-3 py-2 flex items-center justify-center gap-2 text-sm font-medium flex-shrink-0">
+            <WifiOff className="h-4 w-4" />
+            <span>Modo Offline - Dados salvos localmente</span>
+          </div>
+        )}
+
         {/* Barra de Busca */}
         <div className="p-2 sm:p-3 bg-white dark:bg-gray-800 border-b dark:border-gray-700 shadow-sm flex-shrink-0">
           <div className="relative">
@@ -1063,11 +1069,26 @@ export default function PDVPage() {
         <div className="fixed inset-0 bg-black/60 flex items-center justify-center p-4" style={{ zIndex: 10000 }}>
           <div className="bg-white dark:bg-gray-800 w-full max-w-sm rounded-2xl max-h-[85vh] overflow-hidden flex flex-col shadow-xl">
             <div className="flex items-center justify-between p-4 border-b dark:border-gray-700 flex-shrink-0">
-              <h2 className="text-lg font-semibold text-green-600 dark:text-green-400">Venda Realizada!</h2>
+              <h2 className={cn(
+                "text-lg font-semibold",
+                lastSale._offline ? "text-amber-600 dark:text-amber-400" : "text-green-600 dark:text-green-400"
+              )}>
+                {lastSale._offline ? 'Venda Salva Offline!' : 'Venda Realizada!'}
+              </h2>
               <button onClick={() => setShowReceiptDialog(false)} className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full">
                 <X className="h-5 w-5 dark:text-gray-300" />
               </button>
             </div>
+
+            {/* Banner de venda offline */}
+            {lastSale._offline && (
+              <div className="bg-amber-100 dark:bg-amber-900/30 border-b border-amber-200 dark:border-amber-800 px-4 py-2 flex items-center gap-2">
+                <CloudOff className="h-4 w-4 text-amber-600 dark:text-amber-400" />
+                <span className="text-xs text-amber-700 dark:text-amber-300">
+                  Será sincronizado quando a conexão for restaurada
+                </span>
+              </div>
+            )}
 
             <div className="flex-1 overflow-y-auto p-4 font-mono text-sm dark:text-gray-200 print-receipt">
               <div className="text-center mb-4">
