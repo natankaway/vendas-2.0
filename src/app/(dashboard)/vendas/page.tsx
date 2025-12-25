@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { useOnlineStatus } from '@/lib/hooks/use-online-status';
-import { fetchCompanySettings } from '@/lib/services/offline-data-service';
+import { fetchCompanySettings, fetchSales } from '@/lib/services/offline-data-service';
 
 // Tipos
 interface SaleItem {
@@ -141,27 +141,23 @@ export default function VendasPage() {
 
   const { data: salesData, isLoading } = useQuery({
     queryKey: ['sales', search, searchType, page, filters, connectionStatus],
-    queryFn: async () => {
-      const params = new URLSearchParams({
-        page: String(page),
-        limit: String(perPage),
-      });
-      if (search) {
-        params.append('search', search);
-        params.append('searchType', searchType);
-      }
-      if (filters.startDate) params.append('startDate', filters.startDate);
-      if (filters.endDate) params.append('endDate', filters.endDate);
-      if (filters.status) params.append('status', filters.status);
-      if (filters.paymentMethod) params.append('paymentMethod', filters.paymentMethod);
-
-      const res = await fetch(`/api/vendas?${params}`);
-      return res.json();
-    },
+    queryFn: () => fetchSales({
+      search: search || undefined,
+      searchType: searchType,
+      page,
+      limit: perPage,
+      startDate: filters.startDate || undefined,
+      endDate: filters.endDate || undefined,
+      status: filters.status || undefined,
+      paymentMethod: filters.paymentMethod || undefined,
+    }),
     staleTime: 0,
     refetchOnWindowFocus: true,
-    enabled: isOnline,
   });
+
+  // Verificar se os dados são offline
+  const isSalesOffline = salesData?._offline === true;
+  const showOfflineBanner = isOffline || isSalesOffline;
 
   // Mutation para registrar pagamento
   const receivePaymentMutation = useMutation({
@@ -500,10 +496,10 @@ export default function VendasPage() {
   return (
     <div className="w-full max-w-7xl mx-auto overflow-x-hidden">
       {/* Offline Banner */}
-      {isOffline && (
+      {showOfflineBanner && (
         <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
           <WifiOff className="h-4 w-4" />
-          <span>Modo Offline - Histórico de vendas requer conexão</span>
+          <span>Modo Offline - Exibindo vendas salvas localmente</span>
         </div>
       )}
 

@@ -261,6 +261,66 @@ class OfflineDatabase extends Dexie {
   }
 
   /**
+   * Sincroniza vendas do Supabase para local (cache)
+   */
+  async syncSalesFromServer(sales: LocalSale[], items?: LocalSaleItem[]): Promise<void> {
+    await this.transaction('rw', [this.sales, this.saleItems], async () => {
+      for (const sale of sales) {
+        await this.sales.put({
+          ...sale,
+          _synced: true,
+          _last_sync: new Date().toISOString(),
+        });
+      }
+      if (items) {
+        for (const item of items) {
+          await this.saleItems.put({
+            ...item,
+            _synced: true,
+          });
+        }
+      }
+    });
+    await this.setConfig('last_sales_sync', new Date().toISOString());
+  }
+
+  /**
+   * Obtém vendas locais com filtros
+   */
+  async getSales(options?: {
+    limit?: number;
+    search?: string;
+    status?: string;
+  }): Promise<LocalSale[]> {
+    let sales = await this.sales.orderBy('created_at').reverse().toArray();
+
+    if (options?.status) {
+      sales = sales.filter(s => s.status === options.status);
+    }
+
+    if (options?.search) {
+      const lowerSearch = options.search.toLowerCase();
+      sales = sales.filter(s =>
+        s.id.toLowerCase().includes(lowerSearch) ||
+        s.customer_id?.toLowerCase().includes(lowerSearch)
+      );
+    }
+
+    if (options?.limit) {
+      sales = sales.slice(0, options.limit);
+    }
+
+    return sales;
+  }
+
+  /**
+   * Obtém itens de uma venda
+   */
+  async getSaleItems(saleId: string): Promise<LocalSaleItem[]> {
+    return this.saleItems.where('sale_id').equals(saleId).toArray();
+  }
+
+  /**
    * Busca produtos locais com filtro
    */
   async searchProducts(query: string, activeOnly = true): Promise<LocalProduct[]> {

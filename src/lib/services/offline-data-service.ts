@@ -732,3 +732,258 @@ export async function getPendingSalesCount(): Promise<number> {
     return 0;
   }
 }
+
+// ============ Histórico de Vendas Offline ============
+
+export interface SaleItem {
+  id: string;
+  product_id: string;
+  product_name: string;
+  quantity: number;
+  unit?: string;
+  unit_price: number;
+  discount_amount: number;
+  total: number;
+}
+
+export interface Sale {
+  id: string;
+  receipt_number: string;
+  customer_id: string | null;
+  customer_name: string | null;
+  customer?: {
+    id: string;
+    name: string;
+    address?: string;
+    phone?: string;
+  } | null;
+  user_id: string;
+  user_name: string | null;
+  status: 'pending' | 'completed' | 'cancelled';
+  subtotal: number;
+  discount_amount: number;
+  tax_amount: number;
+  total: number;
+  payment_method: string;
+  notes: string | null;
+  created_at: string;
+  completed_at: string | null;
+  items: SaleItem[];
+  _offline?: boolean;
+}
+
+export interface SalesResponse {
+  data: Sale[];
+  total: number;
+  page: number;
+  limit: number;
+  _offline?: boolean;
+}
+
+/**
+ * Busca vendas - tenta API primeiro, fallback para IndexedDB
+ */
+export async function fetchSales(params?: {
+  search?: string;
+  searchType?: string;
+  page?: number;
+  limit?: number;
+  startDate?: string;
+  endDate?: string;
+  status?: string;
+  paymentMethod?: string;
+}): Promise<SalesResponse> {
+  const page = params?.page || 1;
+  const limit = params?.limit || 20;
+
+  // Sempre tenta API primeiro
+  try {
+    const searchParams = new URLSearchParams({
+      page: String(page),
+      limit: String(limit),
+    });
+    if (params?.search) {
+      searchParams.append('search', params.search);
+      searchParams.append('searchType', params.searchType || 'receipt');
+    }
+    if (params?.startDate) searchParams.append('startDate', params.startDate);
+    if (params?.endDate) searchParams.append('endDate', params.endDate);
+    if (params?.status) searchParams.append('status', params.status);
+    if (params?.paymentMethod) searchParams.append('paymentMethod', params.paymentMethod);
+
+    const response = await fetchWithTimeout(`/api/vendas?${searchParams}`, {}, 8000);
+
+    if (response.ok) {
+      const data = await response.json();
+      // Salva dados no IndexedDB para uso offline
+      saveSalesToIndexedDB(data.data);
+      return data;
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, usando IndexedDB:', error);
+  }
+
+  // Fallback para IndexedDB
+  return getSalesFromIndexedDB(params);
+}
+
+async function getSalesFromIndexedDB(params?: {
+  search?: string;
+  searchType?: string;
+  page?: number;
+  limit?: number;
+  status?: string;
+}): Promise<SalesResponse> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { data: [], total: 0, page: 1, limit: 20, _offline: true };
+  }
+
+  console.log('[OfflineData] Buscando vendas do IndexedDB');
+
+  try {
+    let sales = await db.sales.orderBy('created_at').reverse().toArray();
+
+    // Filtro de status
+    if (params?.status) {
+      sales = sales.filter(s => s.status === params.status);
+    }
+
+    // Filtro de busca
+    if (params?.search) {
+      const search = params.search.toLowerCase();
+      const searchType = params.searchType || 'receipt';
+
+      sales = sales.filter(s => {
+        if (searchType === 'customer') {
+          return s.customer_id?.toLowerCase().includes(search);
+        }
+        return s.id.toLowerCase().includes(search) ||
+          (s as any).receipt_number?.toLowerCase().includes(search);
+      });
+    }
+
+    // Paginação
+    const page = params?.page || 1;
+    const limit = params?.limit || 20;
+    const start = (page - 1) * limit;
+    const paginatedSales = sales.slice(start, start + limit);
+
+    // Busca os itens de cada venda
+    const salesWithItems: Sale[] = await Promise.all(
+      paginatedSales.map(async (sale) => {
+        const items = await db.saleItems.where('sale_id').equals(sale.id).toArray();
+
+        // Busca dados do cliente se existir
+        let customer = null;
+        if (sale.customer_id) {
+          const customerData = await db.customers.get(sale.customer_id);
+          if (customerData) {
+            customer = {
+              id: customerData.id,
+              name: customerData.name,
+              address: customerData.address || undefined,
+              phone: customerData.phone || undefined,
+            };
+          }
+        }
+
+        return {
+          id: sale.id,
+          receipt_number: (sale as any).receipt_number || sale.id.slice(0, 8).toUpperCase(),
+          customer_id: sale.customer_id,
+          customer_name: customer?.name || null,
+          customer,
+          user_id: sale.user_id || '',
+          user_name: null,
+          status: sale.status as 'pending' | 'completed' | 'cancelled',
+          subtotal: sale.subtotal,
+          discount_amount: sale.discount || 0,
+          tax_amount: 0,
+          total: sale.total,
+          payment_method: sale.payment_method,
+          notes: sale.notes,
+          created_at: sale.created_at,
+          completed_at: sale.updated_at,
+          items: items.map(item => ({
+            id: item.id,
+            product_id: item.product_id,
+            product_name: item.product_name,
+            quantity: item.quantity,
+            unit: (item as any).unit || 'un',
+            unit_price: item.unit_price,
+            discount_amount: item.discount || 0,
+            total: item.total,
+          })),
+          _offline: true,
+        };
+      })
+    );
+
+    return {
+      data: salesWithItems,
+      total: sales.length,
+      page,
+      limit,
+      _offline: true,
+    };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao buscar vendas do IndexedDB:', error);
+    return { data: [], total: 0, page: 1, limit: 20, _offline: true };
+  }
+}
+
+async function saveSalesToIndexedDB(sales: Sale[]): Promise<void> {
+  if (!sales || sales.length === 0) return;
+
+  const db = await getOfflineDb();
+  if (!db) return;
+
+  try {
+    await db.transaction('rw', [db.sales, db.saleItems], async () => {
+      for (const sale of sales) {
+        // Salva a venda
+        await db.sales.put({
+          id: sale.id,
+          customer_id: sale.customer_id,
+          user_id: sale.user_id,
+          subtotal: sale.subtotal,
+          discount: sale.discount_amount,
+          total: sale.total,
+          payment_method: sale.payment_method,
+          payment_status: sale.status === 'pending' ? 'pending' : 'paid',
+          status: sale.status,
+          notes: sale.notes,
+          cash_register_id: null,
+          created_at: sale.created_at,
+          updated_at: sale.completed_at || sale.created_at,
+          receipt_number: sale.receipt_number,
+          _synced: true,
+          _last_sync: new Date().toISOString(),
+        } as any);
+
+        // Salva os itens
+        if (sale.items) {
+          for (const item of sale.items) {
+            await db.saleItems.put({
+              id: item.id,
+              sale_id: sale.id,
+              product_id: item.product_id,
+              product_name: item.product_name,
+              quantity: item.quantity,
+              unit_price: item.unit_price,
+              unit: item.unit || 'un',
+              discount: item.discount_amount,
+              total: item.total,
+              created_at: sale.created_at,
+              _synced: true,
+            } as any);
+          }
+        }
+      }
+    });
+    console.log(`[OfflineData] ${sales.length} vendas salvas no IndexedDB`);
+  } catch (error) {
+    console.error('[OfflineData] Erro ao salvar vendas no IndexedDB:', error);
+  }
+}
