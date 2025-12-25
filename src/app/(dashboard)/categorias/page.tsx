@@ -26,7 +26,12 @@ import {
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { useOnlineStatus } from '@/lib/hooks/use-online-status';
-import { fetchCategories } from '@/lib/services/offline-data-service';
+import {
+  fetchCategories,
+  createCategory as createCategoryOffline,
+  updateCategory as updateCategoryOffline,
+  deleteCategory as deleteCategoryOffline,
+} from '@/lib/services/offline-data-service';
 
 // Tipos
 interface Category {
@@ -101,37 +106,45 @@ export default function CategoriasPage() {
       c.description?.toLowerCase().includes(search.toLowerCase())
   );
 
-  // Create/Update mutation
+  // Create/Update mutation - agora funciona offline
   const saveMutation = useMutation({
     mutationFn: async (data: CategoryFormData) => {
-      const url = editingCategory
-        ? `/api/categorias/${editingCategory.id}`
-        : '/api/categorias';
-      const method = editingCategory ? 'PUT' : 'POST';
-
-      const res = await fetch(url, {
-        method,
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...data,
+      if (editingCategory) {
+        const result = await updateCategoryOffline(editingCategory.id, {
+          name: data.name,
+          description: data.description || null,
+          color: data.color,
           parent_id: data.parent_id || null,
-        }),
-      });
-
-      const result = await res.json();
-
-      if (!res.ok) {
-        throw new Error(result.error || 'Erro ao salvar categoria');
+          sort_order: data.sort_order,
+        });
+        if (!result.success) {
+          throw new Error(result.error || 'Erro ao atualizar categoria');
+        }
+        return result;
+      } else {
+        const result = await createCategoryOffline({
+          name: data.name,
+          description: data.description || null,
+          color: data.color,
+          parent_id: data.parent_id || null,
+          sort_order: data.sort_order,
+        });
+        if (!result.success) {
+          throw new Error(result.error || 'Erro ao criar categoria');
+        }
+        return result;
       }
-
-      return result;
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
       closeModal();
       toast({
-        title: editingCategory ? 'Categoria atualizada' : 'Categoria criada',
-        description: 'As alterações foram salvas com sucesso.',
+        title: editingCategory
+          ? (result._offline ? 'Atualização salva offline' : 'Categoria atualizada')
+          : (result._offline ? 'Categoria salva offline' : 'Categoria criada'),
+        description: result._offline
+          ? 'Será sincronizada quando a conexão voltar.'
+          : 'As alterações foram salvas com sucesso.',
       });
     },
     onError: (error: Error) => {
@@ -143,24 +156,23 @@ export default function CategoriasPage() {
     },
   });
 
-  // Delete mutation
+  // Delete mutation - agora funciona offline
   const deleteMutation = useMutation({
     mutationFn: async (id: string) => {
-      const res = await fetch(`/api/categorias/${id}`, { method: 'DELETE' });
-      const result = await res.json();
-
-      if (!res.ok) {
+      const result = await deleteCategoryOffline(id);
+      if (!result.success) {
         throw new Error(result.error || 'Erro ao excluir categoria');
       }
-
       return result;
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['categories'] });
       setSelectedCategory(null);
       toast({
-        title: 'Categoria excluída',
-        description: 'A categoria foi removida com sucesso.',
+        title: result._offline ? 'Exclusão salva offline' : 'Categoria excluída',
+        description: result._offline
+          ? 'Será sincronizada quando a conexão voltar.'
+          : 'A categoria foi removida com sucesso.',
       });
     },
     onError: (error: Error) => {
@@ -237,7 +249,7 @@ export default function CategoriasPage() {
         {showOfflineBanner && (
           <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
             <WifiOff className="h-4 w-4" />
-            <span>Modo Offline - Visualização disponível, alterações requerem conexão</span>
+            <span>Modo Offline - Alterações serão sincronizadas quando a conexão voltar</span>
           </div>
         )}
 
@@ -250,8 +262,7 @@ export default function CategoriasPage() {
           {/* Desktop Button */}
           <button
             onClick={() => openModal()}
-            disabled={isOffline}
-            className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex-shrink-0 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="hidden sm:flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors flex-shrink-0"
           >
             <Plus className="w-5 h-5" />
             Nova Categoria
@@ -374,17 +385,15 @@ export default function CategoriasPage() {
                       <div className="flex items-center justify-center gap-2">
                         <button
                           onClick={() => openModal(category)}
-                          disabled={isOffline}
-                          className="p-1 text-blue-600 hover:bg-blue-50 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-                          title={isOffline ? "Requer conexão" : "Editar"}
+                          className="p-1 text-blue-600 hover:bg-blue-50 rounded"
+                          title="Editar"
                         >
                           <Edit className="w-5 h-5" />
                         </button>
                         <button
                           onClick={() => handleDelete(category)}
-                          disabled={isOffline}
-                          className="p-1 text-red-600 hover:bg-red-50 rounded disabled:opacity-50 disabled:cursor-not-allowed"
-                          title={isOffline ? "Requer conexão" : "Excluir"}
+                          className="p-1 text-red-600 hover:bg-red-50 rounded"
+                          title="Excluir"
                         >
                           <Trash2 className="w-5 h-5" />
                         </button>
@@ -466,8 +475,7 @@ export default function CategoriasPage() {
         {/* FAB - Mobile */}
         <button
           onClick={() => openModal()}
-          disabled={isOffline}
-          className="sm:hidden fixed bottom-4 right-4 z-30 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+          className="sm:hidden fixed bottom-4 right-4 z-30 w-14 h-14 bg-blue-600 text-white rounded-full shadow-lg hover:bg-blue-700 flex items-center justify-center"
         >
           <Plus className="w-6 h-6" />
         </button>
@@ -503,29 +511,27 @@ export default function CategoriasPage() {
               <div className="p-2">
                 <button
                   onClick={() => openModal(selectedCategory)}
-                  disabled={isOffline}
-                  className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center gap-3 p-3 hover:bg-gray-50 rounded-lg text-left"
                 >
                   <div className="p-2 bg-blue-100 rounded-lg">
                     <Edit className="w-5 h-5 text-blue-600" />
                   </div>
                   <div>
                     <p className="font-medium text-gray-900">Editar categoria</p>
-                    <p className="text-sm text-gray-500">{isOffline ? 'Requer conexão' : 'Alterar nome, cor e descrição'}</p>
+                    <p className="text-sm text-gray-500">Alterar nome, cor e descrição</p>
                   </div>
                 </button>
 
                 <button
                   onClick={() => handleDelete(selectedCategory)}
-                  disabled={isOffline}
-                  className="w-full flex items-center gap-3 p-3 hover:bg-red-50 rounded-lg text-left disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center gap-3 p-3 hover:bg-red-50 rounded-lg text-left"
                 >
                   <div className="p-2 bg-red-100 rounded-lg">
                     <Trash2 className="w-5 h-5 text-red-600" />
                   </div>
                   <div>
                     <p className="font-medium text-red-600">Excluir categoria</p>
-                    <p className="text-sm text-gray-500">{isOffline ? 'Requer conexão' : 'Remover permanentemente'}</p>
+                    <p className="text-sm text-gray-500">Remover permanentemente</p>
                   </div>
                 </button>
               </div>

@@ -32,7 +32,7 @@ import {
 } from 'lucide-react';
 import { toast } from '@/components/ui/use-toast';
 import { useOnlineStatus } from '@/lib/hooks/use-online-status';
-import { fetchCompanySettings, fetchSales } from '@/lib/services/offline-data-service';
+import { fetchCompanySettings, fetchSales, receivePayment } from '@/lib/services/offline-data-service';
 
 // Tipos
 interface SaleItem {
@@ -159,28 +159,25 @@ export default function VendasPage() {
   const isSalesOffline = salesData?._offline === true;
   const showOfflineBanner = isOffline || isSalesOffline;
 
-  // Mutation para registrar pagamento
+  // Mutation para registrar pagamento - agora funciona offline
   const receivePaymentMutation = useMutation({
     mutationFn: async ({ saleId, paymentMethod }: { saleId: string; paymentMethod: string }) => {
-      const res = await fetch(`/api/vendas/${saleId}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ payment_method: paymentMethod }),
-      });
-      const result = await res.json();
-      if (!res.ok) {
+      const result = await receivePayment({ sale_id: saleId, payment_method: paymentMethod });
+      if (!result.success) {
         throw new Error(result.error || 'Erro ao registrar pagamento');
       }
       return result;
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['sales'] });
       setShowPaymentModal(false);
       setSelectedSale(null);
       setSelectedPaymentMethod(null);
       toast({
-        title: 'Pagamento registrado',
-        description: 'O pagamento foi registrado com sucesso.',
+        title: result._offline ? 'Pagamento salvo offline' : 'Pagamento registrado',
+        description: result._offline
+          ? 'Será sincronizado quando a conexão voltar.'
+          : 'O pagamento foi registrado com sucesso.',
       });
     },
     onError: (error: Error) => {
@@ -717,9 +714,8 @@ export default function VendasPage() {
                           {isPending && (
                             <button
                               onClick={() => openPaymentModal(sale)}
-                              disabled={isOffline}
-                              className="p-1.5 text-white bg-green-600 hover:bg-green-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
-                              title={isOffline ? "Requer conexão" : "Receber Pagamento"}
+                              className="p-1.5 text-white bg-green-600 hover:bg-green-700 rounded-lg"
+                              title="Receber Pagamento"
                             >
                               <DollarSign className="w-4 h-4" />
                             </button>
@@ -784,11 +780,10 @@ export default function VendasPage() {
                     {isPending && (
                       <button
                         onClick={() => openPaymentModal(sale)}
-                        disabled={isOffline}
-                        className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg disabled:opacity-50 disabled:cursor-not-allowed"
+                        className="flex items-center gap-1 px-2 py-1 text-xs font-medium text-white bg-green-600 hover:bg-green-700 rounded-lg"
                       >
                         <DollarSign className="w-3 h-3" />
-                        {isOffline ? 'Offline' : 'Receber'}
+                        Receber
                       </button>
                     )}
                   </div>
@@ -953,11 +948,10 @@ export default function VendasPage() {
                     closeReceipt();
                     openPaymentModal(selectedSale);
                   }}
-                  disabled={isOffline}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-yellow-500 text-white rounded-xl font-medium disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 bg-yellow-500 text-white rounded-xl font-medium"
                 >
                   <DollarSign className="w-4 h-4" />
-                  {isOffline ? 'Requer Conexão' : 'Receber Pagamento'}
+                  Receber Pagamento
                 </button>
               )}
               <button

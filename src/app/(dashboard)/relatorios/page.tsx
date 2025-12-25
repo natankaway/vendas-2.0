@@ -28,7 +28,10 @@ import {
   Target,
   Percent,
   Store,
+  WifiOff,
 } from 'lucide-react';
+import { useOnlineStatus } from '@/lib/hooks/use-online-status';
+import { generateOfflineReport } from '@/lib/services/offline-data-service';
 
 interface SalesSummary {
   totalSales: number;
@@ -119,6 +122,9 @@ export default function RelatoriosPage() {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
+  // Hook de status de conexão
+  const { isOnline, isOffline, status: connectionStatus } = useOnlineStatus();
+
   // Calculate date range
   const dateParams = useMemo(() => {
     const now = new Date();
@@ -160,20 +166,62 @@ export default function RelatoriosPage() {
     };
   }, [dateRange, startDate, endDate]);
 
-  // Fetch sales report
+  // Fetch sales report - com fallback para offline
   const { data: reportData, isLoading } = useQuery({
-    queryKey: ['sales-report', dateParams],
+    queryKey: ['sales-report', dateParams, connectionStatus],
     queryFn: async () => {
-      const params = new URLSearchParams({
-        start: dateParams.start,
-        end: dateParams.end,
-      });
+      try {
+        const params = new URLSearchParams({
+          start: dateParams.start,
+          end: dateParams.end,
+        });
 
-      const res = await fetch(`/api/relatorios/vendas?${params}`);
-      return res.json();
+        const res = await fetch(`/api/relatorios/vendas?${params}`);
+        if (res.ok) {
+          return res.json();
+        }
+      } catch (error) {
+        console.warn('[Relatorios] API falhou, usando dados offline:', error);
+      }
+
+      // Fallback para relatório offline
+      const offlineReport = await generateOfflineReport(dateParams.start, dateParams.end);
+      if (offlineReport.success && offlineReport.data) {
+        return {
+          summary: {
+            totalSales: offlineReport.data.totalSales,
+            totalRevenue: offlineReport.data.totalRevenue / 100,
+            avgTicket: offlineReport.data.salesCount > 0
+              ? (offlineReport.data.totalRevenue / 100) / offlineReport.data.salesCount
+              : 0,
+            completedSales: offlineReport.data.salesCount,
+            cancelledSales: offlineReport.data.salesByStatus.cancelled || 0,
+            balcaoSales: 0,
+            balcaoRevenue: 0,
+          },
+          topProducts: offlineReport.data.topProducts.map(p => ({
+            id: p.name,
+            name: p.name,
+            quantity: p.quantity,
+            revenue: p.total / 100,
+          })),
+          paymentMethods: Object.entries(offlineReport.data.salesByPayment).map(([method, data]) => ({
+            method,
+            count: data.count,
+            total: data.total / 100,
+          })),
+          _offline: true,
+        };
+      }
+
+      return { summary: null, topProducts: [], paymentMethods: [], _offline: true };
     },
     staleTime: 30000,
   });
+
+  // Verificar se dados são offline
+  const isDataOffline = (reportData as any)?._offline === true;
+  const showOfflineBanner = isOffline || isDataOffline;
 
   // Fetch products stats
   const { data: productsData } = useQuery({
@@ -278,6 +326,14 @@ export default function RelatoriosPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-gray-900 dark:to-gray-800 p-6">
       <div className="max-w-7xl mx-auto">
+        {/* Offline Banner */}
+        {showOfflineBanner && (
+          <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
+            <WifiOff className="h-4 w-4" />
+            <span>Modo Offline - Exibindo relatório a partir dos dados locais</span>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mb-8">
           <div>

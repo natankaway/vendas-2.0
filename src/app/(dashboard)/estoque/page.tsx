@@ -29,7 +29,8 @@ import {
   WifiOff,
 } from 'lucide-react';
 import { useOnlineStatus } from '@/lib/hooks/use-online-status';
-import { fetchProducts } from '@/lib/services/offline-data-service';
+import { fetchProducts, createStockMovement } from '@/lib/services/offline-data-service';
+import { toast } from '@/components/ui/use-toast';
 
 interface Product {
   id: string;
@@ -109,27 +110,32 @@ export default function EstoquePage() {
     enabled: isOnline,
   });
 
-  // Create movement mutation
+  // Create movement mutation - agora funciona offline
   const movementMutation = useMutation({
     mutationFn: async (data: { product_id: string; quantity: number; type: string; reason?: string }) => {
-      const res = await fetch('/api/estoque/movimentacoes', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, user_id: userId }),
+      const result = await createStockMovement({
+        product_id: data.product_id,
+        quantity: data.quantity,
+        type: data.type as 'purchase' | 'adjustment' | 'loss' | 'return',
+        reason: data.reason,
+        user_id: userId,
       });
-      if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.error || 'Erro ao registrar movimentação');
+      if (!result.success) {
+        throw new Error(result.error || 'Erro ao registrar movimentação');
       }
-      return res.json();
+      return result;
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['stock-alerts'] });
       queryClient.invalidateQueries({ queryKey: ['products-stock'] });
       queryClient.invalidateQueries({ queryKey: ['stock-movements'] });
       setShowMovementModal(null);
       setMovementQuantity('');
       setMovementReason('');
+      toast({
+        title: result._offline ? 'Movimentação salva offline' : 'Movimentação registrada',
+        description: result._offline ? 'Será sincronizada quando a conexão voltar.' : 'Estoque atualizado com sucesso.',
+      });
     },
   });
 
@@ -165,7 +171,7 @@ export default function EstoquePage() {
         {showOfflineBanner && (
           <div className="bg-amber-500 text-white px-4 py-3 rounded-xl mb-4 flex items-center justify-center gap-2 text-sm font-medium">
             <WifiOff className="h-4 w-4" />
-            <span>Modo Offline - Visualização de estoque disponível, movimentações requerem conexão</span>
+            <span>Modo Offline - Dados salvos localmente, sincronizará quando a conexão voltar</span>
           </div>
         )}
 
@@ -281,9 +287,8 @@ export default function EstoquePage() {
 
                           <button
                             onClick={() => setShowMovementModal(product)}
-                            disabled={isOffline}
-                            className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-                            title={isOffline ? "Requer conexão" : "Ajustar estoque"}
+                            className="p-2 bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 rounded-lg hover:bg-blue-200 dark:hover:bg-blue-900/50 transition-colors"
+                            title="Ajustar estoque"
                           >
                             <RefreshCw className="w-4 h-4" />
                           </button>

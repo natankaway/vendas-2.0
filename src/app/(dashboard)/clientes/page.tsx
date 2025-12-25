@@ -27,8 +27,13 @@ import {
   Filter,
   WifiOff,
 } from 'lucide-react';
-import { fetchCustomers } from '@/lib/services/offline-data-service';
+import {
+  fetchCustomers,
+  createCustomer as createCustomerOffline,
+  updateCustomer as updateCustomerOffline,
+} from '@/lib/services/offline-data-service';
 import { useConnectionStore } from '@/lib/stores/connection-store';
+import { toast } from '@/components/ui/use-toast';
 
 // Tipos
 interface Customer {
@@ -164,6 +169,7 @@ export default function ClientesPage() {
     return { total, withCredit, totalCredit, totalPurchases };
   }, [customers]);
 
+  // Mutation para salvar cliente - agora funciona offline
   const saveMutation = useMutation({
     mutationFn: async (data: CustomerFormData) => {
       const payload = {
@@ -171,26 +177,45 @@ export default function ClientesPage() {
         email: data.email || null,
         phone: data.phone.replace(/\D/g, '') || null,
         document: data.document.replace(/\D/g, '') || null,
-        document_type: data.document_type || null,
         address: data.address || null,
         city: data.city || null,
         state: data.state || null,
         zip_code: data.zip_code.replace(/\D/g, '') || null,
         notes: data.notes || null,
-        credit_limit: Math.round(parseFloat(data.credit_limit || '0') * 100),
       };
-      const url = editingCustomer ? `/api/clientes/${editingCustomer.id}` : '/api/clientes';
-      const method = editingCustomer ? 'PUT' : 'POST';
-      const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
-      if (!res.ok) {
-        const error = await res.json();
-        throw new Error(error.error || 'Erro ao salvar cliente');
+
+      if (editingCustomer) {
+        const result = await updateCustomerOffline(editingCustomer.id, payload);
+        if (!result.success) {
+          throw new Error(result.error || 'Erro ao atualizar cliente');
+        }
+        return result;
+      } else {
+        const result = await createCustomerOffline(payload);
+        if (!result.success) {
+          throw new Error(result.error || 'Erro ao criar cliente');
+        }
+        return result;
       }
-      return res.json();
     },
-    onSuccess: () => {
+    onSuccess: (result) => {
       queryClient.invalidateQueries({ queryKey: ['customers'] });
       closeModal();
+      toast({
+        title: editingCustomer
+          ? (result._offline ? 'Atualização salva offline' : 'Cliente atualizado')
+          : (result._offline ? 'Cliente salvo offline' : 'Cliente criado'),
+        description: result._offline
+          ? 'Será sincronizado quando a conexão voltar.'
+          : 'As alterações foram salvas com sucesso.',
+      });
+    },
+    onError: (error: Error) => {
+      toast({
+        title: 'Erro',
+        description: error.message,
+        variant: 'destructive',
+      });
     },
   });
 
@@ -200,7 +225,13 @@ export default function ClientesPage() {
       if (!res.ok) throw new Error('Erro ao excluir cliente');
       return res.json();
     },
-    onSuccess: () => queryClient.invalidateQueries({ queryKey: ['customers'] }),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['customers'] });
+      toast({
+        title: 'Cliente excluído',
+        description: 'O cliente foi removido com sucesso.',
+      });
+    },
   });
 
   const openModal = (customer?: Customer) => {

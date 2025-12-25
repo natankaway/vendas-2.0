@@ -987,3 +987,571 @@ async function saveSalesToIndexedDB(sales: Sale[]): Promise<void> {
     console.error('[OfflineData] Erro ao salvar vendas no IndexedDB:', error);
   }
 }
+
+// ============ Operações Offline de Clientes ============
+
+export interface CustomerData {
+  id?: string;
+  name: string;
+  email?: string | null;
+  phone?: string | null;
+  document?: string | null;
+  address?: string | null;
+  city?: string | null;
+  state?: string | null;
+  zip_code?: string | null;
+  notes?: string | null;
+}
+
+export interface CustomerResult {
+  success: boolean;
+  data?: CustomerData & { id: string };
+  error?: string;
+  _offline?: boolean;
+}
+
+/**
+ * Cria cliente - tenta API primeiro, fallback para offline
+ */
+export async function createCustomer(customerData: CustomerData): Promise<CustomerResult> {
+  try {
+    const response = await fetchWithTimeout('/api/clientes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(customerData),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, criando cliente offline:', error);
+  }
+
+  return createCustomerOffline(customerData);
+}
+
+async function createCustomerOffline(customerData: CustomerData): Promise<CustomerResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const { v4: uuidv4 } = await import('uuid');
+    const id = uuidv4();
+    const now = new Date().toISOString();
+
+    const customer = {
+      id,
+      name: customerData.name,
+      email: customerData.email || null,
+      phone: customerData.phone || null,
+      document: customerData.document || null,
+      address: customerData.address || null,
+      city: customerData.city || null,
+      state: customerData.state || null,
+      zip_code: customerData.zip_code || null,
+      notes: customerData.notes || null,
+      is_active: true,
+      created_at: now,
+      updated_at: now,
+      _synced: false,
+      _last_sync: null,
+    };
+
+    await db.customers.add(customer);
+    await db.addToSyncQueue('customers', id, 'create', customer);
+
+    console.log(`[OfflineData] Cliente criado offline: ${id}`);
+    return { success: true, data: { ...customer, id }, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao criar cliente offline:', error);
+    return { success: false, error: 'Erro ao criar cliente offline' };
+  }
+}
+
+/**
+ * Atualiza cliente - tenta API primeiro, fallback para offline
+ */
+export async function updateCustomer(id: string, customerData: Partial<CustomerData>): Promise<CustomerResult> {
+  try {
+    const response = await fetchWithTimeout(`/api/clientes/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(customerData),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, atualizando cliente offline:', error);
+  }
+
+  return updateCustomerOffline(id, customerData);
+}
+
+async function updateCustomerOffline(id: string, customerData: Partial<CustomerData>): Promise<CustomerResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const existing = await db.customers.get(id);
+    if (!existing) {
+      return { success: false, error: 'Cliente não encontrado' };
+    }
+
+    const updated = {
+      ...existing,
+      ...customerData,
+      updated_at: new Date().toISOString(),
+      _synced: false,
+    };
+
+    await db.customers.update(id, updated);
+    await db.addToSyncQueue('customers', id, 'update', updated);
+
+    console.log(`[OfflineData] Cliente atualizado offline: ${id}`);
+    return { success: true, data: updated as any, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao atualizar cliente offline:', error);
+    return { success: false, error: 'Erro ao atualizar cliente offline' };
+  }
+}
+
+// ============ Operações Offline de Categorias ============
+
+export interface CategoryData {
+  id?: string;
+  name: string;
+  description?: string | null;
+  color?: string;
+  parent_id?: string | null;
+  sort_order?: number;
+}
+
+export interface CategoryResult {
+  success: boolean;
+  data?: CategoryData & { id: string };
+  error?: string;
+  _offline?: boolean;
+}
+
+/**
+ * Cria categoria - tenta API primeiro, fallback para offline
+ */
+export async function createCategory(categoryData: CategoryData): Promise<CategoryResult> {
+  try {
+    const response = await fetchWithTimeout('/api/categorias', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(categoryData),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, criando categoria offline:', error);
+  }
+
+  return createCategoryOffline(categoryData);
+}
+
+async function createCategoryOffline(categoryData: CategoryData): Promise<CategoryResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const { v4: uuidv4 } = await import('uuid');
+    const id = uuidv4();
+    const now = new Date().toISOString();
+
+    const category = {
+      id,
+      name: categoryData.name,
+      description: categoryData.description || null,
+      color: categoryData.color || '#3B82F6',
+      icon: null,
+      parent_id: categoryData.parent_id || null,
+      is_active: true,
+      sort_order: categoryData.sort_order || 0,
+      created_at: now,
+      updated_at: now,
+      _synced: false,
+      _last_sync: null,
+    };
+
+    await db.categories.add(category);
+    await db.addToSyncQueue('categories', id, 'create', category);
+
+    console.log(`[OfflineData] Categoria criada offline: ${id}`);
+    return { success: true, data: { ...category, id }, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao criar categoria offline:', error);
+    return { success: false, error: 'Erro ao criar categoria offline' };
+  }
+}
+
+/**
+ * Atualiza categoria - tenta API primeiro, fallback para offline
+ */
+export async function updateCategory(id: string, categoryData: Partial<CategoryData>): Promise<CategoryResult> {
+  try {
+    const response = await fetchWithTimeout(`/api/categorias/${id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(categoryData),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, atualizando categoria offline:', error);
+  }
+
+  return updateCategoryOffline(id, categoryData);
+}
+
+async function updateCategoryOffline(id: string, categoryData: Partial<CategoryData>): Promise<CategoryResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const existing = await db.categories.get(id);
+    if (!existing) {
+      return { success: false, error: 'Categoria não encontrada' };
+    }
+
+    const updated = {
+      ...existing,
+      ...categoryData,
+      updated_at: new Date().toISOString(),
+      _synced: false,
+    };
+
+    await db.categories.update(id, updated);
+    await db.addToSyncQueue('categories', id, 'update', updated);
+
+    console.log(`[OfflineData] Categoria atualizada offline: ${id}`);
+    return { success: true, data: updated as any, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao atualizar categoria offline:', error);
+    return { success: false, error: 'Erro ao atualizar categoria offline' };
+  }
+}
+
+/**
+ * Deleta categoria - tenta API primeiro, fallback para offline
+ */
+export async function deleteCategory(id: string): Promise<{ success: boolean; error?: string; _offline?: boolean }> {
+  try {
+    const response = await fetchWithTimeout(`/api/categorias/${id}`, {
+      method: 'DELETE',
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, deletando categoria offline:', error);
+  }
+
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    await db.categories.delete(id);
+    await db.addToSyncQueue('categories', id, 'delete', { id });
+    console.log(`[OfflineData] Categoria deletada offline: ${id}`);
+    return { success: true, _offline: true };
+  } catch (error) {
+    return { success: false, error: 'Erro ao deletar categoria offline' };
+  }
+}
+
+// ============ Movimentações de Estoque Offline ============
+
+export interface StockMovementData {
+  product_id: string;
+  quantity: number;
+  type: 'purchase' | 'adjustment' | 'loss' | 'return';
+  reason?: string;
+  user_id?: string;
+}
+
+export interface StockMovementResult {
+  success: boolean;
+  data?: any;
+  error?: string;
+  _offline?: boolean;
+}
+
+/**
+ * Cria movimentação de estoque - tenta API primeiro, fallback para offline
+ */
+export async function createStockMovement(movementData: StockMovementData): Promise<StockMovementResult> {
+  try {
+    const response = await fetchWithTimeout('/api/estoque/movimentacoes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(movementData),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, criando movimentação offline:', error);
+  }
+
+  return createStockMovementOffline(movementData);
+}
+
+async function createStockMovementOffline(movementData: StockMovementData): Promise<StockMovementResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const { v4: uuidv4 } = await import('uuid');
+    const id = uuidv4();
+    const now = new Date().toISOString();
+
+    // Atualiza o estoque do produto localmente
+    const product = await db.products.get(movementData.product_id);
+    if (!product) {
+      return { success: false, error: 'Produto não encontrado' };
+    }
+
+    const newQuantity = product.stock_quantity + movementData.quantity;
+    await db.products.update(movementData.product_id, {
+      stock_quantity: Math.max(0, newQuantity),
+      _synced: false,
+    });
+
+    // Adiciona à fila de sincronização
+    await db.addToSyncQueue('products', id, 'stock_movement', {
+      ...movementData,
+      id,
+      created_at: now,
+    });
+
+    console.log(`[OfflineData] Movimentação de estoque criada offline: ${id}`);
+    return {
+      success: true,
+      data: {
+        id,
+        ...movementData,
+        created_at: now,
+        new_stock: Math.max(0, newQuantity),
+      },
+      _offline: true,
+    };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao criar movimentação offline:', error);
+    return { success: false, error: 'Erro ao criar movimentação offline' };
+  }
+}
+
+// ============ Receber Pagamento Offline ============
+
+export interface ReceivePaymentData {
+  sale_id: string;
+  payment_method: string;
+}
+
+export interface ReceivePaymentResult {
+  success: boolean;
+  data?: any;
+  error?: string;
+  _offline?: boolean;
+}
+
+/**
+ * Recebe pagamento de venda pendente - tenta API primeiro, fallback para offline
+ */
+export async function receivePayment(paymentData: ReceivePaymentData): Promise<ReceivePaymentResult> {
+  try {
+    const response = await fetchWithTimeout(`/api/vendas/${paymentData.sale_id}`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ payment_method: paymentData.payment_method }),
+    }, 8000);
+
+    const result = await response.json();
+    if (response.ok && result.success) {
+      return { success: true, data: result.data };
+    }
+    if (!response.ok && result.error) {
+      return { success: false, error: result.error };
+    }
+  } catch (error) {
+    console.warn('[OfflineData] API falhou, registrando pagamento offline:', error);
+  }
+
+  return receivePaymentOffline(paymentData);
+}
+
+async function receivePaymentOffline(paymentData: ReceivePaymentData): Promise<ReceivePaymentResult> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível' };
+  }
+
+  try {
+    const sale = await db.sales.get(paymentData.sale_id);
+    if (!sale) {
+      return { success: false, error: 'Venda não encontrada' };
+    }
+
+    const now = new Date().toISOString();
+    const updated = {
+      ...sale,
+      payment_method: paymentData.payment_method,
+      payment_status: 'paid',
+      status: 'completed',
+      updated_at: now,
+      _synced: false,
+    };
+
+    await db.sales.update(paymentData.sale_id, updated);
+    await db.addToSyncQueue('sales', paymentData.sale_id, 'update', {
+      id: paymentData.sale_id,
+      payment_method: paymentData.payment_method,
+    });
+
+    console.log(`[OfflineData] Pagamento registrado offline: ${paymentData.sale_id}`);
+    return { success: true, data: updated, _offline: true };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao registrar pagamento offline:', error);
+    return { success: false, error: 'Erro ao registrar pagamento offline' };
+  }
+}
+
+// ============ Relatórios Offline ============
+
+export interface OfflineReportData {
+  totalSales: number;
+  totalRevenue: number;
+  salesCount: number;
+  topProducts: Array<{ name: string; quantity: number; total: number }>;
+  salesByPayment: Record<string, { count: number; total: number }>;
+  salesByStatus: Record<string, number>;
+}
+
+/**
+ * Gera relatório a partir dos dados offline
+ */
+export async function generateOfflineReport(startDate?: string, endDate?: string): Promise<{
+  success: boolean;
+  data?: OfflineReportData;
+  error?: string;
+  _offline: boolean;
+}> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { success: false, error: 'Banco de dados offline não disponível', _offline: true };
+  }
+
+  try {
+    let sales = await db.sales.toArray();
+
+    // Filtra por data se fornecido
+    if (startDate) {
+      sales = sales.filter(s => s.created_at >= startDate);
+    }
+    if (endDate) {
+      const endDateTime = endDate + 'T23:59:59.999Z';
+      sales = sales.filter(s => s.created_at <= endDateTime);
+    }
+
+    // Calcula totais
+    const completedSales = sales.filter(s => s.status === 'completed');
+    const totalRevenue = completedSales.reduce((sum, s) => sum + s.total, 0);
+
+    // Agrupa por método de pagamento
+    const salesByPayment: Record<string, { count: number; total: number }> = {};
+    completedSales.forEach(s => {
+      if (!salesByPayment[s.payment_method]) {
+        salesByPayment[s.payment_method] = { count: 0, total: 0 };
+      }
+      salesByPayment[s.payment_method].count++;
+      salesByPayment[s.payment_method].total += s.total;
+    });
+
+    // Agrupa por status
+    const salesByStatus: Record<string, number> = {};
+    sales.forEach(s => {
+      salesByStatus[s.status] = (salesByStatus[s.status] || 0) + 1;
+    });
+
+    // Top produtos (busca itens de vendas)
+    const productTotals: Record<string, { name: string; quantity: number; total: number }> = {};
+    for (const sale of completedSales) {
+      const items = await db.saleItems.where('sale_id').equals(sale.id).toArray();
+      items.forEach(item => {
+        if (!productTotals[item.product_id]) {
+          productTotals[item.product_id] = { name: item.product_name, quantity: 0, total: 0 };
+        }
+        productTotals[item.product_id].quantity += item.quantity;
+        productTotals[item.product_id].total += item.total;
+      });
+    }
+
+    const topProducts = Object.values(productTotals)
+      .sort((a, b) => b.total - a.total)
+      .slice(0, 10);
+
+    return {
+      success: true,
+      data: {
+        totalSales: sales.length,
+        totalRevenue,
+        salesCount: completedSales.length,
+        topProducts,
+        salesByPayment,
+        salesByStatus,
+      },
+      _offline: true,
+    };
+  } catch (error) {
+    console.error('[OfflineData] Erro ao gerar relatório offline:', error);
+    return { success: false, error: 'Erro ao gerar relatório offline', _offline: true };
+  }
+}

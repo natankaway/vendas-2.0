@@ -1,23 +1,22 @@
 /**
- * Serviço de Sincronização
+ * Serviço de Sincronização Automática
  *
- * Gerencia a sincronização bidirecional entre o banco local (IndexedDB)
- * e o servidor (Supabase).
+ * Gerencia a sincronização de dados offline com o servidor
+ * quando a conexão é restabelecida.
  */
 
 'use client';
 
-import { useConnectionStore } from '../stores/connection-store';
-import type { LocalProduct, LocalCategory, LocalCustomer } from '../db/offline-db';
+import { SyncQueueItem } from '../db/offline-db';
 
-// Importação dinâmica para evitar SSR
+// Import dinâmico para evitar SSR
 const getOfflineDb = async () => {
   if (typeof window === 'undefined') return null;
   const { offlineDb } = await import('../db/offline-db');
   return offlineDb;
 };
 
-interface SyncResult {
+export interface SyncResult {
   success: boolean;
   synced: number;
   failed: number;
@@ -25,262 +24,309 @@ interface SyncResult {
 }
 
 /**
- * Baixa produtos do servidor para o banco local
+ * Estado da sincronização
  */
-export async function syncProductsFromServer(): Promise<SyncResult> {
-  const result: SyncResult = { success: false, synced: 0, failed: 0, errors: [] };
+let isSyncing = false;
+let syncListeners: ((status: SyncStatus) => void)[] = [];
 
-  const db = await getOfflineDb();
-  if (!db) return result;
-
-  try {
-    const response = await fetch('/api/produtos?limit=10000&active=true');
-    if (!response.ok) throw new Error('Erro ao buscar produtos');
-
-    const data = await response.json();
-    const products: LocalProduct[] = (data.data || []).map((p: Record<string, unknown>) => ({
-      ...p,
-      _synced: true,
-      _last_sync: new Date().toISOString(),
-    }));
-
-    await db.syncProductsFromServer(products);
-    result.synced = products.length;
-    result.success = true;
-
-    console.log(`[Sync] ${products.length} produtos sincronizados`);
-  } catch (error) {
-    result.errors.push(error instanceof Error ? error.message : 'Erro desconhecido');
-    console.error('[Sync] Erro ao sincronizar produtos:', error);
-  }
-
-  return result;
+export interface SyncStatus {
+  isSyncing: boolean;
+  pendingCount: number;
+  lastSync: string | null;
+  lastError: string | null;
 }
 
 /**
- * Baixa categorias do servidor para o banco local
+ * Registra listener para mudanças de status
  */
-export async function syncCategoriesFromServer(): Promise<SyncResult> {
-  const result: SyncResult = { success: false, synced: 0, failed: 0, errors: [] };
-
-  const db = await getOfflineDb();
-  if (!db) return result;
-
-  try {
-    const response = await fetch('/api/categorias');
-    if (!response.ok) throw new Error('Erro ao buscar categorias');
-
-    const data = await response.json();
-    const categories: LocalCategory[] = (data.data || []).map((c: Record<string, unknown>) => ({
-      ...c,
-      _synced: true,
-      _last_sync: new Date().toISOString(),
-    }));
-
-    await db.syncCategoriesFromServer(categories);
-    result.synced = categories.length;
-    result.success = true;
-
-    console.log(`[Sync] ${categories.length} categorias sincronizadas`);
-  } catch (error) {
-    result.errors.push(error instanceof Error ? error.message : 'Erro desconhecido');
-    console.error('[Sync] Erro ao sincronizar categorias:', error);
-  }
-
-  return result;
+export function onSyncStatusChange(listener: (status: SyncStatus) => void) {
+  syncListeners.push(listener);
+  return () => {
+    syncListeners = syncListeners.filter(l => l !== listener);
+  };
 }
 
 /**
- * Baixa clientes do servidor para o banco local
+ * Notifica listeners sobre mudança de status
  */
-export async function syncCustomersFromServer(): Promise<SyncResult> {
-  const result: SyncResult = { success: false, synced: 0, failed: 0, errors: [] };
-
-  const db = await getOfflineDb();
-  if (!db) return result;
-
-  try {
-    const response = await fetch('/api/clientes?limit=10000');
-    if (!response.ok) throw new Error('Erro ao buscar clientes');
-
-    const data = await response.json();
-    const customers: LocalCustomer[] = (data.data || []).map((c: Record<string, unknown>) => ({
-      ...c,
-      _synced: true,
-      _last_sync: new Date().toISOString(),
-    }));
-
-    await db.syncCustomersFromServer(customers);
-    result.synced = customers.length;
-    result.success = true;
-
-    console.log(`[Sync] ${customers.length} clientes sincronizados`);
-  } catch (error) {
-    result.errors.push(error instanceof Error ? error.message : 'Erro desconhecido');
-    console.error('[Sync] Erro ao sincronizar clientes:', error);
-  }
-
-  return result;
+async function notifyListeners() {
+  const status = await getSyncStatus();
+  syncListeners.forEach(listener => listener(status));
 }
 
 /**
- * Envia vendas offline para o servidor
+ * Obtém status atual da sincronização
  */
-export async function syncSalesToServer(): Promise<SyncResult> {
-  const result: SyncResult = { success: false, synced: 0, failed: 0, errors: [] };
-  const store = useConnectionStore.getState();
+export async function getSyncStatus(): Promise<SyncStatus> {
+  const db = await getOfflineDb();
+  if (!db) {
+    return { isSyncing: false, pendingCount: 0, lastSync: null, lastError: null };
+  }
+
+  const pendingCount = await db.getPendingSyncCount();
+  const lastSync = await db.getConfig<string>('last_sync');
+  const lastError = await db.getConfig<string>('last_sync_error');
+
+  return {
+    isSyncing,
+    pendingCount,
+    lastSync: lastSync || null,
+    lastError: lastError || null,
+  };
+}
+
+/**
+ * Sincroniza todos os dados pendentes
+ */
+export async function syncAll(): Promise<SyncResult> {
+  if (isSyncing) {
+    console.log('[Sync] Sincronização já em andamento');
+    return { success: false, synced: 0, failed: 0, errors: ['Sincronização já em andamento'] };
+  }
 
   const db = await getOfflineDb();
-  if (!db) return result;
+  if (!db) {
+    return { success: false, synced: 0, failed: 0, errors: ['Banco de dados offline não disponível'] };
+  }
+
+  isSyncing = true;
+  await notifyListeners();
+
+  const result: SyncResult = { success: true, synced: 0, failed: 0, errors: [] };
 
   try {
-    store.setSyncing(true);
-
+    console.log('[Sync] Iniciando sincronização...');
     const pendingItems = await db.getPendingSyncItems();
-    const salesItems = pendingItems.filter(item => item.entity_type === 'sales');
+    console.log(\`[Sync] \${pendingItems.length} itens pendentes\`);
 
-    for (const item of salesItems) {
+    for (const item of pendingItems) {
       try {
-        await db.syncQueue.update(item.id!, { status: 'processing' });
-
-        const { sale, items } = item.data as { sale: Record<string, unknown>; items: Record<string, unknown>[] };
-
-        const response = await fetch('/api/vendas', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            ...sale,
-            items,
-            _offline_id: sale.id,
-          }),
-        });
-
-        if (response.ok) {
-          const serverSale = await response.json();
-          await db.markSaleAsSynced(sale.id as string, serverSale.data?.id);
-          await db.syncQueue.delete(item.id!);
-          result.synced++;
-          console.log(`[Sync] Venda ${sale.id} sincronizada`);
-        } else {
-          const error = await response.json();
-          throw new Error(error.error || 'Erro ao enviar venda');
+        await syncItem(item);
+        // Remove item da fila após sucesso
+        if (item.id) {
+          await db.syncQueue.delete(item.id);
         }
+        result.synced++;
+        console.log(\`[Sync] Item sincronizado: \${item.entity_type}/\${item.entity_id}\`);
       } catch (error) {
         result.failed++;
-        const errorMessage = error instanceof Error ? error.message : 'Erro desconhecido';
-        result.errors.push(`Venda ${item.entity_id}: ${errorMessage}`);
+        const errorMsg = error instanceof Error ? error.message : 'Erro desconhecido';
+        result.errors.push(\`\${item.entity_type}/\${item.entity_id}: \${errorMsg}\`);
 
-        await db.syncQueue.update(item.id!, {
-          status: 'failed',
-          attempts: (item.attempts || 0) + 1,
-          last_error: errorMessage,
-        });
+        // Atualiza tentativas e erro
+        if (item.id) {
+          await db.syncQueue.update(item.id, {
+            attempts: item.attempts + 1,
+            last_error: errorMsg,
+            status: item.attempts >= 2 ? 'failed' : 'pending',
+          });
+        }
+        console.error(\`[Sync] Erro ao sincronizar \${item.entity_type}/\${item.entity_id}:\`, error);
       }
     }
 
     result.success = result.failed === 0;
+    await db.setConfig('last_sync', new Date().toISOString());
+    if (result.errors.length > 0) {
+      await db.setConfig('last_sync_error', result.errors.join('; '));
+    } else {
+      await db.setConfig('last_sync_error', null);
+    }
 
-    const pendingCount = await db.getPendingSyncCount();
-    store.setPendingSyncCount(pendingCount);
-    store.setLastSync(new Date(), result.success ? undefined : result.errors.join('; '));
-
+    console.log(\`[Sync] Concluído: \${result.synced} sincronizados, \${result.failed} falhas\`);
   } catch (error) {
+    console.error('[Sync] Erro geral:', error);
+    result.success = false;
     result.errors.push(error instanceof Error ? error.message : 'Erro desconhecido');
-    console.error('[Sync] Erro ao sincronizar vendas:', error);
   } finally {
-    store.setSyncing(false);
+    isSyncing = false;
+    await notifyListeners();
   }
 
   return result;
 }
 
 /**
- * Executa sincronização completa (download + upload)
+ * Sincroniza um item específico
  */
-export async function fullSync(): Promise<{
-  download: SyncResult;
-  upload: SyncResult;
-}> {
-  const store = useConnectionStore.getState();
+async function syncItem(item: SyncQueueItem): Promise<void> {
+  const { entity_type, operation, data } = item;
 
-  if (store.status !== 'online') {
-    return {
-      download: { success: false, synced: 0, failed: 0, errors: ['Offline'] },
-      upload: { success: false, synced: 0, failed: 0, errors: ['Offline'] },
-    };
-  }
-
-  console.log('[Sync] Iniciando sincronização completa...');
-
-  const [productsResult, categoriesResult, customersResult] = await Promise.all([
-    syncProductsFromServer(),
-    syncCategoriesFromServer(),
-    syncCustomersFromServer(),
-  ]);
-
-  const download: SyncResult = {
-    success: productsResult.success && categoriesResult.success && customersResult.success,
-    synced: productsResult.synced + categoriesResult.synced + customersResult.synced,
-    failed: productsResult.failed + categoriesResult.failed + customersResult.failed,
-    errors: [...productsResult.errors, ...categoriesResult.errors, ...customersResult.errors],
-  };
-
-  const upload = await syncSalesToServer();
-
-  console.log('[Sync] Sincronização completa:', { download, upload });
-
-  return { download, upload };
-}
-
-/**
- * Verifica e sincroniza automaticamente quando online
- */
-export async function autoSync(): Promise<void> {
-  const store = useConnectionStore.getState();
-
-  if (store.status !== 'online' || store.isSyncing) {
-    return;
-  }
-
-  const db = await getOfflineDb();
-  if (!db) return;
-
-  const pendingCount = await db.getPendingSyncCount();
-  store.setPendingSyncCount(pendingCount);
-
-  if (pendingCount > 0) {
-    console.log(`[Sync] ${pendingCount} itens pendentes, iniciando upload...`);
-    await syncSalesToServer();
+  switch (entity_type) {
+    case 'sales':
+      await syncSale(operation, data);
+      break;
+    case 'customers':
+      await syncCustomer(operation, data);
+      break;
+    case 'categories':
+      await syncCategory(operation, data);
+      break;
+    case 'products':
+      await syncProduct(operation, data);
+      break;
+    default:
+      console.warn(\`[Sync] Tipo de entidade não suportado: \${entity_type}\`);
   }
 }
 
 /**
- * Inicializa dados offline (primeira vez ou atualização)
+ * Sincroniza venda
  */
-export async function initOfflineData(): Promise<boolean> {
-  if (typeof window === 'undefined') return false;
+async function syncSale(operation: string, data: Record<string, unknown>): Promise<void> {
+  if (operation === 'create') {
+    const saleData = data.sale as Record<string, unknown>;
+    const items = data.items as Array<Record<string, unknown>>;
 
-  const store = useConnectionStore.getState();
+    const response = await fetch('/api/vendas', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        customer_id: saleData.customer_id,
+        user_id: saleData.user_id,
+        items: items.map(item => ({
+          product_id: item.product_id,
+          product_name: item.product_name,
+          quantity: item.quantity,
+          unit_price: item.unit_price,
+          unit: item.unit,
+          discount_amount: item.discount || 0,
+          discount_percent: 0,
+          notes: null,
+        })),
+        discount_amount: saleData.discount || 0,
+        payment_method: saleData.payment_method,
+        payment_details: {},
+        offline_id: saleData.id,
+        offline_receipt: saleData.receipt_number,
+      }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Erro ao sincronizar venda');
+    }
+
+    // Atualiza a venda local como sincronizada
+    const db = await getOfflineDb();
+    if (db && saleData.id) {
+      await db.markSaleAsSynced(saleData.id as string);
+    }
+  } else if (operation === 'update') {
+    const response = await fetch(\`/api/vendas/\${data.id}\`, {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Erro ao atualizar venda');
+    }
+  }
+}
+
+/**
+ * Sincroniza cliente
+ */
+async function syncCustomer(operation: string, data: Record<string, unknown>): Promise<void> {
+  const url = operation === 'create' ? '/api/clientes' : \`/api/clientes/\${data.id}\`;
+  const method = operation === 'create' ? 'POST' : operation === 'update' ? 'PUT' : 'DELETE';
+
+  const response = await fetch(url, {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    body: method !== 'DELETE' ? JSON.stringify(data) : undefined,
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || \`Erro ao \${operation} cliente\`);
+  }
+
   const db = await getOfflineDb();
-  if (!db) return false;
+  if (db && data.id) {
+    await db.customers.update(data.id as string, { _synced: true, _last_sync: new Date().toISOString() });
+  }
+}
 
-  if (store.status !== 'online') {
-    return await db.isPopulated();
+/**
+ * Sincroniza categoria
+ */
+async function syncCategory(operation: string, data: Record<string, unknown>): Promise<void> {
+  const url = operation === 'create' ? '/api/categorias' : \`/api/categorias/\${data.id}\`;
+  const method = operation === 'create' ? 'POST' : operation === 'update' ? 'PUT' : 'DELETE';
+
+  const response = await fetch(url, {
+    method,
+    headers: { 'Content-Type': 'application/json' },
+    body: method !== 'DELETE' ? JSON.stringify(data) : undefined,
+  });
+
+  if (!response.ok) {
+    const error = await response.json();
+    throw new Error(error.error || \`Erro ao \${operation} categoria\`);
   }
 
-  try {
-    console.log('[Sync] Inicializando dados offline...');
-
-    await Promise.all([
-      syncProductsFromServer(),
-      syncCategoriesFromServer(),
-      syncCustomersFromServer(),
-    ]);
-
-    console.log('[Sync] Dados offline inicializados');
-    return true;
-  } catch (error) {
-    console.error('[Sync] Erro ao inicializar dados offline:', error);
-    return await db.isPopulated();
+  const db = await getOfflineDb();
+  if (db && data.id) {
+    await db.categories.update(data.id as string, { _synced: true, _last_sync: new Date().toISOString() });
   }
+}
+
+/**
+ * Sincroniza produto (movimentação de estoque)
+ */
+async function syncProduct(operation: string, data: Record<string, unknown>): Promise<void> {
+  if (operation === 'stock_movement') {
+    const response = await fetch('/api/estoque/movimentacoes', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.error || 'Erro ao sincronizar movimentação');
+    }
+  }
+}
+
+/**
+ * Inicia monitoramento de conexão para sincronização automática
+ */
+export function startAutoSync() {
+  if (typeof window === 'undefined') return;
+
+  window.addEventListener('online', async () => {
+    console.log('[Sync] Conexão restaurada, iniciando sincronização...');
+    setTimeout(async () => {
+      const result = await syncAll();
+      if (result.synced > 0) {
+        window.dispatchEvent(new CustomEvent('sync-complete', { detail: result }));
+      }
+    }, 2000);
+  });
+
+  if (navigator.onLine) {
+    setTimeout(async () => {
+      const db = await getOfflineDb();
+      if (db) {
+        const pendingCount = await db.getPendingSyncCount();
+        if (pendingCount > 0) {
+          console.log(\`[Sync] \${pendingCount} itens pendentes, sincronizando...\`);
+          syncAll();
+        }
+      }
+    }, 3000);
+  }
+
+  console.log('[Sync] Auto-sync iniciado');
+}
+
+/**
+ * Para monitoramento
+ */
+export function stopAutoSync() {
+  console.log('[Sync] Auto-sync parado');
 }
