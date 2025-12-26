@@ -7,10 +7,10 @@
 'use client';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { useOnlineStatus } from '@/lib/hooks/use-online-status';
 import { toast } from '@/components/ui/use-toast';
-import { startAutoSync, syncAll, getSyncStatus } from '@/lib/services/sync-service';
+import { startAutoSync, syncAll, getSyncStatus, initOfflineData } from '@/lib/services/sync-service';
 
 /**
  * Provider de Query Client (React Query)
@@ -42,13 +42,15 @@ function QueryProvider({ children }: { children: React.ReactNode }) {
  * Provider de Conexão e Sincronização
  *
  * Monitora o estado de conexão, exibe notificações e gerencia sincronização.
- * Mantém a store de conexão atualizada com contagem de pendentes.
+ * Integra com o ciclo de vida da aplicação para sincronização robusta.
  */
 function ConnectionProvider({ children }: { children: React.ReactNode }) {
   const { status } = useOnlineStatus();
   const prevStatus = useRef<string | null>(null);
   const hasShownInitialStatus = useRef(false);
   const syncInitialized = useRef(false);
+  const lastVisibilitySync = useRef<number>(0);
+  const backgroundSyncInterval = useRef<NodeJS.Timeout | null>(null);
 
   // Importa a store dinamicamente para evitar problemas de SSR
   const { useConnectionStore } = require('@/lib/stores/connection-store');
@@ -57,7 +59,7 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
   /**
    * Atualiza o estado da store com dados do sync service
    */
-  const updateSyncState = async () => {
+  const updateSyncState = useCallback(async () => {
     try {
       const syncStatus = await getSyncStatus();
       setPendingSyncCount(syncStatus.pendingCount);
@@ -69,20 +71,139 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
     } catch (error) {
       console.error('[ConnectionProvider] Erro ao atualizar estado:', error);
     }
-  };
+  }, [setPendingSyncCount, setConflictsCount, setSyncing, setLastSync]);
 
-  // Inicializa o auto-sync uma vez
+  /**
+   * Executa sincronização com tratamento de erros e notificações
+   */
+  const performSync = useCallback(async (showToasts = true) => {
+    try {
+      setSyncing(true);
+      const result = await syncAll();
+      await updateSyncState();
+
+      if (showToasts) {
+        if (result.synced > 0) {
+          toast({
+            title: 'Sincronização concluída',
+            description: `${result.synced} ${result.synced === 1 ? 'item sincronizado' : 'itens sincronizados'} com sucesso.`,
+          });
+        }
+        if (result.failed > 0) {
+          toast({
+            title: 'Alguns itens falharam',
+            description: `${result.failed} ${result.failed === 1 ? 'item não pôde' : 'itens não puderam'} ser sincronizado(s).`,
+            variant: 'destructive',
+          });
+        }
+        if (result.conflicts > 0) {
+          toast({
+            title: 'Conflitos detectados',
+            description: `${result.conflicts} ${result.conflicts === 1 ? 'conflito precisa' : 'conflitos precisam'} de resolução manual.`,
+            variant: 'default',
+          });
+        }
+      }
+
+      return result;
+    } catch (error) {
+      console.error('[ConnectionProvider] Erro na sincronização:', error);
+      setSyncing(false);
+      throw error;
+    }
+  }, [setSyncing, updateSyncState]);
+
+  // Inicializa o auto-sync e carrega dados offline
   useEffect(() => {
     if (!syncInitialized.current) {
       syncInitialized.current = true;
-      startAutoSync();
 
-      // Atualiza estado inicial
-      updateSyncState();
+      const initialize = async () => {
+        try {
+          // Inicia monitoramento de conexão
+          startAutoSync();
 
-      console.log('[ConnectionProvider] Auto-sync inicializado');
+          // Atualiza estado inicial
+          await updateSyncState();
+
+          // Se online, verifica se precisa sincronizar pendências anteriores
+          if (navigator.onLine) {
+            const hadPending = localStorage.getItem('pendingSyncOnLoad');
+            if (hadPending === 'true') {
+              localStorage.removeItem('pendingSyncOnLoad');
+              console.log('[ConnectionProvider] Sincronizando pendências da sessão anterior...');
+              await performSync(false);
+            }
+
+            // Inicializa dados offline se necessário
+            const syncStatus = await getSyncStatus();
+            if (syncStatus.pendingCount === 0) {
+              // Atualiza cache local com dados do servidor
+              await initOfflineData();
+              await updateSyncState();
+            }
+          }
+
+          console.log('[ConnectionProvider] Inicialização completa');
+        } catch (error) {
+          console.error('[ConnectionProvider] Erro na inicialização:', error);
+        }
+      };
+
+      initialize();
     }
-  }, []);
+  }, [updateSyncState, performSync]);
+
+  // Sincronização quando aba fica visível
+  useEffect(() => {
+    const handleVisibilityChange = async () => {
+      if (document.visibilityState === 'visible' && navigator.onLine) {
+        const now = Date.now();
+        // Evita sincronizar múltiplas vezes em sequência rápida (mínimo 30 segundos)
+        if (now - lastVisibilitySync.current < 30000) {
+          return;
+        }
+        lastVisibilitySync.current = now;
+
+        // Verifica se há pendências
+        const syncStatus = await getSyncStatus();
+        if (syncStatus.pendingCount > 0) {
+          console.log(`[ConnectionProvider] Aba visível, ${syncStatus.pendingCount} pendências, sincronizando...`);
+          await performSync(false);
+        }
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    return () => document.removeEventListener('visibilitychange', handleVisibilityChange);
+  }, [performSync]);
+
+  // Sincronização periódica em background (a cada 2 minutos)
+  useEffect(() => {
+    const BACKGROUND_SYNC_INTERVAL = 2 * 60 * 1000; // 2 minutos
+
+    const doBackgroundSync = async () => {
+      if (!navigator.onLine) return;
+
+      try {
+        const syncStatus = await getSyncStatus();
+        if (syncStatus.pendingCount > 0 && !syncStatus.isSyncing) {
+          console.log('[ConnectionProvider] Background sync iniciando...');
+          await performSync(false);
+        }
+      } catch (error) {
+        console.error('[ConnectionProvider] Erro no background sync:', error);
+      }
+    };
+
+    backgroundSyncInterval.current = setInterval(doBackgroundSync, BACKGROUND_SYNC_INTERVAL);
+
+    return () => {
+      if (backgroundSyncInterval.current) {
+        clearInterval(backgroundSyncInterval.current);
+      }
+    };
+  }, [performSync]);
 
   // Atualiza pendingSyncCount periodicamente (a cada 5 segundos)
   useEffect(() => {
@@ -91,8 +212,32 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
     }, 5000);
 
     return () => clearInterval(intervalId);
+  }, [updateSyncState]);
+
+  // Aviso antes de fechar página com dados pendentes
+  useEffect(() => {
+    const handleBeforeUnload = async (event: BeforeUnloadEvent) => {
+      const syncStatus = await getSyncStatus();
+      if (syncStatus.pendingCount > 0) {
+        // Marca para sincronizar na próxima abertura
+        try {
+          localStorage.setItem('pendingSyncOnLoad', 'true');
+        } catch {
+          // Ignora erros
+        }
+
+        // Mostra aviso
+        event.preventDefault();
+        event.returnValue = 'Existem dados não sincronizados. Deseja sair mesmo assim?';
+        return event.returnValue;
+      }
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+    return () => window.removeEventListener('beforeunload', handleBeforeUnload);
   }, []);
 
+  // Reage a mudanças de status de conexão
   useEffect(() => {
     // Ignora estado 'checking' - é transitório
     if (status === 'checking') {
@@ -116,40 +261,9 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
           variant: 'default',
         });
 
-        setSyncing(true);
-
-        // Inicia sincronização
+        // Inicia sincronização com delay para estabilizar conexão
         setTimeout(async () => {
-          try {
-            const result = await syncAll();
-
-            // Atualiza estado após sync
-            await updateSyncState();
-
-            if (result.synced > 0) {
-              toast({
-                title: 'Sincronização concluída',
-                description: `${result.synced} ${result.synced === 1 ? 'item sincronizado' : 'itens sincronizados'} com sucesso.`,
-              });
-            }
-            if (result.failed > 0) {
-              toast({
-                title: 'Alguns itens falharam',
-                description: `${result.failed} ${result.failed === 1 ? 'item não pôde' : 'itens não puderam'} ser sincronizado(s).`,
-                variant: 'destructive',
-              });
-            }
-            if (result.conflicts > 0) {
-              toast({
-                title: 'Conflitos detectados',
-                description: `${result.conflicts} ${result.conflicts === 1 ? 'conflito precisa' : 'conflitos precisam'} de resolução manual.`,
-                variant: 'default',
-              });
-            }
-          } catch (error) {
-            console.error('[ConnectionProvider] Erro na sincronização:', error);
-            setSyncing(false);
-          }
+          await performSync(true);
         }, 2000);
       } else if (status === 'offline' && prevStatus.current === 'online') {
         toast({
@@ -160,7 +274,7 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
       }
       prevStatus.current = status;
     }
-  }, [status, setSyncing]);
+  }, [status, performSync]);
 
   return <>{children}</>;
 }
