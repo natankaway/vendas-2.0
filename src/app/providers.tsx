@@ -42,7 +42,7 @@ function QueryProvider({ children }: { children: React.ReactNode }) {
  * Provider de Conexão e Sincronização
  *
  * Monitora o estado de conexão, exibe notificações e gerencia sincronização.
- * Usa o status diretamente para ignorar estado intermediário 'checking'.
+ * Mantém a store de conexão atualizada com contagem de pendentes.
  */
 function ConnectionProvider({ children }: { children: React.ReactNode }) {
   const { status } = useOnlineStatus();
@@ -50,19 +50,46 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
   const hasShownInitialStatus = useRef(false);
   const syncInitialized = useRef(false);
 
+  // Importa a store dinamicamente para evitar problemas de SSR
+  const { useConnectionStore } = require('@/lib/stores/connection-store');
+  const { setPendingSyncCount, setSyncing, setLastSync } = useConnectionStore();
+
+  /**
+   * Atualiza o estado da store com dados do sync service
+   */
+  const updateSyncState = async () => {
+    try {
+      const syncStatus = await getSyncStatus();
+      setPendingSyncCount(syncStatus.pendingCount);
+      setSyncing(syncStatus.isSyncing);
+      if (syncStatus.lastSync) {
+        setLastSync(new Date(syncStatus.lastSync), syncStatus.lastError || undefined);
+      }
+    } catch (error) {
+      console.error('[ConnectionProvider] Erro ao atualizar estado:', error);
+    }
+  };
+
   // Inicializa o auto-sync uma vez
   useEffect(() => {
     if (!syncInitialized.current) {
       syncInitialized.current = true;
       startAutoSync();
 
-      // Verifica se há itens pendentes na inicialização
-      getSyncStatus().then(syncStatus => {
-        if (syncStatus.pendingCount > 0) {
-          console.log(`[Provider] ${syncStatus.pendingCount} itens pendentes de sincronização`);
-        }
-      });
+      // Atualiza estado inicial
+      updateSyncState();
+
+      console.log('[ConnectionProvider] Auto-sync inicializado');
     }
+  }, []);
+
+  // Atualiza pendingSyncCount periodicamente (a cada 5 segundos)
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      updateSyncState();
+    }, 5000);
+
+    return () => clearInterval(intervalId);
   }, []);
 
   useEffect(() => {
@@ -88,21 +115,32 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
           variant: 'default',
         });
 
+        setSyncing(true);
+
         // Inicia sincronização
         setTimeout(async () => {
-          const result = await syncAll();
-          if (result.synced > 0) {
-            toast({
-              title: 'Sincronização concluída',
-              description: `${result.synced} ${result.synced === 1 ? 'item sincronizado' : 'itens sincronizados'} com sucesso.`,
-            });
-          }
-          if (result.failed > 0) {
-            toast({
-              title: 'Alguns itens falharam',
-              description: `${result.failed} ${result.failed === 1 ? 'item não pôde' : 'itens não puderam'} ser sincronizado(s).`,
-              variant: 'destructive',
-            });
+          try {
+            const result = await syncAll();
+
+            // Atualiza estado após sync
+            await updateSyncState();
+
+            if (result.synced > 0) {
+              toast({
+                title: 'Sincronização concluída',
+                description: `${result.synced} ${result.synced === 1 ? 'item sincronizado' : 'itens sincronizados'} com sucesso.`,
+              });
+            }
+            if (result.failed > 0) {
+              toast({
+                title: 'Alguns itens falharam',
+                description: `${result.failed} ${result.failed === 1 ? 'item não pôde' : 'itens não puderam'} ser sincronizado(s).`,
+                variant: 'destructive',
+              });
+            }
+          } catch (error) {
+            console.error('[ConnectionProvider] Erro na sincronização:', error);
+            setSyncing(false);
           }
         }, 2000);
       } else if (status === 'offline' && prevStatus.current === 'online') {
@@ -114,7 +152,7 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
       }
       prevStatus.current = status;
     }
-  }, [status]);
+  }, [status, setSyncing]);
 
   return <>{children}</>;
 }

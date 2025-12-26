@@ -1196,11 +1196,14 @@ async function createCustomerOffline(customerData: CustomerData): Promise<Custom
       last_purchase_at: null,
       created_at: now,
       updated_at: now,
+      // Campos de versionamento
+      version: 1,
+      deleted_at: null,
       _synced: false,
       _last_sync: null,
     };
 
-    await db.customers.add(customer);
+    await db.customers.add(customer as any);
     await db.addToSyncQueue('customers', id, 'create', customer);
 
     console.log(`[OfflineData] Cliente criado offline: ${id}`);
@@ -1252,6 +1255,7 @@ async function updateCustomerOffline(id: string, customerData: Partial<CustomerD
       ...existing,
       ...customerData,
       updated_at: new Date().toISOString(),
+      version: ((existing as any).version || 1) + 1, // Incrementa versão
       _synced: false,
     };
 
@@ -1378,11 +1382,14 @@ async function createCategoryOffline(categoryData: CategoryData): Promise<Catego
       sort_order: categoryData.sort_order || 0,
       created_at: now,
       updated_at: now,
+      // Campos de versionamento
+      version: 1,
+      deleted_at: null,
       _synced: false,
       _last_sync: null,
     };
 
-    await db.categories.add(category);
+    await db.categories.add(category as any);
     await db.addToSyncQueue('categories', id, 'create', category);
 
     console.log(`[OfflineData] Categoria criada offline: ${id}`);
@@ -1434,6 +1441,7 @@ async function updateCategoryOffline(id: string, categoryData: Partial<CategoryD
       ...existing,
       ...categoryData,
       updated_at: new Date().toISOString(),
+      version: ((existing as any).version || 1) + 1, // Incrementa versão
       _synced: false,
     };
 
@@ -1597,11 +1605,14 @@ async function createProductOffline(productData: ProductData): Promise<ProductRe
         expiration_date: productData.expiration_date ?? null,
         created_at: now,
         updated_at: now,
+        // Campos de versionamento
+        version: 1,
+        deleted_at: null,
         _synced: false,
         _last_sync: null,
       };
 
-      await db.products.add(product);
+      await db.products.add(product as any);
       await db.addToSyncQueue('products', id, 'create', product);
 
       console.log('[OfflineData] Produto criado offline: ' + id);
@@ -1672,6 +1683,7 @@ async function updateProductOffline(id: string, productData: Partial<ProductData
         image_url: productData.image_url ?? existing.image_url,
         expiration_date: productData.expiration_date ?? existing.expiration_date,
         updated_at: new Date().toISOString(),
+        version: ((existing as any).version || 1) + 1, // Incrementa versão
         _synced: false,
       };
 

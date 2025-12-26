@@ -29,7 +29,9 @@ export interface LocalProduct {
   expiration_date: string | null;
   created_at: string;
   updated_at: string;
-  // Campos de sincronização
+  // Campos de sincronização e versionamento
+  version: number; // Controle de versão para conflitos
+  deleted_at: string | null; // Soft delete
   _synced: boolean;
   _last_sync: string | null;
 }
@@ -45,6 +47,9 @@ export interface LocalCategory {
   sort_order: number;
   created_at: string;
   updated_at: string;
+  // Campos de sincronização e versionamento
+  version: number; // Controle de versão para conflitos
+  deleted_at: string | null; // Soft delete
   _synced: boolean;
   _last_sync: string | null;
 }
@@ -67,12 +72,16 @@ export interface LocalCustomer {
   last_purchase_at: string | null;
   created_at: string;
   updated_at: string;
+  // Campos de sincronização e versionamento
+  version: number; // Controle de versão para conflitos
+  deleted_at: string | null; // Soft delete
   _synced: boolean;
   _last_sync: string | null;
 }
 
 export interface LocalSale {
   id: string;
+  receipt_number: string; // Número do recibo (obrigatório)
   customer_id: string | null;
   user_id: string | null;
   subtotal: number;
@@ -85,6 +94,9 @@ export interface LocalSale {
   cash_register_id: string | null;
   created_at: string;
   updated_at: string;
+  // Campos de sincronização
+  version: number; // Controle de versão para conflitos
+  deleted_at: string | null; // Soft delete
   _synced: boolean;
   _last_sync: string | null;
   _local_id?: string; // ID temporário para vendas criadas offline
@@ -96,6 +108,7 @@ export interface LocalSaleItem {
   product_id: string;
   product_name: string;
   quantity: number;
+  unit: string; // Unidade de medida (un, kg, etc)
   unit_price: number;
   discount: number;
   total: number;
@@ -136,8 +149,8 @@ class OfflineDatabase extends Dexie {
   constructor() {
     super('KawayPOS');
 
+    // Versão 1: Schema inicial
     this.version(1).stores({
-      // Índices para busca rápida
       products: 'id, name, sku, barcode, category_id, is_active, _synced',
       categories: 'id, name, is_active, _synced',
       customers: 'id, name, document, phone, _synced',
@@ -145,6 +158,38 @@ class OfflineDatabase extends Dexie {
       saleItems: 'id, sale_id, product_id, _synced',
       syncQueue: '++id, entity_type, entity_id, status, created_at',
       config: 'key',
+    });
+
+    // Versão 2: Adiciona campos version, deleted_at, receipt_number
+    this.version(2).stores({
+      products: 'id, name, sku, barcode, category_id, is_active, _synced, version, deleted_at',
+      categories: 'id, name, is_active, _synced, version, deleted_at',
+      customers: 'id, name, document, phone, _synced, version, deleted_at',
+      sales: 'id, receipt_number, customer_id, status, created_at, _synced, _local_id, version, deleted_at',
+      saleItems: 'id, sale_id, product_id, _synced',
+      syncQueue: '++id, entity_type, entity_id, status, created_at',
+      config: 'key',
+    }).upgrade(tx => {
+      // Migração: adiciona campos padrão aos registros existentes
+      return Promise.all([
+        tx.table('products').toCollection().modify(product => {
+          if (product.version === undefined) product.version = 1;
+          if (product.deleted_at === undefined) product.deleted_at = null;
+        }),
+        tx.table('categories').toCollection().modify(category => {
+          if (category.version === undefined) category.version = 1;
+          if (category.deleted_at === undefined) category.deleted_at = null;
+        }),
+        tx.table('customers').toCollection().modify(customer => {
+          if (customer.version === undefined) customer.version = 1;
+          if (customer.deleted_at === undefined) customer.deleted_at = null;
+        }),
+        tx.table('sales').toCollection().modify(sale => {
+          if (sale.version === undefined) sale.version = 1;
+          if (sale.deleted_at === undefined) sale.deleted_at = null;
+          if (!sale.receipt_number) sale.receipt_number = sale.id.slice(0, 8).toUpperCase();
+        }),
+      ]);
     });
   }
 
@@ -218,10 +263,22 @@ class OfflineDatabase extends Dexie {
 
   /**
    * Sincroniza produtos do Supabase para local
+   * Implementa merge inteligente: preserva dados locais se versão for maior
    */
   async syncProductsFromServer(products: LocalProduct[]): Promise<void> {
     await this.transaction('rw', this.products, async () => {
       for (const product of products) {
+        // Verifica se existe produto local com versão maior (edições offline)
+        const existingProduct = await this.products.get(product.id);
+        const serverVersion = product.version || 1;
+        const localVersion = existingProduct?.version || 0;
+
+        // Se versão local é maior e não sincronizado, preserva dados locais
+        if (existingProduct && localVersion > serverVersion && !existingProduct._synced) {
+          console.log(`[Sync] Produto ${product.id}: versão local (${localVersion}) > servidor (${serverVersion}), preservando local`);
+          continue;
+        }
+
         // Garante que campos numéricos tenham valores válidos
         const stockQuantity = typeof product.stock_quantity === 'number' ? product.stock_quantity :
                              (product.stock_quantity != null ? Number(product.stock_quantity) : 0);
@@ -233,6 +290,8 @@ class OfflineDatabase extends Dexie {
           stock_quantity: isNaN(stockQuantity) ? 0 : stockQuantity,
           min_stock_quantity: isNaN(minStockQuantity) ? 0 : minStockQuantity,
           is_active: product.is_active !== false,
+          version: serverVersion,
+          deleted_at: product.deleted_at || null,
           _synced: true,
           _last_sync: new Date().toISOString(),
         });
@@ -243,12 +302,26 @@ class OfflineDatabase extends Dexie {
 
   /**
    * Sincroniza categorias do Supabase para local
+   * Implementa merge inteligente: preserva dados locais se versão for maior
    */
   async syncCategoriesFromServer(categories: LocalCategory[]): Promise<void> {
     await this.transaction('rw', this.categories, async () => {
       for (const category of categories) {
+        // Verifica se existe categoria local com versão maior
+        const existingCategory = await this.categories.get(category.id);
+        const serverVersion = category.version || 1;
+        const localVersion = existingCategory?.version || 0;
+
+        // Se versão local é maior e não sincronizado, preserva dados locais
+        if (existingCategory && localVersion > serverVersion && !existingCategory._synced) {
+          console.log(`[Sync] Categoria ${category.id}: versão local > servidor, preservando local`);
+          continue;
+        }
+
         await this.categories.put({
           ...category,
+          version: serverVersion,
+          deleted_at: category.deleted_at || null,
           _synced: true,
           _last_sync: new Date().toISOString(),
         });
@@ -259,22 +332,33 @@ class OfflineDatabase extends Dexie {
 
   /**
    * Sincroniza clientes do Supabase para local
+   * Implementa merge inteligente: preserva dados locais se versão for maior
    */
   async syncCustomersFromServer(customers: LocalCustomer[]): Promise<void> {
     await this.transaction('rw', this.customers, async () => {
       for (const customer of customers) {
-        // Verifica se existe cliente local com total_purchases maior (vendas offline)
+        // Verifica se existe cliente local com versão maior
         const existingCustomer = await this.customers.get(customer.id);
+        const serverVersion = customer.version || 1;
+        const localVersion = existingCustomer?.version || 0;
+
+        // Se versão local é maior e não sincronizado, preserva dados locais
+        if (existingCustomer && localVersion > serverVersion && !existingCustomer._synced) {
+          console.log(`[Sync] Cliente ${customer.id}: versão local > servidor, preservando local`);
+          continue;
+        }
+
+        // Preserva o maior valor de total_purchases (vendas offline podem ter aumentado)
         const serverPurchases = typeof customer.total_purchases === 'number' ? customer.total_purchases : 0;
         const localPurchases = existingCustomer?.total_purchases ?? 0;
-
-        // Preserva o maior valor de total_purchases
         const totalPurchases = Math.max(serverPurchases, localPurchases);
 
         await this.customers.put({
           ...customer,
           total_purchases: totalPurchases,
           credit_limit: typeof customer.credit_limit === 'number' ? customer.credit_limit : 0,
+          version: serverVersion,
+          deleted_at: customer.deleted_at || null,
           _synced: true,
           _last_sync: new Date().toISOString(),
         });
@@ -285,12 +369,25 @@ class OfflineDatabase extends Dexie {
 
   /**
    * Sincroniza vendas do Supabase para local (cache)
+   * Não sobrescreve vendas locais não sincronizadas
    */
   async syncSalesFromServer(sales: LocalSale[], items?: LocalSaleItem[]): Promise<void> {
     await this.transaction('rw', [this.sales, this.saleItems], async () => {
       for (const sale of sales) {
+        // Verifica se existe venda local não sincronizada
+        const existingSale = await this.sales.get(sale.id);
+
+        // Se existe venda local não sincronizada, não sobrescreve
+        if (existingSale && !existingSale._synced) {
+          console.log(`[Sync] Venda ${sale.id}: existe localmente não sincronizada, preservando`);
+          continue;
+        }
+
         await this.sales.put({
           ...sale,
+          receipt_number: sale.receipt_number || sale.id.slice(0, 8).toUpperCase(),
+          version: sale.version || 1,
+          deleted_at: sale.deleted_at || null,
           _synced: true,
           _last_sync: new Date().toISOString(),
         });
@@ -299,6 +396,7 @@ class OfflineDatabase extends Dexie {
         for (const item of items) {
           await this.saleItems.put({
             ...item,
+            unit: item.unit || 'un',
             _synced: true,
           });
         }
@@ -345,16 +443,21 @@ class OfflineDatabase extends Dexie {
 
   /**
    * Busca produtos locais com filtro
+   * Exclui produtos deletados (soft delete)
    */
   async searchProducts(query: string, activeOnly = true): Promise<LocalProduct[]> {
     const lowerQuery = query.toLowerCase();
-    let collection = this.products.toCollection();
+
+    // Busca todos os produtos e filtra em memória
+    // IndexedDB não armazena boolean como 1/0, então filtramos manualmente
+    let products = await this.products.toArray();
+
+    // Exclui produtos deletados (soft delete)
+    products = products.filter(p => !p.deleted_at);
 
     if (activeOnly) {
-      collection = this.products.where('is_active').equals(1);
+      products = products.filter(p => p.is_active === true);
     }
-
-    const products = await collection.toArray();
 
     if (!query) return products;
 
@@ -374,17 +477,20 @@ class OfflineDatabase extends Dexie {
 
   /**
    * Cria venda offline
+   * Inclui controle de versão para sincronização
    */
   async createOfflineSale(
-    sale: Omit<LocalSale, '_synced' | '_last_sync'>,
+    sale: Omit<LocalSale, '_synced' | '_last_sync' | 'version' | 'deleted_at'>,
     items: Omit<LocalSaleItem, '_synced'>[]
   ): Promise<string> {
     const saleId = sale.id;
 
     await this.transaction('rw', [this.sales, this.saleItems, this.products, this.syncQueue], async () => {
-      // Salva a venda
+      // Salva a venda com controle de versão
       await this.sales.add({
         ...sale,
+        version: 1, // Versão inicial
+        deleted_at: null,
         _synced: false,
         _last_sync: null,
       });
@@ -393,6 +499,7 @@ class OfflineDatabase extends Dexie {
       for (const item of items) {
         await this.saleItems.add({
           ...item,
+          unit: item.unit || 'un', // Garante que unit está definido
           _synced: false,
         });
 
@@ -400,7 +507,8 @@ class OfflineDatabase extends Dexie {
         const product = await this.products.get(item.product_id);
         if (product) {
           await this.products.update(item.product_id, {
-            stock_quantity: product.stock_quantity - item.quantity,
+            stock_quantity: Math.max(0, product.stock_quantity - item.quantity),
+            version: (product.version || 1) + 1, // Incrementa versão
             _synced: false,
           });
         }
@@ -408,7 +516,7 @@ class OfflineDatabase extends Dexie {
 
       // Adiciona à fila de sincronização
       await this.addToSyncQueue('sales', saleId, 'create', {
-        sale,
+        sale: { ...sale, version: 1 },
         items,
       });
     });

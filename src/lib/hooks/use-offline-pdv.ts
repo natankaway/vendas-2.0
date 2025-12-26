@@ -243,8 +243,17 @@ export function useOfflinePDV(options: UsePDVOfflineOptions = {}) {
     const saleId = uuidv4();
     const now = new Date().toISOString();
 
+    // Gera número de recibo offline: OFF-YYMMDD-XXXX
+    const date = new Date();
+    const year = date.getFullYear().toString().slice(-2);
+    const month = (date.getMonth() + 1).toString().padStart(2, '0');
+    const day = date.getDate().toString().padStart(2, '0');
+    const random = Math.floor(Math.random() * 10000).toString().padStart(4, '0');
+    const receiptNumber = `OFF-${year}${month}${day}-${random}`;
+
     const sale = {
       id: saleId,
+      receipt_number: receiptNumber,
       customer_id: customerId || null,
       user_id: null,
       subtotal,
@@ -265,6 +274,7 @@ export function useOfflinePDV(options: UsePDVOfflineOptions = {}) {
       product_id: item.product.id,
       product_name: item.product.name,
       quantity: item.quantity,
+      unit: item.product.unit || 'un', // Unidade de medida
       unit_price: item.product.price,
       discount: 0,
       total: item.product.price * item.quantity,
