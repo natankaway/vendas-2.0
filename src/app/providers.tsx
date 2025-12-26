@@ -52,7 +52,7 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
 
   // Importa a store dinamicamente para evitar problemas de SSR
   const { useConnectionStore } = require('@/lib/stores/connection-store');
-  const { setPendingSyncCount, setSyncing, setLastSync } = useConnectionStore();
+  const { setPendingSyncCount, setConflictsCount, setSyncing, setLastSync } = useConnectionStore();
 
   /**
    * Atualiza o estado da store com dados do sync service
@@ -61,6 +61,7 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
     try {
       const syncStatus = await getSyncStatus();
       setPendingSyncCount(syncStatus.pendingCount);
+      setConflictsCount(syncStatus.conflictsCount);
       setSyncing(syncStatus.isSyncing);
       if (syncStatus.lastSync) {
         setLastSync(new Date(syncStatus.lastSync), syncStatus.lastError || undefined);
@@ -136,6 +137,13 @@ function ConnectionProvider({ children }: { children: React.ReactNode }) {
                 title: 'Alguns itens falharam',
                 description: `${result.failed} ${result.failed === 1 ? 'item não pôde' : 'itens não puderam'} ser sincronizado(s).`,
                 variant: 'destructive',
+              });
+            }
+            if (result.conflicts > 0) {
+              toast({
+                title: 'Conflitos detectados',
+                description: `${result.conflicts} ${result.conflicts === 1 ? 'conflito precisa' : 'conflitos precisam'} de resolução manual.`,
+                variant: 'default',
               });
             }
           } catch (error) {

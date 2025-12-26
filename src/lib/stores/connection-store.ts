@@ -32,6 +32,11 @@ interface ConnectionState {
   pendingSyncCount: number;
 
   /**
+   * Número de conflitos pendentes de resolução
+   */
+  conflictsCount: number;
+
+  /**
    * Se uma sincronização está em andamento
    */
   isSyncing: boolean;
@@ -52,6 +57,7 @@ interface ConnectionState {
   setChecking: () => void;
   setSupabaseConnected: (connected: boolean) => void;
   setPendingSyncCount: (count: number) => void;
+  setConflictsCount: (count: number) => void;
   setSyncing: (syncing: boolean) => void;
   setLastSync: (date: Date, error?: string) => void;
   reset: () => void;
@@ -70,6 +76,7 @@ const initialState = {
   isSupabaseConnected: false,
   lastCheckedAt: null as Date | null,
   pendingSyncCount: 0,
+  conflictsCount: 0,
   isSyncing: false,
   lastSyncAt: null as Date | null,
   lastSyncError: null as string | null,
@@ -106,6 +113,11 @@ export const useConnectionStore = create<ConnectionState>()(
       setPendingSyncCount: (count: number) =>
         set({
           pendingSyncCount: count,
+        }),
+
+      setConflictsCount: (count: number) =>
+        set({
+          conflictsCount: count,
         }),
 
       setSyncing: (syncing: boolean) =>

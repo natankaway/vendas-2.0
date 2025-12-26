@@ -7,7 +7,7 @@
 
 'use client';
 
-import { SyncQueueItem } from '../db/offline-db';
+import { SyncQueueItem, SyncConflict, ConflictResolutionStrategy } from '../db/offline-db';
 
 // Import dinâmico para evitar SSR
 const getOfflineDb = async () => {
@@ -20,6 +20,7 @@ export interface SyncResult {
   success: boolean;
   synced: number;
   failed: number;
+  conflicts: number;
   errors: string[];
 }
 
@@ -32,6 +33,7 @@ let syncListeners: ((status: SyncStatus) => void)[] = [];
 export interface SyncStatus {
   isSyncing: boolean;
   pendingCount: number;
+  conflictsCount: number;
   lastSync: string | null;
   lastError: string | null;
 }
@@ -60,16 +62,18 @@ async function notifyListeners() {
 export async function getSyncStatus(): Promise<SyncStatus> {
   const db = await getOfflineDb();
   if (!db) {
-    return { isSyncing: false, pendingCount: 0, lastSync: null, lastError: null };
+    return { isSyncing: false, pendingCount: 0, conflictsCount: 0, lastSync: null, lastError: null };
   }
 
   const pendingCount = await db.getPendingSyncCount();
+  const conflictsCount = await db.getPendingConflictsCount();
   const lastSync = await db.getConfig<string>('last_sync');
   const lastError = await db.getConfig<string>('last_sync_error');
 
   return {
     isSyncing,
     pendingCount,
+    conflictsCount,
     lastSync: lastSync || null,
     lastError: lastError || null,
   };
@@ -81,18 +85,18 @@ export async function getSyncStatus(): Promise<SyncStatus> {
 export async function syncAll(): Promise<SyncResult> {
   if (isSyncing) {
     console.log('[Sync] Sincronização já em andamento');
-    return { success: false, synced: 0, failed: 0, errors: ['Sincronização já em andamento'] };
+    return { success: false, synced: 0, failed: 0, conflicts: 0, errors: ['Sincronização já em andamento'] };
   }
 
   const db = await getOfflineDb();
   if (!db) {
-    return { success: false, synced: 0, failed: 0, errors: ['Banco de dados offline não disponível'] };
+    return { success: false, synced: 0, failed: 0, conflicts: 0, errors: ['Banco de dados offline não disponível'] };
   }
 
   isSyncing = true;
   await notifyListeners();
 
-  const result: SyncResult = { success: true, synced: 0, failed: 0, errors: [] };
+  const result: SyncResult = { success: true, synced: 0, failed: 0, conflicts: 0, errors: [] };
 
   try {
     console.log('[Sync] Iniciando sincronização...');
@@ -133,7 +137,10 @@ export async function syncAll(): Promise<SyncResult> {
       await db.setConfig('last_sync_error', null);
     }
 
-    console.log('[Sync] Concluído: ' + result.synced + ' sincronizados, ' + result.failed + ' falhas');
+    // Obtém contagem de conflitos pendentes
+    result.conflicts = await db.getPendingConflictsCount();
+
+    console.log(`[Sync] Concluído: ${result.synced} sincronizados, ${result.failed} falhas, ${result.conflicts} conflitos pendentes`);
   } catch (error) {
     console.error('[Sync] Erro geral:', error);
     result.success = false;
@@ -432,10 +439,10 @@ export async function syncSalesToServer(): Promise<SyncResult> {
 
   const db = await getOfflineDb();
   if (!db) {
-    return { success: false, synced: 0, failed: 0, errors: ['Banco de dados offline não disponível'] };
+    return { success: false, synced: 0, failed: 0, conflicts: 0, errors: ['Banco de dados offline não disponível'] };
   }
 
-  const result: SyncResult = { success: true, synced: 0, failed: 0, errors: [] };
+  const result: SyncResult = { success: true, synced: 0, failed: 0, conflicts: 0, errors: [] };
 
   try {
     const pendingItems = await db.getPendingSyncItems();
@@ -483,7 +490,7 @@ export async function fullSync(): Promise<{
   console.log('[Sync] Iniciando sincronização completa...');
 
   const downloadResult = { success: true, errors: [] as string[] };
-  let uploadResult: SyncResult = { success: true, synced: 0, failed: 0, errors: [] };
+  let uploadResult: SyncResult = { success: true, synced: 0, failed: 0, conflicts: 0, errors: [] };
 
   try {
     // Primeiro baixa dados do servidor
@@ -507,4 +514,81 @@ export async function fullSync(): Promise<{
     download: downloadResult,
     upload: uploadResult,
   };
+}
+
+// ==================== FUNÇÕES DE GERENCIAMENTO DE CONFLITOS ====================
+
+/**
+ * Obtém todos os conflitos pendentes
+ */
+export async function getPendingConflicts(): Promise<SyncConflict[]> {
+  const db = await getOfflineDb();
+  if (!db) return [];
+  return db.getPendingConflicts();
+}
+
+/**
+ * Obtém todos os conflitos (incluindo resolvidos)
+ */
+export async function getAllConflicts(): Promise<SyncConflict[]> {
+  const db = await getOfflineDb();
+  if (!db) return [];
+  return db.getAllConflicts();
+}
+
+/**
+ * Obtém contagem de conflitos pendentes
+ */
+export async function getConflictsCount(): Promise<number> {
+  const db = await getOfflineDb();
+  if (!db) return 0;
+  return db.getPendingConflictsCount();
+}
+
+/**
+ * Resolve um conflito usando a estratégia especificada
+ */
+export async function resolveConflict(
+  conflictId: number,
+  strategy: ConflictResolutionStrategy,
+  mergedData?: Record<string, unknown>
+): Promise<void> {
+  const db = await getOfflineDb();
+  if (!db) throw new Error('Banco de dados offline não disponível');
+
+  await db.resolveConflict(conflictId, strategy, mergedData);
+  await notifyListeners();
+}
+
+/**
+ * Ignora um conflito (mantém dados atuais sem marcar como resolvido)
+ */
+export async function ignoreConflict(conflictId: number): Promise<void> {
+  const db = await getOfflineDb();
+  if (!db) throw new Error('Banco de dados offline não disponível');
+
+  await db.ignoreConflict(conflictId);
+  await notifyListeners();
+}
+
+/**
+ * Resolve todos os conflitos automaticamente
+ * Estratégia: o dado mais recente (baseado em updated_at) vence
+ */
+export async function autoResolveAllConflicts(): Promise<number> {
+  const db = await getOfflineDb();
+  if (!db) return 0;
+
+  const resolved = await db.autoResolveConflicts();
+  await notifyListeners();
+  return resolved;
+}
+
+/**
+ * Limpa conflitos antigos resolvidos
+ */
+export async function cleanupOldConflicts(daysOld = 30): Promise<number> {
+  const db = await getOfflineDb();
+  if (!db) return 0;
+  return db.cleanupResolvedConflicts(daysOld);
 }

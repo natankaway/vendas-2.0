@@ -135,6 +135,30 @@ export interface LocalConfig {
 }
 
 /**
+ * Tipos de estratégia de resolução de conflito
+ */
+export type ConflictResolutionStrategy = 'local_wins' | 'server_wins' | 'manual_merge';
+
+/**
+ * Registro de conflito detectado durante sincronização
+ */
+export interface SyncConflict {
+  id?: number;
+  entity_type: 'products' | 'categories' | 'customers' | 'sales';
+  entity_id: string;
+  local_data: Record<string, unknown>;
+  server_data: Record<string, unknown>;
+  local_version: number;
+  server_version: number;
+  local_updated_at: string;
+  server_updated_at: string;
+  detected_at: string;
+  resolved_at: string | null;
+  resolution_strategy: ConflictResolutionStrategy | null;
+  status: 'pending' | 'resolved' | 'ignored';
+}
+
+/**
  * Classe do banco de dados offline
  */
 class OfflineDatabase extends Dexie {
@@ -144,6 +168,7 @@ class OfflineDatabase extends Dexie {
   sales!: Table<LocalSale, string>;
   saleItems!: Table<LocalSaleItem, string>;
   syncQueue!: Table<SyncQueueItem, number>;
+  conflicts!: Table<SyncConflict, number>;
   config!: Table<LocalConfig, string>;
 
   constructor() {
@@ -190,6 +215,18 @@ class OfflineDatabase extends Dexie {
           if (!sale.receipt_number) sale.receipt_number = sale.id.slice(0, 8).toUpperCase();
         }),
       ]);
+    });
+
+    // Versão 3: Adiciona tabela de conflitos para resolução manual
+    this.version(3).stores({
+      products: 'id, name, sku, barcode, category_id, is_active, _synced, version, deleted_at',
+      categories: 'id, name, is_active, _synced, version, deleted_at',
+      customers: 'id, name, document, phone, _synced, version, deleted_at',
+      sales: 'id, receipt_number, customer_id, status, created_at, _synced, _local_id, version, deleted_at',
+      saleItems: 'id, sale_id, product_id, _synced',
+      syncQueue: '++id, entity_type, entity_id, status, created_at',
+      conflicts: '++id, entity_type, entity_id, status, detected_at',
+      config: 'key',
     });
   }
 
@@ -556,6 +593,270 @@ class OfflineDatabase extends Dexie {
     return productCount > 0;
   }
 
+  // ==================== MÉTODOS DE CONFLITOS ====================
+
+  /**
+   * Adiciona um conflito detectado durante sincronização
+   */
+  async addConflict(conflict: Omit<SyncConflict, 'id' | 'detected_at' | 'resolved_at' | 'resolution_strategy' | 'status'>): Promise<number> {
+    const id = await this.conflicts.add({
+      ...conflict,
+      detected_at: new Date().toISOString(),
+      resolved_at: null,
+      resolution_strategy: null,
+      status: 'pending',
+    });
+    console.log(`[Conflict] Conflito detectado: ${conflict.entity_type}/${conflict.entity_id} (local v${conflict.local_version} vs server v${conflict.server_version})`);
+    return id;
+  }
+
+  /**
+   * Obtém conflitos pendentes de resolução
+   */
+  async getPendingConflicts(): Promise<SyncConflict[]> {
+    return this.conflicts.where('status').equals('pending').toArray();
+  }
+
+  /**
+   * Obtém contagem de conflitos pendentes
+   */
+  async getPendingConflictsCount(): Promise<number> {
+    return this.conflicts.where('status').equals('pending').count();
+  }
+
+  /**
+   * Obtém todos os conflitos (incluindo resolvidos)
+   */
+  async getAllConflicts(): Promise<SyncConflict[]> {
+    return this.conflicts.orderBy('detected_at').reverse().toArray();
+  }
+
+  /**
+   * Obtém um conflito específico por ID
+   */
+  async getConflict(conflictId: number): Promise<SyncConflict | undefined> {
+    return this.conflicts.get(conflictId);
+  }
+
+  /**
+   * Resolve um conflito usando a estratégia especificada
+   */
+  async resolveConflict(
+    conflictId: number,
+    strategy: ConflictResolutionStrategy,
+    mergedData?: Record<string, unknown>
+  ): Promise<void> {
+    const conflict = await this.conflicts.get(conflictId);
+    if (!conflict) {
+      throw new Error(`Conflito ${conflictId} não encontrado`);
+    }
+
+    await this.transaction('rw', [this.conflicts, this.products, this.categories, this.customers, this.sales, this.syncQueue], async () => {
+      let dataToApply: Record<string, unknown>;
+      let newVersion: number;
+
+      switch (strategy) {
+        case 'local_wins':
+          dataToApply = conflict.local_data;
+          newVersion = Math.max(conflict.local_version, conflict.server_version) + 1;
+          break;
+        case 'server_wins':
+          dataToApply = conflict.server_data;
+          newVersion = conflict.server_version;
+          break;
+        case 'manual_merge':
+          if (!mergedData) {
+            throw new Error('Dados mesclados são obrigatórios para resolução manual');
+          }
+          dataToApply = mergedData;
+          newVersion = Math.max(conflict.local_version, conflict.server_version) + 1;
+          break;
+      }
+
+      // Aplica os dados na tabela correspondente
+      const entityData = {
+        ...dataToApply,
+        version: newVersion,
+        updated_at: new Date().toISOString(),
+        _synced: strategy === 'server_wins', // Se servidor venceu, já está sincronizado
+        _last_sync: strategy === 'server_wins' ? new Date().toISOString() : null,
+      };
+
+      switch (conflict.entity_type) {
+        case 'products':
+          await this.products.put(entityData as LocalProduct);
+          break;
+        case 'categories':
+          await this.categories.put(entityData as LocalCategory);
+          break;
+        case 'customers':
+          await this.customers.put(entityData as LocalCustomer);
+          break;
+        case 'sales':
+          await this.sales.put(entityData as LocalSale);
+          break;
+      }
+
+      // Se local venceu ou merge manual, adiciona à fila de sync para enviar ao servidor
+      if (strategy !== 'server_wins') {
+        await this.addToSyncQueue(
+          conflict.entity_type as SyncQueueItem['entity_type'],
+          conflict.entity_id,
+          'update',
+          entityData
+        );
+      }
+
+      // Marca o conflito como resolvido
+      await this.conflicts.update(conflictId, {
+        resolved_at: new Date().toISOString(),
+        resolution_strategy: strategy,
+        status: 'resolved',
+      });
+
+      console.log(`[Conflict] Conflito ${conflictId} resolvido com estratégia: ${strategy}`);
+    });
+  }
+
+  /**
+   * Ignora um conflito (mantém dados atuais)
+   */
+  async ignoreConflict(conflictId: number): Promise<void> {
+    await this.conflicts.update(conflictId, {
+      resolved_at: new Date().toISOString(),
+      resolution_strategy: null,
+      status: 'ignored',
+    });
+    console.log(`[Conflict] Conflito ${conflictId} ignorado`);
+  }
+
+  /**
+   * Remove conflitos resolvidos com mais de X dias
+   */
+  async cleanupResolvedConflicts(daysOld = 30): Promise<number> {
+    const cutoffDate = new Date();
+    cutoffDate.setDate(cutoffDate.getDate() - daysOld);
+    const cutoffIso = cutoffDate.toISOString();
+
+    const oldConflicts = await this.conflicts
+      .filter(c => {
+        if (c.status === 'pending') return false;
+        if (!c.resolved_at) return false;
+        return c.resolved_at < cutoffIso;
+      })
+      .toArray();
+
+    const ids = oldConflicts.map(c => c.id).filter((id): id is number => id !== undefined);
+    await this.conflicts.bulkDelete(ids);
+
+    console.log(`[Conflict] ${ids.length} conflitos antigos removidos`);
+    return ids.length;
+  }
+
+  /**
+   * Detecta conflito entre versão local e servidor
+   * Retorna true se há conflito (ambos modificados independentemente)
+   */
+  async detectConflict(
+    entityType: SyncConflict['entity_type'],
+    entityId: string,
+    serverData: Record<string, unknown>,
+    serverVersion: number,
+    serverUpdatedAt: string
+  ): Promise<boolean> {
+    let localData: Record<string, unknown> | undefined;
+    let localVersion: number;
+    let localUpdatedAt: string;
+    let localSynced: boolean;
+
+    switch (entityType) {
+      case 'products':
+        const product = await this.products.get(entityId);
+        if (!product) return false;
+        localData = product as unknown as Record<string, unknown>;
+        localVersion = product.version || 1;
+        localUpdatedAt = product.updated_at;
+        localSynced = product._synced;
+        break;
+      case 'categories':
+        const category = await this.categories.get(entityId);
+        if (!category) return false;
+        localData = category as unknown as Record<string, unknown>;
+        localVersion = category.version || 1;
+        localUpdatedAt = category.updated_at;
+        localSynced = category._synced;
+        break;
+      case 'customers':
+        const customer = await this.customers.get(entityId);
+        if (!customer) return false;
+        localData = customer as unknown as Record<string, unknown>;
+        localVersion = customer.version || 1;
+        localUpdatedAt = customer.updated_at;
+        localSynced = customer._synced;
+        break;
+      case 'sales':
+        const sale = await this.sales.get(entityId);
+        if (!sale) return false;
+        localData = sale as unknown as Record<string, unknown>;
+        localVersion = sale.version || 1;
+        localUpdatedAt = sale.updated_at;
+        localSynced = sale._synced;
+        break;
+      default:
+        return false;
+    }
+
+    // Conflito: versão local > servidor E não sincronizado E servidor tem versão diferente
+    // Isso indica que tanto local quanto servidor foram modificados desde a última sincronização
+    const hasConflict = !localSynced &&
+                        localVersion >= serverVersion &&
+                        localUpdatedAt !== serverUpdatedAt;
+
+    if (hasConflict) {
+      await this.addConflict({
+        entity_type: entityType,
+        entity_id: entityId,
+        local_data: localData,
+        server_data: serverData,
+        local_version: localVersion,
+        server_version: serverVersion,
+        local_updated_at: localUpdatedAt,
+        server_updated_at: serverUpdatedAt,
+      });
+    }
+
+    return hasConflict;
+  }
+
+  /**
+   * Resolve todos os conflitos pendentes automaticamente
+   * Usa a estratégia padrão: última modificação vence (baseado em updated_at)
+   */
+  async autoResolveConflicts(defaultStrategy: ConflictResolutionStrategy = 'local_wins'): Promise<number> {
+    const pendingConflicts = await this.getPendingConflicts();
+    let resolved = 0;
+
+    for (const conflict of pendingConflicts) {
+      try {
+        // Estratégia automática: o mais recente vence
+        let strategy = defaultStrategy;
+        if (conflict.local_updated_at > conflict.server_updated_at) {
+          strategy = 'local_wins';
+        } else if (conflict.server_updated_at > conflict.local_updated_at) {
+          strategy = 'server_wins';
+        }
+
+        await this.resolveConflict(conflict.id!, strategy);
+        resolved++;
+      } catch (error) {
+        console.error(`[Conflict] Erro ao resolver conflito ${conflict.id}:`, error);
+      }
+    }
+
+    console.log(`[Conflict] ${resolved} conflitos resolvidos automaticamente`);
+    return resolved;
+  }
+
   /**
    * Limpa todo o banco (útil para logout)
    */
@@ -567,6 +868,7 @@ class OfflineDatabase extends Dexie {
       this.sales.clear(),
       this.saleItems.clear(),
       this.syncQueue.clear(),
+      this.conflicts.clear(),
       this.config.clear(),
     ]);
   }
